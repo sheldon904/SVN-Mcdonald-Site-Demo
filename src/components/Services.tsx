@@ -1,0 +1,98 @@
+import { motion } from 'framer-motion';
+import { ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
+
+const mainServices = [
+  {
+    title: "SVN Land",
+    subtitle: "Central Florida's Land Experts",
+    description: "Specializing in agricultural, development, and conservation land throughout the Sunshine State.",
+    image: "https://svnmcdonald.com/wp-content/uploads/2024/10/Hwy-484-Ocala-1920x1073.jpg",
+    icon: "https://svnmcdonald.com/wp-content/uploads/2023/05/807c7b7f-5938-471e-85c9-a4089e5f0905.png",
+    href: "/land-properties"
+  },
+  {
+    title: "SVN Commercial",
+    subtitle: "Premier Commercial Brokerage",
+    description: "Full-service commercial real estate solutions for retail, office, industrial, and investment properties.",
+    image: "https://svnmcdonald.com/wp-content/uploads/2024/06/TrafficBlog-.jpg",
+    icon: "https://svnmcdonald.com/wp-content/uploads/2023/05/ba3c819b-6e96-40ae-8672-b3923651b588.png",
+    href: "/commercial-properties"
+  }
+];
+
+const subServices = [
+  "Conservation Easement",
+  "Distressed/REO Properties",
+  "Land Auctions",
+  "Land Brokerage",
+  "Strategic Marketing",
+  "Value Positioning",
+  "Valuation Appraisal"
+];
+
+const Services = () => {
+  return (
+    <section className="py-24 bg-[#F6F6F6] px-6">
+      <div className="max-w-[1280px] mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-20">
+          {mainServices.map((service, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="relative h-[500px] rounded-[30px] overflow-hidden group cursor-pointer shadow-2xl"
+            >
+              <Link to={service.href}>
+                <img 
+                  src={service.image} 
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                  alt={service.title}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
+                
+                <div className="absolute inset-0 p-12 flex flex-col justify-end">
+                  <img src={service.icon} alt="icon" className="w-16 h-16 mb-6 brightness-0 invert" />
+                  <h3 className="text-4xl font-black text-white uppercase mb-2 tracking-tight">
+                    {service.title}
+                  </h3>
+                  <p className="text-svn-orange font-bold uppercase tracking-widest text-sm mb-4">
+                    {service.subtitle}
+                  </p>
+                  <p className="text-white/70 max-w-sm mb-8 font-medium">
+                    {service.description}
+                  </p>
+                  <div className="flex items-center gap-3 text-white font-black uppercase tracking-[0.2em] text-sm group/btn">
+                    Explore {service.title}
+                    <div className="w-10 h-10 rounded-full bg-svn-orange flex items-center justify-center transition-transform group-hover/btn:translate-x-2">
+                      <ArrowRight size={18} />
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            </motion.div>
+          ))}
+        </div>
+
+        <div className="bg-white rounded-[40px] p-12 shadow-xl border border-gray-100">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-10">
+            <div className="max-w-md">
+              <h4 className="text-2xl font-black text-svn-dark uppercase mb-4">Specialized Services</h4>
+              <p className="text-gray-500 font-medium">Beyond standard brokerage, we provide expert advisory across several specialized practice areas.</p>
+            </div>
+            <div className="flex flex-wrap justify-center md:justify-end gap-3">
+              {subServices.map((sub) => (
+                <span key={sub} className="px-6 py-3 bg-gray-50 text-svn-dark text-xs font-bold uppercase tracking-widest rounded-full hover:bg-svn-orange hover:text-white transition-colors cursor-pointer">
+                  {sub}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Services;
