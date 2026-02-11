@@ -36,6 +36,7 @@ const Navbar = () => {
         { name: 'Land Auctions', href: '/services/land-auctions' },
         { name: 'Land Brokerage', href: '/services/land-brokerage' },
         { name: 'Strategic Marketing', href: '/services/strategic-marketing' },
+        { name: 'Value Positioning', href: '/services/value-positioning' },
         { name: 'Valuation Appraisal', href: '/services/valuation-appraisal' }
       ]
     },

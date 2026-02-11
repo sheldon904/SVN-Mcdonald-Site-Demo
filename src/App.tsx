@@ -8,6 +8,7 @@ import ServicesPage from './pages/ServicesPage';
 import ClosedDealsPage from './pages/ClosedDealsPage';
 import MarketReportsPage from './pages/MarketReportsPage';
 import LegalPage from './pages/LegalPage';
+import AccessibilityPage from './pages/AccessibilityPage';
 import ScrollToTop from './components/ScrollToTop';
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
         <Route path="/market-reports" element={<MarketReportsPage />} />
         <Route path="/privacy-policy" element={<LegalPage />} />
         <Route path="/terms-of-use" element={<LegalPage />} />
+        <Route path="/accessibility-statement" element={<AccessibilityPage />} />
       </Routes>
     </Router>
   )

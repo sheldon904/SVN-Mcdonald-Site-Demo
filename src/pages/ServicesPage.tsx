@@ -189,6 +189,23 @@ const ServicesPage = () => {
         </div>
       )
     },
+    '/services/value-positioning': {
+      title: 'Value',
+      highlighted: 'Positioning',
+      subtitle: 'Maximizing asset value through strategic market positioning.',
+      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2426&q=80',
+      content: (
+        <div className="prose prose-lg max-w-none text-gray-500">
+          <p className="mb-6">
+            Our value positioning service goes beyond traditional appraisal. We analyze the highest and best use for your property to ensure it's positioned to attract the right buyers and command the highest price.
+          </p>
+          <h3 className="text-2xl font-bold text-svn-dark mb-4">Our Strategy</h3>
+          <p>
+            By identifying the unique strengths of your asset and aligning them with current market demand, we create a compelling narrative that resonates with investors and developers alike.
+          </p>
+        </div>
+      )
+    },
   };
 
   const currentService = services[path as keyof typeof services] || services['/services'];
