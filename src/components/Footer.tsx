@@ -86,9 +86,10 @@ const Footer = () => {
             All SVN® Offices Independently Owned and Operated | © 2026 SVN McDonald & Company
           </p>
           <div className="flex gap-8">
+            <Link to="/team" className="text-[10px] font-black uppercase tracking-widest text-gray-500 hover:text-white transition-colors">Meet The Team</Link>
+            <Link to="/contact" className="text-[10px] font-black uppercase tracking-widest text-gray-500 hover:text-white transition-colors">Contact</Link>
             <Link to="/privacy-policy" className="text-[10px] font-black uppercase tracking-widest text-gray-500 hover:text-white transition-colors">Privacy Policy</Link>
-            <Link to="/terms-of-use" className="text-[10px] font-black uppercase tracking-widest text-gray-500 hover:text-white transition-colors">Terms of Use</Link>
-            <Link to="/accessibility-statement" className="text-[10px] font-black uppercase tracking-widest text-gray-500 hover:text-white transition-colors">Accessibility</Link>
+            <a href="#" className="text-[10px] font-black uppercase tracking-widest text-gray-500 hover:text-white transition-colors">MLS Listings</a>
           </div>
         </div>
       </div>

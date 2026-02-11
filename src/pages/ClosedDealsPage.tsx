@@ -7,52 +7,52 @@ import { MapPin, DollarSign, Calendar } from 'lucide-react';
 const ClosedDealsPage = () => {
   const deals = [
     {
-      title: "49.35 Acres on I-75",
+      title: "Trailhead Logistics Center",
       location: "Ocala, FL",
-      price: "$5,700,000",
-      date: "Oct 2024",
-      image: "https://svnmcdonald.com/wp-content/uploads/2024/10/Hwy-484-Ocala-1920x1073.jpg",
-      type: "Land"
-    },
-    {
-      title: "Industrial Warehouse Complex",
-      location: "Ocala, FL",
-      price: "$2,450,000",
-      date: "Sep 2024",
-      image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2370&q=80",
+      price: "943,000 SF Leased",
+      date: "Sep 2025",
+      image: "https://svnmcdonald.com/wp-content/uploads/2024/02/trailhead-logistics-center.webp",
       type: "Industrial"
     },
     {
-      title: "Downtown Office Building",
+      title: "550 Acre Jumbolair",
       location: "Ocala, FL",
-      price: "$1,800,000",
-      date: "Aug 2024",
-      image: "https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2301&q=80",
-      type: "Office"
+      price: "$9,500,000",
+      date: "Sep 2025",
+      image: "https://svnmcdonald.com/wp-content/uploads/2024/09/Jumbolair-Aviation-Estates-1.webp",
+      type: "Residential"
     },
     {
-      title: "Retail Strip Center",
-      location: "The Villages, FL",
-      price: "$3,200,000",
-      date: "Jul 2024",
-      image: "https://images.unsplash.com/photo-1555617981-615e8557345f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2274&q=80",
-      type: "Retail"
-    },
-    {
-      title: "Residential Development Site",
-      location: "Marion County, FL",
-      price: "$950,000",
-      date: "Jun 2024",
-      image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=2273&q=80",
+      title: "Aurora Oak Residential",
+      location: "Ocala, FL",
+      price: "$7,000,000+",
+      date: "Sep 2025",
+      image: "https://svnmcdonald.com/wp-content/uploads/2024/09/Aurora-Oak.webp",
       type: "Land"
     },
     {
-      title: "Medical Office Building",
+      title: "NNN Jiffy Lube",
+      location: "Jacksonville, FL",
+      price: "7.00 CAP",
+      date: "2024",
+      image: "https://svnmcdonald.com/wp-content/uploads/2024/01/Jiffy-Lube.webp",
+      type: "Retail"
+    },
+    {
+      title: "276+/- Acres Dunnellon",
+      location: "Levy County, FL",
+      price: "Sold",
+      date: "2024",
+      image: "https://svnmcdonald.com/wp-content/uploads/2024/01/Dunnellon-Land.webp",
+      type: "Land"
+    },
+    {
+      title: "Corporate Campus",
       location: "Ocala, FL",
-      price: "$1,550,000",
-      date: "May 2024",
-      image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2653&q=80",
-      type: "Medical"
+      price: "$5,500,000",
+      date: "Archive",
+      image: "https://svnmcdonald.com/wp-content/uploads/2021/04/Corporate-Campus.webp",
+      type: "Office"
     }
   ];
 
