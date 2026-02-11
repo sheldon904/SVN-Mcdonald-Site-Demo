@@ -7,6 +7,7 @@ import BlogPage from './pages/BlogPage';
 import ServicesPage from './pages/ServicesPage';
 import ClosedDealsPage from './pages/ClosedDealsPage';
 import MarketReportsPage from './pages/MarketReportsPage';
+import WecEffectPage from './pages/WecEffectPage';
 import LegalPage from './pages/LegalPage';
 import AccessibilityPage from './pages/AccessibilityPage';
 import ScrollToTop from './components/ScrollToTop';
@@ -26,6 +27,7 @@ function App() {
         <Route path="/services/*" element={<ServicesPage />} />
         <Route path="/closed-deals" element={<ClosedDealsPage />} />
         <Route path="/market-reports" element={<MarketReportsPage />} />
+        <Route path="/wec-effect" element={<WecEffectPage />} />
         <Route path="/privacy-policy" element={<LegalPage />} />
         <Route path="/terms-of-use" element={<LegalPage />} />
         <Route path="/accessibility-statement" element={<AccessibilityPage />} />

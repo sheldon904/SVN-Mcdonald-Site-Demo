@@ -21,8 +21,15 @@ const Navbar = () => {
   }, []);
 
   const navItems = [
-    { name: 'Closed Deals Reports', href: '/closed-deals' },
-    { name: 'Market Reports', href: '/market-reports' },
+    { name: 'Closed Deals', href: '/closed-deals' },
+    { 
+      name: 'Reports', 
+      href: '#',
+      dropdown: [
+        { name: 'WEC Effect', href: '/wec-effect' },
+        { name: 'Market Reports', href: '/market-reports' }
+      ]
+    },
     { name: 'Contact Us', href: '/contact' },
     { name: 'Meet The Team', href: '/team' },
     { 
