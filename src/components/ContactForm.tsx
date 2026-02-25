@@ -1,5 +1,8 @@
 import { useState } from 'react';
-import { Mail, Phone, MapPin, Send } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
+import { logger } from '../lib/logger';
+
+type SubmitStatus = 'idle' | 'submitting' | 'success' | 'error';
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -10,19 +13,45 @@ const ContactForm = () => {
     subject: '',
     message: ''
   });
+  const [status, setStatus] = useState<SubmitStatus>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const { firstName, lastName, email, phone, message, subject } = formData;
-    const subjectLine = subject
-      ? `Website Inquiry from ${firstName} ${lastName} - ${subject}`
-      : `Website Inquiry from ${firstName} ${lastName}`;
-    const body = `${message}%0A%0AFrom: ${firstName} ${lastName}%0AEmail: ${email}%0APhone: ${phone}`;
-    window.location.href = `mailto:info@svnmcdonald.com?subject=${encodeURIComponent(subjectLine)}&body=${body}`;
+    setStatus('submitting');
+    setErrorMessage('');
+
+    logger.event('contact_form_submit', {
+      subject: formData.subject,
+      hasPhone: !!formData.phone,
+    });
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.error || `Server error ${res.status}`);
+      }
+
+      logger.info('Contact form submitted successfully', { requestId: data.requestId });
+      setStatus('success');
+      setFormData({ firstName: '', lastName: '', email: '', phone: '', subject: '', message: '' });
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : 'Something went wrong';
+      logger.error('Contact form submission failed', { error: msg });
+      setErrorMessage(msg);
+      setStatus('error');
+    }
   };
 
   return (
@@ -164,9 +193,36 @@ const ContactForm = () => {
                 />
               </div>
 
-              <button type="submit" className="w-full bg-svn-orange hover:bg-white hover:text-svn-orange text-white py-5 rounded-[10px] font-black uppercase tracking-[0.2em] transition-all duration-300 flex items-center justify-center gap-3">
-                Send Message
-                <Send size={18} />
+              {status === 'success' && (
+                <div className="flex items-center gap-3 bg-green-900/30 border border-green-500/30 text-green-400 px-6 py-4 rounded-[10px]">
+                  <CheckCircle size={20} />
+                  <span>Message sent! We'll get back to you shortly.</span>
+                </div>
+              )}
+
+              {status === 'error' && (
+                <div className="flex items-center gap-3 bg-red-900/30 border border-red-500/30 text-red-400 px-6 py-4 rounded-[10px]">
+                  <AlertCircle size={20} />
+                  <span>{errorMessage || 'Failed to send. Please try again.'}</span>
+                </div>
+              )}
+
+              <button
+                type="submit"
+                disabled={status === 'submitting'}
+                className="w-full bg-svn-orange hover:bg-white hover:text-svn-orange text-white py-5 rounded-[10px] font-black uppercase tracking-[0.2em] transition-all duration-300 flex items-center justify-center gap-3 disabled:opacity-60 disabled:cursor-not-allowed"
+              >
+                {status === 'submitting' ? (
+                  <>
+                    Sending...
+                    <Loader2 size={18} className="animate-spin" />
+                  </>
+                ) : (
+                  <>
+                    Send Message
+                    <Send size={18} />
+                  </>
+                )}
               </button>
             </form>
           </div>

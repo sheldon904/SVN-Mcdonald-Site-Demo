@@ -16,6 +16,8 @@ import {
 } from './pages';
 import ScrollToTop from './components/ScrollToTop';
 import SEOHead from './components/SEOHead';
+import ErrorBoundary from './components/ErrorBoundary';
+import RouteLogger from './components/RouteLogger';
 
 function NotFoundPage() {
   return (
@@ -41,8 +43,10 @@ function NotFoundPage() {
 
 function App() {
   return (
+    <ErrorBoundary>
     <Router>
       <ScrollToTop />
+      <RouteLogger />
       <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="w-8 h-8 border-4 border-svn-orange border-t-transparent rounded-full animate-spin" /></div>}>
       <Routes>
         <Route path="/" element={<HomePage />} />
@@ -64,6 +68,7 @@ function App() {
       </Routes>
       </Suspense>
     </Router>
+    </ErrorBoundary>
   )
 }
 
