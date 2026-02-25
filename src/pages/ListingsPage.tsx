@@ -1,6 +1,7 @@
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import BuildoutListing from '../components/BuildoutListing';
+import SEOHead from '../components/SEOHead';
 import { motion } from 'framer-motion';
 import { useLocation } from 'react-router-dom';
 
@@ -15,6 +16,11 @@ const ListingsPage = () => {
 
   return (
     <div className="min-h-screen bg-[#F6F6F6]">
+      <SEOHead
+        title={isLand ? "Land Properties for Sale in Central Florida" : "Commercial Properties for Sale in Central Florida"}
+        description={isLand ? "Browse SVN McDonald's premier land listings in Ocala and Central Florida. Agricultural, development, and investment land opportunities." : "Explore commercial real estate listings in Central Florida. Retail, office, industrial, and investment properties from SVN McDonald & Company."}
+        canonical={isLand ? "https://svnmcdonald.com/land-properties" : "https://svnmcdonald.com/commercial-properties"}
+      />
       <Navbar />
       
       {/* Header Spacer */}

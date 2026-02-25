@@ -1,6 +1,7 @@
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import PageHeader from '../components/PageHeader';
+import SEOHead from '../components/SEOHead';
 import { motion } from 'framer-motion';
 import { MapPin, DollarSign, Calendar } from 'lucide-react';
 
@@ -58,6 +59,11 @@ const ClosedDealsPage = () => {
 
   return (
     <div className="min-h-screen bg-[#F6F6F6]">
+      <SEOHead
+        title="Closed Deals & Transaction History"
+        description="View SVN McDonald's track record of successful commercial real estate transactions in Central Florida. Land, retail, office, and industrial deals."
+        canonical="https://svnmcdonald.com/closed-deals"
+      />
       <Navbar />
       
       <PageHeader 
@@ -80,10 +86,14 @@ const ClosedDealsPage = () => {
                 className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 group"
               >
                 <div className="relative h-48 overflow-hidden">
-                  <img 
-                    src={deal.image} 
-                    alt={deal.title} 
+                  <img
+                    src={deal.image}
+                    alt={deal.title}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    loading="lazy"
+                    decoding="async"
+                    width="600"
+                    height="400"
                   />
                   <div className="absolute top-4 right-4 bg-svn-orange text-white text-xs font-bold uppercase tracking-widest py-1 px-3 rounded-md">
                     Sold

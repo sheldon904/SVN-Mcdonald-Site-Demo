@@ -1,6 +1,7 @@
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import PageHeader from '../components/PageHeader';
+import SEOHead from '../components/SEOHead';
 import { motion } from 'framer-motion';
 import { Calendar, User, ArrowRight } from 'lucide-react';
 
@@ -64,6 +65,11 @@ const BlogPage = () => {
 
   return (
     <div className="min-h-screen bg-[#F6F6F6]">
+      <SEOHead
+        title="Blog & Market Insights"
+        description="Read the latest commercial real estate news, market updates, and insights from SVN McDonald & Company in Central Florida."
+        canonical="https://svnmcdonald.com/blog"
+      />
       <Navbar />
       
       <PageHeader 
@@ -86,10 +92,14 @@ const BlogPage = () => {
                 className="group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col h-full"
               >
                 <div className="relative aspect-[16/10] overflow-hidden">
-                  <img 
-                    src={post.image} 
-                    alt={post.title} 
+                  <img
+                    src={post.image}
+                    alt={post.title}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    loading="lazy"
+                    decoding="async"
+                    width="800"
+                    height="500"
                   />
                   <div className="absolute top-4 left-4 bg-svn-orange text-white text-xs font-bold uppercase tracking-widest py-1 px-3 rounded-full">
                     {post.category}
@@ -109,7 +119,7 @@ const BlogPage = () => {
                   </div>
                   
                   <h3 className="text-xl font-bold text-svn-dark mb-4 group-hover:text-svn-orange transition-colors line-clamp-2 leading-tight">
-                    <a href="#">{post.title}</a>
+                    {post.title}
                   </h3>
                   
                   <p className="text-gray-500 text-sm leading-relaxed mb-6 line-clamp-3 flex-1">
@@ -117,9 +127,9 @@ const BlogPage = () => {
                   </p>
                   
                   <div className="pt-6 border-t border-gray-100 mt-auto">
-                    <a href="#" className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest text-svn-dark group-hover:text-svn-orange transition-colors">
+                    <span className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest text-svn-dark group-hover:text-svn-orange transition-colors">
                       Read Article <ArrowRight size={14} />
-                    </a>
+                    </span>
                   </div>
                 </div>
               </motion.article>

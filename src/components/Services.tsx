@@ -45,15 +45,19 @@ const Services = () => {
               className="relative h-[500px] rounded-[30px] overflow-hidden group cursor-pointer shadow-2xl"
             >
               <Link to={service.href}>
-                <img 
-                  src={service.image} 
+                <img
+                  src={service.image}
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
                   alt={service.title}
+                  loading="lazy"
+                  decoding="async"
+                  width={1920}
+                  height={1073}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
                 
                 <div className="absolute inset-0 p-12 flex flex-col justify-end">
-                  <img src={service.icon} alt="icon" className="w-16 h-16 mb-6 brightness-0 invert" />
+                  <img src={service.icon} alt={`${service.title} service icon`} className="w-16 h-16 mb-6 brightness-0 invert" loading="lazy" decoding="async" width={64} height={64} />
                   <h3 className="text-4xl font-black text-white uppercase mb-2 tracking-tight">
                     {service.title}
                   </h3>

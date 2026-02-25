@@ -1,12 +1,18 @@
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import ContactForm from '../components/ContactForm';
+import SEOHead from '../components/SEOHead';
 import { motion } from 'framer-motion';
 import { MapPin, Phone, Mail, Clock } from 'lucide-react';
 
 const ContactPage = () => {
   return (
     <div className="min-h-screen bg-white">
+      <SEOHead
+        title="Contact Us"
+        description="Contact SVN McDonald & Company in Ocala, FL. Call 352.484.8090 or visit our office at 1825 SE 16th Ave. Commercial and land real estate experts."
+        canonical="https://svnmcdonald.com/contact"
+      />
       <Navbar />
       
       {/* Header Spacer for fixed navbar */}

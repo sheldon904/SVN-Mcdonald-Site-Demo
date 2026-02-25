@@ -1,6 +1,7 @@
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import PageHeader from '../components/PageHeader';
+import SEOHead from '../components/SEOHead';
 import { motion } from 'framer-motion';
 import { FileText, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -54,6 +55,11 @@ const MarketReportsPage = () => {
 
   return (
     <div className="min-h-screen bg-[#F6F6F6]">
+      <SEOHead
+        title="Market Reports & Economic Updates"
+        description="Access monthly commercial real estate market reports and economic analyses for Ocala and Central Florida from SVN McDonald & Company."
+        canonical="https://svnmcdonald.com/market-reports"
+      />
       <Navbar />
       
       <PageHeader 
@@ -76,10 +82,14 @@ const MarketReportsPage = () => {
                 className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col"
               >
                 <div className="relative h-64">
-                  <img 
-                    src={report.image} 
-                    alt={report.title} 
+                  <img
+                    src={report.image}
+                    alt={report.title}
                     className="w-full h-full object-cover"
+                    loading="lazy"
+                    decoding="async"
+                    width="600"
+                    height="400"
                   />
                   <div className="absolute inset-0 bg-svn-dark/20 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
                     <FileText size={48} className="text-white" />

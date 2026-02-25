@@ -1,6 +1,7 @@
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import PageHeader from '../components/PageHeader';
+import SEOHead from '../components/SEOHead';
 import { motion } from 'framer-motion';
 import { Mail, Phone } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -44,6 +45,11 @@ const TeamPage = () => {
 
   return (
     <div className="min-h-screen bg-[#F6F6F6]">
+      <SEOHead
+        title="Meet Our Team"
+        description="Meet the SVN McDonald & Company team. Experienced commercial real estate advisors serving Ocala, Marion County, and Central Florida."
+        canonical="https://svnmcdonald.com/team"
+      />
       <Navbar />
       
       <PageHeader 
@@ -67,10 +73,14 @@ const TeamPage = () => {
               >
                 <div className="w-full md:w-1/3">
                   <div className="aspect-[3/4] rounded-xl overflow-hidden shadow-2xl">
-                    <img 
-                      src={member.image} 
+                    <img
+                      src={member.image}
                       alt={member.name}
                       className="w-full h-full object-cover"
+                      loading="lazy"
+                      decoding="async"
+                      width="400"
+                      height="533"
                     />
                   </div>
                   <div className="mt-8 space-y-4">
@@ -134,7 +144,7 @@ const TeamPage = () => {
           <div className="relative z-10 flex flex-col gap-4">
             <a href="tel:3522743800" className="bg-white text-svn-orange px-10 py-5 rounded-full font-black uppercase tracking-widest hover:bg-svn-dark hover:text-white transition-all duration-300 shadow-xl flex items-center justify-center gap-3">
               <Phone size={20} />
-              (352) 274-3800
+              352.274.3800
             </a>
             <Link to="/contact" className="bg-svn-dark text-white px-10 py-5 rounded-full font-black uppercase tracking-widest hover:bg-white hover:text-svn-dark transition-all duration-300 shadow-xl text-center">
               Send us a message

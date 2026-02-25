@@ -17,10 +17,15 @@ const PageHeader: React.FC<PageHeaderProps> = ({
     <div className="relative bg-svn-dark pt-32 pb-20 md:pt-48 md:pb-32 px-6 overflow-hidden">
       {backgroundImage && (
         <div className="absolute inset-0 z-0">
-          <img 
-            src={backgroundImage} 
-            alt="Background" 
+          <img
+            src={backgroundImage}
+            alt=""
             className="w-full h-full object-cover opacity-20"
+            loading="lazy"
+            decoding="async"
+            width={1920}
+            height={1080}
+            aria-hidden="true"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-svn-dark to-transparent" />
         </div>

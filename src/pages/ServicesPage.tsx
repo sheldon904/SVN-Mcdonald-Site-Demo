@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import PageHeader from '../components/PageHeader';
+import SEOHead from '../components/SEOHead';
 import { motion } from 'framer-motion';
 import { CheckCircle, ArrowRight, BarChart, LandPlot, Gavel, FileText, Megaphone, Calculator } from 'lucide-react';
 
@@ -41,10 +42,14 @@ const ServicesPage = () => {
               </div>
             </div>
             <div className="relative">
-              <img 
-                src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=2300&q=80" 
-                alt="SVN Experience" 
+              <img
+                src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=2300&q=80"
+                alt="SVN Experience"
                 className="rounded-2xl shadow-2xl"
+                loading="lazy"
+                decoding="async"
+                width="800"
+                height="600"
               />
               <div className="absolute -bottom-8 -left-8 bg-svn-orange text-white p-8 rounded-2xl shadow-xl hidden lg:block">
                 <div className="text-4xl font-black mb-1">30+</div>
@@ -273,11 +278,16 @@ const ServicesPage = () => {
 
   return (
     <div className="min-h-screen bg-[#F6F6F6]">
+      <SEOHead
+        title={currentService.title + ' ' + (currentService.highlighted || '')}
+        description={currentService.subtitle}
+        canonical={"https://svnmcdonald.com" + path}
+      />
       <Navbar />
-      
-      <PageHeader 
-        title={currentService.title} 
-        highlightedText={currentService.highlighted} 
+
+      <PageHeader
+        title={currentService.title}
+        highlightedText={currentService.highlighted}
         subtitle={currentService.subtitle}
         backgroundImage={currentService.image}
       />

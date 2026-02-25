@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
 import Navbar from '../components/Navbar'
+import SEOHead from '../components/SEOHead'
+import StructuredData from '../components/StructuredData'
 import Hero from '../components/Hero'
 import Stats from '../components/Stats'
 import Services from '../components/Services'
@@ -14,16 +16,26 @@ import Footer from '../components/Footer'
 const HomePage = () => {
   return (
     <div className="min-h-screen bg-white">
+      <SEOHead
+        title="Central Florida Commercial & Land Real Estate"
+        description="SVN McDonald & Company is Central Florida's premier commercial and land real estate brokerage in Ocala, FL. National reach, local expertise. Land sales, commercial properties, and investment real estate."
+        canonical="https://svnmcdonald.com/"
+      />
       <Navbar />
+      <StructuredData />
       <main>
         <Hero />
         <Listings />
         {/* WEC Effect CTA Section */}
         <section className="py-20 bg-svn-dark overflow-hidden relative">
           <div className="absolute top-0 right-0 w-1/2 h-full hidden lg:block">
-            <img 
-              src="https://images.unsplash.com/photo-1534438097545-a2c22c57f01b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2670&q=80" 
-              alt="WEC Effect" 
+            <img
+              src="https://images.unsplash.com/photo-1534438097545-a2c22c57f01b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2670&q=80"
+              alt="World Equestrian Center impact on Ocala real estate"
+              loading="lazy"
+              decoding="async"
+              width={1200}
+              height={800}
               className="w-full h-full object-cover opacity-40 grayscale"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-svn-dark via-svn-dark/60 to-transparent" />

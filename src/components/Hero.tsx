@@ -6,10 +6,13 @@ const Hero = () => {
     <div className="relative h-[90vh] md:h-screen w-full overflow-hidden bg-black">
       {/* Background Media */}
       <div className="absolute inset-0">
-        <img 
+        <img
           src="https://svnmcdonald.com/wp-content/uploads/2024/10/Hwy-484-Ocala-1920x1073.jpg"
           alt="Central Florida Real Estate"
           className="w-full h-full object-cover opacity-60 scale-105"
+          fetchPriority="high"
+          width={1920}
+          height={1073}
         />
         {/* Gradients to match the original site's depth */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/40" />

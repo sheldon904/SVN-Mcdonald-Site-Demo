@@ -1,9 +1,16 @@
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import SEOHead from '../components/SEOHead';
 
 const AccessibilityPage = () => {
   return (
     <div className="min-h-screen bg-white">
+      <SEOHead
+        title="Accessibility Statement"
+        description="SVN McDonald & Company accessibility statement. Our commitment to digital accessibility and WCAG 2.1 AA compliance."
+        canonical="https://svnmcdonald.com/accessibility-statement"
+        noindex={true}
+      />
       <Navbar />
       <div className="h-20 bg-svn-dark" />
       

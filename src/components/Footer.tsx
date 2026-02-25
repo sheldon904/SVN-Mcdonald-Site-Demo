@@ -17,19 +17,23 @@ const Footer = () => {
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-16 mb-24">
           <div className="lg:col-span-4">
-            <img 
-              src="https://svnmcdonald.com/wp-content/uploads/2023/05/White-Orange-DBA_Logo_McDonald-Company-768x374-1.png" 
-              alt="SVN McDonald" 
+            <img
+              src="https://svnmcdonald.com/wp-content/uploads/2023/05/White-Orange-DBA_Logo_McDonald-Company-768x374-1.png"
+              alt="SVN McDonald &amp; Company - Commercial Real Estate Brokerage"
               className="h-20 w-auto mb-10"
+              loading="lazy"
+              decoding="async"
+              width={768}
+              height={374}
             />
             <p className="text-gray-400 font-medium leading-relaxed max-w-sm mb-10">
               SVN McDonald & Company is Central Florida's premier commercial and land real estate brokerage. Our collaborative approach and national reach ensure maximum value for our clients.
             </p>
             <div className="flex gap-4">
-              <a href="#" className="w-12 h-12 bg-white/5 hover:bg-svn-orange transition-all duration-300 rounded-full flex items-center justify-center"><Facebook size={20} /></a>
-              <a href="#" className="w-12 h-12 bg-white/5 hover:bg-svn-orange transition-all duration-300 rounded-full flex items-center justify-center"><Youtube size={20} /></a>
-              <a href="#" className="w-12 h-12 bg-white/5 hover:bg-svn-orange transition-all duration-300 rounded-full flex items-center justify-center"><Instagram size={20} /></a>
-              <a href="#" className="w-12 h-12 bg-white/5 hover:bg-svn-orange transition-all duration-300 rounded-full flex items-center justify-center"><Linkedin size={20} /></a>
+              <a href="#" aria-label="Facebook" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-white/5 hover:bg-svn-orange transition-all duration-300 rounded-full flex items-center justify-center"><Facebook size={20} /></a>
+              <a href="#" aria-label="YouTube" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-white/5 hover:bg-svn-orange transition-all duration-300 rounded-full flex items-center justify-center"><Youtube size={20} /></a>
+              <a href="#" aria-label="Instagram" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-white/5 hover:bg-svn-orange transition-all duration-300 rounded-full flex items-center justify-center"><Instagram size={20} /></a>
+              <a href="#" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-white/5 hover:bg-svn-orange transition-all duration-300 rounded-full flex items-center justify-center"><Linkedin size={20} /></a>
             </div>
           </div>
 

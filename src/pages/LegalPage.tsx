@@ -1,5 +1,6 @@
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import SEOHead from '../components/SEOHead';
 import { useLocation } from 'react-router-dom';
 
 const LegalPage = () => {
@@ -10,9 +11,15 @@ const LegalPage = () => {
 
   return (
     <div className="min-h-screen bg-white">
+      <SEOHead
+        title={isPrivacy ? "Privacy Policy" : "Terms of Use"}
+        description={isPrivacy ? "SVN McDonald & Company privacy policy. Learn how we collect, use, and protect your personal information." : "Terms of use for the SVN McDonald & Company website."}
+        canonical={isPrivacy ? "https://svnmcdonald.com/privacy-policy" : "https://svnmcdonald.com/terms-of-use"}
+        noindex={true}
+      />
       <Navbar />
       <div className="h-20 bg-svn-dark" />
-      
+
       <div className="max-w-4xl mx-auto py-24 px-6">
         <h1 className="text-4xl font-black text-svn-dark uppercase tracking-tight mb-8">{title}</h1>
         

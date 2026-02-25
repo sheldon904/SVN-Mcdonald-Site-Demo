@@ -12,10 +12,14 @@ const Partners = () => {
         <div className="flex flex-wrap justify-center items-center gap-12 md:gap-24">
           {partners.map((partner) => (
             <div key={partner.name} className="flex justify-center grayscale hover:grayscale-0 opacity-40 hover:opacity-100 transition-all duration-500">
-              <img 
-                src={partner.logo} 
-                alt={partner.name} 
+              <img
+                src={partner.logo}
+                alt={partner.name}
                 className="h-10 md:h-14 w-auto object-contain"
+                loading="lazy"
+                decoding="async"
+                width={200}
+                height={56}
               />
             </div>
           ))}

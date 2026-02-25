@@ -1,6 +1,7 @@
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import PageHeader from '../components/PageHeader';
+import SEOHead from '../components/SEOHead';
 import { motion } from 'framer-motion';
 import { TrendingUp, MapPin, Scale, Landmark, ArrowRight } from 'lucide-react';
 
@@ -30,6 +31,11 @@ const WecEffectPage = () => {
 
   return (
     <div className="min-h-screen bg-[#F6F6F6]">
+      <SEOHead
+        title="The WEC Effect - World Equestrian Center Impact Report"
+        description="Discover how the World Equestrian Center has transformed Ocala's real estate market. Land values up 200% with SVN McDonald's comprehensive analysis."
+        canonical="https://svnmcdonald.com/wec-effect"
+      />
       <Navbar />
       
       <PageHeader 

@@ -52,17 +52,19 @@ const ContactForm = () => {
             <form className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-[10px] uppercase tracking-[0.2em] font-black text-gray-500 mb-3">First Name</label>
-                  <input 
-                    type="text" 
+                  <label htmlFor="first-name" className="block text-[10px] uppercase tracking-[0.2em] font-black text-gray-500 mb-3">First Name</label>
+                  <input
+                    id="first-name"
+                    type="text"
                     className="w-full bg-[#222] border-0 rounded-[10px] px-6 py-4 text-white focus:ring-2 focus:ring-svn-orange transition-all"
                     placeholder="John"
                   />
                 </div>
                 <div>
-                  <label className="block text-[10px] uppercase tracking-[0.2em] font-black text-gray-500 mb-3">Last Name</label>
-                  <input 
-                    type="text" 
+                  <label htmlFor="last-name" className="block text-[10px] uppercase tracking-[0.2em] font-black text-gray-500 mb-3">Last Name</label>
+                  <input
+                    id="last-name"
+                    type="text"
                     className="w-full bg-[#222] border-0 rounded-[10px] px-6 py-4 text-white focus:ring-2 focus:ring-svn-orange transition-all"
                     placeholder="Doe"
                   />
@@ -70,17 +72,19 @@ const ContactForm = () => {
               </div>
               
               <div>
-                <label className="block text-[10px] uppercase tracking-[0.2em] font-black text-gray-500 mb-3">Email Address</label>
-                <input 
-                  type="email" 
+                <label htmlFor="email" className="block text-[10px] uppercase tracking-[0.2em] font-black text-gray-500 mb-3">Email Address</label>
+                <input
+                  id="email"
+                  type="email"
                   className="w-full bg-[#222] border-0 rounded-[10px] px-6 py-4 text-white focus:ring-2 focus:ring-svn-orange transition-all"
                   placeholder="john@example.com"
                 />
               </div>
 
               <div>
-                <label className="block text-[10px] uppercase tracking-[0.2em] font-black text-gray-500 mb-3">How can we help?</label>
-                <textarea 
+                <label htmlFor="message" className="block text-[10px] uppercase tracking-[0.2em] font-black text-gray-500 mb-3">How can we help?</label>
+                <textarea
+                  id="message"
                   rows={4}
                   className="w-full bg-[#222] border-0 rounded-[10px] px-6 py-4 text-white focus:ring-2 focus:ring-svn-orange transition-all resize-none"
                   placeholder="Tell us about your property or investment needs..."

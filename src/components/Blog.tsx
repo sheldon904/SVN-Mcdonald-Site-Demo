@@ -40,10 +40,14 @@ const Blog = () => {
           {posts.map((post, index) => (
             <article key={index} className="group cursor-pointer">
               <div className="relative aspect-[16/10] overflow-hidden mb-6">
-                <img 
-                  src={post.image} 
-                  alt={post.title} 
+                <img
+                  src={post.image}
+                  alt={post.title}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  loading="lazy"
+                  decoding="async"
+                  width={800}
+                  height={500}
                 />
               </div>
               <h3 className="text-xl font-bold text-svn-grey mb-4 group-hover:text-svn-orange transition-colors line-clamp-2">

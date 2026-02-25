@@ -84,13 +84,17 @@ const Navbar = () => {
         <div className="max-w-[1400px] mx-auto flex justify-between items-center">
           <div className="flex-shrink-0">
             <Link to="/">
-              <img 
-                src="https://svnmcdonald.com/wp-content/uploads/2023/05/White-Orange-DBA_Logo_McDonald-Company-768x374-1.png" 
-                alt="SVN McDonald" 
+              <img
+                src="https://svnmcdonald.com/wp-content/uploads/2023/05/White-Orange-DBA_Logo_McDonald-Company-768x374-1.png"
+                alt="SVN McDonald &amp; Company - Commercial Real Estate Brokerage"
                 className={cn(
                   "h-14 md:h-20 w-auto transition-all duration-300",
                   isScrolled ? "brightness-0 h-12 md:h-16" : "brightness-100"
                 )}
+                loading="lazy"
+                decoding="async"
+                width={768}
+                height={374}
               />
             </Link>
           </div>
@@ -133,8 +137,9 @@ const Navbar = () => {
 
           {/* Mobile menu button */}
           <div className="lg:hidden">
-            <button 
+            <button
               onClick={() => setIsOpen(!isOpen)}
+              aria-label="Open navigation menu"
               className={cn(
                 "p-2 transition-colors",
                 isScrolled ? "text-svn-dark" : "text-white"
@@ -154,13 +159,17 @@ const Navbar = () => {
         <div className="p-6 h-full flex flex-col">
           <div className="flex justify-between items-center mb-10">
             <Link to="/" onClick={() => setIsOpen(false)}>
-              <img 
-                src="https://svnmcdonald.com/wp-content/uploads/2023/05/White-Orange-DBA_Logo_McDonald-Company-768x374-1.png" 
-                alt="SVN McDonald" 
+              <img
+                src="https://svnmcdonald.com/wp-content/uploads/2023/05/White-Orange-DBA_Logo_McDonald-Company-768x374-1.png"
+                alt="SVN McDonald &amp; Company - Commercial Real Estate Brokerage"
                 className="h-12 w-auto brightness-0"
+                loading="lazy"
+                decoding="async"
+                width={768}
+                height={374}
               />
             </Link>
-            <button onClick={() => setIsOpen(false)} className="text-svn-dark p-2">
+            <button onClick={() => setIsOpen(false)} aria-label="Close navigation menu" className="text-svn-dark p-2">
               <X size={32} />
             </button>
           </div>

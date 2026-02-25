@@ -17,7 +17,7 @@ const BuildoutListing: React.FC<BuildoutListingProps> = ({
     if (!script) {
       script = document.createElement('script');
       script.id = scriptId;
-      script.src = "//buildout.com/api.js?v8";
+      script.src = "https://buildout.com/api.js?v8";
       script.async = true;
       document.body.appendChild(script);
     }
