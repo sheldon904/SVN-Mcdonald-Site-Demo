@@ -1,53 +1,65 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 interface BuildoutListingProps {
   pluginType?: 'featured' | 'inventory';
   containerId?: string;
 }
 
-const BuildoutListing: React.FC<BuildoutListingProps> = ({ 
+const BUILDOUT_TOKEN = "780b230639b42edeea9d75652be95e361a796839";
+const BUILDOUT_SCRIPT_ID = 'buildout-api-script';
+
+const BuildoutListing: React.FC<BuildoutListingProps> = ({
   pluginType = 'featured',
   containerId = 'buildout-container'
 }) => {
-  useEffect(() => {
-    // Buildout integration
-    const scriptId = 'buildout-api-script';
-    let script = document.getElementById(scriptId) as HTMLScriptElement;
+  const containerRef = useRef<HTMLDivElement>(null);
 
-    if (!script) {
-      script = document.createElement('script');
-      script.id = scriptId;
+  useEffect(() => {
+    const config = {
+      token: BUILDOUT_TOKEN,
+      plugin: pluginType,
+      target: containerId
+    };
+
+    const initBuildout = () => {
+      // If Buildout is already loaded, call embed directly
+      if ((window as any).BuildOut?.embed) {
+        (window as any).BuildOut.embed(config);
+        return;
+      }
+
+      // Set config for auto-init on first script load
+      (window as any).buildoutConfig = config;
+    };
+
+    const existingScript = document.getElementById(BUILDOUT_SCRIPT_ID) as HTMLScriptElement;
+
+    if (existingScript) {
+      // Script tag exists — Buildout may or may not be ready
+      initBuildout();
+    } else {
+      // First load: set config BEFORE script loads (Buildout auto-inits)
+      (window as any).buildoutConfig = config;
+
+      const script = document.createElement('script');
+      script.id = BUILDOUT_SCRIPT_ID;
       script.src = "https://buildout.com/api.js?v8";
       script.async = true;
       document.body.appendChild(script);
     }
 
-    // Set up the global config Buildout expects
-    (window as any).buildoutConfig = {
-      token: "780b230639b42edeea9d75652be95e361a796839",
-      plugin: pluginType,
-      target: containerId
-    };
-
-    // If script is already loaded, we might need to trigger a re-init
-    if ((window as any).Buildout && (window as any).Buildout.init) {
-      (window as any).Buildout.init();
-    }
-
     return () => {
-      // We don't necessarily want to remove the script as it might be used elsewhere,
-      // but we should clear the target container content if needed
       const container = document.getElementById(containerId);
       if (container) {
-        // container.innerHTML = ''; 
+        container.innerHTML = '';
       }
     };
   }, [pluginType, containerId]);
 
   return (
     <div className="w-full min-h-[400px]">
-      <div id={containerId}>
-        {/* Buildout will inject the content here */}
+      <div id={containerId} ref={containerRef}>
+        {/* Buildout injects iframe here */}
       </div>
     </div>
   );
