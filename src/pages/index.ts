@@ -11,3 +11,4 @@ export const MarketReportsPage = lazy(() => import('./MarketReportsPage'));
 export const WecEffectPage = lazy(() => import('./WecEffectPage'));
 export const LegalPage = lazy(() => import('./LegalPage'));
 export const AccessibilityPage = lazy(() => import('./AccessibilityPage'));
+export const BlogPostPage = lazy(() => import('./BlogPostPage'));

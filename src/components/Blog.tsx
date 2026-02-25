@@ -1,24 +1,7 @@
+import { Link } from 'react-router-dom';
+import { blogPosts } from '../data/blogPosts';
 
-const posts = [
-  {
-    title: 'SVN McDonald Brokers Crucial 49.35 acre I-75 Deal for $5.7 million',
-    excerpt: 'Orlando real estate broker, investor and developer Daryl Carter has purchased 49.35 acres...',
-    image: 'https://svnmcdonald.com/wp-content/uploads/2024/10/Hwy-484-Ocala-1920x1073.jpg',
-    href: '#'
-  },
-  {
-    title: '7 Steps Developers Need to Follow Concerning the Florida Gopher Tortoise',
-    excerpt: 'What shares the traits of being slow-moving, often unpredictable, and occasionally unwilling...',
-    image: 'https://svnmcdonald.com/wp-content/uploads/2024/08/DALL·E-2024-08-19-14.51.08-A-cartoon-style-illustration-of-a-Florida-gopher-tortoise-blocking-a-construction-site.-The-tortoise-is-in-the-foreground-near-its-burrow-with-a-dete.webp',
-    href: '#'
-  },
-  {
-    title: 'Critical Updates You Need to Know on I-75 Traffic and Construction in Florida',
-    excerpt: 'Major Florida cities such as Miami, Orlando, Tampa, and Jacksonville are infamous for...',
-    image: 'https://svnmcdonald.com/wp-content/uploads/2024/06/TrafficBlog-.jpg',
-    href: '#'
-  }
-];
+const latestPosts = blogPosts.slice(0, 3);
 
 const Blog = () => {
   return (
@@ -31,41 +14,43 @@ const Blog = () => {
             </h2>
             <div className="w-20 h-1 bg-svn-orange" />
           </div>
-          <button className="hidden md:block text-sm font-bold text-svn-grey hover:text-svn-orange uppercase tracking-widest transition-colors">
+          <Link to="/blog" className="hidden md:block text-sm font-bold text-svn-grey hover:text-svn-orange uppercase tracking-widest transition-colors">
             View All Posts
-          </button>
+          </Link>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
-          {posts.map((post, index) => (
+          {latestPosts.map((post, index) => (
             <article key={index} className="group cursor-pointer">
-              <div className="relative aspect-[16/10] overflow-hidden mb-6">
-                <img
-                  src={post.image}
-                  alt={post.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  loading="lazy"
-                  decoding="async"
-                  width={800}
-                  height={500}
-                />
-              </div>
-              <h3 className="text-xl font-bold text-svn-grey mb-4 group-hover:text-svn-orange transition-colors line-clamp-2">
-                {post.title}
-              </h3>
+              <Link to={`/blog/${post.slug}`} className="block">
+                <div className="relative aspect-[16/10] overflow-hidden mb-6">
+                  <img
+                    src={post.image}
+                    alt={post.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    loading="lazy"
+                    decoding="async"
+                    width={800}
+                    height={500}
+                  />
+                </div>
+                <h3 className="text-xl font-bold text-svn-grey mb-4 group-hover:text-svn-orange transition-colors line-clamp-2">
+                  {post.title}
+                </h3>
+              </Link>
               <p className="text-gray-500 text-sm leading-relaxed mb-6 line-clamp-3">
                 {post.excerpt}
               </p>
-              <a href={post.href} className="text-xs font-bold uppercase tracking-widest text-svn-orange border-b-2 border-svn-orange pb-1">
+              <Link to={`/blog/${post.slug}`} className="text-xs font-bold uppercase tracking-widest text-svn-orange border-b-2 border-svn-orange pb-1">
                 Read More
-              </a>
+              </Link>
             </article>
           ))}
         </div>
-        
-        <button className="w-full md:hidden mt-12 bg-svn-grey text-white py-4 font-bold uppercase tracking-widest">
+
+        <Link to="/blog" className="block w-full md:hidden mt-12 bg-svn-grey text-white py-4 font-bold uppercase tracking-widest text-center">
           View All Posts
-        </button>
+        </Link>
       </div>
     </section>
   );

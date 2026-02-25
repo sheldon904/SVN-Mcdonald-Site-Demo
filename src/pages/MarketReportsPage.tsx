@@ -45,6 +45,42 @@ const MarketReportsPage = () => {
       image: "https://svnmcdonald.com/wp-content/uploads/2023/05/economic-updates.webp"
     },
     {
+      title: "July 2025 Market Report",
+      description: "Mid-year market analysis for Central Florida commercial real estate.",
+      date: "Jul 2025",
+      image: "https://svnmcdonald.com/wp-content/uploads/2023/05/economic-updates.webp"
+    },
+    {
+      title: "May 2025 Market Report",
+      description: "Spring market trends and economic indicators for May 2025.",
+      date: "May 2025",
+      image: "https://svnmcdonald.com/wp-content/uploads/2023/05/economic-updates.webp"
+    },
+    {
+      title: "February 2025 Market Report",
+      description: "Q1 market conditions and commercial real estate outlook for February 2025.",
+      date: "Feb 2025",
+      image: "https://svnmcdonald.com/wp-content/uploads/2023/05/economic-updates.webp"
+    },
+    {
+      title: "July 2024 Market Report",
+      description: "Mid-year review of commercial real estate activity for July 2024.",
+      date: "Jul 2024",
+      image: "https://svnmcdonald.com/wp-content/uploads/2023/05/economic-updates.webp"
+    },
+    {
+      title: "April 2023 Market Report",
+      description: "Spring commercial real estate market analysis for April 2023.",
+      date: "Apr 2023",
+      image: "https://svnmcdonald.com/wp-content/uploads/2023/05/economic-updates.webp"
+    },
+    {
+      title: "December 2022 Market Report",
+      description: "Year-end commercial real estate market review for December 2022.",
+      date: "Dec 2022",
+      image: "https://svnmcdonald.com/wp-content/uploads/2023/05/economic-updates.webp"
+    },
+    {
       title: "The WEC Effect Report",
       description: "Analyzing the transformative impact of the World Equestrian Center on Ocala land values.",
       date: "Special",

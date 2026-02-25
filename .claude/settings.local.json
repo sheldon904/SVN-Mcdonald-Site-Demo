@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "Bash(cd /tmp && rm -rf claude-agent-team-kit && git clone https://github.com/himeag/claude-agent-team-kit.git 2>&1)",
-      "WebFetch(domain:buildout.com)"
+      "WebFetch(domain:buildout.com)",
+      "WebFetch(domain:svnmcdonald.com)"
     ]
   }
 }

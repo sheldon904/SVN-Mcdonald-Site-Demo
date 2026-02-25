@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import PageHeader from '../components/PageHeader';
@@ -305,26 +305,27 @@ const ServicesPage = () => {
 
 // Helper component for the main services list
 const ServiceCard = ({ icon, title, desc, link }: { icon: React.ReactNode, title: string, desc: string, link: string }) => (
-  <motion.a 
-    href={link}
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true }}
-    className="bg-white p-10 rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 group border border-gray-100 flex flex-col items-start"
-  >
-    <div className="text-svn-orange mb-6 group-hover:scale-110 transition-transform duration-300">
-      {icon}
-    </div>
-    <h3 className="text-2xl font-black text-svn-dark uppercase tracking-tight mb-4 group-hover:text-svn-orange transition-colors">
-      {title}
-    </h3>
-    <p className="text-gray-500 font-medium leading-relaxed mb-8 flex-1">
-      {desc}
-    </p>
-    <div className="flex items-center gap-2 text-xs font-black uppercase tracking-widest text-svn-dark group-hover:text-svn-orange transition-colors mt-auto">
-      Learn More <ArrowRight size={14} />
-    </div>
-  </motion.a>
+  <Link to={link} className="bg-white p-10 rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 group border border-gray-100 flex flex-col items-start">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      className="flex flex-col items-start w-full"
+    >
+      <div className="text-svn-orange mb-6 group-hover:scale-110 transition-transform duration-300">
+        {icon}
+      </div>
+      <h3 className="text-2xl font-black text-svn-dark uppercase tracking-tight mb-4 group-hover:text-svn-orange transition-colors">
+        {title}
+      </h3>
+      <p className="text-gray-500 font-medium leading-relaxed mb-8 flex-1">
+        {desc}
+      </p>
+      <div className="flex items-center gap-2 text-xs font-black uppercase tracking-widest text-svn-dark group-hover:text-svn-orange transition-colors mt-auto">
+        Learn More <ArrowRight size={14} />
+      </div>
+    </motion.div>
+  </Link>
 );
 
 export default ServicesPage;

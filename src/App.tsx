@@ -6,6 +6,7 @@ import {
   ContactPage,
   TeamPage,
   BlogPage,
+  BlogPostPage,
   ServicesPage,
   ClosedDealsPage,
   MarketReportsPage,
@@ -49,6 +50,7 @@ function App() {
         <Route path="/commercial-properties" element={<ListingsPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/team" element={<TeamPage />} />
+        <Route path="/blog/:slug" element={<BlogPostPage />} />
         <Route path="/blog" element={<BlogPage />} />
         <Route path="/services" element={<ServicesPage />} />
         <Route path="/services/*" element={<ServicesPage />} />

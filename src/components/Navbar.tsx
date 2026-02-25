@@ -23,8 +23,8 @@ const Navbar = () => {
   const navItems = [
     { name: 'Closed Deals', href: '/closed-deals' },
     { 
-      name: 'Reports', 
-      href: '#',
+      name: 'Reports',
+      href: '/market-reports',
       dropdown: [
         { name: 'WEC Effect', href: '/wec-effect' },
         { name: 'Market Reports', href: '/market-reports' }
@@ -69,7 +69,7 @@ const Navbar = () => {
             </div>
           </div>
           <div className="flex items-center gap-4">
-            <a href="#" className="hover:text-svn-orange transition-colors">Log In</a>
+            <a href="https://svnmcdonald.com" target="_blank" rel="noopener noreferrer" className="hover:text-svn-orange transition-colors">Log In</a>
           </div>
         </div>
       </div>

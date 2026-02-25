@@ -31,6 +31,16 @@ const subServices = [
   "Valuation Appraisal"
 ];
 
+const subServiceRoutes: Record<string, string> = {
+  "Conservation Easement": "/services/conservation-easement",
+  "Distressed/REO Properties": "/services/distressed-reo",
+  "Land Auctions": "/services/land-auctions",
+  "Land Brokerage": "/services/land-brokerage",
+  "Strategic Marketing": "/services/strategic-marketing",
+  "Value Positioning": "/services/value-positioning",
+  "Valuation Appraisal": "/services/valuation-appraisal"
+};
+
 const Services = () => {
   return (
     <section className="py-24 bg-[#F6F6F6] px-6">
@@ -87,9 +97,9 @@ const Services = () => {
             </div>
             <div className="flex flex-wrap justify-center md:justify-end gap-3">
               {subServices.map((sub) => (
-                <span key={sub} className="px-6 py-3 bg-gray-50 text-svn-dark text-xs font-bold uppercase tracking-widest rounded-full hover:bg-svn-orange hover:text-white transition-colors cursor-pointer">
+                <Link key={sub} to={subServiceRoutes[sub]} className="px-6 py-3 bg-gray-50 text-svn-dark text-xs font-bold uppercase tracking-widest rounded-full hover:bg-svn-orange hover:text-white transition-colors cursor-pointer">
                   {sub}
-                </span>
+                </Link>
               ))}
             </div>
           </div>

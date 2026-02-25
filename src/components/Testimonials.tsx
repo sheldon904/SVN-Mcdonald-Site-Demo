@@ -15,6 +15,11 @@ const testimonials = [
     name: 'John Mark Church',
     title: 'BB&T Asset Resolution Group',
     content: '"Bartow has represented us in numerous transactions. He has encyclopedic knowledge of the local market. His aggressive marketing techniques have produced multiple offers."'
+  },
+  {
+    name: 'Victor Benatar',
+    title: 'Principal, Finestone Equity',
+    content: '"Bartow represented us on the sale of our 74,000sf office building. This was a difficult assignment with many challenges. We trusted Bartow and are very pleased with the results."'
   }
 ];
 
@@ -33,8 +38,8 @@ const Testimonials = () => {
             </p>
           </div>
           
-          <div className="lg:w-2/3 grid md:grid-cols-2 gap-8">
-            {testimonials.slice(0, 2).map((t, index) => (
+          <div className="lg:w-2/3 grid md:grid-cols-3 gap-8">
+            {testimonials.slice(0, 3).map((t, index) => (
               <div key={index} className="bg-white/5 p-8 rounded-sm relative">
                 <Quote className="text-svn-orange mb-6 opacity-50" size={32} />
                 <p className="text-white/80 italic mb-8 leading-relaxed">
