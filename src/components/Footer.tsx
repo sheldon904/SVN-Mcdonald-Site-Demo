@@ -1,4 +1,4 @@
-import { Facebook, Youtube, Instagram, Linkedin, Phone, Mail, MapPin } from 'lucide-react';
+import { Facebook, Youtube, Linkedin, Phone, Mail, MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const propertyTypeLinks: Record<string, string> = {
@@ -43,7 +43,7 @@ const Footer = () => {
             <div className="flex gap-4">
               <a href="https://facebook.com/svnmcdonald" aria-label="Facebook" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-white/5 hover:bg-svn-orange transition-all duration-300 rounded-full flex items-center justify-center"><Facebook size={20} /></a>
               <a href="https://youtube.com/@bartowmcdonald1803/featured" aria-label="YouTube" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-white/5 hover:bg-svn-orange transition-all duration-300 rounded-full flex items-center justify-center"><Youtube size={20} /></a>
-              <a href="https://instagram.com/svnmcdonaldandcompany/" aria-label="Instagram" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-white/5 hover:bg-svn-orange transition-all duration-300 rounded-full flex items-center justify-center"><Instagram size={20} /></a>
+
               <a href="https://linkedin.com/company/svn-mcdonald-company/" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-white/5 hover:bg-svn-orange transition-all duration-300 rounded-full flex items-center justify-center"><Linkedin size={20} /></a>
             </div>
           </div>
