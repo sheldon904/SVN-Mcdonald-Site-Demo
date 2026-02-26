@@ -9,8 +9,8 @@
  */
 
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { createRequestLogger } from './_lib/logger';
-import { handlePreflight, setCorsHeaders } from './_lib/cors';
+import { createRequestLogger } from './_lib/logger.js';
+import { handlePreflight, setCorsHeaders } from './_lib/cors.js';
 
 interface ContactPayload {
   firstName: string;
