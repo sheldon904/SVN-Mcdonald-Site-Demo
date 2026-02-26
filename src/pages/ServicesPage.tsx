@@ -5,7 +5,7 @@ import Footer from '../components/Footer';
 import PageHeader from '../components/PageHeader';
 import SEOHead from '../components/SEOHead';
 import { motion } from 'framer-motion';
-import { CheckCircle, ArrowRight, BarChart, LandPlot, Gavel, FileText, Megaphone, Calculator } from 'lucide-react';
+import { CheckCircle, ArrowRight, BarChart, LandPlot, Gavel, FileText, Megaphone, Calculator, Building2, ShoppingBag, Factory, Home, Hotel, Landmark } from 'lucide-react';
 
 const ServicesPage = () => {
   const location = useLocation();
@@ -269,6 +269,159 @@ const ServicesPage = () => {
           <p>
             By identifying the unique strengths of your asset and aligning them with current market demand, we create a compelling narrative that resonates with investors and developers alike.
           </p>
+        </div>
+      )
+    },
+    '/services/types-of-commercial-real-estate': {
+      title: 'Types of Commercial',
+      highlighted: 'Real Estate',
+      subtitle: 'Exploring the diverse commercial real estate opportunities in the Ocala and Central Florida market.',
+      image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=2300&q=80',
+      content: (
+        <div className="space-y-16">
+          <div className="text-center max-w-3xl mx-auto">
+            <h2 className="text-4xl font-black text-svn-dark uppercase tracking-tighter mb-6">
+              6 Types of <span className="text-svn-orange">Commercial Real Estate</span>
+            </h2>
+            <p className="text-gray-500 font-medium leading-relaxed">
+              The Ocala and Central Florida market offers a wide range of commercial real estate investment opportunities. Whether you are a seasoned investor or exploring commercial property for the first time, understanding these six core property types is essential.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Office Spaces */}
+            <div className="bg-svn-dark rounded-2xl p-8 flex flex-col items-start shadow-lg">
+              <div className="text-svn-orange mb-6">
+                <Building2 size={40} />
+              </div>
+              <h3 className="text-xl font-black text-white uppercase tracking-tight mb-4">Office Spaces</h3>
+              <div className="text-gray-400 text-sm leading-relaxed space-y-3 flex-1">
+                <p>
+                  From traditional corporate offices in downtown Ocala to flexible co-working spaces in suburban corridors, office properties remain a cornerstone of commercial real estate. Class A, B, and C designations help investors gauge location quality, tenant profiles, and expected returns.
+                </p>
+                <p>
+                  The rise of remote and hybrid work has reshaped demand, but Central Florida's population growth continues to drive need for professional office environments. Medical office buildings near regional healthcare campuses represent a particularly strong sub-sector.
+                </p>
+                <p>
+                  SVN McDonald & Company tracks lease rates, vacancy trends, and new construction across Marion County to help clients identify the right office investment or space for their business.
+                </p>
+              </div>
+            </div>
+
+            {/* Retail Properties */}
+            <div className="bg-svn-dark rounded-2xl p-8 flex flex-col items-start shadow-lg">
+              <div className="text-svn-orange mb-6">
+                <ShoppingBag size={40} />
+              </div>
+              <h3 className="text-xl font-black text-white uppercase tracking-tight mb-4">Retail Properties</h3>
+              <div className="text-gray-400 text-sm leading-relaxed space-y-3 flex-1">
+                <p>
+                  Retail properties encompass shopping centers, standalone storefronts, strip malls, and pad sites in high-traffic locations. Ocala's growing population and tourism influx from the World Equestrian Center fuel strong retail demand along corridors like SR 200 and US 27.
+                </p>
+                <p>
+                  Triple net (NNN) leased retail properties are especially attractive to investors seeking passive income with minimal landlord responsibilities. National tenants such as pharmacies, quick-service restaurants, and dollar stores provide stable cash flow and creditworthy lease guarantees.
+                </p>
+                <p>
+                  Our team analyzes traffic counts, demographics, and tenant mix to help clients find or position retail assets for maximum return in the Central Florida market.
+                </p>
+              </div>
+            </div>
+
+            {/* Industrial Properties */}
+            <div className="bg-svn-dark rounded-2xl p-8 flex flex-col items-start shadow-lg">
+              <div className="text-svn-orange mb-6">
+                <Factory size={40} />
+              </div>
+              <h3 className="text-xl font-black text-white uppercase tracking-tight mb-4">Industrial Properties</h3>
+              <div className="text-gray-400 text-sm leading-relaxed space-y-3 flex-1">
+                <p>
+                  Warehouses, distribution centers, manufacturing facilities, and flex space make up the industrial sector. Ocala's strategic position along the I-75 corridor, combined with proximity to major Florida ports and metropolitan areas, makes it a logistics powerhouse.
+                </p>
+                <p>
+                  E-commerce growth has accelerated demand for last-mile distribution and fulfillment centers throughout Central Florida. Marion County's business-friendly environment and available land for build-to-suit development attract both regional operators and national tenants.
+                </p>
+                <p>
+                  SVN McDonald & Company helps investors and owner-occupants navigate site selection, zoning requirements, and lease structures in this high-demand asset class.
+                </p>
+              </div>
+            </div>
+
+            {/* Multi-Family Housing */}
+            <div className="bg-svn-dark rounded-2xl p-8 flex flex-col items-start shadow-lg">
+              <div className="text-svn-orange mb-6">
+                <Home size={40} />
+              </div>
+              <h3 className="text-xl font-black text-white uppercase tracking-tight mb-4">Multi-Family Housing</h3>
+              <div className="text-gray-400 text-sm leading-relaxed space-y-3 flex-1">
+                <p>
+                  Apartments, condominiums, townhome communities, and duplexes represent the multi-family sector. Ocala has experienced significant population growth driven in part by the World Equestrian Center, retiree migration, and affordability compared to Orlando and Tampa.
+                </p>
+                <p>
+                  This demand translates into strong occupancy rates and rising rents for well-located multi-family assets. New construction of Class A garden-style and mid-rise communities is accelerating along major development corridors.
+                </p>
+                <p>
+                  Our team provides acquisition analysis, rent comparables, and disposition strategies for multi-family investors looking to capitalize on Central Florida's demographic tailwinds.
+                </p>
+              </div>
+            </div>
+
+            {/* Hospitality Properties */}
+            <div className="bg-svn-dark rounded-2xl p-8 flex flex-col items-start shadow-lg">
+              <div className="text-svn-orange mb-6">
+                <Hotel size={40} />
+              </div>
+              <h3 className="text-xl font-black text-white uppercase tracking-tight mb-4">Hospitality Properties</h3>
+              <div className="text-gray-400 text-sm leading-relaxed space-y-3 flex-1">
+                <p>
+                  Hotels, resorts, bed-and-breakfasts, and short-term rental properties form the hospitality sector. The World Equestrian Center has transformed Ocala into a year-round destination, drawing hundreds of thousands of visitors annually and creating sustained demand for lodging.
+                </p>
+                <p>
+                  Branded select-service hotels, boutique properties, and extended-stay concepts all perform well in this market. Investors benefit from strong RevPAR growth and the area's expanding event calendar, which includes equestrian competitions, trade shows, and agricultural expos.
+                </p>
+                <p>
+                  SVN McDonald & Company advises hospitality investors on site selection, feasibility analysis, and market positioning to capture this growing tourism economy.
+                </p>
+              </div>
+            </div>
+
+            {/* Special Purpose Properties */}
+            <div className="bg-svn-dark rounded-2xl p-8 flex flex-col items-start shadow-lg">
+              <div className="text-svn-orange mb-6">
+                <Landmark size={40} />
+              </div>
+              <h3 className="text-xl font-black text-white uppercase tracking-tight mb-4">Special Purpose Properties</h3>
+              <div className="text-gray-400 text-sm leading-relaxed space-y-3 flex-1">
+                <p>
+                  Special purpose properties include healthcare facilities, educational institutions, self-storage, data centers, car washes, and religious buildings. These assets are designed for a specific use and often feature unique construction, zoning, or operational requirements.
+                </p>
+                <p>
+                  Central Florida's aging population drives demand for medical offices, urgent care centers, and assisted living facilities. Meanwhile, rapid residential growth fuels the need for self-storage, childcare centers, and specialized retail like veterinary clinics.
+                </p>
+                <p>
+                  Our advisors understand the nuances of special purpose valuation and help clients navigate the complexities of acquiring, developing, or disposing of these unique assets.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-svn-dark rounded-3xl p-12 md:p-20 text-white">
+            <div className="max-w-3xl">
+              <h2 className="text-4xl font-black uppercase tracking-tighter mb-6">Ready to Invest in <span className="text-svn-orange">Commercial Real Estate?</span></h2>
+              <div className="space-y-6 text-gray-400 font-medium leading-relaxed">
+                <p>
+                  Whether you are buying, selling, or exploring investment opportunities across any commercial property type, SVN McDonald & Company brings decades of Ocala market expertise and the power of the national SVN platform to every engagement.
+                </p>
+                <p>
+                  Contact our team today to discuss your commercial real estate goals and discover how we can help you make informed, profitable decisions.
+                </p>
+                <div className="pt-8">
+                  <a href="tel:3522743800" className="inline-flex items-center gap-4 text-svn-orange hover:text-white transition-colors font-black uppercase tracking-[0.2em]">
+                    (352) 274-3800 <ArrowRight size={20} />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       )
     },

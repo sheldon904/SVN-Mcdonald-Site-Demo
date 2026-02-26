@@ -21,7 +21,7 @@ const localBusinessSchema = {
   logo: 'https://svnmcdonald.com/wp-content/uploads/2023/05/White-Orange-DBA_Logo_McDonald-Company-768x374-1.png',
   image:
     'https://svnmcdonald.com/wp-content/uploads/2024/10/Hwy-484-Ocala-1920x1073.jpg',
-  telephone: '+1-352-484-8090',
+  telephone: '+1-352-274-3800',
   email: 'info@svnmcdonald.com',
   address: {
     '@type': 'PostalAddress',

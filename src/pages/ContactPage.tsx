@@ -5,12 +5,14 @@ import SEOHead from '../components/SEOHead';
 import { motion } from 'framer-motion';
 import { MapPin, Phone, Mail, Clock } from 'lucide-react';
 
+const counties = ['Marion', 'Alachua', 'Lake', 'Levy', 'Sumter', 'Citrus', 'Putnam'];
+
 const ContactPage = () => {
   return (
     <div className="min-h-screen bg-white">
       <SEOHead
         title="Contact Us"
-        description="Contact SVN McDonald & Company in Ocala, FL. Call 352.484.8090 or visit our office at 1825 SE 16th Ave. Commercial and land real estate experts."
+        description="Contact SVN McDonald & Company in Ocala, FL. Call 352.274.3800 or visit our office at 1825 SE 16th Ave. Commercial and land real estate experts."
         canonical="https://svnmcdonald.com/contact"
       />
       <Navbar />
@@ -51,8 +53,8 @@ const ContactPage = () => {
               </div>
               <h3 className="text-lg font-bold text-svn-dark uppercase tracking-wider mb-2">Phone</h3>
               <p className="text-gray-500 mb-4">Monday - Friday from 8am to 5pm.</p>
-              <a href="tel:3524848090" className="text-xl font-bold text-svn-dark hover:text-svn-orange transition-colors">
-                352.484.8090
+              <a href="tel:3522743800" className="text-xl font-bold text-svn-dark hover:text-svn-orange transition-colors">
+                352.274.3800
               </a>
             </div>
 
@@ -96,6 +98,42 @@ const ContactPage = () => {
           For now, let's just use it as the main inquiry form section.
       */}
       <ContactForm />
+
+      {/* Service Area Section */}
+      <section className="py-24 px-6 bg-[#F6F6F6]">
+        <div className="max-w-[1280px] mx-auto">
+          <div className="mb-16">
+            <div className="w-20 h-1.5 bg-svn-orange mb-8" />
+            <h2 className="text-4xl md:text-5xl font-black text-svn-dark uppercase tracking-tight mb-4">
+              Our Service <span className="text-svn-orange">Area</span>
+            </h2>
+            <p className="text-gray-500 text-lg max-w-2xl leading-relaxed">
+              Covering Central Florida's most dynamic commercial real estate markets
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
+            {counties.map((county, index) => (
+              <motion.div
+                key={county}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.08 }}
+                className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow flex items-center gap-4"
+              >
+                <div className="w-10 h-10 bg-svn-orange/10 rounded-full flex items-center justify-center flex-shrink-0">
+                  <MapPin size={20} className="text-svn-orange" />
+                </div>
+                <div>
+                  <p className="text-lg font-bold text-svn-dark">{county}</p>
+                  <p className="text-xs text-gray-400 uppercase tracking-widest font-bold">County</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       <div className="h-[400px] w-full bg-gray-200 grayscale">
          <iframe 

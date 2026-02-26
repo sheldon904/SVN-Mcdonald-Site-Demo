@@ -1,22 +1,22 @@
-import { Facebook, Youtube, Linkedin, Phone, Mail, MapPin } from 'lucide-react';
+import { Facebook, Youtube, Linkedin, Instagram, Phone, Mail, MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const propertyTypeLinks: Record<string, string> = {
-  'Acreage Properties': '/land-properties',
-  'Commercial Properties': '/commercial-properties',
-  'Equestrian Properties': '/land-properties',
-  'Farm and Nursery Properties': '/land-properties',
-  'Hunting and Recreation Properties': '/land-properties',
-  'Industrial Properties': '/commercial-properties',
-  'Multi-Family Properties': '/commercial-properties',
-  'Office Properties': '/commercial-properties',
-  'Ranch Properties': '/land-properties',
-  'Retail Properties': '/commercial-properties',
-  'Residential Development Properties': '/land-properties',
-  'Self Storage Properties': '/commercial-properties',
-  'Timber Properties': '/land-properties',
-  'Triple Net NNN Properties': '/commercial-properties',
-  'Warehouse Properties': '/commercial-properties',
+  'Acreage Properties': '/properties/acreage',
+  'Commercial Properties': '/properties/commercial',
+  'Equestrian Properties': '/properties/equestrian',
+  'Farm and Nursery Properties': '/properties/farm-nursery',
+  'Hunting and Recreation Properties': '/properties/hunting-recreation',
+  'Industrial Properties': '/properties/industrial',
+  'Multi-Family Properties': '/properties/multi-family',
+  'Office Properties': '/properties/office',
+  'Ranch Properties': '/properties/ranch',
+  'Retail Properties': '/properties/retail',
+  'Residential Development Properties': '/properties/residential-development',
+  'Self Storage Properties': '/properties/self-storage',
+  'Timber Properties': '/properties/timber',
+  'Triple Net NNN Properties': '/properties/triple-net-nnn',
+  'Warehouse Properties': '/properties/warehouse',
 };
 
 const propertyTypes = Object.keys(propertyTypeLinks);
@@ -45,6 +45,7 @@ const Footer = () => {
               <a href="https://youtube.com/@bartowmcdonald1803/featured" aria-label="YouTube" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-white/5 hover:bg-svn-orange transition-all duration-300 rounded-full flex items-center justify-center"><Youtube size={20} /></a>
 
               <a href="https://linkedin.com/company/svn-mcdonald-company/" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-white/5 hover:bg-svn-orange transition-all duration-300 rounded-full flex items-center justify-center"><Linkedin size={20} /></a>
+              <a href="https://www.instagram.com/svnmcdonald/" aria-label="Instagram" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-white/5 hover:bg-svn-orange transition-all duration-300 rounded-full flex items-center justify-center"><Instagram size={20} /></a>
             </div>
           </div>
 
@@ -68,7 +69,7 @@ const Footer = () => {
                 </div>
                 <div>
                   <p className="text-[10px] uppercase font-black tracking-widest text-gray-500 mb-1">Direct Line</p>
-                  <p className="text-xl font-bold">352.484.8090</p>
+                  <p className="text-xl font-bold">352.274.3800</p>
                 </div>
               </div>
               
