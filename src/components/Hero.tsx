@@ -22,9 +22,10 @@ const Hero = () => {
       {/* Content Container - Matching Elementor's max-width */}
       <div className="relative h-full max-w-[1140px] mx-auto flex flex-col items-center md:items-start justify-center px-6 md:px-10">
         {/*
-          LCP FIX: H1 is the LCP element on desktop. Do NOT wrap it in motion with
-          initial={{ opacity: 0 }} — that adds ~2.5s to "Element render delay".
-          Only animate decorative elements below the h1.
+          LCP FIX: The H1 is the LCP element on desktop. Framer Motion's initial={{ opacity: 0 }}
+          causes a 2,560ms "Element render delay" because the browser reports LCP only after
+          the element becomes visible. We render the H1 immediately (no opacity:0) and only
+          animate the decorative elements and subtitle.
         */}
         <div className="text-center md:text-left">
           <motion.div
@@ -42,7 +43,7 @@ const Hero = () => {
           <motion.p
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
+            transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
             className="text-lg md:text-2xl text-white/90 font-[500] mb-12 max-w-2xl leading-relaxed"
           >
             Taking collaboration in commercial and land real estate<br className="hidden md:block" /> to a whole new level.
@@ -51,7 +52,7 @@ const Hero = () => {
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.25, ease: "easeOut" }}
+            transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
             className="flex flex-col sm:flex-row gap-5"
           >
             <Link to="/land-properties" className="bg-svn-orange hover:bg-white hover:text-svn-orange text-white px-10 py-5 rounded-[10px] font-bold uppercase tracking-widest text-sm transition-all duration-300 shadow-xl border-2 border-svn-orange text-center">

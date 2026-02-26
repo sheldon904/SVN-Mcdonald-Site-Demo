@@ -7,6 +7,7 @@ export const TeamPage = lazy(() => import('./TeamPage'));
 export const BlogPage = lazy(() => import('./BlogPage'));
 export const ServicesPage = lazy(() => import('./ServicesPage'));
 export const ClosedDealsPage = lazy(() => import('./ClosedDealsPage'));
+export const ClosedDealDetailPage = lazy(() => import('./ClosedDealDetailPage'));
 export const MarketReportsPage = lazy(() => import('./MarketReportsPage'));
 export const WecEffectPage = lazy(() => import('./WecEffectPage'));
 export const LegalPage = lazy(() => import('./LegalPage'));

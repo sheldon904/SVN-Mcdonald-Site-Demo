@@ -10,6 +10,7 @@ import {
   BlogPostPage,
   ServicesPage,
   ClosedDealsPage,
+  ClosedDealDetailPage,
   MarketReportsPage,
   WecEffectPage,
   LegalPage,
@@ -64,6 +65,7 @@ function App() {
         <Route path="/blog" element={<BlogPage />} />
         <Route path="/services" element={<ServicesPage />} />
         <Route path="/services/*" element={<ServicesPage />} />
+        <Route path="/closed-deals/:slug" element={<ClosedDealDetailPage />} />
         <Route path="/closed-deals" element={<ClosedDealsPage />} />
         <Route path="/market-reports" element={<MarketReportsPage />} />
         <Route path="/wec-effect" element={<WecEffectPage />} />
