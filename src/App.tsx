@@ -5,6 +5,7 @@ import {
   ListingsPage,
   ContactPage,
   TeamPage,
+  TeamMemberPage,
   BlogPage,
   BlogPostPage,
   ServicesPage,
@@ -13,6 +14,8 @@ import {
   WecEffectPage,
   LegalPage,
   AccessibilityPage,
+  PropertyTypePage,
+  MLSPage,
 } from './pages';
 import ScrollToTop from './components/ScrollToTop';
 import SEOHead from './components/SEOHead';
@@ -53,7 +56,10 @@ function App() {
         <Route path="/land-properties" element={<ListingsPage />} />
         <Route path="/commercial-properties" element={<ListingsPage />} />
         <Route path="/contact" element={<ContactPage />} />
+        <Route path="/team/:slug" element={<TeamMemberPage />} />
         <Route path="/team" element={<TeamPage />} />
+        <Route path="/properties/:slug" element={<PropertyTypePage />} />
+        <Route path="/mls" element={<MLSPage />} />
         <Route path="/blog/:slug" element={<BlogPostPage />} />
         <Route path="/blog" element={<BlogPage />} />
         <Route path="/services" element={<ServicesPage />} />

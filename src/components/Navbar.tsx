@@ -44,7 +44,8 @@ const Navbar = () => {
         { name: 'Land Brokerage', href: '/services/land-brokerage' },
         { name: 'Strategic Marketing', href: '/services/strategic-marketing' },
         { name: 'Value Positioning', href: '/services/value-positioning' },
-        { name: 'Valuation Appraisal', href: '/services/valuation-appraisal' }
+        { name: 'Valuation Appraisal', href: '/services/valuation-appraisal' },
+        { name: 'Types of CRE', href: '/services/types-of-commercial-real-estate' }
       ]
     },
     { name: 'Blog', href: '/blog' },
@@ -59,9 +60,9 @@ const Navbar = () => {
       )}>
         <div className="max-w-[1400px] mx-auto flex flex-col md:flex-row justify-between items-center text-[10px] md:text-xs font-bold uppercase tracking-widest">
           <div className="flex items-center gap-6 mb-2 md:mb-0">
-            <a href="tel:3524848090" className="flex items-center gap-2 hover:text-svn-orange transition-colors">
+            <a href="tel:3522743800" className="flex items-center gap-2 hover:text-svn-orange transition-colors">
               <Phone size={12} className="text-svn-orange" />
-              352.484.8090
+              352.274.3800
             </a>
             <div className="flex items-center gap-2">
               <MapPin size={12} className="text-svn-orange" />
@@ -203,9 +204,9 @@ const Navbar = () => {
           </div>
 
           <div className="mt-auto pt-6 border-t border-gray-100">
-            <a href="tel:3524848090" className="flex items-center gap-3 text-svn-dark font-bold mb-4">
+            <a href="tel:3522743800" className="flex items-center gap-3 text-svn-dark font-bold mb-4">
               <Phone size={20} className="text-svn-orange" />
-              352.484.8090
+              352.274.3800
             </a>
             <div className="flex items-center gap-3 text-svn-dark text-sm">
               <MapPin size={20} className="text-svn-orange" />

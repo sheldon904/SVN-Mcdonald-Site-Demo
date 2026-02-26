@@ -3,7 +3,9 @@
     "allow": [
       "Bash(cd /tmp && rm -rf claude-agent-team-kit && git clone https://github.com/himeag/claude-agent-team-kit.git 2>&1)",
       "WebFetch(domain:buildout.com)",
-      "WebFetch(domain:svnmcdonald.com)"
+      "WebFetch(domain:svnmcdonald.com)",
+      "Bash(cd \"C:\\\\Users\\\\sheld\\\\Documents\\\\GitHub\\\\SVN-Mcdonald-Site-Demo\" && git merge worktree-agent-a45b97c4 --no-edit 2>&1)",
+      "Bash(cd C:\\\\Users\\\\sheld\\\\Documents\\\\GitHub\\\\SVN-Mcdonald-Site-Demo:*)"
     ]
   }
 }
