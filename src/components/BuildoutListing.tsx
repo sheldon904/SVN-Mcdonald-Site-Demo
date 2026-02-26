@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 interface BuildoutListingProps {
   pluginType?: 'featured' | 'inventory';
@@ -13,8 +13,31 @@ const BuildoutListing: React.FC<BuildoutListingProps> = ({
   containerId = 'buildout-container'
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
 
+  // Defer loading until component is near viewport
   useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: '200px' } // Start loading 200px before scroll into view
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  // Load Buildout only after visible
+  useEffect(() => {
+    if (!isVisible) return;
+
     const config = {
       token: BUILDOUT_TOKEN,
       plugin: pluginType,
@@ -22,23 +45,18 @@ const BuildoutListing: React.FC<BuildoutListingProps> = ({
     };
 
     const initBuildout = () => {
-      // If Buildout is already loaded, call embed directly
       if ((window as any).BuildOut?.embed) {
         (window as any).BuildOut.embed(config);
         return;
       }
-
-      // Set config for auto-init on first script load
       (window as any).buildoutConfig = config;
     };
 
     const existingScript = document.getElementById(BUILDOUT_SCRIPT_ID) as HTMLScriptElement;
 
     if (existingScript) {
-      // Script tag exists — Buildout may or may not be ready
       initBuildout();
     } else {
-      // First load: set config BEFORE script loads (Buildout auto-inits)
       (window as any).buildoutConfig = config;
 
       const script = document.createElement('script');
@@ -54,12 +72,16 @@ const BuildoutListing: React.FC<BuildoutListingProps> = ({
         container.innerHTML = '';
       }
     };
-  }, [pluginType, containerId]);
+  }, [isVisible, pluginType, containerId]);
 
   return (
-    <div className="w-full min-h-[400px]">
-      <div id={containerId} ref={containerRef}>
-        {/* Buildout injects iframe here */}
+    <div className="w-full min-h-[400px]" ref={containerRef}>
+      <div id={containerId}>
+        {!isVisible && (
+          <div className="flex items-center justify-center h-[400px] text-gray-400">
+            <div className="w-8 h-8 border-4 border-svn-orange border-t-transparent rounded-full animate-spin" />
+          </div>
+        )}
       </div>
     </div>
   );

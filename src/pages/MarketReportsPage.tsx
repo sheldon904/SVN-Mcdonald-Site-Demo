@@ -3,7 +3,7 @@ import Footer from '../components/Footer';
 import PageHeader from '../components/PageHeader';
 import SEOHead from '../components/SEOHead';
 import { motion } from 'framer-motion';
-import { FileText, ArrowRight } from 'lucide-react';
+import { FileText, ArrowRight, Download } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const MarketReportsPage = () => {
@@ -12,73 +12,85 @@ const MarketReportsPage = () => {
       title: "January 2026 Market Report",
       description: "Latest economic updates and commercial real estate market performance for January 2026.",
       date: "Jan 2026",
-      image: "https://svnmcdonald.com/wp-content/uploads/2023/06/economic-updates.webp"
+      image: "https://svnmcdonald.com/wp-content/uploads/2023/06/economic-updates.webp",
+      pdfUrl: "https://svnmcdonald.com/wp-content/uploads/2026/01/Economic-Update_12.30.25.pdf"
     },
     {
       title: "December 2025 Market Report",
       description: "Year-end review and comprehensive analysis of the Central Florida market for December 2025.",
       date: "Dec 2025",
-      image: "https://svnmcdonald.com/wp-content/uploads/2023/06/economic-updates.webp"
+      image: "https://svnmcdonald.com/wp-content/uploads/2023/06/economic-updates.webp",
+      pdfUrl: "https://svnmcdonald.com/wp-content/uploads/2025/12/Economic-Update_11.26.25.pdf"
     },
     {
       title: "November 2025 Market Report",
       description: "Monthly economic indicators and market trends analysis for November 2025.",
       date: "Nov 2025",
-      image: "https://svnmcdonald.com/wp-content/uploads/2023/06/economic-updates.webp"
+      image: "https://svnmcdonald.com/wp-content/uploads/2023/06/economic-updates.webp",
+      pdfUrl: "https://svnmcdonald.com/wp-content/uploads/2025/11/Economic-Update_10.30.25.pdf"
     },
     {
       title: "October 2025 Market Report",
       description: "Detailed breakdown of transaction volume and sector performance for October 2025.",
       date: "Oct 2025",
-      image: "https://svnmcdonald.com/wp-content/uploads/2023/06/economic-updates.webp"
+      image: "https://svnmcdonald.com/wp-content/uploads/2023/06/economic-updates.webp",
+      pdfUrl: "https://svnmcdonald.com/wp-content/uploads/2025/10/Economic-Update_10.16.25.pdf"
     },
     {
       title: "September 2025 Market Report",
       description: "Analyzing the shifting landscape of Ocala real estate for September 2025.",
       date: "Sep 2025",
-      image: "https://svnmcdonald.com/wp-content/uploads/2023/06/economic-updates.webp"
+      image: "https://svnmcdonald.com/wp-content/uploads/2023/06/economic-updates.webp",
+      pdfUrl: "https://svnmcdonald.com/wp-content/uploads/2025/09/Economic-Update_9.11.25.pdf"
     },
     {
       title: "August 2025 Market Report",
       description: "Summer market overview and economic impact study for August 2025.",
       date: "Aug 2025",
-      image: "https://svnmcdonald.com/wp-content/uploads/2023/06/economic-updates.webp"
+      image: "https://svnmcdonald.com/wp-content/uploads/2023/06/economic-updates.webp",
+      pdfUrl: "https://svnmcdonald.com/wp-content/uploads/2025/08/Economic-Update_8.14.25.pdf"
     },
     {
       title: "July 2025 Market Report",
       description: "Mid-year market analysis for Central Florida commercial real estate.",
       date: "Jul 2025",
-      image: "https://svnmcdonald.com/wp-content/uploads/2023/06/economic-updates.webp"
+      image: "https://svnmcdonald.com/wp-content/uploads/2023/06/economic-updates.webp",
+      pdfUrl: "https://svnmcdonald.com/wp-content/uploads/2025/07/Economic-Update_7.24.25-1.pdf"
     },
     {
       title: "May 2025 Market Report",
       description: "Spring market trends and economic indicators for May 2025.",
       date: "May 2025",
-      image: "https://svnmcdonald.com/wp-content/uploads/2023/06/economic-updates.webp"
+      image: "https://svnmcdonald.com/wp-content/uploads/2023/06/economic-updates.webp",
+      pdfUrl: "https://svnmcdonald.com/wp-content/uploads/2025/05/Economic-Update_5.15.25.pdf"
     },
     {
       title: "February 2025 Market Report",
       description: "Q1 market conditions and commercial real estate outlook for February 2025.",
       date: "Feb 2025",
-      image: "https://svnmcdonald.com/wp-content/uploads/2023/06/economic-updates.webp"
+      image: "https://svnmcdonald.com/wp-content/uploads/2023/06/economic-updates.webp",
+      pdfUrl: "https://svnmcdonald.com/wp-content/uploads/2025/02/Economic-Update_2.13.25.pdf"
     },
     {
       title: "July 2024 Market Report",
       description: "Mid-year review of commercial real estate activity for July 2024.",
       date: "Jul 2024",
-      image: "https://svnmcdonald.com/wp-content/uploads/2023/06/economic-updates.webp"
+      image: "https://svnmcdonald.com/wp-content/uploads/2023/06/economic-updates.webp",
+      pdfUrl: "https://341133.fs1.hubspotusercontent-na1.net/hubfs/341133/Economic%20Update_7.12.24.pdf"
     },
     {
       title: "April 2023 Market Report",
       description: "Spring commercial real estate market analysis for April 2023.",
       date: "Apr 2023",
-      image: "https://svnmcdonald.com/wp-content/uploads/2023/06/economic-updates.webp"
+      image: "https://svnmcdonald.com/wp-content/uploads/2023/06/economic-updates.webp",
+      pdfUrl: "https://341133.fs1.hubspotusercontent-na1.net/hubfs/341133/Economic%20Update_4.14.23-1.pdf"
     },
     {
       title: "December 2022 Market Report",
       description: "Year-end commercial real estate market review for December 2022.",
       date: "Dec 2022",
-      image: "https://svnmcdonald.com/wp-content/uploads/2023/06/economic-updates.webp"
+      image: "https://svnmcdonald.com/wp-content/uploads/2023/06/economic-updates.webp",
+      pdfUrl: "https://341133.fs1.hubspotusercontent-na1.net/hubfs/341133/Economic%20Update_12.30.22.pdf"
     },
     {
       title: "The WEC Effect Report",
@@ -118,18 +130,37 @@ const MarketReportsPage = () => {
                 className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col"
               >
                 <div className="relative h-64">
-                  <img
-                    src={report.image}
-                    alt={report.title}
-                    className="w-full h-full object-cover"
-                    loading="lazy"
-                    decoding="async"
-                    width="600"
-                    height="400"
-                  />
-                  <div className="absolute inset-0 bg-svn-dark/20 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
-                    <FileText size={48} className="text-white" />
-                  </div>
+                  {report.pdfUrl ? (
+                    <a href={report.pdfUrl} target="_blank" rel="noopener noreferrer" className="block w-full h-full">
+                      <img
+                        src={report.image}
+                        alt={report.title}
+                        className="w-full h-full object-cover"
+                        loading="lazy"
+                        decoding="async"
+                        width="600"
+                        height="400"
+                      />
+                      <div className="absolute inset-0 bg-svn-dark/20 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
+                        <FileText size={48} className="text-white" />
+                      </div>
+                    </a>
+                  ) : (
+                    <>
+                      <img
+                        src={report.image}
+                        alt={report.title}
+                        className="w-full h-full object-cover"
+                        loading="lazy"
+                        decoding="async"
+                        width="600"
+                        height="400"
+                      />
+                      <div className="absolute inset-0 bg-svn-dark/20 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
+                        <FileText size={48} className="text-white" />
+                      </div>
+                    </>
+                  )}
                 </div>
                 
                 <div className="p-8 flex flex-col flex-1">
@@ -146,15 +177,15 @@ const MarketReportsPage = () => {
                   
                   {report.link ? (
                     <Link to={report.link} className="flex items-center gap-3 text-sm font-bold uppercase tracking-widest text-svn-dark hover:text-svn-orange transition-colors group mt-auto">
-                      View Report 
+                      View Report
                       <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform duration-300" />
                     </Link>
-                  ) : (
-                    <button className="flex items-center gap-3 text-sm font-bold uppercase tracking-widest text-svn-dark hover:text-svn-orange transition-colors group mt-auto">
-                      Read More 
-                      <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform duration-300" />
-                    </button>
-                  )}
+                  ) : report.pdfUrl ? (
+                    <a href={report.pdfUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-sm font-bold uppercase tracking-widest text-svn-dark hover:text-svn-orange transition-colors group mt-auto">
+                      Download Report
+                      <Download size={16} className="group-hover:translate-y-0.5 transition-transform duration-300" />
+                    </a>
+                  ) : null}
                 </div>
               </motion.div>
             ))}

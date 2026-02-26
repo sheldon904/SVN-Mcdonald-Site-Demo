@@ -92,8 +92,9 @@ const Navbar = () => {
                   "h-14 md:h-20 w-auto transition-all duration-300",
                   isScrolled ? "brightness-0 h-12 md:h-16" : "brightness-100"
                 )}
-                loading="lazy"
+                loading="eager"
                 decoding="async"
+                fetchPriority="high"
                 width={768}
                 height={374}
               />
