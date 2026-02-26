@@ -5,7 +5,8 @@
       "WebFetch(domain:buildout.com)",
       "WebFetch(domain:svnmcdonald.com)",
       "Bash(cd \"C:\\\\Users\\\\sheld\\\\Documents\\\\GitHub\\\\SVN-Mcdonald-Site-Demo\" && git merge worktree-agent-a45b97c4 --no-edit 2>&1)",
-      "Bash(cd C:\\\\Users\\\\sheld\\\\Documents\\\\GitHub\\\\SVN-Mcdonald-Site-Demo:*)"
+      "Bash(cd C:\\\\Users\\\\sheld\\\\Documents\\\\GitHub\\\\SVN-Mcdonald-Site-Demo:*)",
+      "Bash(echo Worktrees cleaned up:*)"
     ]
   }
 }
