@@ -92,8 +92,9 @@ const Navbar = () => {
                   "h-14 md:h-20 w-auto transition-all duration-300",
                   isScrolled ? "brightness-0 h-12 md:h-16" : "brightness-100"
                 )}
-                loading="lazy"
+                loading="eager"
                 decoding="async"
+                fetchPriority="high"
                 width={768}
                 height={374}
               />
@@ -191,7 +192,7 @@ const Navbar = () => {
                       <Link
                         key={typeof subItem === 'string' ? subItem : subItem.name}
                         to={typeof subItem === 'string' ? '#' : subItem.href}
-                        className="block text-sm font-bold text-gray-400 hover:text-svn-orange uppercase tracking-wide"
+                        className="block text-sm font-bold text-gray-600 hover:text-svn-orange uppercase tracking-wide"
                         onClick={() => setIsOpen(false)}
                       >
                         {typeof subItem === 'string' ? subItem : subItem.name}

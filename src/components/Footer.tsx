@@ -68,7 +68,7 @@ const Footer = () => {
                   <Phone size={20} className="text-svn-orange" />
                 </div>
                 <div>
-                  <p className="text-[10px] uppercase font-black tracking-widest text-gray-500 mb-1">Direct Line</p>
+                  <p className="text-[10px] uppercase font-black tracking-widest text-gray-400 mb-1">Direct Line</p>
                   <p className="text-xl font-bold">352.274.3800</p>
                 </div>
               </div>
@@ -78,7 +78,7 @@ const Footer = () => {
                   <Mail size={20} className="text-svn-orange" />
                 </div>
                 <div>
-                  <p className="text-[10px] uppercase font-black tracking-widest text-gray-500 mb-1">Email Address</p>
+                  <p className="text-[10px] uppercase font-black tracking-widest text-gray-400 mb-1">Email Address</p>
                   <p className="text-xl font-bold">info@svnmcdonald.com</p>
                 </div>
               </div>
@@ -88,7 +88,7 @@ const Footer = () => {
                   <MapPin size={20} className="text-svn-orange" />
                 </div>
                 <div>
-                  <p className="text-[10px] uppercase font-black tracking-widest text-gray-500 mb-1">Headquarters</p>
+                  <p className="text-[10px] uppercase font-black tracking-widest text-gray-400 mb-1">Headquarters</p>
                   <p className="text-xl font-bold leading-tight">1825 SE 16th Ave.<br />Ocala, FL 34471</p>
                 </div>
               </div>
@@ -98,16 +98,16 @@ const Footer = () => {
 
         {/* Copyright */}
         <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
-          <p className="text-[10px] text-gray-500 font-black uppercase tracking-widest text-center md:text-left leading-loose">
+          <p className="text-[10px] text-gray-400 font-black uppercase tracking-widest text-center md:text-left leading-loose">
             All SVN® Offices Independently Owned and Operated | © 2026 SVN McDonald & Company
           </p>
           <div className="flex gap-8">
-            <Link to="/team" className="text-[10px] font-black uppercase tracking-widest text-gray-500 hover:text-white transition-colors">Meet The Team</Link>
-            <Link to="/contact" className="text-[10px] font-black uppercase tracking-widest text-gray-500 hover:text-white transition-colors">Contact</Link>
-            <Link to="/privacy-policy" className="text-[10px] font-black uppercase tracking-widest text-gray-500 hover:text-white transition-colors">Privacy Policy</Link>
-            <Link to="/land-properties" className="text-[10px] font-black uppercase tracking-widest text-gray-500 hover:text-white transition-colors">MLS Listings</Link>
-            <Link to="/terms-of-use" className="text-[10px] font-black uppercase tracking-widest text-gray-500 hover:text-white transition-colors">Terms of Use</Link>
-            <Link to="/accessibility-statement" className="text-[10px] font-black uppercase tracking-widest text-gray-500 hover:text-white transition-colors">Accessibility</Link>
+            <Link to="/team" className="text-[10px] font-black uppercase tracking-widest text-gray-400 hover:text-white transition-colors">Meet The Team</Link>
+            <Link to="/contact" className="text-[10px] font-black uppercase tracking-widest text-gray-400 hover:text-white transition-colors">Contact</Link>
+            <Link to="/privacy-policy" className="text-[10px] font-black uppercase tracking-widest text-gray-400 hover:text-white transition-colors">Privacy Policy</Link>
+            <Link to="/land-properties" className="text-[10px] font-black uppercase tracking-widest text-gray-400 hover:text-white transition-colors">MLS Listings</Link>
+            <Link to="/terms-of-use" className="text-[10px] font-black uppercase tracking-widest text-gray-400 hover:text-white transition-colors">Terms of Use</Link>
+            <Link to="/accessibility-statement" className="text-[10px] font-black uppercase tracking-widest text-gray-400 hover:text-white transition-colors">Accessibility</Link>
           </div>
         </div>
       </div>

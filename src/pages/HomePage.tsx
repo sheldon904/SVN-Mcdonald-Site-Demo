@@ -30,7 +30,7 @@ const HomePage = () => {
         <section className="py-20 bg-svn-dark overflow-hidden relative">
           <div className="absolute top-0 right-0 w-1/2 h-full hidden lg:block">
             <img
-              src="https://images.unsplash.com/photo-1534438097545-a2c22c57f01b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2670&q=80"
+              src="https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?ixlib=rb-4.0.3&auto=format&fit=crop&w=2670&q=80"
               alt="World Equestrian Center impact on Ocala real estate"
               loading="lazy"
               decoding="async"

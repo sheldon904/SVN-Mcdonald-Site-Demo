@@ -42,7 +42,7 @@ const WecEffectPage = () => {
         title="The WEC" 
         highlightedText="Effect" 
         subtitle="Analyzing the transformative impact of the World Equestrian Center on Ocala's real estate market."
-        backgroundImage="https://images.unsplash.com/photo-1534438097545-a2c22c57f01b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2670&q=80"
+        backgroundImage="https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?ixlib=rb-4.0.3&auto=format&fit=crop&w=2670&q=80"
       />
 
       <section className="py-24 px-6">

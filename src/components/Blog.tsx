@@ -41,14 +41,14 @@ const Blog = () => {
               <p className="text-gray-500 text-sm leading-relaxed mb-6 line-clamp-3">
                 {post.excerpt}
               </p>
-              <Link to={`/blog/${post.slug}`} className="text-xs font-bold uppercase tracking-widest text-svn-orange border-b-2 border-svn-orange pb-1">
-                Read More
+              <Link to={`/blog/${post.slug}`} className="text-xs font-bold uppercase tracking-widest text-svn-orange border-b-2 border-svn-orange pb-1" aria-label={`Read more about ${post.title}`}>
+                Read: {post.title.length > 40 ? post.title.slice(0, 40) + '...' : post.title}
               </Link>
             </article>
           ))}
         </div>
 
-        <Link to="/blog" className="block w-full md:hidden mt-12 bg-svn-grey text-white py-4 font-bold uppercase tracking-widest text-center">
+        <Link to="/blog" className="block w-full md:hidden mt-12 bg-svn-grey text-white py-4 font-bold uppercase tracking-widest text-center" aria-label="View all blog posts">
           View All Posts
         </Link>
       </div>

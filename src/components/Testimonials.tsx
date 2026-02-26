@@ -33,7 +33,7 @@ const Testimonials = () => {
               See What Our Clients<br />Have to Say
             </h2>
             <div className="w-20 h-1 bg-svn-orange mb-8" />
-            <p className="text-white/60 leading-relaxed">
+            <p className="text-white/70 leading-relaxed">
               We pride ourselves on the relationships we've built and the results we've delivered for our clients across Central Florida.
             </p>
           </div>
@@ -42,11 +42,11 @@ const Testimonials = () => {
             {testimonials.slice(0, 3).map((t, index) => (
               <div key={index} className="bg-white/5 p-8 rounded-sm relative">
                 <Quote className="text-svn-orange mb-6 opacity-50" size={32} />
-                <p className="text-white/80 italic mb-8 leading-relaxed">
+                <p className="text-white/90 italic mb-8 leading-relaxed">
                   {t.content}
                 </p>
                 <div>
-                  <h4 className="font-bold text-lg">{t.name}</h4>
+                  <p className="font-bold text-lg">{t.name}</p>
                   <p className="text-svn-orange text-sm font-bold uppercase tracking-wider">{t.title}</p>
                 </div>
               </div>

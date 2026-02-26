@@ -11,7 +11,7 @@ const Listings = () => {
             <h2 className="text-4xl md:text-5xl font-black text-svn-dark uppercase tracking-tight mb-4">
               Featured <span className="text-svn-orange">Listings</span>
             </h2>
-            <p className="text-svn-grey/60 font-medium">
+            <p className="text-gray-500 font-medium">
               Explore our premier land and commercial opportunities in Central Florida, powered by Buildout.
             </p>
           </div>

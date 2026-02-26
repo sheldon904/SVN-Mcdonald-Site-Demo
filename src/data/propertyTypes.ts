@@ -73,7 +73,7 @@ export const propertyTypes: PropertyType[] = [
     subtitle: 'Premier horse farms and equestrian estates in the Horse Capital of the World.',
     seoTitle: 'Equestrian Properties & Horse Farms for Sale in Ocala, FL',
     seoDescription: 'Find equestrian properties and horse farms for sale in Ocala, the Horse Capital of the World. SVN McDonald specializes in premier equestrian real estate near the World Equestrian Center.',
-    heroImage: 'https://images.unsplash.com/photo-1534438097545-a2c22c57f01b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2670&q=80',
+    heroImage: 'https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?ixlib=rb-4.0.3&auto=format&fit=crop&w=2670&q=80',
     intro: [
       'Ocala, Florida is recognized worldwide as the Horse Capital of the World, and for good reason. The region\'s unique No. 8 limestone-rich soil produces strong, healthy bones in horses, while the mild subtropical climate allows year-round training and competition. With the opening of the World Equestrian Center in January 2021, Ocala has cemented its position as the premier destination for equestrian real estate in the United States.',
       'The equestrian property market in Marion County encompasses everything from turnkey training facilities with covered arenas and dozens of stalls to pastoral farms with rolling pastures and mature oak canopy. Properties near the WEC and the established Farmland Preservation Area command significant premiums, with values increasing dramatically since the center\'s opening. Buyers range from professional riders and trainers to lifestyle purchasers and investors seeking exposure to this unique asset class.',

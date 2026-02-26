@@ -1,14 +1,15 @@
 import { motion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, TreePine, Building2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import type { LucideIcon } from 'lucide-react';
 
-const mainServices = [
+const mainServices: { title: string; subtitle: string; description: string; image: string; Icon: LucideIcon; href: string }[] = [
   {
     title: "SVN Land",
     subtitle: "Central Florida's Land Experts",
     description: "Specializing in agricultural, development, and conservation land throughout the Sunshine State.",
     image: "https://svnmcdonald.com/wp-content/uploads/2024/10/Hwy-484-Ocala-1920x1073.jpg",
-    icon: "https://svnmcdonald.com/wp-content/uploads/2023/05/807c7b7f-5938-471e-85c9-a4089e5f0905.png",
+    Icon: TreePine,
     href: "/land-properties"
   },
   {
@@ -16,7 +17,7 @@ const mainServices = [
     subtitle: "Premier Commercial Brokerage",
     description: "Full-service commercial real estate solutions for retail, office, industrial, and investment properties.",
     image: "https://svnmcdonald.com/wp-content/uploads/2024/06/TrafficBlog-.jpg",
-    icon: "https://svnmcdonald.com/wp-content/uploads/2023/05/ba3c819b-6e96-40ae-8672-b3923651b588.png",
+    Icon: Building2,
     href: "/commercial-properties"
   }
 ];
@@ -67,7 +68,7 @@ const Services = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
                 
                 <div className="absolute inset-0 p-12 flex flex-col justify-end">
-                  <img src={service.icon} alt={`${service.title} service icon`} className="w-16 h-16 mb-6 brightness-0 invert" loading="lazy" decoding="async" width={64} height={64} />
+                  <service.Icon size={48} className="text-white mb-6" strokeWidth={1.5} />
                   <h3 className="text-4xl font-black text-white uppercase mb-2 tracking-tight">
                     {service.title}
                   </h3>

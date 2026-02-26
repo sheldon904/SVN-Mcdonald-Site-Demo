@@ -74,7 +74,7 @@ const ContactForm = () => {
                   <Phone className="text-svn-orange group-hover:text-white" />
                 </div>
                 <div>
-                  <p className="text-xs uppercase tracking-widest text-gray-500 font-bold mb-1">Call Us</p>
+                  <p className="text-xs uppercase tracking-widest text-gray-400 font-bold mb-1">Call Us</p>
                   <p className="text-xl font-bold">352.274.3800</p>
                 </div>
               </div>
@@ -84,7 +84,7 @@ const ContactForm = () => {
                   <Mail className="text-svn-orange group-hover:text-white" />
                 </div>
                 <div>
-                  <p className="text-xs uppercase tracking-widest text-gray-500 font-bold mb-1">Email Us</p>
+                  <p className="text-xs uppercase tracking-widest text-gray-400 font-bold mb-1">Email Us</p>
                   <p className="text-xl font-bold">info@svnmcdonald.com</p>
                 </div>
               </div>
@@ -94,7 +94,7 @@ const ContactForm = () => {
                   <MapPin className="text-svn-orange group-hover:text-white" />
                 </div>
                 <div>
-                  <p className="text-xs uppercase tracking-widest text-gray-500 font-bold mb-1">Visit Us</p>
+                  <p className="text-xs uppercase tracking-widest text-gray-400 font-bold mb-1">Visit Us</p>
                   <p className="text-xl font-bold">1825 SE 16th Ave., Ocala</p>
                 </div>
               </div>
@@ -105,7 +105,7 @@ const ContactForm = () => {
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="first-name" className="block text-[10px] uppercase tracking-[0.2em] font-black text-gray-500 mb-3">First Name</label>
+                  <label htmlFor="first-name" className="block text-[10px] uppercase tracking-[0.2em] font-black text-gray-400 mb-3">First Name</label>
                   <input
                     id="first-name"
                     name="firstName"
@@ -118,7 +118,7 @@ const ContactForm = () => {
                   />
                 </div>
                 <div>
-                  <label htmlFor="last-name" className="block text-[10px] uppercase tracking-[0.2em] font-black text-gray-500 mb-3">Last Name</label>
+                  <label htmlFor="last-name" className="block text-[10px] uppercase tracking-[0.2em] font-black text-gray-400 mb-3">Last Name</label>
                   <input
                     id="last-name"
                     name="lastName"
@@ -133,7 +133,7 @@ const ContactForm = () => {
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-[10px] uppercase tracking-[0.2em] font-black text-gray-500 mb-3">Email Address</label>
+                <label htmlFor="email" className="block text-[10px] uppercase tracking-[0.2em] font-black text-gray-400 mb-3">Email Address</label>
                 <input
                   id="email"
                   name="email"
@@ -147,7 +147,7 @@ const ContactForm = () => {
               </div>
 
               <div>
-                <label htmlFor="phone" className="block text-[10px] uppercase tracking-[0.2em] font-black text-gray-500 mb-3">Phone Number</label>
+                <label htmlFor="phone" className="block text-[10px] uppercase tracking-[0.2em] font-black text-gray-400 mb-3">Phone Number</label>
                 <input
                   id="phone"
                   name="phone"
@@ -160,7 +160,7 @@ const ContactForm = () => {
               </div>
 
               <div>
-                <label htmlFor="subject" className="block text-[10px] uppercase tracking-[0.2em] font-black text-gray-500 mb-3">Property Interest</label>
+                <label htmlFor="subject" className="block text-[10px] uppercase tracking-[0.2em] font-black text-gray-400 mb-3">Property Interest</label>
                 <select
                   id="subject"
                   name="subject"
@@ -180,7 +180,7 @@ const ContactForm = () => {
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-[10px] uppercase tracking-[0.2em] font-black text-gray-500 mb-3">How can we help?</label>
+                <label htmlFor="message" className="block text-[10px] uppercase tracking-[0.2em] font-black text-gray-400 mb-3">How can we help?</label>
                 <textarea
                   id="message"
                   name="message"
