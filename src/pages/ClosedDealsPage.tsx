@@ -6,13 +6,15 @@ import SEOHead from '../components/SEOHead';
 import { motion } from 'framer-motion';
 import { MapPin, DollarSign, Calendar } from 'lucide-react';
 
+const FALLBACK_IMAGE = "https://svnmcdonald.com/wp-content/uploads/2024/10/Hwy-484-Ocala-1920x1073.jpg";
+
 const deals = [
   {
     title: "17.59 +/- Commercial Acres Marion Oaks",
     location: "Marion Oaks, FL",
     price: "Sold",
     date: "Feb 2026",
-    image: "https://svnmcdonald.com/wp-content/uploads/2024/10/Hwy-484-Ocala-1920x1073.jpg",
+    image: "https://svnmcdonald.com/wp-content/uploads/2025/09/17.59.webp",
     type: "Land"
   },
   {
@@ -20,7 +22,7 @@ const deals = [
     location: "NW Marion County, FL",
     price: "Sold",
     date: "Feb 2026",
-    image: "https://svnmcdonald.com/wp-content/uploads/2024/10/Hwy-484-Ocala-1920x1073.jpg",
+    image: "https://svnmcdonald.com/wp-content/uploads/2025/09/78.webp",
     type: "Land"
   },
   {
@@ -28,7 +30,7 @@ const deals = [
     location: "Ocala, FL",
     price: "943,000 SF Leased",
     date: "Feb 2026",
-    image: "https://svnmcdonald.com/wp-content/uploads/2024/02/trailhead-logistics-center.webp",
+    image: "https://svnmcdonald.com/wp-content/uploads/2026/02/Finished-Graphic-2-1-1920x1371.webp",
     type: "Industrial"
   },
   {
@@ -36,7 +38,7 @@ const deals = [
     location: "Ocala, FL",
     price: "$9,500,000",
     date: "Sep 2025",
-    image: "https://svnmcdonald.com/wp-content/uploads/2024/09/Jumbolair-Aviation-Estates-1.webp",
+    image: "https://svnmcdonald.com/wp-content/uploads/2023/06/20190617_104559-1024x576-2.webp",
     type: "Residential"
   },
   {
@@ -44,7 +46,7 @@ const deals = [
     location: "Ocala, FL",
     price: "$7,000,000+",
     date: "Sep 2025",
-    image: "https://svnmcdonald.com/wp-content/uploads/2024/09/Aurora-Oak.webp",
+    image: "https://svnmcdonald.com/wp-content/uploads/2025/09/AuroraOaks.webp",
     type: "Land"
   },
   {
@@ -52,7 +54,7 @@ const deals = [
     location: "Ocala, FL",
     price: "$5,700,000",
     date: "2024",
-    image: "https://svnmcdonald.com/wp-content/uploads/2024/10/Hwy-484-Ocala-1920x1073.jpg",
+    image: "https://svnmcdonald.com/wp-content/uploads/2025/09/39.webp",
     type: "Land"
   },
   {
@@ -60,7 +62,7 @@ const deals = [
     location: "Jacksonville, FL",
     price: "7.00 CAP",
     date: "2024",
-    image: "https://svnmcdonald.com/wp-content/uploads/2024/01/Jiffy-Lube.webp",
+    image: "https://svnmcdonald.com/wp-content/uploads/2025/09/JL-1.webp",
     type: "Retail"
   },
   {
@@ -68,7 +70,7 @@ const deals = [
     location: "Ocala, FL",
     price: "8.16 CAP",
     date: "2024",
-    image: "https://svnmcdonald.com/wp-content/uploads/2024/06/TrafficBlog-.jpg",
+    image: "https://svnmcdonald.com/wp-content/uploads/2025/09/TG-lee.webp",
     type: "Industrial"
   },
   {
@@ -76,7 +78,7 @@ const deals = [
     location: "Levy County, FL",
     price: "Sold",
     date: "2024",
-    image: "https://svnmcdonald.com/wp-content/uploads/2024/01/Dunnellon-Land.webp",
+    image: "https://svnmcdonald.com/wp-content/uploads/2025/09/275.webp",
     type: "Land"
   },
   {
@@ -84,7 +86,7 @@ const deals = [
     location: "Ocala, FL",
     price: "Sold",
     date: "2024",
-    image: "https://svnmcdonald.com/wp-content/uploads/2024/06/TrafficBlog-.jpg",
+    image: "https://svnmcdonald.com/wp-content/uploads/2025/09/Milan.webp",
     type: "Industrial"
   },
   {
@@ -92,7 +94,7 @@ const deals = [
     location: "Summerfield, FL",
     price: "Sold",
     date: "2024",
-    image: "https://svnmcdonald.com/wp-content/uploads/2024/06/TrafficBlog-.jpg",
+    image: "https://svnmcdonald.com/wp-content/uploads/2025/09/Summerfield-1920x1280.webp",
     type: "Industrial"
   },
   {
@@ -100,7 +102,7 @@ const deals = [
     location: "Marion County, FL",
     price: "Sold",
     date: "2023",
-    image: "https://svnmcdonald.com/wp-content/uploads/2024/10/Hwy-484-Ocala-1920x1073.jpg",
+    image: "https://svnmcdonald.com/wp-content/uploads/2025/09/35-Acres-1-1920x1371.webp",
     type: "Land"
   },
   {
@@ -108,7 +110,7 @@ const deals = [
     location: "Ocala, FL",
     price: "Sold",
     date: "2023",
-    image: "https://svnmcdonald.com/wp-content/uploads/2024/06/TrafficBlog-.jpg",
+    image: "https://svnmcdonald.com/wp-content/uploads/2025/09/Moxon-1920x1080.webp",
     type: "Industrial"
   },
   {
@@ -116,7 +118,7 @@ const deals = [
     location: "Ocala, FL",
     price: "Sold",
     date: "2023",
-    image: "https://svnmcdonald.com/wp-content/uploads/2024/06/TrafficBlog-.jpg",
+    image: "https://svnmcdonald.com/wp-content/uploads/2026/02/Group-24.webp",
     type: "Office"
   },
   {
@@ -124,7 +126,7 @@ const deals = [
     location: "Ocala, FL",
     price: "$3,100,000",
     date: "Archive",
-    image: "https://svnmcdonald.com/wp-content/uploads/2024/06/TrafficBlog-.jpg",
+    image: "https://svnmcdonald.com/wp-content/uploads/2023/06/2014-07-31-22.21.11-1024x576-1.webp",
     type: "Industrial"
   },
   {
@@ -132,7 +134,7 @@ const deals = [
     location: "Ocala, FL",
     price: "$2,200,000",
     date: "Archive",
-    image: "https://svnmcdonald.com/wp-content/uploads/2024/06/TrafficBlog-.jpg",
+    image: "https://svnmcdonald.com/wp-content/uploads/2023/06/Screen-Shot-2021-05-18-at-11.20.51-AM.webp",
     type: "Retail"
   },
   {
@@ -140,7 +142,7 @@ const deals = [
     location: "Marion County, FL",
     price: "$1,086,300",
     date: "Archive",
-    image: "https://svnmcdonald.com/wp-content/uploads/2024/10/Hwy-484-Ocala-1920x1073.jpg",
+    image: "https://svnmcdonald.com/wp-content/uploads/2023/05/20190917_112106-1.webp",
     type: "Land"
   },
   {
@@ -148,7 +150,7 @@ const deals = [
     location: "Reddick, FL",
     price: "$1,133,400",
     date: "Archive",
-    image: "https://svnmcdonald.com/wp-content/uploads/2024/10/Hwy-484-Ocala-1920x1073.jpg",
+    image: "https://svnmcdonald.com/wp-content/uploads/2023/06/20190917_124800-576x1024-1.webp",
     type: "Land"
   },
   {
@@ -156,7 +158,7 @@ const deals = [
     location: "Citra, FL",
     price: "$648,000",
     date: "Archive",
-    image: "https://svnmcdonald.com/wp-content/uploads/2024/10/Hwy-484-Ocala-1920x1073.jpg",
+    image: "https://svnmcdonald.com/wp-content/uploads/2023/05/20190917_121014-1.webp",
     type: "Land"
   },
   {
@@ -164,7 +166,7 @@ const deals = [
     location: "Marion County, FL",
     price: "$4,926,300",
     date: "Archive",
-    image: "https://svnmcdonald.com/wp-content/uploads/2024/10/Hwy-484-Ocala-1920x1073.jpg",
+    image: "https://svnmcdonald.com/wp-content/uploads/2023/05/NoPath_-_Copy_41.webp",
     type: "Land"
   },
   {
@@ -172,7 +174,7 @@ const deals = [
     location: "Ocala, FL",
     price: "$3,190,000",
     date: "Archive",
-    image: "https://svnmcdonald.com/wp-content/uploads/2024/06/TrafficBlog-.jpg",
+    image: "https://svnmcdonald.com/wp-content/uploads/2023/05/NoPath_-_Copy_43.webp",
     type: "Industrial"
   },
   {
@@ -180,7 +182,7 @@ const deals = [
     location: "Ocala, FL",
     price: "$5,500,000",
     date: "Archive",
-    image: "https://svnmcdonald.com/wp-content/uploads/2021/04/Corporate-Campus.webp",
+    image: "https://svnmcdonald.com/wp-content/uploads/2023/06/Mar-2011-long-exterior-1-1536x864-1.webp",
     type: "Office"
   },
   {
@@ -188,7 +190,7 @@ const deals = [
     location: "Ocala, FL",
     price: "$2,200,000",
     date: "Archive",
-    image: "https://svnmcdonald.com/wp-content/uploads/2024/06/TrafficBlog-.jpg",
+    image: "https://svnmcdonald.com/wp-content/uploads/2023/06/2016-01-18-17.29.32-1536x864-1.webp",
     type: "Office"
   },
   {
@@ -196,7 +198,7 @@ const deals = [
     location: "Ocala, FL",
     price: "$1,700,000",
     date: "Archive",
-    image: "https://svnmcdonald.com/wp-content/uploads/2024/06/TrafficBlog-.jpg",
+    image: "https://svnmcdonald.com/wp-content/uploads/2023/05/2016-03-08-13.50.31-1024x664-1.webp",
     type: "Office"
   },
   {
@@ -204,7 +206,7 @@ const deals = [
     location: "Ocala, FL",
     price: "$1,355,900",
     date: "Archive",
-    image: "https://svnmcdonald.com/wp-content/uploads/2024/06/TrafficBlog-.jpg",
+    image: "https://svnmcdonald.com/wp-content/uploads/2023/06/Screen-Shot-2021-05-18-at-10.40.53-AM-1024x454-1.webp",
     type: "Industrial"
   },
   {
@@ -212,7 +214,7 @@ const deals = [
     location: "Ocala, FL",
     price: "Sold",
     date: "Archive",
-    image: "https://svnmcdonald.com/wp-content/uploads/2024/06/TrafficBlog-.jpg",
+    image: "https://svnmcdonald.com/wp-content/uploads/2023/06/Screen-Shot-2021-05-18-at-10.43.28-AM-1024x463-1.webp",
     type: "Retail"
   },
   {
@@ -220,7 +222,7 @@ const deals = [
     location: "Ocala, FL",
     price: "Sold",
     date: "Archive",
-    image: "https://svnmcdonald.com/wp-content/uploads/2024/06/TrafficBlog-.jpg",
+    image: "https://svnmcdonald.com/wp-content/uploads/2023/06/Front-Close-300x225-2.webp",
     type: "Retail"
   },
   {
@@ -228,7 +230,7 @@ const deals = [
     location: "Marion County, FL",
     price: "$812,500",
     date: "Archive",
-    image: "https://svnmcdonald.com/wp-content/uploads/2024/06/TrafficBlog-.jpg",
+    image: "https://svnmcdonald.com/wp-content/uploads/2023/06/self-storage-2-1.webp",
     type: "Self Storage"
   },
   {
@@ -236,7 +238,7 @@ const deals = [
     location: "Ocala, FL",
     price: "Leased",
     date: "Archive",
-    image: "https://svnmcdonald.com/wp-content/uploads/2024/06/TrafficBlog-.jpg",
+    image: "https://svnmcdonald.com/wp-content/uploads/2023/06/industrial-building-6.webp",
     type: "Industrial"
   },
   {
@@ -244,7 +246,7 @@ const deals = [
     location: "Marion County, FL",
     price: "Sold",
     date: "Archive",
-    image: "https://svnmcdonald.com/wp-content/uploads/2024/10/Hwy-484-Ocala-1920x1073.jpg",
+    image: "https://svnmcdonald.com/wp-content/uploads/2023/06/Entrance-ll-300x200-3.webp",
     type: "Land"
   },
   {
@@ -252,7 +254,7 @@ const deals = [
     location: "Ocala, FL",
     price: "Sold",
     date: "Archive",
-    image: "https://svnmcdonald.com/wp-content/uploads/2024/06/TrafficBlog-.jpg",
+    image: "https://svnmcdonald.com/wp-content/uploads/2023/05/NoPath_-_Copy_57.webp",
     type: "Office"
   },
   {
@@ -260,7 +262,7 @@ const deals = [
     location: "Marion County, FL",
     price: "Sold",
     date: "Archive",
-    image: "https://svnmcdonald.com/wp-content/uploads/2024/10/Hwy-484-Ocala-1920x1073.jpg",
+    image: "https://svnmcdonald.com/wp-content/uploads/2023/06/full10-1.webp",
     type: "Land"
   }
 ];
@@ -328,6 +330,7 @@ const ClosedDealsPage = () => {
                     decoding="async"
                     width="600"
                     height="400"
+                    onError={(e) => { (e.target as HTMLImageElement).src = FALLBACK_IMAGE; }}
                   />
                   <div className="absolute top-4 right-4 bg-svn-orange text-white text-xs font-bold uppercase tracking-widest py-1 px-3 rounded-md">
                     Sold
