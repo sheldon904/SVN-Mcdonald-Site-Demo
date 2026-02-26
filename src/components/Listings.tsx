@@ -16,7 +16,7 @@ const Listings = () => {
             </p>
           </div>
           <div className="flex gap-4">
-            <Link to="/land-properties" className="px-6 py-3 border-2 border-svn-orange text-svn-orange font-bold uppercase tracking-widest text-xs rounded-md hover:bg-svn-orange hover:text-white transition-all">
+            <Link to="/land-properties" className="px-6 py-3 border-2 border-svn-orange text-svn-orange-text font-bold uppercase tracking-widest text-xs rounded-md hover:bg-svn-orange hover:text-white transition-all">
               Land
             </Link>
             <Link to="/commercial-properties" className="px-6 py-3 bg-gray-100 text-svn-dark font-bold uppercase tracking-widest text-xs rounded-md hover:bg-svn-orange hover:text-white transition-all">

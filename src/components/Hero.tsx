@@ -8,6 +8,11 @@ const Hero = () => {
       <div className="absolute inset-0">
         <img
           src="https://svnmcdonald.com/wp-content/uploads/2024/10/Hwy-484-Ocala-1920x1073.jpg"
+          srcSet="
+            https://svnmcdonald.com/wp-content/uploads/2024/10/Hwy-484-Ocala-768x429.jpg 768w,
+            https://svnmcdonald.com/wp-content/uploads/2024/10/Hwy-484-Ocala-1920x1073.jpg 1920w
+          "
+          sizes="100vw"
           alt="Central Florida Real Estate"
           className="w-full h-full object-cover opacity-60 scale-105"
           fetchPriority="high"

@@ -3,6 +3,7 @@
 @theme {
   --font-sans: "Montserrat", ui-sans-serif, system-ui, sans-serif;
   --color-svn-orange: #EC6C26;
+  --color-svn-orange-text: #C45A1E;
   --color-svn-dark: #181818;
   --color-svn-grey: #AAAAAA;
   --color-svn-blue: #002868;

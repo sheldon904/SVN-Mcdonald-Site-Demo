@@ -95,8 +95,8 @@ const Navbar = () => {
                 loading="eager"
                 decoding="async"
                 fetchPriority="high"
-                width={768}
-                height={374}
+                width={200}
+                height={97}
               />
             </Link>
           </div>
@@ -167,8 +167,8 @@ const Navbar = () => {
                 className="h-12 w-auto brightness-0"
                 loading="lazy"
                 decoding="async"
-                width={768}
-                height={374}
+                width={200}
+                height={97}
               />
             </Link>
             <button onClick={() => setIsOpen(false)} aria-label="Close navigation menu" className="text-svn-dark p-2">

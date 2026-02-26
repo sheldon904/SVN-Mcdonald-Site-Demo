@@ -34,8 +34,8 @@ const Footer = () => {
               className="h-20 w-auto mb-10"
               loading="lazy"
               decoding="async"
-              width={768}
-              height={374}
+              width={200}
+              height={97}
             />
             <p className="text-gray-400 font-medium leading-relaxed max-w-sm mb-10">
               SVN McDonald & Company is Central Florida's premier commercial and land real estate brokerage. Our collaborative approach and national reach ensure maximum value for our clients.
