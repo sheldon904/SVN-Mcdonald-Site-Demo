@@ -24,5 +24,11 @@ export default defineConfig({
     },
     cssCodeSplit: true,
     sourcemap: false,
-  }
+    // Reduce chunk size warnings
+    chunkSizeWarningLimit: 600,
+    // Minification target — modern browsers only (smaller output)
+    target: 'es2020',
+    // Enable CSS minification
+    cssMinify: true,
+  },
 })
