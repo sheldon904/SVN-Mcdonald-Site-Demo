@@ -49,7 +49,7 @@ const ShowcasePage = ({ property }: ShowcasePageProps) => {
         />
       )}
 
-      <ShowcaseStats stats={property.stats} title={property.title} />
+      <ShowcaseStats stats={property.stats} />
       <ShowcaseStory property={property} />
       <ShowcaseLocation property={property} />
       <ShowcaseCTA />

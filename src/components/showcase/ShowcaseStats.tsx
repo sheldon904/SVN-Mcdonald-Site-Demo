@@ -3,10 +3,9 @@ import type { ShowcaseStat } from '../../data/showcaseProperties';
 
 interface ShowcaseStatsProps {
   stats: ShowcaseStat[];
-  title: string;
 }
 
-const ShowcaseStats = ({ stats, title }: ShowcaseStatsProps) => {
+const ShowcaseStats = ({ stats }: ShowcaseStatsProps) => {
   return (
     <section className="py-24 bg-white px-6">
       <div className="max-w-[1280px] mx-auto">
