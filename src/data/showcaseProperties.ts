@@ -76,20 +76,20 @@ export const showcaseProperties: Record<ShowcaseSlug, ShowcaseProperty> = {
     status: 'SOLD',
 
     mapCenter: [-82.1175, 29.2847],
-    mapStartZoom: 13,
+    mapStartZoom: 14,
     waypoints: [
-      // Bird's-eye overview of full 550 acres
-      { center: [-82.1175, 29.2847], zoom: 13.5, pitch: 0, bearing: 0, progress: 0.0 },
-      // Tilt to reveal runway scale
-      { center: [-82.1175, 29.2847], zoom: 14, pitch: 40, bearing: 30, progress: 0.15 },
-      // Flying along the runway NW→SE
-      { center: [-82.1150, 29.2830], zoom: 15, pitch: 55, bearing: 135, progress: 0.35 },
-      // Dramatic low approach angle
-      { center: [-82.1130, 29.2815], zoom: 15.8, pitch: 65, bearing: 150, progress: 0.55 },
-      // Panning across residential hangars
-      { center: [-82.1160, 29.2835], zoom: 16, pitch: 60, bearing: 220, progress: 0.75 },
-      // Final establishing pull-back
-      { center: [-82.1175, 29.2847], zoom: 14.5, pitch: 45, bearing: 320, progress: 1.0 },
+      // Bird's-eye overview — start high enough to see full property
+      { center: [-82.1175, 29.2847], zoom: 14.5, pitch: 0, bearing: 0, progress: 0.0 },
+      // Tilt and push in to reveal runway scale
+      { center: [-82.1175, 29.2847], zoom: 15.5, pitch: 50, bearing: 30, progress: 0.15 },
+      // Flying along the runway NW→SE — close enough to see details
+      { center: [-82.1150, 29.2830], zoom: 16.8, pitch: 65, bearing: 135, progress: 0.35 },
+      // Dramatic low approach angle — near ground level
+      { center: [-82.1130, 29.2815], zoom: 17.5, pitch: 75, bearing: 150, progress: 0.55 },
+      // Panning across residential hangars at rooftop height
+      { center: [-82.1160, 29.2840], zoom: 17.8, pitch: 72, bearing: 220, progress: 0.75 },
+      // Cinematic pull-back with 3D tilt
+      { center: [-82.1175, 29.2847], zoom: 15.5, pitch: 55, bearing: 320, progress: 1.0 },
     ],
     scrollCaptions: [
       { text: '550 acres of world-class aviation community', startProgress: 0.0, endProgress: 0.12 },
@@ -143,22 +143,22 @@ export const showcaseProperties: Record<ShowcaseSlug, ShowcaseProperty> = {
     type: 'Industrial',
     status: 'LEASED',
 
-    // Approximate location along I-75 corridor near Ocala
+    // Along I-75 corridor near Ocala
     mapCenter: [-82.1050, 29.1400],
-    mapStartZoom: 13,
+    mapStartZoom: 14,
     waypoints: [
-      // Wide I-75 corridor context
-      { center: [-82.1050, 29.1400], zoom: 13, pitch: 0, bearing: 0, progress: 0.0 },
-      // Tilting toward facility
-      { center: [-82.1050, 29.1400], zoom: 14, pitch: 35, bearing: 45, progress: 0.20 },
-      // Revealing the footprint
-      { center: [-82.1030, 29.1390], zoom: 15, pitch: 50, bearing: 90, progress: 0.40 },
-      // Orbiting the building
-      { center: [-82.1040, 29.1395], zoom: 15.5, pitch: 60, bearing: 180, progress: 0.60 },
-      // Near ground — scale emphasis
-      { center: [-82.1060, 29.1405], zoom: 16, pitch: 70, bearing: 250, progress: 0.80 },
-      // Contextual pull-back
-      { center: [-82.1050, 29.1400], zoom: 14, pitch: 40, bearing: 315, progress: 1.0 },
+      // I-75 corridor context — start zoomed in enough to see roads
+      { center: [-82.1050, 29.1400], zoom: 14.5, pitch: 0, bearing: 0, progress: 0.0 },
+      // Tilt to reveal the industrial corridor
+      { center: [-82.1050, 29.1400], zoom: 15.5, pitch: 45, bearing: 45, progress: 0.20 },
+      // Swooping toward the facility — see individual buildings
+      { center: [-82.1030, 29.1390], zoom: 17, pitch: 60, bearing: 90, progress: 0.40 },
+      // Orbiting the building at close range
+      { center: [-82.1040, 29.1395], zoom: 17.5, pitch: 70, bearing: 180, progress: 0.60 },
+      // Near ground level — feel the scale of 943K SF
+      { center: [-82.1060, 29.1405], zoom: 18, pitch: 78, bearing: 250, progress: 0.80 },
+      // Pull-back with full 3D perspective
+      { center: [-82.1050, 29.1400], zoom: 15.5, pitch: 55, bearing: 315, progress: 1.0 },
     ],
     scrollCaptions: [
       { text: 'The I-75 corridor: Central Florida\'s logistics backbone', startProgress: 0.0, endProgress: 0.15 },
@@ -214,20 +214,20 @@ export const showcaseProperties: Record<ShowcaseSlug, ShowcaseProperty> = {
 
     // NW Marion County horse country area
     mapCenter: [-82.1900, 29.3200],
-    mapStartZoom: 14,
+    mapStartZoom: 15,
     waypoints: [
-      // Full property overview
-      { center: [-82.1900, 29.3200], zoom: 14, pitch: 0, bearing: 0, progress: 0.0 },
-      // Gentle tilt — terrain undulation
-      { center: [-82.1900, 29.3200], zoom: 14.5, pitch: 35, bearing: 20, progress: 0.20 },
-      // Flying NE→SW along pastures
-      { center: [-82.1920, 29.3185], zoom: 15, pitch: 50, bearing: 210, progress: 0.40 },
-      // Near canopy — oak clusters
-      { center: [-82.1910, 29.3195], zoom: 16, pitch: 60, bearing: 280, progress: 0.60 },
-      // Dramatic low angle — rolling landscape
-      { center: [-82.1895, 29.3210], zoom: 16.5, pitch: 70, bearing: 350, progress: 0.80 },
-      // Wider view of surrounding horse country
-      { center: [-82.1900, 29.3200], zoom: 14, pitch: 40, bearing: 60, progress: 1.0 },
+      // Property overview — close enough to see pasture boundaries
+      { center: [-82.1900, 29.3200], zoom: 15, pitch: 0, bearing: 0, progress: 0.0 },
+      // Tilt to reveal rolling terrain in 3D
+      { center: [-82.1900, 29.3200], zoom: 16, pitch: 50, bearing: 20, progress: 0.20 },
+      // Flying NE→SW along pastures at tree-top level
+      { center: [-82.1920, 29.3185], zoom: 17, pitch: 65, bearing: 210, progress: 0.40 },
+      // Near canopy height — see individual oak clusters
+      { center: [-82.1910, 29.3195], zoom: 17.8, pitch: 72, bearing: 280, progress: 0.60 },
+      // Dramatic low angle across rolling hills
+      { center: [-82.1895, 29.3210], zoom: 18, pitch: 80, bearing: 350, progress: 0.80 },
+      // Pull-back with 3D terrain visible
+      { center: [-82.1900, 29.3200], zoom: 15.5, pitch: 55, bearing: 60, progress: 1.0 },
     ],
     scrollCaptions: [
       { text: '78 pristine acres in NW Marion County', startProgress: 0.0, endProgress: 0.15 },

@@ -76,16 +76,33 @@ const PointCloudViewer = ({ property, progressRef, onStatusChange }: PointCloudV
             ],
             tileSize: 256,
             maxzoom: 19,
-            attribution: '&copy; Esri &mdash; Sources: Esri, DigitalGlobe, GeoEye, Earthstar Geographics, CNES/Airbus DS, USDA, USGS, AeroGRID, IGN',
+            attribution: '&copy; Esri &mdash; Esri, DigitalGlobe, GeoEye, USDA, USGS, AeroGRID, IGN',
           },
-          'labels': {
-            type: 'raster',
+          // AWS Terrain Tiles — free, no API key, Terrarium encoding
+          'terrain-dem': {
+            type: 'raster-dem',
             tiles: [
-              'https://services.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}',
+              'https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png',
             ],
             tileSize: 256,
-            maxzoom: 19,
+            maxzoom: 15,
+            encoding: 'terrarium',
           },
+          // Hillshade for visual depth on the terrain surface
+          'hillshade-source': {
+            type: 'raster-dem',
+            tiles: [
+              'https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png',
+            ],
+            tileSize: 256,
+            maxzoom: 15,
+            encoding: 'terrarium',
+          },
+        },
+        // 3D terrain — Florida is flat so exaggerate 3x
+        terrain: {
+          source: 'terrain-dem',
+          exaggeration: 3,
         },
         layers: [
           {
@@ -93,23 +110,29 @@ const PointCloudViewer = ({ property, progressRef, onStatusChange }: PointCloudV
             type: 'raster',
             source: 'satellite',
             paint: {
-              'raster-saturation': 0.1,
-              'raster-contrast': 0.1,
+              'raster-saturation': 0.15,
+              'raster-contrast': 0.15,
               'raster-brightness-min': 0.05,
             },
           },
+          // Hillshade layer adds shadows/depth to terrain
           {
-            id: 'labels-layer',
-            type: 'raster',
-            source: 'labels',
+            id: 'hillshade-layer',
+            type: 'hillshade',
+            source: 'hillshade-source',
             paint: {
-              'raster-opacity': 0.4,
+              'hillshade-shadow-color': '#000000',
+              'hillshade-highlight-color': '#ffffff',
+              'hillshade-accent-color': '#4a4a4a',
+              'hillshade-exaggeration': 0.5,
+              'hillshade-illumination-direction': 315,
             },
           },
         ],
       },
       center: property.mapCenter,
       zoom: property.mapStartZoom,
+      maxPitch: 85,
       pitch: 0,
       bearing: 0,
       interactive: false, // Scroll drives the camera, not user drag
