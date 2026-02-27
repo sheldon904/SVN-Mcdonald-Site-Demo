@@ -1,6 +1,5 @@
 import { useRef, useEffect, useCallback } from 'react';
-import maplibregl from 'maplibre-gl';
-import 'maplibre-gl/dist/maplibre-gl.css';
+import { Loader } from '@googlemaps/js-api-loader';
 import type { ShowcaseProperty, MapCameraWaypoint } from '../../data/showcaseProperties';
 
 interface PointCloudViewerProps {
@@ -24,7 +23,7 @@ function lerpBearing(a: number, b: number, t: number): number {
 function interpolateWaypoints(
   waypoints: MapCameraWaypoint[],
   progress: number
-): { center: [number, number]; zoom: number; pitch: number; bearing: number } {
+): { lat: number; lng: number; altitude: number; heading: number; tilt: number; range: number } {
   const p = Math.max(0, Math.min(1, progress));
 
   // Find surrounding waypoints
@@ -43,156 +42,116 @@ function interpolateWaypoints(
   const st = t * t * (3 - 2 * t);
 
   return {
-    center: [
-      lerp(wp0.center[0], wp1.center[0], st),
-      lerp(wp0.center[1], wp1.center[1], st),
-    ],
-    zoom: lerp(wp0.zoom, wp1.zoom, st),
-    pitch: lerp(wp0.pitch, wp1.pitch, st),
-    bearing: lerpBearing(wp0.bearing, wp1.bearing, st),
+    lat: lerp(wp0.center.lat, wp1.center.lat, st),
+    lng: lerp(wp0.center.lng, wp1.center.lng, st),
+    altitude: lerp(wp0.center.altitude, wp1.center.altitude, st),
+    heading: lerpBearing(wp0.heading, wp1.heading, st),
+    tilt: lerp(wp0.tilt, wp1.tilt, st),
+    range: lerp(wp0.range, wp1.range, st),
   };
 }
 
+// Singleton loader — one per app
+const loader = new Loader({
+  apiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY || '',
+  version: 'alpha',
+  libraries: ['maps3d'],
+});
+
 const PointCloudViewer = ({ property, progressRef, onStatusChange }: PointCloudViewerProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const mapRef = useRef<maplibregl.Map | null>(null);
+  const map3dRef = useRef<google.maps.maps3d.Map3DElement | null>(null);
   const rafRef = useRef<number>(0);
+  const initRef = useRef(false);
 
-  // Initialize map
+  // Initialize Google Maps 3D
   useEffect(() => {
-    if (!containerRef.current) return;
+    if (!containerRef.current || initRef.current) return;
+    initRef.current = true;
 
     onStatusChange('loading');
 
-    const map = new maplibregl.Map({
-      container: containerRef.current,
-      style: {
-        version: 8,
-        sources: {
-          'satellite': {
-            type: 'raster',
-            tiles: [
-              'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
-            ],
-            tileSize: 256,
-            maxzoom: 19,
-            attribution: '&copy; Esri &mdash; Esri, DigitalGlobe, GeoEye, USDA, USGS, AeroGRID, IGN',
-          },
-          // AWS Terrain Tiles — free, no API key, Terrarium encoding
-          'terrain-dem': {
-            type: 'raster-dem',
-            tiles: [
-              'https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png',
-            ],
-            tileSize: 256,
-            maxzoom: 15,
-            encoding: 'terrarium',
-          },
-          // Hillshade for visual depth on the terrain surface
-          'hillshade-source': {
-            type: 'raster-dem',
-            tiles: [
-              'https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png',
-            ],
-            tileSize: 256,
-            maxzoom: 15,
-            encoding: 'terrarium',
-          },
-        },
-        // 3D terrain — Florida is flat so exaggerate 3x
-        terrain: {
-          source: 'terrain-dem',
-          exaggeration: 3,
-        },
-        layers: [
-          {
-            id: 'satellite-layer',
-            type: 'raster',
-            source: 'satellite',
-            paint: {
-              'raster-saturation': 0.15,
-              'raster-contrast': 0.15,
-              'raster-brightness-min': 0.05,
-            },
-          },
-          // Hillshade layer adds shadows/depth to terrain
-          {
-            id: 'hillshade-layer',
-            type: 'hillshade',
-            source: 'hillshade-source',
-            paint: {
-              'hillshade-shadow-color': '#000000',
-              'hillshade-highlight-color': '#ffffff',
-              'hillshade-accent-color': '#4a4a4a',
-              'hillshade-exaggeration': 0.5,
-              'hillshade-illumination-direction': 315,
-            },
-          },
-        ],
-      },
-      center: property.mapCenter,
-      zoom: property.mapStartZoom,
-      maxPitch: 85,
-      pitch: 0,
-      bearing: 0,
-      interactive: false, // Scroll drives the camera, not user drag
-      fadeDuration: 0,
-      attributionControl: false,
-    });
+    let cancelled = false;
 
-    // Add minimal attribution
-    map.addControl(new maplibregl.AttributionControl({ compact: true }), 'bottom-right');
+    (async () => {
+      try {
+        // Load the Maps JS API
+        await loader.load();
 
-    map.on('load', () => {
-      onStatusChange('loaded');
-    });
+        if (cancelled) return;
 
-    map.on('error', () => {
-      onStatusChange('error');
-    });
+        // Create Map3DElement
+        const map3d = document.createElement('gmp-map-3d') as google.maps.maps3d.Map3DElement;
 
-    mapRef.current = map;
+        // Set initial camera from first waypoint
+        const wp0 = property.waypoints[0];
+        map3d.center = { lat: wp0.center.lat, lng: wp0.center.lng, altitude: wp0.center.altitude };
+        map3d.heading = wp0.heading;
+        map3d.tilt = wp0.tilt;
+        map3d.range = wp0.range;
+        map3d.defaultLabelsDisabled = true;
+
+        // Style it to fill container
+        map3d.style.width = '100%';
+        map3d.style.height = '100%';
+        map3d.style.display = 'block';
+
+        // Append to DOM
+        containerRef.current!.appendChild(map3d);
+        map3dRef.current = map3d;
+
+        // Wait for the element to be ready / tiles to start loading
+        // Map3DElement fires 'gmp-centerchange' when ready but we can also
+        // just give it a brief moment then report loaded
+        const onReady = () => {
+          if (!cancelled) onStatusChange('loaded');
+        };
+
+        // Use a small timeout as Map3DElement doesn't have a clean 'load' event
+        setTimeout(onReady, 1500);
+
+      } catch (err) {
+        console.error('Google Maps 3D init failed:', err);
+        if (!cancelled) onStatusChange('error');
+      }
+    })();
 
     return () => {
+      cancelled = true;
       cancelAnimationFrame(rafRef.current);
-      map.remove();
-      mapRef.current = null;
+      if (map3dRef.current && containerRef.current) {
+        try {
+          containerRef.current.removeChild(map3dRef.current);
+        } catch { /* already removed */ }
+      }
+      map3dRef.current = null;
+      initRef.current = false;
     };
-  }, [property.mapCenter, property.mapStartZoom, onStatusChange]);
+  }, [property.waypoints, onStatusChange]);
 
-  // Animation loop: sync map camera to scroll progress
+  // Animation loop: sync 3D camera to scroll progress
   const animate = useCallback(() => {
-    const map = mapRef.current;
-    if (!map) return;
+    const map3d = map3dRef.current;
+    if (!map3d) {
+      rafRef.current = requestAnimationFrame(animate);
+      return;
+    }
 
     const progress = progressRef.current ?? 0;
     const cam = interpolateWaypoints(property.waypoints, progress);
 
-    map.jumpTo({
-      center: cam.center,
-      zoom: cam.zoom,
-      pitch: cam.pitch,
-      bearing: cam.bearing,
-    });
+    // Update camera — Map3DElement properties directly control the view
+    map3d.center = { lat: cam.lat, lng: cam.lng, altitude: cam.altitude };
+    map3d.heading = cam.heading;
+    map3d.tilt = cam.tilt;
+    map3d.range = cam.range;
 
     rafRef.current = requestAnimationFrame(animate);
   }, [property.waypoints, progressRef]);
 
-  // Start animation once map is ready
+  // Start animation loop
   useEffect(() => {
-    const map = mapRef.current;
-    if (!map) return;
-
-    const startAnim = () => {
-      rafRef.current = requestAnimationFrame(animate);
-    };
-
-    if (map.loaded()) {
-      startAnim();
-    } else {
-      map.on('load', startAnim);
-    }
-
+    rafRef.current = requestAnimationFrame(animate);
     return () => cancelAnimationFrame(rafRef.current);
   }, [animate]);
 

@@ -48,7 +48,7 @@ const PointCloudSection = ({ property }: PointCloudSectionProps) => {
           </div>
         )}
 
-        {/* Three.js Canvas */}
+        {/* Google Maps 3D Viewer */}
         <PointCloudViewer
           property={property}
           progressRef={progressRef}
