@@ -58,19 +58,17 @@ const Navbar = () => {
         "bg-[#181818] text-white py-2 px-6 transition-all duration-300 overflow-hidden",
         isScrolled ? "h-0 opacity-0" : "h-auto opacity-100"
       )}>
-        <div className="max-w-[1400px] mx-auto flex flex-col md:flex-row justify-between items-center text-[10px] md:text-xs font-bold uppercase tracking-widest">
-          <div className="flex items-center gap-6 mb-2 md:mb-0">
+        <div className="max-w-[1400px] mx-auto flex justify-center md:justify-start items-center text-[10px] md:text-xs font-bold uppercase tracking-widest">
+          <div className="flex items-center gap-4 md:gap-6">
             <a href="tel:3522743800" className="flex items-center gap-2 hover:text-svn-orange transition-colors">
               <Phone size={12} className="text-svn-orange" />
               352.274.3800
             </a>
             <div className="flex items-center gap-2">
               <MapPin size={12} className="text-svn-orange" />
-              1825 SE 16th Ave., Ocala, FL 34471
+              <span className="hidden sm:inline">1825 SE 16th Ave., Ocala, FL 34471</span>
+              <span className="sm:hidden">Ocala, FL 34471</span>
             </div>
-          </div>
-          <div className="flex items-center gap-4">
-            <a href="https://svnmcdonald.com" target="_blank" rel="noopener noreferrer" className="hover:text-svn-orange transition-colors">Log In</a>
           </div>
         </div>
       </div>
