@@ -3,7 +3,6 @@ import * as Cesium from 'cesium';
 import 'cesium/Build/Cesium/Widgets/widgets.css';
 import type { ShowcaseProperty, MapCameraWaypoint } from '../../data/showcaseProperties';
 
-// Cesium Ion free-tier token (satellite imagery + world terrain + OSM buildings)
 Cesium.Ion.defaultAccessToken = import.meta.env.VITE_CESIUM_ION_TOKEN || '';
 
 interface PointCloudViewerProps {
@@ -39,7 +38,7 @@ function interpolateWaypoints(
   const wp1 = waypoints[i + 1];
   const segLen = wp1.progress - wp0.progress;
   const t = segLen > 0 ? (p - wp0.progress) / segLen : 0;
-  const st = t * t * (3 - 2 * t); // smoothstep
+  const st = t * t * (3 - 2 * t);
 
   return {
     lat: lerp(wp0.center.lat, wp1.center.lat, st),
@@ -56,8 +55,8 @@ const PointCloudViewer = ({ property, progressRef, onStatusChange }: PointCloudV
   const viewerRef = useRef<Cesium.Viewer | null>(null);
   const rafRef = useRef<number>(0);
   const readyRef = useRef(false);
+  const lastProgress = useRef(-1);
 
-  // Initialize Cesium viewer
   useEffect(() => {
     if (!containerRef.current) return;
 
@@ -80,29 +79,49 @@ const PointCloudViewer = ({ property, progressRef, onStatusChange }: PointCloudV
           infoBox: false,
           selectionIndicator: false,
           scene3DOnly: true,
-          requestRenderMode: false,
-          msaaSamples: 4,
+
+          // --- PERF: only render when we request it ---
+          requestRenderMode: true,
+          maximumRenderTimeChange: Infinity,
+
+          // --- PERF: no MSAA ---
+          msaaSamples: 1,
         });
 
         if (cancelled) { viewer.destroy(); return; }
 
-        // Disable all user interaction — scroll drives the camera
-        const controller = viewer.scene.screenSpaceCameraController;
-        controller.enableRotate = false;
-        controller.enableTranslate = false;
-        controller.enableZoom = false;
-        controller.enableTilt = false;
-        controller.enableLook = false;
+        // --- PERF: render at 75% resolution ---
+        viewer.resolutionScale = 0.75;
 
-        // Add OSM 3D buildings
-        try {
-          const buildings = await Cesium.createOsmBuildingsAsync();
-          if (!cancelled) viewer.scene.primitives.add(buildings);
-        } catch {
-          // Buildings are optional — continue without them
-        }
+        // --- PERF: accept coarser terrain tiles (default 2, higher = less detail) ---
+        viewer.scene.globe.maximumScreenSpaceError = 6;
 
-        // Set initial camera position
+        // --- PERF: limit tile cache so memory stays low ---
+        viewer.scene.globe.tileCacheSize = 50;
+
+        // --- PERF: fog hides distant tiles so they don't load ---
+        viewer.scene.fog.enabled = true;
+        viewer.scene.fog.density = 0.001;
+
+        // --- PERF: turn off expensive atmosphere/lighting ---
+        viewer.scene.skyAtmosphere.show = false;
+        viewer.scene.globe.enableLighting = false;
+        viewer.scene.skyBox.show = false;
+        viewer.scene.sun.show = false;
+        viewer.scene.moon.show = false;
+        viewer.scene.backgroundColor = Cesium.Color.fromCssColorString('#181818');
+
+        // --- NO OSM buildings (biggest perf killer) ---
+
+        // Disable all user interaction
+        const ctrl = viewer.scene.screenSpaceCameraController;
+        ctrl.enableRotate = false;
+        ctrl.enableTranslate = false;
+        ctrl.enableZoom = false;
+        ctrl.enableTilt = false;
+        ctrl.enableLook = false;
+
+        // Set initial camera
         const wp0 = property.waypoints[0];
         viewer.camera.lookAt(
           Cesium.Cartesian3.fromDegrees(wp0.center.lng, wp0.center.lat, wp0.center.altitude),
@@ -115,7 +134,7 @@ const PointCloudViewer = ({ property, progressRef, onStatusChange }: PointCloudV
 
         viewerRef.current = viewer;
 
-        // Report loaded once initial tiles are in
+        // Report loaded once initial tiles stream in
         const removeListener = viewer.scene.globe.tileLoadProgressEvent.addEventListener(
           (remaining: number) => {
             if (remaining === 0 && !readyRef.current) {
@@ -126,7 +145,7 @@ const PointCloudViewer = ({ property, progressRef, onStatusChange }: PointCloudV
           }
         );
 
-        // Fallback: report loaded after 5s
+        // Fallback timeout
         setTimeout(() => {
           if (!cancelled && !readyRef.current) {
             readyRef.current = true;
@@ -143,35 +162,43 @@ const PointCloudViewer = ({ property, progressRef, onStatusChange }: PointCloudV
     return () => {
       cancelled = true;
       cancelAnimationFrame(rafRef.current);
-      if (viewerRef.current) {
+      if (viewerRef.current && !viewerRef.current.isDestroyed()) {
         viewerRef.current.destroy();
-        viewerRef.current = null;
       }
+      viewerRef.current = null;
       readyRef.current = false;
+      lastProgress.current = -1;
     };
   }, [property.waypoints, onStatusChange]);
 
-  // Animation loop: sync camera to scroll progress
+  // Animation loop — only updates Cesium when scroll progress actually changes
   const animate = useCallback(() => {
     const viewer = viewerRef.current;
     if (viewer && !viewer.isDestroyed() && readyRef.current) {
       const progress = progressRef.current ?? 0;
-      const cam = interpolateWaypoints(property.waypoints, progress);
 
-      viewer.camera.lookAt(
-        Cesium.Cartesian3.fromDegrees(cam.lng, cam.lat, cam.altitude),
-        new Cesium.HeadingPitchRange(
-          Cesium.Math.toRadians(cam.heading),
-          Cesium.Math.toRadians(cam.tilt - 90), // tilt 0=down → pitch -90°, tilt 90=horizon → pitch 0°
-          cam.range
-        )
-      );
+      // Skip if progress hasn't changed (saves GPU)
+      if (Math.abs(progress - lastProgress.current) > 0.0005) {
+        lastProgress.current = progress;
+        const cam = interpolateWaypoints(property.waypoints, progress);
+
+        viewer.camera.lookAt(
+          Cesium.Cartesian3.fromDegrees(cam.lng, cam.lat, cam.altitude),
+          new Cesium.HeadingPitchRange(
+            Cesium.Math.toRadians(cam.heading),
+            Cesium.Math.toRadians(cam.tilt - 90),
+            cam.range
+          )
+        );
+
+        // Tell Cesium to render this frame
+        viewer.scene.requestRender();
+      }
     }
 
     rafRef.current = requestAnimationFrame(animate);
   }, [property.waypoints, progressRef]);
 
-  // Start animation loop
   useEffect(() => {
     rafRef.current = requestAnimationFrame(animate);
     return () => cancelAnimationFrame(rafRef.current);

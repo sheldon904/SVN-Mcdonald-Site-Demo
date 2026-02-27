@@ -21,7 +21,6 @@ export default defineConfig({
               return chunkName
             }
           }
-          // Cesium into its own chunk (lazy-loaded with showcase pages)
           if (id.includes('node_modules/cesium')) {
             return 'vendor-cesium'
           }
