@@ -27,7 +27,7 @@ function rangeToZoom(range: number): number {
 function interpolateWaypoints(
   waypoints: MapCameraWaypoint[],
   progress: number
-): { center: [number, number]; zoom: number; bearing: number } {
+): { center: [number, number]; zoom: number; pitch: number; bearing: number } {
   const p = Math.max(0, Math.min(1, progress));
 
   let i = 0;
@@ -48,6 +48,7 @@ function interpolateWaypoints(
       lerp(wp0.center.lat, wp1.center.lat, st),
     ],
     zoom: rangeToZoom(lerp(wp0.range, wp1.range, st)),
+    pitch: Math.min(85, lerp(wp0.tilt, wp1.tilt, st)),
     bearing: lerpBearing(wp0.heading, wp1.heading, st),
   };
 }
@@ -69,6 +70,7 @@ const PointCloudViewer = ({ property, progressRef, onStatusChange }: PointCloudV
       style: {
         version: 8,
         sources: {
+          // Satellite imagery — free, no API key
           satellite: {
             type: 'raster',
             tiles: [
@@ -78,23 +80,100 @@ const PointCloudViewer = ({ property, progressRef, onStatusChange }: PointCloudV
             maxzoom: 19,
             attribution: '&copy; Esri',
           },
+          // 3D terrain — AWS free elevation tiles
+          'terrain-dem': {
+            type: 'raster-dem',
+            tiles: [
+              'https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png',
+            ],
+            tileSize: 256,
+            maxzoom: 15,
+            encoding: 'terrarium',
+          },
+          // Hillshade for visual depth
+          'hillshade-source': {
+            type: 'raster-dem',
+            tiles: [
+              'https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png',
+            ],
+            tileSize: 256,
+            maxzoom: 15,
+            encoding: 'terrarium',
+          },
+          // OpenFreeMap vector tiles — free, no API key, unlimited
+          openmaptiles: {
+            type: 'vector',
+            url: 'https://tiles.openfreemap.org/planet',
+            attribution: '&copy; OpenStreetMap contributors',
+          },
+        },
+        terrain: {
+          source: 'terrain-dem',
+          exaggeration: 1.5,
         },
         layers: [
+          // Base satellite imagery
           {
             id: 'satellite-layer',
             type: 'raster',
             source: 'satellite',
             paint: {
-              'raster-saturation': 0.15,
-              'raster-contrast': 0.15,
+              'raster-saturation': 0.1,
+              'raster-contrast': 0.1,
               'raster-brightness-min': 0.05,
+            },
+          },
+          // Hillshade for terrain shadows
+          {
+            id: 'hillshade-layer',
+            type: 'hillshade',
+            source: 'hillshade-source',
+            paint: {
+              'hillshade-shadow-color': '#000000',
+              'hillshade-highlight-color': '#ffffff',
+              'hillshade-accent-color': '#4a4a4a',
+              'hillshade-exaggeration': 0.3,
+              'hillshade-illumination-direction': 315,
+            },
+          },
+          // 3D extruded buildings from OpenStreetMap
+          {
+            id: 'buildings-3d',
+            type: 'fill-extrusion',
+            source: 'openmaptiles',
+            'source-layer': 'building',
+            minzoom: 14,
+            paint: {
+              'fill-extrusion-color': [
+                'interpolate', ['linear'], ['zoom'],
+                14, '#c4b9a8',
+                16, '#d4c9b8',
+              ],
+              'fill-extrusion-height': [
+                'case',
+                ['has', 'render_height'], ['get', 'render_height'],
+                // Default heights based on likely building type
+                10,
+              ],
+              'fill-extrusion-base': [
+                'case',
+                ['has', 'render_min_height'], ['get', 'render_min_height'],
+                0,
+              ],
+              'fill-extrusion-opacity': [
+                'interpolate', ['linear'], ['zoom'],
+                14, 0.4,
+                16, 0.7,
+                18, 0.85,
+              ],
             },
           },
         ],
       },
       center: [wp0.center.lng, wp0.center.lat],
       zoom: rangeToZoom(wp0.range),
-      pitch: 0,
+      maxPitch: 85,
+      pitch: Math.min(85, wp0.tilt),
       bearing: wp0.heading,
       interactive: false,
       fadeDuration: 0,
@@ -124,6 +203,7 @@ const PointCloudViewer = ({ property, progressRef, onStatusChange }: PointCloudV
     map.jumpTo({
       center: cam.center,
       zoom: cam.zoom,
+      pitch: cam.pitch,
       bearing: cam.bearing,
     });
 

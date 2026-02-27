@@ -14,7 +14,15 @@
       "WebFetch(domain:portal.opentopography.org)",
       "WebFetch(domain:www.npmjs.com)",
       "WebFetch(domain:s3-us-west-2.amazonaws.com)",
-      "Bash(npm uninstall:*)"
+      "Bash(npm uninstall:*)",
+      "WebFetch(domain:deck.gl)",
+      "WebFetch(domain:maplibre.org)",
+      "WebFetch(domain:www.maptiler.com)",
+      "WebFetch(domain:www.openstreetmap.org)",
+      "WebFetch(domain:api.openstreetmap.org)",
+      "WebFetch(domain:overpass-api.de)",
+      "WebFetch(domain:bundlephobia.com)",
+      "WebFetch(domain:docs.protomaps.com)"
     ]
   }
 }
