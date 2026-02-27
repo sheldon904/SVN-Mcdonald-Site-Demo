@@ -58,12 +58,15 @@ function createGradientImage(): string {
 
   const cx = size / 2;
   const gradient = ctx.createRadialGradient(cx, cx, 0, cx, cx, cx);
-  // Strong orange ombre: solid center → transparent edge
-  gradient.addColorStop(0, 'rgba(236, 108, 38, 0.6)');
-  gradient.addColorStop(0.15, 'rgba(236, 108, 38, 0.50)');
-  gradient.addColorStop(0.333, 'rgba(236, 108, 38, 0.35)'); // 6mi boundary
-  gradient.addColorStop(0.5, 'rgba(236, 108, 38, 0.20)');   // 9mi boundary
-  gradient.addColorStop(0.75, 'rgba(236, 108, 38, 0.08)');
+  // Bold orange ombre: hot center → transparent edge
+  gradient.addColorStop(0, 'rgba(236, 108, 38, 0.80)');
+  gradient.addColorStop(0.10, 'rgba(236, 108, 38, 0.70)');
+  gradient.addColorStop(0.30, 'rgba(236, 108, 38, 0.50)');  // approaching 6mi
+  gradient.addColorStop(0.333, 'rgba(236, 108, 38, 0.45)'); // 6mi boundary
+  gradient.addColorStop(0.40, 'rgba(236, 108, 38, 0.35)');
+  gradient.addColorStop(0.50, 'rgba(236, 108, 38, 0.25)');  // 9mi boundary
+  gradient.addColorStop(0.65, 'rgba(236, 108, 38, 0.14)');
+  gradient.addColorStop(0.85, 'rgba(236, 108, 38, 0.06)');
   gradient.addColorStop(1, 'rgba(236, 108, 38, 0)');         // 18mi edge
 
   // Draw as circle (not square) so edges are round
@@ -71,6 +74,19 @@ function createGradientImage(): string {
   ctx.beginPath();
   ctx.arc(cx, cx, cx, 0, Math.PI * 2);
   ctx.fill();
+
+  // Draw concentric ring strokes at band boundaries to reinforce the zones
+  const bandRatios = [6 / 18, 9 / 18, 18 / 18]; // 0.333, 0.5, 1.0
+  const ringAlphas = [0.9, 0.6, 0.35];
+  const ringWidths = [3, 2.5, 2];
+  for (let i = 0; i < bandRatios.length; i++) {
+    const r = bandRatios[i] * cx;
+    ctx.beginPath();
+    ctx.arc(cx, cx, r, 0, Math.PI * 2);
+    ctx.strokeStyle = `rgba(236, 108, 38, ${ringAlphas[i]})`;
+    ctx.lineWidth = ringWidths[i];
+    ctx.stroke();
+  }
 
   return canvas.toDataURL();
 }
@@ -224,7 +240,7 @@ const WecEffectMapViewer = ({ progressRef, onStatusChange }: WecEffectMapViewerP
       type: 'raster',
       source: 'wec-gradient',
       paint: {
-        'raster-opacity': 0.9,
+        'raster-opacity': 1,
         'raster-fade-duration': 0,
       },
     });
@@ -234,9 +250,9 @@ const WecEffectMapViewer = ({ progressRef, onStatusChange }: WecEffectMapViewerP
 
   const addBandBoundaryLines = useCallback((map: maplibregl.Map) => {
     const bands = [
-      { radius: 6, width: 2.5, opacity: 0.9, dash: [1] as number[] },
-      { radius: 9, width: 2, opacity: 0.6, dash: [4, 2] },
-      { radius: 18, width: 1.5, opacity: 0.35, dash: [6, 3] },
+      { radius: 6, width: 3, opacity: 1, dash: [1] as number[] },
+      { radius: 9, width: 2.5, opacity: 0.8, dash: [1] as number[] },
+      { radius: 18, width: 2, opacity: 0.5, dash: [1] as number[] },
     ];
 
     for (let i = 0; i < bands.length; i++) {
