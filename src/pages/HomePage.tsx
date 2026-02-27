@@ -27,7 +27,7 @@ const HomePage = () => {
         <Hero />
         <Stats />
         {/* WEC Effect CTA Section */}
-        <section className="py-20 bg-svn-dark overflow-hidden relative">
+        <section className="py-14 md:py-20 bg-svn-dark overflow-hidden relative">
           <div className="absolute top-0 right-0 w-1/2 h-full hidden lg:block">
             <img
               src="https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?ixlib=rb-4.0.3&auto=format&fit=crop&w=2670&q=80"
@@ -50,7 +50,7 @@ const HomePage = () => {
               <p className="text-gray-400 text-lg font-medium leading-relaxed mb-10">
                 Discover how the World Equestrian Center has transformed Ocala's real estate landscape and driven land values to unprecedented heights.
               </p>
-              <Link to="/wec-effect" className="inline-flex items-center gap-4 bg-svn-orange text-white px-10 py-5 rounded-full font-black uppercase tracking-widest hover:bg-white hover:text-svn-orange transition-all duration-300 shadow-xl">
+              <Link to="/wec-effect" className="inline-flex items-center gap-3 md:gap-4 bg-svn-orange text-white px-7 py-4 md:px-10 md:py-5 rounded-full font-black uppercase tracking-widest text-xs md:text-sm hover:bg-white hover:text-svn-orange transition-all duration-300 shadow-xl">
                 Read the Report <ArrowRight size={20} />
               </Link>
             </div>

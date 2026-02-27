@@ -17,12 +17,12 @@ interface FeaturedDealsProps {
 
 const FeaturedDeals = ({ showHeading = true }: FeaturedDealsProps) => {
   return (
-    <section className="py-24 bg-svn-dark px-6 overflow-hidden">
+    <section className="py-14 md:py-24 bg-svn-dark px-4 md:px-6 overflow-hidden">
       <div className="max-w-[1280px] mx-auto">
         {showHeading && (
-          <div className="mb-16 text-center">
-            <div className="w-20 h-1.5 bg-svn-orange mx-auto mb-6" />
-            <h2 className="text-4xl md:text-5xl font-black text-white uppercase tracking-tight mb-4">
+          <div className="mb-10 md:mb-16 text-center">
+            <div className="w-16 md:w-20 h-1.5 bg-svn-orange mx-auto mb-5 md:mb-6" />
+            <h2 className="text-3xl md:text-5xl font-black text-white uppercase tracking-tight mb-3 md:mb-4">
               Featured <span className="text-svn-orange">Deals</span>
             </h2>
             <p className="text-gray-400 text-lg font-medium max-w-2xl mx-auto">
@@ -31,7 +31,7 @@ const FeaturedDeals = ({ showHeading = true }: FeaturedDealsProps) => {
           </div>
         )}
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 md:gap-6">
           {SHOWCASE_SLUGS.map((slug, index) => {
             const property = showcaseProperties[slug];
             const Icon = iconMap[slug] || TreePine;
@@ -46,7 +46,7 @@ const FeaturedDeals = ({ showHeading = true }: FeaturedDealsProps) => {
               >
                 <Link
                   to={`/closed-deals/${slug}`}
-                  className="group block relative h-[520px] rounded-2xl overflow-hidden shadow-2xl"
+                  className="group block relative h-[360px] md:h-[520px] rounded-xl md:rounded-2xl overflow-hidden shadow-2xl"
                 >
                   {/* Background image */}
                   <img
@@ -77,10 +77,10 @@ const FeaturedDeals = ({ showHeading = true }: FeaturedDealsProps) => {
                   </div>
 
                   {/* Content */}
-                  <div className="absolute inset-0 p-7 flex flex-col justify-end z-10">
-                    <Icon size={32} className="text-svn-orange mb-4" strokeWidth={1.5} />
+                  <div className="absolute inset-0 p-5 md:p-7 flex flex-col justify-end z-10">
+                    <Icon size={28} className="text-svn-orange mb-3 md:mb-4 md:w-8 md:h-8" strokeWidth={1.5} />
 
-                    <h3 className="text-2xl md:text-3xl font-black text-white uppercase tracking-tight mb-2 leading-tight">
+                    <h3 className="text-xl md:text-3xl font-black text-white uppercase tracking-tight mb-1.5 md:mb-2 leading-tight">
                       {property.title}
                     </h3>
 
@@ -88,8 +88,8 @@ const FeaturedDeals = ({ showHeading = true }: FeaturedDealsProps) => {
                       {property.location}
                     </p>
 
-                    <div className="flex items-baseline gap-2 mb-4">
-                      <span className="text-svn-orange font-black text-xl">
+                    <div className="flex items-baseline gap-2 mb-3 md:mb-4">
+                      <span className="text-svn-orange font-black text-lg md:text-xl">
                         {property.price}
                       </span>
                       <span className="text-white/40 text-xs font-bold uppercase tracking-widest">
@@ -97,7 +97,7 @@ const FeaturedDeals = ({ showHeading = true }: FeaturedDealsProps) => {
                       </span>
                     </div>
 
-                    <p className="text-white/50 text-sm font-medium leading-relaxed mb-6 line-clamp-2">
+                    <p className="text-white/50 text-xs md:text-sm font-medium leading-relaxed mb-4 md:mb-6 line-clamp-2">
                       {property.subtitle}
                     </p>
 

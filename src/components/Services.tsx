@@ -44,16 +44,16 @@ const subServiceRoutes: Record<string, string> = {
 
 const Services = () => {
   return (
-    <section className="py-24 bg-[#F6F6F6] px-6">
+    <section className="py-14 md:py-24 bg-[#F6F6F6] px-4 md:px-6">
       <div className="max-w-[1280px] mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-10 mb-12 md:mb-20">
           {mainServices.map((service, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="relative h-[500px] rounded-[30px] overflow-hidden group cursor-pointer shadow-2xl"
+              className="relative h-[340px] md:h-[500px] rounded-xl md:rounded-[30px] overflow-hidden group cursor-pointer shadow-2xl"
             >
               <Link to={service.href}>
                 <img
@@ -67,15 +67,15 @@ const Services = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
                 
-                <div className="absolute inset-0 p-12 flex flex-col justify-end">
-                  <service.Icon size={48} className="text-white mb-6" strokeWidth={1.5} />
-                  <h3 className="text-4xl font-black text-white uppercase mb-2 tracking-tight">
+                <div className="absolute inset-0 p-6 md:p-12 flex flex-col justify-end">
+                  <service.Icon size={36} className="text-white mb-4 md:mb-6 md:w-12 md:h-12" strokeWidth={1.5} />
+                  <h3 className="text-2xl md:text-4xl font-black text-white uppercase mb-2 tracking-tight">
                     {service.title}
                   </h3>
                   <p className="text-svn-orange font-bold uppercase tracking-widest text-sm mb-4">
                     {service.subtitle}
                   </p>
-                  <p className="text-white/70 max-w-sm mb-8 font-medium">
+                  <p className="text-white/70 max-w-sm mb-5 md:mb-8 font-medium text-sm md:text-base">
                     {service.description}
                   </p>
                   <div className="flex items-center gap-3 text-white font-black uppercase tracking-[0.2em] text-sm group/btn">
@@ -90,7 +90,7 @@ const Services = () => {
           ))}
         </div>
 
-        <div className="bg-white rounded-[40px] p-12 shadow-xl border border-gray-100">
+        <div className="bg-white rounded-2xl md:rounded-[40px] p-6 md:p-12 shadow-xl border border-gray-100">
           <div className="flex flex-col md:flex-row justify-between items-center gap-10">
             <div className="max-w-md">
               <h4 className="text-2xl font-black text-svn-dark uppercase mb-4">Specialized Services</h4>
