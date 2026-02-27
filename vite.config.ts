@@ -1,17 +1,17 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import cesium from 'vite-plugin-cesium'
 
 const vendorChunks: Record<string, string[]> = {
   'vendor-react': ['react', 'react-dom', 'react-router-dom'],
   'vendor-motion': ['framer-motion'],
   'vendor-ui': ['lucide-react', 'clsx', 'tailwind-merge'],
-  'vendor-maplibre': ['maplibre-gl'],
   'vendor-gsap': ['gsap'],
 }
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), cesium()],
   build: {
     rollupOptions: {
       output: {
@@ -21,16 +21,17 @@ export default defineConfig({
               return chunkName
             }
           }
+          // Cesium into its own chunk (lazy-loaded with showcase pages)
+          if (id.includes('node_modules/cesium')) {
+            return 'vendor-cesium'
+          }
         },
       }
     },
     cssCodeSplit: true,
     sourcemap: false,
-    // Reduce chunk size warnings
-    chunkSizeWarningLimit: 1100,
-    // Minification target — modern browsers only (smaller output)
+    chunkSizeWarningLimit: 4500,
     target: 'es2020',
-    // Enable CSS minification
     cssMinify: true,
   },
 })
