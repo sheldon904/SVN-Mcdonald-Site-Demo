@@ -36,7 +36,7 @@ const AccessibilityPage = () => {
           <ul className="list-disc pl-6 space-y-2">
             <li>Phone: 352.274.3800</li>
             <li>E-mail: info@svnmcdonald.com</li>
-            <li>Visitor Address: 1825 SE 16th Ave., Ocala, FL 34471</li>
+            <li>Visitor Address: 217 SE First AVE Unit 200, Ocala, FL 34471</li>
           </ul>
 
           <h3 className="text-svn-dark font-bold mt-8 mb-4">Assessment Approach</h3>

@@ -6,7 +6,6 @@ import StructuredData from '../components/StructuredData'
 import Hero from '../components/Hero'
 import Stats from '../components/Stats'
 import Services from '../components/Services'
-import Listings from '../components/Listings'
 import Testimonials from '../components/Testimonials'
 import Partners from '../components/Partners'
 import Blog from '../components/Blog'
@@ -25,7 +24,7 @@ const HomePage = () => {
       <StructuredData />
       <main>
         <Hero />
-        <Listings />
+        <Stats />
         {/* WEC Effect CTA Section */}
         <section className="py-20 bg-svn-dark overflow-hidden relative">
           <div className="absolute top-0 right-0 w-1/2 h-full hidden lg:block">
@@ -57,7 +56,6 @@ const HomePage = () => {
           </div>
         </section>
         <Services />
-        <Stats />
         <Testimonials />
         <ContactForm />
         <Partners />
