@@ -69,8 +69,8 @@ export const showcaseProperties: Record<ShowcaseSlug, ShowcaseProperty> = {
     location: 'Ocala, FL',
     price: '$9,500,000',
     priceLabel: 'Sale Price',
-    heroImage: 'https://svnmcdonald.com/wp-content/uploads/2023/06/20190617_104559-1024x576-2.webp',
-    aerialFallbackImage: 'https://svnmcdonald.com/wp-content/uploads/2023/06/20190617_104559-1024x576-2.webp',
+    heroImage: '/images/properties/jumbolair.webp',
+    aerialFallbackImage: '/images/properties/jumbolair.webp',
     type: 'Residential Airpark',
     status: 'SOLD',
 
@@ -122,7 +122,7 @@ export const showcaseProperties: Record<ShowcaseSlug, ShowcaseProperty> = {
         'I-75 Interchange — 10 miles',
         'Gainesville Regional Airport — 35 miles',
       ],
-      satelliteImage: 'https://svnmcdonald.com/wp-content/uploads/2023/06/20190617_104559-1024x576-2.webp',
+      satelliteImage: '/images/properties/jumbolair.webp',
     },
 
     seoTitle: '550 Acre Jumbolair — $9.5M Airpark | SVN McDonald',

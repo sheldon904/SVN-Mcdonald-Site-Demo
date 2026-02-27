@@ -8,7 +8,7 @@ const mainServices: { title: string; subtitle: string; description: string; imag
     title: "SVN Land",
     subtitle: "Central Florida's Land Experts",
     description: "Specializing in agricultural, development, and conservation land throughout the Sunshine State.",
-    image: "https://svnmcdonald.com/wp-content/uploads/2024/10/Hwy-484-Ocala-1920x1073.jpg",
+    image: "/images/hero/hwy-484-ocala-1920.jpg",
     Icon: TreePine,
     href: "/land-properties"
   },
@@ -16,7 +16,7 @@ const mainServices: { title: string; subtitle: string; description: string; imag
     title: "SVN Commercial",
     subtitle: "Premier Commercial Brokerage",
     description: "Full-service commercial real estate solutions for retail, office, industrial, and investment properties.",
-    image: "https://svnmcdonald.com/wp-content/uploads/2024/06/TrafficBlog-.jpg",
+    image: "/images/hero/traffic-blog.jpg",
     Icon: Building2,
     href: "/commercial-properties"
   }

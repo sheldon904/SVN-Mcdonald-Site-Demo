@@ -12,91 +12,91 @@ const MarketReportsPage = () => {
       title: "January 2026 Market Report",
       description: "Latest economic updates and commercial real estate market performance for January 2026.",
       date: "Jan 2026",
-      image: "https://svnmcdonald.com/wp-content/uploads/2023/06/economic-updates.webp",
-      pdfUrl: "https://svnmcdonald.com/wp-content/uploads/2026/01/Economic-Update_12.30.25.pdf"
+      image: "/images/reports/economic-updates.webp",
+      pdfUrl: "/images/pdfs/Economic-Update_12.30.25.pdf"
     },
     {
       title: "December 2025 Market Report",
       description: "Year-end review and comprehensive analysis of the Central Florida market for December 2025.",
       date: "Dec 2025",
-      image: "https://svnmcdonald.com/wp-content/uploads/2023/06/economic-updates.webp",
-      pdfUrl: "https://svnmcdonald.com/wp-content/uploads/2025/12/Economic-Update_11.26.25.pdf"
+      image: "/images/reports/economic-updates.webp",
+      pdfUrl: "/images/pdfs/Economic-Update_11.26.25.pdf"
     },
     {
       title: "November 2025 Market Report",
       description: "Monthly economic indicators and market trends analysis for November 2025.",
       date: "Nov 2025",
-      image: "https://svnmcdonald.com/wp-content/uploads/2023/06/economic-updates.webp",
-      pdfUrl: "https://svnmcdonald.com/wp-content/uploads/2025/11/Economic-Update_10.30.25.pdf"
+      image: "/images/reports/economic-updates.webp",
+      pdfUrl: "/images/pdfs/Economic-Update_10.30.25.pdf"
     },
     {
       title: "October 2025 Market Report",
       description: "Detailed breakdown of transaction volume and sector performance for October 2025.",
       date: "Oct 2025",
-      image: "https://svnmcdonald.com/wp-content/uploads/2023/06/economic-updates.webp",
-      pdfUrl: "https://svnmcdonald.com/wp-content/uploads/2025/10/Economic-Update_10.16.25.pdf"
+      image: "/images/reports/economic-updates.webp",
+      pdfUrl: "/images/pdfs/Economic-Update_10.16.25.pdf"
     },
     {
       title: "September 2025 Market Report",
       description: "Analyzing the shifting landscape of Ocala real estate for September 2025.",
       date: "Sep 2025",
-      image: "https://svnmcdonald.com/wp-content/uploads/2023/06/economic-updates.webp",
-      pdfUrl: "https://svnmcdonald.com/wp-content/uploads/2025/09/Economic-Update_9.11.25.pdf"
+      image: "/images/reports/economic-updates.webp",
+      pdfUrl: "/images/pdfs/Economic-Update_9.11.25.pdf"
     },
     {
       title: "August 2025 Market Report",
       description: "Summer market overview and economic impact study for August 2025.",
       date: "Aug 2025",
-      image: "https://svnmcdonald.com/wp-content/uploads/2023/06/economic-updates.webp",
-      pdfUrl: "https://svnmcdonald.com/wp-content/uploads/2025/08/Economic-Update_8.14.25.pdf"
+      image: "/images/reports/economic-updates.webp",
+      pdfUrl: "/images/pdfs/Economic-Update_8.14.25.pdf"
     },
     {
       title: "July 2025 Market Report",
       description: "Mid-year market analysis for Central Florida commercial real estate.",
       date: "Jul 2025",
-      image: "https://svnmcdonald.com/wp-content/uploads/2023/06/economic-updates.webp",
-      pdfUrl: "https://svnmcdonald.com/wp-content/uploads/2025/07/Economic-Update_7.24.25-1.pdf"
+      image: "/images/reports/economic-updates.webp",
+      pdfUrl: "/images/pdfs/Economic-Update_7.24.25.pdf"
     },
     {
       title: "May 2025 Market Report",
       description: "Spring market trends and economic indicators for May 2025.",
       date: "May 2025",
-      image: "https://svnmcdonald.com/wp-content/uploads/2023/06/economic-updates.webp",
-      pdfUrl: "https://svnmcdonald.com/wp-content/uploads/2025/05/Economic-Update_5.15.25.pdf"
+      image: "/images/reports/economic-updates.webp",
+      pdfUrl: "/images/pdfs/Economic-Update_5.15.25.pdf"
     },
     {
       title: "February 2025 Market Report",
       description: "Q1 market conditions and commercial real estate outlook for February 2025.",
       date: "Feb 2025",
-      image: "https://svnmcdonald.com/wp-content/uploads/2023/06/economic-updates.webp",
-      pdfUrl: "https://svnmcdonald.com/wp-content/uploads/2025/02/Economic-Update_2.13.25.pdf"
+      image: "/images/reports/economic-updates.webp",
+      pdfUrl: "/images/pdfs/Economic-Update_2.13.25.pdf"
     },
     {
       title: "July 2024 Market Report",
       description: "Mid-year review of commercial real estate activity for July 2024.",
       date: "Jul 2024",
-      image: "https://svnmcdonald.com/wp-content/uploads/2023/06/economic-updates.webp",
+      image: "/images/reports/economic-updates.webp",
       pdfUrl: "https://341133.fs1.hubspotusercontent-na1.net/hubfs/341133/Economic%20Update_7.12.24.pdf"
     },
     {
       title: "April 2023 Market Report",
       description: "Spring commercial real estate market analysis for April 2023.",
       date: "Apr 2023",
-      image: "https://svnmcdonald.com/wp-content/uploads/2023/06/economic-updates.webp",
+      image: "/images/reports/economic-updates.webp",
       pdfUrl: "https://341133.fs1.hubspotusercontent-na1.net/hubfs/341133/Economic%20Update_4.14.23-1.pdf"
     },
     {
       title: "December 2022 Market Report",
       description: "Year-end commercial real estate market review for December 2022.",
       date: "Dec 2022",
-      image: "https://svnmcdonald.com/wp-content/uploads/2023/06/economic-updates.webp",
+      image: "/images/reports/economic-updates.webp",
       pdfUrl: "https://341133.fs1.hubspotusercontent-na1.net/hubfs/341133/Economic%20Update_12.30.22.pdf"
     },
     {
       title: "The WEC Effect Report",
       description: "Analyzing the transformative impact of the World Equestrian Center on Ocala land values.",
       date: "Special",
-      image: "https://svnmcdonald.com/wp-content/uploads/2023/06/economic-updates.webp",
+      image: "/images/reports/economic-updates.webp",
       link: "/wec-effect"
     }
   ];

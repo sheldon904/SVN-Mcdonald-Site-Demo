@@ -84,7 +84,7 @@ const Navbar = () => {
           <div className="flex-shrink-0">
             <Link to="/">
               <img
-                src="https://svnmcdonald.com/wp-content/uploads/2023/05/White-Orange-DBA_Logo_McDonald-Company-768x374-1.png"
+                src="/images/logos/svn-logo.png"
                 alt="SVN McDonald &amp; Company - Commercial Real Estate Brokerage"
                 className={cn(
                   "h-14 md:h-20 w-auto transition-all duration-300",
@@ -160,7 +160,7 @@ const Navbar = () => {
           <div className="flex justify-between items-center mb-10">
             <Link to="/" onClick={() => setIsOpen(false)}>
               <img
-                src="https://svnmcdonald.com/wp-content/uploads/2023/05/White-Orange-DBA_Logo_McDonald-Company-768x374-1.png"
+                src="/images/logos/svn-logo.png"
                 alt="SVN McDonald &amp; Company - Commercial Real Estate Brokerage"
                 className="h-12 w-auto brightness-0"
                 loading="lazy"

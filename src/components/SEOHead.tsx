@@ -10,7 +10,7 @@ interface SEOHeadProps {
 }
 
 const DEFAULT_OG_IMAGE =
-  'https://svnmcdonald.com/wp-content/uploads/2023/05/White-Orange-DBA_Logo_McDonald-Company-768x374-1.png';
+  '/images/logos/svn-logo.png';
 const SITE_NAME = 'SVN McDonald & Company';
 const BASE_URL = 'https://svnmcdonald.com';
 

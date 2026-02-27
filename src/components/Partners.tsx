@@ -1,8 +1,8 @@
 const partners: { name: string; logo: string; invert?: boolean }[] = [
-  { name: 'HFF', logo: 'https://svnmcdonald.com/wp-content/uploads/2025/07/HFF-Logo-All-White_withregistration-300x97.png', invert: true },
-  { name: 'Ocala Metro', logo: 'https://svnmcdonald.com/wp-content/uploads/2023/06/ocala_metro.png' },
-  { name: 'Stellar MLS', logo: 'https://svnmcdonald.com/wp-content/uploads/2023/05/stellar-mls.png' },
-  { name: 'Realtor', logo: 'https://svnmcdonald.com/wp-content/uploads/2023/05/Realtor-logo.png' },
+  { name: 'HFF', logo: '/images/partners/hff-logo.png', invert: true },
+  { name: 'Ocala Metro', logo: '/images/partners/ocala-metro.png' },
+  { name: 'Stellar MLS', logo: '/images/partners/stellar-mls.png' },
+  { name: 'Realtor', logo: '/images/partners/realtor-logo.png' },
 ];
 
 const Partners = () => {

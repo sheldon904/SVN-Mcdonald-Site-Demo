@@ -10,7 +10,7 @@ const Hero = () => {
         {/* Full-screen hero with headline */}
         <div className="relative min-h-[70vh] flex flex-col items-center justify-center px-6">
           <img
-            src="https://svnmcdonald.com/wp-content/uploads/2024/10/Hwy-484-Ocala-768x429.jpg"
+            src="/images/hero/hwy-484-ocala-768.jpg"
             alt="Central Florida Real Estate"
             className="absolute inset-0 w-full h-full object-cover opacity-40"
             fetchPriority="high"
@@ -114,10 +114,10 @@ const Hero = () => {
             className="relative flex-1 group cursor-pointer overflow-hidden"
           >
             <img
-              src="https://svnmcdonald.com/wp-content/uploads/2024/10/Hwy-484-Ocala-1920x1073.jpg"
+              src="/images/hero/hwy-484-ocala-1920.jpg"
               srcSet="
-                https://svnmcdonald.com/wp-content/uploads/2024/10/Hwy-484-Ocala-768x429.jpg 768w,
-                https://svnmcdonald.com/wp-content/uploads/2024/10/Hwy-484-Ocala-1920x1073.jpg 1920w
+                /images/hero/hwy-484-ocala-768.jpg 768w,
+                /images/hero/hwy-484-ocala-1920.jpg 1920w
               "
               sizes="50vw"
               alt="Central Florida Land Properties"
@@ -157,7 +157,7 @@ const Hero = () => {
             className="relative flex-1 group cursor-pointer overflow-hidden"
           >
             <img
-              src="https://svnmcdonald.com/wp-content/uploads/2024/06/TrafficBlog-.jpg"
+              src="/images/hero/traffic-blog.jpg"
               alt="Central Florida Commercial Properties"
               className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-70 group-hover:scale-105 transition-all duration-700"
               loading="eager"

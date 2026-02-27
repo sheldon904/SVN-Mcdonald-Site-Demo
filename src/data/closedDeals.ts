@@ -9,7 +9,7 @@ export interface ClosedDeal {
   description: string;
 }
 
-export const FALLBACK_IMAGE = "https://svnmcdonald.com/wp-content/uploads/2024/10/Hwy-484-Ocala-1920x1073.jpg";
+export const FALLBACK_IMAGE = "/images/hero/hwy-484-ocala-1920.jpg";
 
 export const closedDeals: ClosedDeal[] = [
   {
@@ -18,7 +18,7 @@ export const closedDeals: ClosedDeal[] = [
     location: "Marion Oaks, FL",
     price: "Sold",
     date: "Feb 2026",
-    image: "https://svnmcdonald.com/wp-content/uploads/2025/09/17.59.webp",
+    image: "/images/properties/17-59.webp",
     type: "Land",
     description: "SVN McDonald & Company successfully represented the sale of 17.59 +/- commercial acres in Marion Oaks, one of Marion County's fastest-growing communities. This prime commercial land tract offers excellent development potential with strong surrounding residential growth."
   },
@@ -48,7 +48,7 @@ export const closedDeals: ClosedDeal[] = [
     location: "Ocala, FL",
     price: "$9,500,000",
     date: "Sep 2025",
-    image: "https://svnmcdonald.com/wp-content/uploads/2023/06/20190617_104559-1024x576-2.webp",
+    image: "/images/properties/jumbolair.webp",
     type: "Residential",
     description: "$9,500,000. Bring your Boeing! A mile of road can take you to a few places, but a mile of runway can take you anywhere in the world. Jumbolair is a world-class residential airpark community featuring a 7,550-foot runway, one of the longest private runways in the United States. This extraordinary 550-acre property includes luxury homes, hangars, and unmatched aviation amenities."
   },
@@ -58,7 +58,7 @@ export const closedDeals: ClosedDeal[] = [
     location: "Ocala, FL",
     price: "$7,000,000+",
     date: "Sep 2025",
-    image: "https://svnmcdonald.com/wp-content/uploads/2025/09/AuroraOaks.webp",
+    image: "/images/properties/aurora-oaks.webp",
     type: "Land",
     description: "SVN McDonald & Company represented the sale of 41.22 residential development acres in Ocala, FL for over $7 million. The Aurora Oak property represents a premier residential development opportunity in one of Ocala's most desirable growth corridors."
   },
@@ -68,7 +68,7 @@ export const closedDeals: ClosedDeal[] = [
     location: "Ocala, FL",
     price: "$5,700,000",
     date: "2024",
-    image: "https://svnmcdonald.com/wp-content/uploads/2025/09/39.webp",
+    image: "/images/properties/39-acres.webp",
     type: "Land",
     description: "39 acres of prime mixed-use land located at the high-traffic intersection of I-75 and Highway 484 in Ocala. This strategic location offers exceptional visibility and access, making it ideal for commercial, retail, or mixed-use development."
   },
@@ -78,7 +78,7 @@ export const closedDeals: ClosedDeal[] = [
     location: "Jacksonville, FL",
     price: "7.00 CAP",
     date: "2024",
-    image: "https://svnmcdonald.com/wp-content/uploads/2025/09/JL-1.webp",
+    image: "/images/properties/jl-1.webp",
     type: "Retail",
     description: "SVN McDonald & Company facilitated the sale of this NNN Jiffy Lube investment property at a 7.00 CAP rate. This single-tenant net lease retail property provides stable, long-term income with a nationally recognized tenant."
   },
@@ -88,7 +88,7 @@ export const closedDeals: ClosedDeal[] = [
     location: "Ocala, FL",
     price: "8.16 CAP",
     date: "2024",
-    image: "https://svnmcdonald.com/wp-content/uploads/2025/09/TG-lee.webp",
+    image: "/images/properties/tg-lee.webp",
     type: "Industrial",
     description: "NNN industrial investment property sold at an 8.16 CAP rate in Ocala, FL. This triple-net leased industrial building offers investors reliable income with minimal landlord responsibilities."
   },
@@ -98,7 +98,7 @@ export const closedDeals: ClosedDeal[] = [
     location: "Levy County, FL",
     price: "Sold",
     date: "2024",
-    image: "https://svnmcdonald.com/wp-content/uploads/2025/09/275.webp",
+    image: "/images/properties/275.webp",
     type: "Land",
     description: "276+/- acres of natural Florida land in Dunnellon, Levy County. This expansive property offers diverse terrain and potential for agricultural, recreational, or conservation use."
   },
@@ -108,7 +108,7 @@ export const closedDeals: ClosedDeal[] = [
     location: "Ocala, FL",
     price: "Sold",
     date: "2024",
-    image: "https://svnmcdonald.com/wp-content/uploads/2025/09/Milan.webp",
+    image: "/images/properties/milan.webp",
     type: "Industrial",
     description: "4,000 square foot warehouse property in Ocala, FL. This well-maintained industrial space served the owner's business needs and was sold to accommodate new growth in the local market."
   },
@@ -118,7 +118,7 @@ export const closedDeals: ClosedDeal[] = [
     location: "Summerfield, FL",
     price: "Sold",
     date: "2024",
-    image: "https://svnmcdonald.com/wp-content/uploads/2025/09/Summerfield-1920x1280.webp",
+    image: "/images/properties/summerfield.webp",
     type: "Industrial",
     description: "6,600 square foot warehouse facility in Summerfield, FL. Located in the southern portion of Marion County, this industrial property benefits from proximity to The Villages and growing demand for warehouse space."
   },
@@ -128,7 +128,7 @@ export const closedDeals: ClosedDeal[] = [
     location: "Marion County, FL",
     price: "Sold",
     date: "2023",
-    image: "https://svnmcdonald.com/wp-content/uploads/2025/09/35-Acres-1-1920x1371.webp",
+    image: "/images/properties/35-acres.webp",
     type: "Land",
     description: "35.28 +/- acres of residential land in Marion County. When the day breaks and the light pours in through the live oaks, you know you're somewhere special. This picturesque property offers a rare opportunity for residential development in one of Florida's most sought-after counties."
   },
@@ -138,7 +138,7 @@ export const closedDeals: ClosedDeal[] = [
     location: "Ocala, FL",
     price: "Sold",
     date: "2023",
-    image: "https://svnmcdonald.com/wp-content/uploads/2025/09/Moxon-1920x1080.webp",
+    image: "/images/properties/moxon.webp",
     type: "Industrial",
     description: "55,000 square feet of covered storage on heavy industrial land in Ocala, FL. This substantial industrial property offers extensive covered storage capacity ideal for manufacturing, distribution, or heavy equipment operations."
   },
@@ -148,7 +148,7 @@ export const closedDeals: ClosedDeal[] = [
     location: "Ocala, FL",
     price: "Sold",
     date: "2023",
-    image: "https://svnmcdonald.com/wp-content/uploads/2026/02/Group-24.webp",
+    image: "/images/properties/group-24.webp",
     type: "Office",
     description: "Professional office building in the heart of downtown Ocala. This well-positioned property offers excellent visibility and walkability in Ocala's revitalized downtown district."
   },
@@ -158,7 +158,7 @@ export const closedDeals: ClosedDeal[] = [
     location: "Ocala, FL",
     price: "$3,100,000",
     date: "Archive",
-    image: "https://svnmcdonald.com/wp-content/uploads/2023/06/2014-07-31-22.21.11-1024x576-1.webp",
+    image: "/images/properties/2014-ranch.webp",
     type: "Industrial",
     description: "90,000 square foot industrial facility sold for $3,100,000 in Ocala, FL. This major industrial property represents one of the significant warehouse transactions in the local market."
   },
@@ -168,7 +168,7 @@ export const closedDeals: ClosedDeal[] = [
     location: "Ocala, FL",
     price: "$2,200,000",
     date: "Archive",
-    image: "https://svnmcdonald.com/wp-content/uploads/2023/06/Screen-Shot-2021-05-18-at-11.20.51-AM.webp",
+    image: "/images/properties/screen-shot-1120.webp",
     type: "Retail",
     description: "Multi-tenant shopping center sold for $2,200,000 in Ocala, FL. Located in a high-traffic retail corridor with strong tenant mix and consistent occupancy."
   },
@@ -178,7 +178,7 @@ export const closedDeals: ClosedDeal[] = [
     location: "Marion County, FL",
     price: "$1,086,300",
     date: "Archive",
-    image: "https://svnmcdonald.com/wp-content/uploads/2023/05/20190917_112106-1.webp",
+    image: "/images/properties/20190917-112106.webp",
     type: "Land",
     description: "153 acres of land in Marion County sold for $1,086,300. This significant land tract offers diverse potential uses including agriculture, ranching, or future development."
   },
@@ -188,7 +188,7 @@ export const closedDeals: ClosedDeal[] = [
     location: "Reddick, FL",
     price: "$1,133,400",
     date: "Archive",
-    image: "https://svnmcdonald.com/wp-content/uploads/2023/06/20190917_124800-576x1024-1.webp",
+    image: "/images/properties/20190917-124800.webp",
     type: "Land",
     description: "182 acres in Reddick, FL sold for $1,133,400. This expansive property in the northern portion of Marion County offers excellent agricultural and rural residential potential."
   },
@@ -198,7 +198,7 @@ export const closedDeals: ClosedDeal[] = [
     location: "Citra, FL",
     price: "$648,000",
     date: "Archive",
-    image: "https://svnmcdonald.com/wp-content/uploads/2023/05/20190917_121014-1.webp",
+    image: "/images/properties/20190917-121014.webp",
     type: "Land",
     description: "115 acres of land in Citra, FL sold for $648,000. Located in the agricultural heart of Marion County, this property is well-suited for farming, citrus, or rural estate development."
   },
@@ -208,7 +208,7 @@ export const closedDeals: ClosedDeal[] = [
     location: "Marion County, FL",
     price: "$4,926,300",
     date: "Archive",
-    image: "https://svnmcdonald.com/wp-content/uploads/2023/05/NoPath_-_Copy_41.webp",
+    image: "/images/properties/nopath-41.webp",
     type: "Land",
     description: "145 acres entitled for 870 residential units sold for $4,926,300 in Marion County. This significant development-ready land parcel represents a major residential growth opportunity in Central Florida's expanding market."
   },
@@ -218,7 +218,7 @@ export const closedDeals: ClosedDeal[] = [
     location: "Ocala, FL",
     price: "$3,190,000",
     date: "Archive",
-    image: "https://svnmcdonald.com/wp-content/uploads/2023/05/NoPath_-_Copy_43.webp",
+    image: "/images/properties/nopath-43.webp",
     type: "Industrial",
     description: "86,500 square foot warehouse sold for $3,190,000 in Ocala, FL. This large-format industrial property served as a key distribution facility in the Central Florida logistics corridor."
   },
@@ -228,7 +228,7 @@ export const closedDeals: ClosedDeal[] = [
     location: "Ocala, FL",
     price: "$5,500,000",
     date: "Archive",
-    image: "https://svnmcdonald.com/wp-content/uploads/2023/06/Mar-2011-long-exterior-1-1536x864-1.webp",
+    image: "/images/properties/mar-2011-exterior.webp",
     type: "Office",
     description: "74,000 square foot corporate campus sold for $5,500,000 in Ocala, FL. Bartow represented the seller in this significant office transaction. The property features a professional office environment with ample parking and modern amenities."
   },
@@ -238,7 +238,7 @@ export const closedDeals: ClosedDeal[] = [
     location: "Ocala, FL",
     price: "$2,200,000",
     date: "Archive",
-    image: "https://svnmcdonald.com/wp-content/uploads/2023/06/2016-01-18-17.29.32-1536x864-1.webp",
+    image: "/images/properties/2016-exterior.webp",
     type: "Office",
     description: "34,056 square foot office building sold for $2,200,000 in Ocala, FL. This well-maintained professional office property offered investors a solid return in Ocala's growing office market."
   },
@@ -248,7 +248,7 @@ export const closedDeals: ClosedDeal[] = [
     location: "Ocala, FL",
     price: "$1,700,000",
     date: "Archive",
-    image: "https://svnmcdonald.com/wp-content/uploads/2023/05/2016-03-08-13.50.31-1024x664-1.webp",
+    image: "/images/properties/2016-aerial.webp",
     type: "Office",
     description: "11,364 square foot office building sold for $1,700,000 in Ocala, FL. This professional office space is well-positioned for medical, legal, or corporate tenants."
   },
@@ -258,7 +258,7 @@ export const closedDeals: ClosedDeal[] = [
     location: "Ocala, FL",
     price: "$1,355,900",
     date: "Archive",
-    image: "https://svnmcdonald.com/wp-content/uploads/2023/06/Screen-Shot-2021-05-18-at-10.40.53-AM-1024x454-1.webp",
+    image: "/images/properties/screen-shot-1040.webp",
     type: "Industrial",
     description: "34,825 square foot warehouse sold for $1,355,900 in Ocala, FL. This industrial property features clear-span construction and easy access to major transportation routes."
   },
@@ -268,7 +268,7 @@ export const closedDeals: ClosedDeal[] = [
     location: "Ocala, FL",
     price: "Sold",
     date: "Archive",
-    image: "https://svnmcdonald.com/wp-content/uploads/2023/06/Screen-Shot-2021-05-18-at-10.43.28-AM-1024x463-1.webp",
+    image: "/images/properties/screen-shot-1043.webp",
     type: "Retail",
     description: "Prime retail outparcel on Highway 200 in Ocala, FL. This high-visibility location along one of Ocala's busiest commercial corridors offers excellent frontage and traffic exposure."
   },
@@ -278,7 +278,7 @@ export const closedDeals: ClosedDeal[] = [
     location: "Ocala, FL",
     price: "Sold",
     date: "Archive",
-    image: "https://svnmcdonald.com/wp-content/uploads/2023/06/Front-Close-300x225-2.webp",
+    image: "/images/properties/front-close.webp",
     type: "Retail",
     description: "42,000 square foot retail center in Ocala, FL. This multi-tenant retail property was successfully sold, demonstrating continued investor confidence in the Ocala retail market."
   },
@@ -288,7 +288,7 @@ export const closedDeals: ClosedDeal[] = [
     location: "Marion County, FL",
     price: "$812,500",
     date: "Archive",
-    image: "https://svnmcdonald.com/wp-content/uploads/2023/06/self-storage-2-1.webp",
+    image: "/images/properties/self-storage.webp",
     type: "Self Storage",
     description: "235-unit self storage facility sold for $812,500 in Marion County, FL. This income-producing property benefits from growing demand for storage in the expanding Marion County market."
   },
@@ -298,7 +298,7 @@ export const closedDeals: ClosedDeal[] = [
     location: "Ocala, FL",
     price: "Leased",
     date: "Archive",
-    image: "https://svnmcdonald.com/wp-content/uploads/2023/06/industrial-building-6.webp",
+    image: "/images/properties/industrial-building.webp",
     type: "Industrial",
     description: "25,000 square foot industrial space leased in Falcon Industrial Park, Ocala, FL. This flex industrial space within one of Ocala's premier industrial parks was quickly leased to meet growing tenant demand."
   },
@@ -308,7 +308,7 @@ export const closedDeals: ClosedDeal[] = [
     location: "Marion County, FL",
     price: "Sold",
     date: "Archive",
-    image: "https://svnmcdonald.com/wp-content/uploads/2023/06/Entrance-ll-300x200-3.webp",
+    image: "/images/properties/entrance.webp",
     type: "Land",
     description: "140 residential lots sold in Marion County, FL. This significant residential land transaction provided a developer with shovel-ready lots in one of Florida's fastest-growing housing markets."
   },
@@ -318,7 +318,7 @@ export const closedDeals: ClosedDeal[] = [
     location: "Ocala, FL",
     price: "Sold",
     date: "Archive",
-    image: "https://svnmcdonald.com/wp-content/uploads/2023/05/NoPath_-_Copy_57.webp",
+    image: "/images/properties/nopath-57.webp",
     type: "Office",
     description: "8,000 square foot office building, formerly the Disney Welcome Center, sold in Ocala, FL. This unique property with its distinctive architecture and prime location attracted strong buyer interest."
   },
@@ -328,7 +328,7 @@ export const closedDeals: ClosedDeal[] = [
     location: "Marion County, FL",
     price: "Sold",
     date: "Archive",
-    image: "https://svnmcdonald.com/wp-content/uploads/2023/06/full10-1.webp",
+    image: "/images/properties/full10.webp",
     type: "Land",
     description: "78 wooded acres on Highway 441 in Marion County, FL. This bank-owned property was sold through SVN McDonald's distressed/REO services, providing the lender with a successful resolution and the buyer with prime land at a competitive price."
   }

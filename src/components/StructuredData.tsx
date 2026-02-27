@@ -18,9 +18,9 @@ const localBusinessSchema = {
   description:
     "Central Florida's premier commercial and land real estate brokerage. Specializing in land sales, commercial properties, conservation easements, and investment real estate in Ocala and Marion County.",
   url: 'https://svnmcdonald.com',
-  logo: 'https://svnmcdonald.com/wp-content/uploads/2023/05/White-Orange-DBA_Logo_McDonald-Company-768x374-1.png',
+  logo: '/images/logos/svn-logo.png',
   image:
-    'https://svnmcdonald.com/wp-content/uploads/2024/10/Hwy-484-Ocala-1920x1073.jpg',
+    '/images/hero/hwy-484-ocala-1920.jpg',
   telephone: '+1-352-274-3800',
   email: 'info@svnmcdonald.com',
   address: {

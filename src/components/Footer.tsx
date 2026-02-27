@@ -29,7 +29,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-16 mb-24">
           <div className="lg:col-span-4">
             <img
-              src="https://svnmcdonald.com/wp-content/uploads/2023/05/White-Orange-DBA_Logo_McDonald-Company-768x374-1.png"
+              src="/images/logos/svn-logo.png"
               alt="SVN McDonald &amp; Company - Commercial Real Estate Brokerage"
               className="h-20 w-auto mb-10"
               loading="lazy"

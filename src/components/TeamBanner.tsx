@@ -16,7 +16,7 @@ const TeamBanner = () => {
           {/* Team Photo */}
           <div className="relative rounded-2xl overflow-hidden h-[400px]">
             <img
-              src="https://svnmcdonald.com/wp-content/uploads/2024/10/Hwy-484-Ocala-1920x1073.jpg"
+              src="/images/hero/hwy-484-ocala-1920.jpg"
               alt="SVN McDonald & Company team"
               className="w-full h-full object-cover"
               loading="lazy"
