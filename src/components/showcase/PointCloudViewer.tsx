@@ -2,7 +2,7 @@ import { useRef, useEffect, useCallback } from 'react';
 import { setOptions, importLibrary } from '@googlemaps/js-api-loader';
 import type { ShowcaseProperty, MapCameraWaypoint } from '../../data/showcaseProperties';
 
-// Configure API key once (idempotent — only first call matters)
+// Configure API key once at module scope
 setOptions({
   key: import.meta.env.VITE_GOOGLE_MAPS_API_KEY || '',
   v: 'alpha',
@@ -41,8 +41,6 @@ function interpolateWaypoints(
   const wp1 = waypoints[i + 1];
   const segLen = wp1.progress - wp0.progress;
   const t = segLen > 0 ? (p - wp0.progress) / segLen : 0;
-
-  // Smoothstep for cinematic feel
   const st = t * t * (3 - 2 * t);
 
   return {
@@ -59,6 +57,7 @@ const PointCloudViewer = ({ property, progressRef, onStatusChange }: PointCloudV
   const containerRef = useRef<HTMLDivElement>(null);
   const map3dRef = useRef<google.maps.maps3d.Map3DElement | null>(null);
   const rafRef = useRef<number>(0);
+  const readyRef = useRef(false);
   const initRef = useRef(false);
 
   // Initialize Google Maps 3D
@@ -72,31 +71,47 @@ const PointCloudViewer = ({ property, progressRef, onStatusChange }: PointCloudV
 
     (async () => {
       try {
-        // Load the maps3d library via the new functional API
-        const { Map3DElement } = await importLibrary('maps3d');
+        // Load maps3d library — this triggers the Google Maps script load
+        await importLibrary('maps3d');
 
         if (cancelled) return;
 
-        // Create Map3DElement
-        const wp0 = property.waypoints[0];
-        const map3d = new Map3DElement({
-          center: { lat: wp0.center.lat, lng: wp0.center.lng, altitude: wp0.center.altitude },
-          heading: wp0.heading,
-          tilt: wp0.tilt,
-          range: wp0.range,
-        });
+        // Create the element using DOM API (more reliable with custom elements)
+        const map3d = document.createElement('gmp-map-3d') as google.maps.maps3d.Map3DElement;
 
+        // Set initial camera from first waypoint via attributes
+        const wp0 = property.waypoints[0];
+        map3d.setAttribute('center', `${wp0.center.lat},${wp0.center.lng},${wp0.center.altitude}`);
+        map3d.setAttribute('heading', String(wp0.heading));
+        map3d.setAttribute('tilt', String(wp0.tilt));
+        map3d.setAttribute('range', String(wp0.range));
+
+        // Fill the container
         map3d.style.width = '100%';
         map3d.style.height = '100%';
         map3d.style.display = 'block';
+        map3d.style.position = 'absolute';
+        map3d.style.inset = '0';
 
         containerRef.current!.appendChild(map3d);
         map3dRef.current = map3d;
 
-        // Report loaded after tiles begin streaming
+        // Listen for the steady event (tiles loaded, camera settled)
+        map3d.addEventListener('gmp-steadychange', ((e: Event) => {
+          const detail = (e as CustomEvent).detail;
+          if (detail?.isSteady && !cancelled) {
+            readyRef.current = true;
+            onStatusChange('loaded');
+          }
+        }) as EventListener);
+
+        // Fallback: report loaded after 4s even if steady event never fires
         setTimeout(() => {
-          if (!cancelled) onStatusChange('loaded');
-        }, 1500);
+          if (!cancelled && !readyRef.current) {
+            readyRef.current = true;
+            onStatusChange('loaded');
+          }
+        }, 4000);
 
       } catch (err) {
         console.error('Google Maps 3D init failed:', err);
@@ -111,6 +126,7 @@ const PointCloudViewer = ({ property, progressRef, onStatusChange }: PointCloudV
         try { containerRef.current.removeChild(map3dRef.current); } catch { /* already removed */ }
       }
       map3dRef.current = null;
+      readyRef.current = false;
       initRef.current = false;
     };
   }, [property.waypoints, onStatusChange]);
@@ -118,18 +134,16 @@ const PointCloudViewer = ({ property, progressRef, onStatusChange }: PointCloudV
   // Animation loop: sync 3D camera to scroll progress
   const animate = useCallback(() => {
     const map3d = map3dRef.current;
-    if (!map3d) {
-      rafRef.current = requestAnimationFrame(animate);
-      return;
+    if (map3d && readyRef.current) {
+      const progress = progressRef.current ?? 0;
+      const cam = interpolateWaypoints(property.waypoints, progress);
+
+      // Set camera via properties (works after element is connected)
+      map3d.center = { lat: cam.lat, lng: cam.lng, altitude: cam.altitude };
+      map3d.heading = cam.heading;
+      map3d.tilt = cam.tilt;
+      map3d.range = cam.range;
     }
-
-    const progress = progressRef.current ?? 0;
-    const cam = interpolateWaypoints(property.waypoints, progress);
-
-    map3d.center = { lat: cam.lat, lng: cam.lng, altitude: cam.altitude };
-    map3d.heading = cam.heading;
-    map3d.tilt = cam.tilt;
-    map3d.range = cam.range;
 
     rafRef.current = requestAnimationFrame(animate);
   }, [property.waypoints, progressRef]);
@@ -144,7 +158,7 @@ const PointCloudViewer = ({ property, progressRef, onStatusChange }: PointCloudV
     <div
       ref={containerRef}
       className="w-full h-full"
-      style={{ touchAction: 'none' }}
+      style={{ touchAction: 'none', position: 'relative' }}
     />
   );
 };
