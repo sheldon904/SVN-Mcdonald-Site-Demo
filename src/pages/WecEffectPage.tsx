@@ -5,12 +5,11 @@ import WecEffectHero from '../components/wec-effect/WecEffectHero';
 import WecEffectMapSection from '../components/wec-effect/WecEffectMapSection';
 import WecEffectStats from '../components/wec-effect/WecEffectStats';
 import WecEffectCharts from '../components/wec-effect/WecEffectCharts';
-import WecEffectFindings from '../components/wec-effect/WecEffectFindings';
 import WecEffectCTA from '../components/wec-effect/WecEffectCTA';
 
 const WecEffectPage = () => {
   return (
-    <div className="min-h-screen bg-[#F6F6F6]">
+    <div className="min-h-screen bg-[#F6F6F6] overflow-x-hidden">
       <SEOHead
         title="The WEC Effect - World Equestrian Center Impact Report"
         description="Discover how the World Equestrian Center has transformed Ocala's real estate market. 400+ transactions analyzed across 2022-2025."
@@ -21,7 +20,6 @@ const WecEffectPage = () => {
       <WecEffectMapSection />
       <WecEffectStats />
       <WecEffectCharts />
-      <WecEffectFindings />
       <WecEffectCTA />
       <Footer />
     </div>

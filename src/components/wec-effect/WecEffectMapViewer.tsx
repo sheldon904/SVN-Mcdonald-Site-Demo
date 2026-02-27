@@ -94,15 +94,19 @@ function createGradientImage(): string {
 // ── Component ───────────────────────────────────────────────────
 
 interface WecEffectMapViewerProps {
-  progressRef: React.RefObject<number>;
+  progressRef?: React.RefObject<number>;
+  autoPlay?: boolean;
   onStatusChange: (status: 'loading' | 'loaded' | 'error') => void;
 }
 
-const WecEffectMapViewer = ({ progressRef, onStatusChange }: WecEffectMapViewerProps) => {
+const AUTO_LOOP_DURATION = 50000; // 50 seconds per full orbit
+
+const WecEffectMapViewer = ({ progressRef, autoPlay, onStatusChange }: WecEffectMapViewerProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<maplibregl.Map | null>(null);
   const rafRef = useRef<number>(0);
   const markersRef = useRef<maplibregl.Marker[]>([]);
+  const startTimeRef = useRef(0);
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -338,7 +342,19 @@ const WecEffectMapViewer = ({ progressRef, onStatusChange }: WecEffectMapViewerP
     const map = mapRef.current;
     if (!map) return;
 
-    const progress = progressRef.current ?? 0;
+    let progress: number;
+    if (autoPlay) {
+      if (!startTimeRef.current) startTimeRef.current = Date.now();
+      const elapsed = Date.now() - startTimeRef.current;
+      // Smooth ping-pong loop: forward 0→1, then reverse 1→0
+      const cycle = (elapsed % (AUTO_LOOP_DURATION * 2)) / AUTO_LOOP_DURATION;
+      progress = cycle <= 1 ? cycle : 2 - cycle;
+      // Ease with smoothstep for gentler turnarounds
+      progress = progress * progress * (3 - 2 * progress);
+    } else {
+      progress = progressRef?.current ?? 0;
+    }
+
     const cam = interpolateWaypoints(MAP_WAYPOINTS, progress);
     map.jumpTo({
       center: cam.center,
@@ -348,7 +364,7 @@ const WecEffectMapViewer = ({ progressRef, onStatusChange }: WecEffectMapViewerP
     });
 
     rafRef.current = requestAnimationFrame(animate);
-  }, [progressRef]);
+  }, [progressRef, autoPlay]);
 
   useEffect(() => {
     const map = mapRef.current;

@@ -69,8 +69,8 @@ export const showcaseProperties: Record<ShowcaseSlug, ShowcaseProperty> = {
     location: 'Ocala, FL',
     price: '$9,500,000',
     priceLabel: 'Sale Price',
-    heroImage: '/images/properties/jumbolair.webp',
-    aerialFallbackImage: '/images/properties/jumbolair.webp',
+    heroImage: '/images/properties/jumbolair-aerial.jpg',
+    aerialFallbackImage: '/images/properties/jumbolair-aerial.jpg',
     type: 'Residential Airpark',
     status: 'SOLD',
 
