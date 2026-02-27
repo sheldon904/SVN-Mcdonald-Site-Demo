@@ -50,19 +50,18 @@ const WecEffectCharts = () => {
                 {/* Bar groups */}
                 <div className="absolute inset-0 flex items-end justify-around px-4">
                   {YEARLY_DATA.map((yearData, yi) => (
-                    <div key={yearData.year} className="flex items-end gap-1 md:gap-2">
+                    <div key={yearData.year} className="flex items-end gap-1 md:gap-2 h-full">
                       {(['inner', 'middle', 'outer'] as const).map((band, bi) => {
                         const value = yearData[band];
-                        const heightPct = (value / MAX_PRICE) * 100;
+                        const heightPx = Math.round((value / MAX_PRICE) * 100);
                         return (
-                          <div key={band} className="relative group flex items-end" style={{ height: '100%' }}>
+                          <div key={band} className="relative group h-full flex items-end">
                             <motion.div
                               initial={{ height: 0 }}
-                              whileInView={{ height: `${heightPct}%` }}
+                              whileInView={{ height: `${heightPx}%` }}
                               viewport={{ once: true }}
                               transition={{ duration: 0.8, delay: yi * 0.15 + bi * 0.05 }}
-                              className={`w-6 md:w-10 rounded-t ${BAR_COLORS[band]}`}
-                              style={{ alignSelf: 'flex-end' }}
+                              className={`w-6 md:w-10 rounded-t ${BAR_COLORS[band]} relative`}
                             >
                               {/* Value tooltip on hover */}
                               <div className="absolute -top-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-10">

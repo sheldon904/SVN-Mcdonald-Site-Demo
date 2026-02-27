@@ -18,7 +18,11 @@ const WecEffectMapSection = () => {
   });
 
   const handleStatusChange = useCallback((status: 'loading' | 'loaded' | 'error') => {
-    setViewerStatus(status);
+    setViewerStatus(prev => {
+      // Once loaded, never downgrade back to error (tile errors are non-fatal)
+      if (prev === 'loaded' && status === 'error') return prev;
+      return status;
+    });
   }, []);
 
   // Mobile fallback

@@ -191,7 +191,12 @@ const WecEffectMapViewer = ({ progressRef, onStatusChange }: WecEffectMapViewerP
       addPriceMarkers(map);
     });
 
-    map.on('error', () => onStatusChange('error'));
+    // Only treat style-level errors as fatal (not tile 404s)
+    map.on('error', (e) => {
+      if (e.error && /style/i.test(e.error.message ?? '')) {
+        onStatusChange('error');
+      }
+    });
 
     mapRef.current = map;
 
