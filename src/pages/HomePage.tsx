@@ -15,7 +15,7 @@ import Footer from '../components/Footer'
 
 const HomePage = () => {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white overflow-x-hidden">
       <SEOHead
         title="Central Florida Commercial & Land Real Estate"
         description="SVN McDonald & Company is Central Florida's premier commercial and land real estate brokerage in Ocala, FL. National reach, local expertise. Land sales, commercial properties, and investment real estate."
