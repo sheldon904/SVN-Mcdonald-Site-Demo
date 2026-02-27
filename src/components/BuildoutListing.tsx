@@ -4,6 +4,7 @@ interface BuildoutListingProps {
   pluginType?: 'featured' | 'inventory';
   containerId?: string;
   token?: string;
+  searchText?: string;
 }
 
 const BUILDOUT_LAND_TOKEN = "780b230639b42edeea9d75652be95e361a796839";
@@ -16,6 +17,7 @@ const BuildoutListing: React.FC<BuildoutListingProps> = ({
   pluginType = 'featured',
   containerId = 'buildout-container',
   token = BUILDOUT_LAND_TOKEN,
+  searchText,
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
@@ -49,6 +51,10 @@ const BuildoutListing: React.FC<BuildoutListingProps> = ({
       target: containerId,
     };
 
+    if (searchText) {
+      config.searchText = searchText;
+    }
+
     const initBuildout = () => {
       if ((window as any).BuildOut?.embed) {
         (window as any).BuildOut.embed(config);
@@ -77,7 +83,7 @@ const BuildoutListing: React.FC<BuildoutListingProps> = ({
         container.innerHTML = '';
       }
     };
-  }, [isVisible, pluginType, containerId, token]);
+  }, [isVisible, pluginType, containerId, token, searchText]);
 
   return (
     <div className="w-full min-h-[400px]" ref={containerRef}>
