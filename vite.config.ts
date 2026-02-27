@@ -5,7 +5,7 @@ const vendorChunks: Record<string, string[]> = {
   'vendor-react': ['react', 'react-dom', 'react-router-dom'],
   'vendor-motion': ['framer-motion'],
   'vendor-ui': ['lucide-react', 'clsx', 'tailwind-merge'],
-  'vendor-gmaps': ['@googlemaps/js-api-loader'],
+  'vendor-maplibre': ['maplibre-gl'],
   'vendor-gsap': ['gsap'],
 }
 

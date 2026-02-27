@@ -1,12 +1,7 @@
 import { useRef, useEffect, useCallback } from 'react';
-import { setOptions, importLibrary } from '@googlemaps/js-api-loader';
+import maplibregl from 'maplibre-gl';
+import 'maplibre-gl/dist/maplibre-gl.css';
 import type { ShowcaseProperty, MapCameraWaypoint } from '../../data/showcaseProperties';
-
-// Configure API key once at module scope
-setOptions({
-  key: import.meta.env.VITE_GOOGLE_MAPS_API_KEY || '',
-  v: 'alpha',
-});
 
 interface PointCloudViewerProps {
   property: ShowcaseProperty;
@@ -25,10 +20,15 @@ function lerpBearing(a: number, b: number, t: number): number {
   return a + diff * t;
 }
 
+// Convert range (meters) to MapLibre zoom level
+function rangeToZoom(range: number): number {
+  return 17.5 - Math.log2(Math.max(range, 50) / 150);
+}
+
 function interpolateWaypoints(
   waypoints: MapCameraWaypoint[],
   progress: number
-): { lat: number; lng: number; altitude: number; heading: number; tilt: number; range: number } {
+): { center: [number, number]; zoom: number; pitch: number; bearing: number } {
   const p = Math.max(0, Math.min(1, progress));
 
   let i = 0;
@@ -41,116 +41,155 @@ function interpolateWaypoints(
   const wp1 = waypoints[i + 1];
   const segLen = wp1.progress - wp0.progress;
   const t = segLen > 0 ? (p - wp0.progress) / segLen : 0;
+
+  // Smoothstep for cinematic feel
   const st = t * t * (3 - 2 * t);
 
+  const range = lerp(wp0.range, wp1.range, st);
+
   return {
-    lat: lerp(wp0.center.lat, wp1.center.lat, st),
-    lng: lerp(wp0.center.lng, wp1.center.lng, st),
-    altitude: lerp(wp0.center.altitude, wp1.center.altitude, st),
-    heading: lerpBearing(wp0.heading, wp1.heading, st),
-    tilt: lerp(wp0.tilt, wp1.tilt, st),
-    range: lerp(wp0.range, wp1.range, st),
+    center: [
+      lerp(wp0.center.lng, wp1.center.lng, st),
+      lerp(wp0.center.lat, wp1.center.lat, st),
+    ],
+    zoom: rangeToZoom(range),
+    pitch: Math.min(85, lerp(wp0.tilt, wp1.tilt, st)),
+    bearing: lerpBearing(wp0.heading, wp1.heading, st),
   };
 }
 
 const PointCloudViewer = ({ property, progressRef, onStatusChange }: PointCloudViewerProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const map3dRef = useRef<google.maps.maps3d.Map3DElement | null>(null);
+  const mapRef = useRef<maplibregl.Map | null>(null);
   const rafRef = useRef<number>(0);
-  const readyRef = useRef(false);
-  const initRef = useRef(false);
 
-  // Initialize Google Maps 3D
+  // Initialize map
   useEffect(() => {
-    if (!containerRef.current || initRef.current) return;
-    initRef.current = true;
+    if (!containerRef.current) return;
 
     onStatusChange('loading');
 
-    let cancelled = false;
+    const wp0 = property.waypoints[0];
 
-    (async () => {
-      try {
-        // Load maps3d library — this triggers the Google Maps script load
-        await importLibrary('maps3d');
+    const map = new maplibregl.Map({
+      container: containerRef.current,
+      style: {
+        version: 8,
+        sources: {
+          satellite: {
+            type: 'raster',
+            tiles: [
+              'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+            ],
+            tileSize: 256,
+            maxzoom: 19,
+            attribution: '&copy; Esri',
+          },
+          'terrain-dem': {
+            type: 'raster-dem',
+            tiles: [
+              'https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png',
+            ],
+            tileSize: 256,
+            maxzoom: 15,
+            encoding: 'terrarium',
+          },
+          'hillshade-source': {
+            type: 'raster-dem',
+            tiles: [
+              'https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png',
+            ],
+            tileSize: 256,
+            maxzoom: 15,
+            encoding: 'terrarium',
+          },
+        },
+        terrain: {
+          source: 'terrain-dem',
+          exaggeration: 3,
+        },
+        layers: [
+          {
+            id: 'satellite-layer',
+            type: 'raster',
+            source: 'satellite',
+            paint: {
+              'raster-saturation': 0.15,
+              'raster-contrast': 0.15,
+              'raster-brightness-min': 0.05,
+            },
+          },
+          {
+            id: 'hillshade-layer',
+            type: 'hillshade',
+            source: 'hillshade-source',
+            paint: {
+              'hillshade-shadow-color': '#000000',
+              'hillshade-highlight-color': '#ffffff',
+              'hillshade-accent-color': '#4a4a4a',
+              'hillshade-exaggeration': 0.5,
+              'hillshade-illumination-direction': 315,
+            },
+          },
+        ],
+      },
+      center: [wp0.center.lng, wp0.center.lat],
+      zoom: rangeToZoom(wp0.range),
+      maxPitch: 85,
+      pitch: Math.min(85, wp0.tilt),
+      bearing: wp0.heading,
+      interactive: false,
+      fadeDuration: 0,
+      attributionControl: false,
+    });
 
-        if (cancelled) return;
+    map.addControl(new maplibregl.AttributionControl({ compact: true }), 'bottom-right');
 
-        // Create the element using DOM API (more reliable with custom elements)
-        const map3d = document.createElement('gmp-map-3d') as google.maps.maps3d.Map3DElement;
+    map.on('load', () => onStatusChange('loaded'));
+    map.on('error', () => onStatusChange('error'));
 
-        // Set initial camera from first waypoint via attributes
-        const wp0 = property.waypoints[0];
-        map3d.setAttribute('center', `${wp0.center.lat},${wp0.center.lng},${wp0.center.altitude}`);
-        map3d.setAttribute('heading', String(wp0.heading));
-        map3d.setAttribute('tilt', String(wp0.tilt));
-        map3d.setAttribute('range', String(wp0.range));
-
-        // Fill the container
-        map3d.style.width = '100%';
-        map3d.style.height = '100%';
-        map3d.style.display = 'block';
-        map3d.style.position = 'absolute';
-        map3d.style.inset = '0';
-
-        containerRef.current!.appendChild(map3d);
-        map3dRef.current = map3d;
-
-        // Listen for the steady event (tiles loaded, camera settled)
-        map3d.addEventListener('gmp-steadychange', ((e: Event) => {
-          const detail = (e as CustomEvent).detail;
-          if (detail?.isSteady && !cancelled) {
-            readyRef.current = true;
-            onStatusChange('loaded');
-          }
-        }) as EventListener);
-
-        // Fallback: report loaded after 4s even if steady event never fires
-        setTimeout(() => {
-          if (!cancelled && !readyRef.current) {
-            readyRef.current = true;
-            onStatusChange('loaded');
-          }
-        }, 4000);
-
-      } catch (err) {
-        console.error('Google Maps 3D init failed:', err);
-        if (!cancelled) onStatusChange('error');
-      }
-    })();
+    mapRef.current = map;
 
     return () => {
-      cancelled = true;
       cancelAnimationFrame(rafRef.current);
-      if (map3dRef.current && containerRef.current) {
-        try { containerRef.current.removeChild(map3dRef.current); } catch { /* already removed */ }
-      }
-      map3dRef.current = null;
-      readyRef.current = false;
-      initRef.current = false;
+      map.remove();
+      mapRef.current = null;
     };
-  }, [property.waypoints, onStatusChange]);
+  }, [property.waypoints, property.mapCenter, onStatusChange]);
 
-  // Animation loop: sync 3D camera to scroll progress
+  // Animation loop: sync map camera to scroll progress
   const animate = useCallback(() => {
-    const map3d = map3dRef.current;
-    if (map3d && readyRef.current) {
-      const progress = progressRef.current ?? 0;
-      const cam = interpolateWaypoints(property.waypoints, progress);
+    const map = mapRef.current;
+    if (!map) return;
 
-      // Set camera via properties (works after element is connected)
-      map3d.center = { lat: cam.lat, lng: cam.lng, altitude: cam.altitude };
-      map3d.heading = cam.heading;
-      map3d.tilt = cam.tilt;
-      map3d.range = cam.range;
-    }
+    const progress = progressRef.current ?? 0;
+    const cam = interpolateWaypoints(property.waypoints, progress);
+
+    map.jumpTo({
+      center: cam.center,
+      zoom: cam.zoom,
+      pitch: cam.pitch,
+      bearing: cam.bearing,
+    });
 
     rafRef.current = requestAnimationFrame(animate);
   }, [property.waypoints, progressRef]);
 
-  // Start animation loop
+  // Start animation once map is ready
   useEffect(() => {
-    rafRef.current = requestAnimationFrame(animate);
+    const map = mapRef.current;
+    if (!map) return;
+
+    const startAnim = () => {
+      rafRef.current = requestAnimationFrame(animate);
+    };
+
+    if (map.loaded()) {
+      startAnim();
+    } else {
+      map.on('load', startAnim);
+    }
+
     return () => cancelAnimationFrame(rafRef.current);
   }, [animate]);
 
@@ -158,7 +197,7 @@ const PointCloudViewer = ({ property, progressRef, onStatusChange }: PointCloudV
     <div
       ref={containerRef}
       className="w-full h-full"
-      style={{ touchAction: 'none', position: 'relative' }}
+      style={{ touchAction: 'none' }}
     />
   );
 };
