@@ -5,6 +5,8 @@ const vendorChunks: Record<string, string[]> = {
   'vendor-react': ['react', 'react-dom', 'react-router-dom'],
   'vendor-motion': ['framer-motion'],
   'vendor-ui': ['lucide-react', 'clsx', 'tailwind-merge'],
+  'vendor-three': ['three'],
+  'vendor-gsap': ['gsap'],
 }
 
 // https://vite.dev/config/

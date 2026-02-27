@@ -6,7 +6,14 @@
       "WebFetch(domain:svnmcdonald.com)",
       "Bash(cd \"C:\\\\Users\\\\sheld\\\\Documents\\\\GitHub\\\\SVN-Mcdonald-Site-Demo\" && git merge worktree-agent-a45b97c4 --no-edit 2>&1)",
       "Bash(cd C:\\\\Users\\\\sheld\\\\Documents\\\\GitHub\\\\SVN-Mcdonald-Site-Demo:*)",
-      "Bash(echo Worktrees cleaned up:*)"
+      "Bash(echo Worktrees cleaned up:*)",
+      "WebFetch(domain:usgs.entwine.io)",
+      "WebFetch(domain:registry.opendata.aws)",
+      "Bash(aws s3:*)",
+      "WebFetch(domain:apps.nationalmap.gov)",
+      "WebFetch(domain:portal.opentopography.org)",
+      "WebFetch(domain:www.npmjs.com)",
+      "WebFetch(domain:s3-us-west-2.amazonaws.com)"
     ]
   }
 }
