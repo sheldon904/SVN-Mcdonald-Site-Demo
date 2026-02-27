@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 interface BuildoutListingProps {
   pluginType?: 'featured' | 'inventory';
   containerId?: string;
+  propertyUses?: string;
 }
 
 const BUILDOUT_TOKEN = "780b230639b42edeea9d75652be95e361a796839";
@@ -10,7 +11,8 @@ const BUILDOUT_SCRIPT_ID = 'buildout-api-script';
 
 const BuildoutListing: React.FC<BuildoutListingProps> = ({
   pluginType = 'featured',
-  containerId = 'buildout-container'
+  containerId = 'buildout-container',
+  propertyUses,
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
@@ -38,11 +40,15 @@ const BuildoutListing: React.FC<BuildoutListingProps> = ({
   useEffect(() => {
     if (!isVisible) return;
 
-    const config = {
+    const config: Record<string, string> = {
       token: BUILDOUT_TOKEN,
       plugin: pluginType,
-      target: containerId
+      target: containerId,
     };
+
+    if (propertyUses) {
+      config.propertyUses = propertyUses;
+    }
 
     const initBuildout = () => {
       if ((window as any).BuildOut?.embed) {
@@ -72,7 +78,7 @@ const BuildoutListing: React.FC<BuildoutListingProps> = ({
         container.innerHTML = '';
       }
     };
-  }, [isVisible, pluginType, containerId]);
+  }, [isVisible, pluginType, containerId, propertyUses]);
 
   return (
     <div className="w-full min-h-[400px]" ref={containerRef}>

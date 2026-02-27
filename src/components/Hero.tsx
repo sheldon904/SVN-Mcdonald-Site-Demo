@@ -33,7 +33,7 @@ const Hero = () => {
         {/* Land Panel */}
         <Link
           to="/land-properties"
-          className="relative flex-1 group cursor-pointer min-h-[45vh] md:min-h-0"
+          className="relative flex-1 group cursor-pointer min-h-[45vh] md:min-h-0 overflow-hidden"
         >
           <img
             src="https://svnmcdonald.com/wp-content/uploads/2024/10/Hwy-484-Ocala-1920x1073.jpg"
@@ -78,7 +78,7 @@ const Hero = () => {
         {/* Commercial Panel */}
         <Link
           to="/commercial-properties"
-          className="relative flex-1 group cursor-pointer min-h-[45vh] md:min-h-0"
+          className="relative flex-1 group cursor-pointer min-h-[45vh] md:min-h-0 overflow-hidden"
         >
           <img
             src="https://svnmcdonald.com/wp-content/uploads/2024/06/TrafficBlog-.jpg"

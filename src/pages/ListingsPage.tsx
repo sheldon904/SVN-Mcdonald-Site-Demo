@@ -332,7 +332,11 @@ const ListingsPage = () => {
         {/* Buildout Embed */}
         <section className="py-16 px-6 bg-[#F6F6F6]">
           <div className="max-w-[1280px] mx-auto">
-            <BuildoutListing pluginType="inventory" containerId="inventory-buildout-container" />
+            <BuildoutListing
+              pluginType="inventory"
+              containerId={isLand ? 'land-buildout-container' : 'commercial-buildout-container'}
+              propertyUses={isLand ? 'Land' : 'Commercial'}
+            />
           </div>
         </section>
 
