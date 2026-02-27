@@ -104,11 +104,11 @@ const PointCloudViewer = ({ property, progressRef, onStatusChange }: PointCloudV
         viewer.scene.fog.density = 0.001;
 
         // --- PERF: turn off expensive atmosphere/lighting ---
-        viewer.scene.skyAtmosphere.show = false;
+        if (viewer.scene.skyAtmosphere) viewer.scene.skyAtmosphere.show = false;
         viewer.scene.globe.enableLighting = false;
-        viewer.scene.skyBox.show = false;
-        viewer.scene.sun.show = false;
-        viewer.scene.moon.show = false;
+        if (viewer.scene.skyBox) viewer.scene.skyBox.show = false;
+        if (viewer.scene.sun) viewer.scene.sun.show = false;
+        if (viewer.scene.moon) viewer.scene.moon.show = false;
         viewer.scene.backgroundColor = Cesium.Color.fromCssColorString('#181818');
 
         // --- NO OSM buildings (biggest perf killer) ---
