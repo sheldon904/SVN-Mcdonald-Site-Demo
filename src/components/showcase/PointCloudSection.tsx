@@ -42,7 +42,7 @@ const PointCloudSection = ({ property }: PointCloudSectionProps) => {
             <div className="text-center">
               <div className="w-10 h-10 border-3 border-svn-orange/30 border-t-svn-orange rounded-full animate-spin mx-auto mb-4" />
               <p className="text-white/50 text-xs font-bold uppercase tracking-widest">
-                Loading 3D terrain
+                Loading satellite flyover
               </p>
             </div>
           </div>

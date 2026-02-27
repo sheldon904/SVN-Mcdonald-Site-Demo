@@ -9,7 +9,7 @@ import ShowcaseStats from './ShowcaseStats';
 import ShowcaseStory from './ShowcaseStory';
 import ShowcaseLocation from './ShowcaseLocation';
 import ShowcaseCTA from './ShowcaseCTA';
-import { isMobileDevice, supportsWebGL2 } from './webglSupport';
+import { isMobileDevice } from './webglSupport';
 import type { ShowcaseProperty } from '../../data/showcaseProperties';
 
 interface ShowcasePageProps {
@@ -17,15 +17,7 @@ interface ShowcasePageProps {
 }
 
 const ShowcasePage = ({ property }: ShowcasePageProps) => {
-  const canRender3D = useMemo(() => {
-    return !isMobileDevice() && supportsWebGL2();
-  }, []);
-
-  const fallbackReason = useMemo(() => {
-    if (isMobileDevice()) return 'mobile' as const;
-    if (!supportsWebGL2()) return 'no-webgl' as const;
-    return null;
-  }, []);
+  const isMobile = useMemo(() => isMobileDevice(), []);
 
   return (
     <div className="min-h-screen bg-[#F6F6F6]">
@@ -39,13 +31,13 @@ const ShowcasePage = ({ property }: ShowcasePageProps) => {
 
       <ShowcaseHero property={property} />
 
-      {canRender3D ? (
+      {!isMobile ? (
         <PointCloudSection property={property} />
       ) : (
         <PointCloudFallback
           aerialImage={property.aerialFallbackImage}
           title={property.title}
-          reason={fallbackReason ?? 'error'}
+          reason="mobile"
         />
       )}
 

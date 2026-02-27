@@ -1,8 +1,7 @@
-import { useRef, useEffect, useCallback, useState } from 'react';
-import * as THREE from 'three';
-import { usePointCloud } from './usePointCloud';
-import { useCameraPath } from './useCameraPath';
-import type { ShowcaseProperty } from '../../data/showcaseProperties';
+import { useRef, useEffect, useCallback } from 'react';
+import maplibregl from 'maplibre-gl';
+import 'maplibre-gl/dist/maplibre-gl.css';
+import type { ShowcaseProperty, MapCameraWaypoint } from '../../data/showcaseProperties';
 
 interface PointCloudViewerProps {
   property: ShowcaseProperty;
@@ -10,112 +9,174 @@ interface PointCloudViewerProps {
   onStatusChange: (status: 'loading' | 'loaded' | 'error') => void;
 }
 
+function lerp(a: number, b: number, t: number): number {
+  return a + (b - a) * t;
+}
+
+// Interpolate bearing taking shortest path around 360
+function lerpBearing(a: number, b: number, t: number): number {
+  let diff = b - a;
+  if (diff > 180) diff -= 360;
+  if (diff < -180) diff += 360;
+  return a + diff * t;
+}
+
+function interpolateWaypoints(
+  waypoints: MapCameraWaypoint[],
+  progress: number
+): { center: [number, number]; zoom: number; pitch: number; bearing: number } {
+  const p = Math.max(0, Math.min(1, progress));
+
+  // Find surrounding waypoints
+  let i = 0;
+  for (; i < waypoints.length - 1; i++) {
+    if (p <= waypoints[i + 1].progress) break;
+  }
+  if (i >= waypoints.length - 1) i = waypoints.length - 2;
+
+  const wp0 = waypoints[i];
+  const wp1 = waypoints[i + 1];
+  const segLen = wp1.progress - wp0.progress;
+  const t = segLen > 0 ? (p - wp0.progress) / segLen : 0;
+
+  // Smoothstep for cinematic feel
+  const st = t * t * (3 - 2 * t);
+
+  return {
+    center: [
+      lerp(wp0.center[0], wp1.center[0], st),
+      lerp(wp0.center[1], wp1.center[1], st),
+    ],
+    zoom: lerp(wp0.zoom, wp1.zoom, st),
+    pitch: lerp(wp0.pitch, wp1.pitch, st),
+    bearing: lerpBearing(wp0.bearing, wp1.bearing, st),
+  };
+}
+
 const PointCloudViewer = ({ property, progressRef, onStatusChange }: PointCloudViewerProps) => {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  const rendererRef = useRef<THREE.WebGLRenderer | null>(null);
-  const sceneRef = useRef<THREE.Scene | null>(null);
-  const cameraRef = useRef<THREE.PerspectiveCamera | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const mapRef = useRef<maplibregl.Map | null>(null);
   const rafRef = useRef<number>(0);
-  const [scene, setScene] = useState<THREE.Scene | null>(null);
 
-  const { getCameraState } = useCameraPath(property.waypoints);
-
-  // Initialize Three.js
+  // Initialize map
   useEffect(() => {
-    if (!canvasRef.current) return;
+    if (!containerRef.current) return;
 
-    const canvas = canvasRef.current;
-    const renderer = new THREE.WebGLRenderer({
-      canvas,
-      antialias: false,
-      alpha: false,
-      powerPreference: 'high-performance',
+    onStatusChange('loading');
+
+    const map = new maplibregl.Map({
+      container: containerRef.current,
+      style: {
+        version: 8,
+        sources: {
+          'satellite': {
+            type: 'raster',
+            tiles: [
+              'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+            ],
+            tileSize: 256,
+            maxzoom: 19,
+            attribution: '&copy; Esri &mdash; Sources: Esri, DigitalGlobe, GeoEye, Earthstar Geographics, CNES/Airbus DS, USDA, USGS, AeroGRID, IGN',
+          },
+          'labels': {
+            type: 'raster',
+            tiles: [
+              'https://services.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}',
+            ],
+            tileSize: 256,
+            maxzoom: 19,
+          },
+        },
+        layers: [
+          {
+            id: 'satellite-layer',
+            type: 'raster',
+            source: 'satellite',
+            paint: {
+              'raster-saturation': 0.1,
+              'raster-contrast': 0.1,
+              'raster-brightness-min': 0.05,
+            },
+          },
+          {
+            id: 'labels-layer',
+            type: 'raster',
+            source: 'labels',
+            paint: {
+              'raster-opacity': 0.4,
+            },
+          },
+        ],
+      },
+      center: property.mapCenter,
+      zoom: property.mapStartZoom,
+      pitch: 0,
+      bearing: 0,
+      interactive: false, // Scroll drives the camera, not user drag
+      fadeDuration: 0,
+      attributionControl: false,
     });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    renderer.setClearColor(0x181818, 1);
 
-    const newScene = new THREE.Scene();
-    newScene.fog = new THREE.FogExp2(0x181818, 0.0003);
+    // Add minimal attribution
+    map.addControl(new maplibregl.AttributionControl({ compact: true }), 'bottom-right');
 
-    // Ambient light for point visibility
-    const ambient = new THREE.AmbientLight(0xffffff, 1.0);
-    newScene.add(ambient);
+    map.on('load', () => {
+      onStatusChange('loaded');
+    });
 
-    const camera = new THREE.PerspectiveCamera(60, 1, 1, 10000);
-    camera.position.set(0, 2000, 0);
+    map.on('error', () => {
+      onStatusChange('error');
+    });
 
-    rendererRef.current = renderer;
-    sceneRef.current = newScene;
-    cameraRef.current = camera;
-    setScene(newScene);
-
-    // Handle resize
-    const handleResize = () => {
-      const parent = canvas.parentElement;
-      if (!parent) return;
-      const w = parent.clientWidth;
-      const h = parent.clientHeight;
-      renderer.setSize(w, h);
-      camera.aspect = w / h;
-      camera.updateProjectionMatrix();
-    };
-
-    handleResize();
-    window.addEventListener('resize', handleResize);
+    mapRef.current = map;
 
     return () => {
-      window.removeEventListener('resize', handleResize);
       cancelAnimationFrame(rafRef.current);
-      renderer.dispose();
-      renderer.forceContextLoss();
-      rendererRef.current = null;
-      sceneRef.current = null;
-      cameraRef.current = null;
-      setScene(null);
+      map.remove();
+      mapRef.current = null;
     };
-  }, []);
+  }, [property.mapCenter, property.mapStartZoom, onStatusChange]);
 
-  // Load point cloud
-  const { status } = usePointCloud({
-    property,
-    scene,
-    enabled: scene !== null,
-  });
-
-  useEffect(() => {
-    if (status === 'loading' || status === 'loaded' || status === 'error') {
-      onStatusChange(status);
-    }
-  }, [status, onStatusChange]);
-
-  // Animation loop
+  // Animation loop: sync map camera to scroll progress
   const animate = useCallback(() => {
-    const renderer = rendererRef.current;
-    const camera = cameraRef.current;
-    const currentScene = sceneRef.current;
-    if (!renderer || !camera || !currentScene) return;
+    const map = mapRef.current;
+    if (!map) return;
 
     const progress = progressRef.current ?? 0;
-    const { position, lookAt } = getCameraState(progress);
+    const cam = interpolateWaypoints(property.waypoints, progress);
 
-    camera.position.copy(position);
-    camera.lookAt(lookAt);
-    renderer.render(currentScene, camera);
+    map.jumpTo({
+      center: cam.center,
+      zoom: cam.zoom,
+      pitch: cam.pitch,
+      bearing: cam.bearing,
+    });
 
     rafRef.current = requestAnimationFrame(animate);
-  }, [getCameraState, progressRef]);
+  }, [property.waypoints, progressRef]);
 
+  // Start animation once map is ready
   useEffect(() => {
-    if (status === 'loaded') {
+    const map = mapRef.current;
+    if (!map) return;
+
+    const startAnim = () => {
       rafRef.current = requestAnimationFrame(animate);
+    };
+
+    if (map.loaded()) {
+      startAnim();
+    } else {
+      map.on('load', startAnim);
     }
+
     return () => cancelAnimationFrame(rafRef.current);
-  }, [status, animate]);
+  }, [animate]);
 
   return (
-    <canvas
-      ref={canvasRef}
-      className="w-full h-full block"
+    <div
+      ref={containerRef}
+      className="w-full h-full"
       style={{ touchAction: 'none' }}
     />
   );

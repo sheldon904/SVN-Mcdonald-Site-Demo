@@ -13,7 +13,8 @@
       "WebFetch(domain:apps.nationalmap.gov)",
       "WebFetch(domain:portal.opentopography.org)",
       "WebFetch(domain:www.npmjs.com)",
-      "WebFetch(domain:s3-us-west-2.amazonaws.com)"
+      "WebFetch(domain:s3-us-west-2.amazonaws.com)",
+      "Bash(npm uninstall:*)"
     ]
   }
 }

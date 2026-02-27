@@ -5,7 +5,7 @@ const vendorChunks: Record<string, string[]> = {
   'vendor-react': ['react', 'react-dom', 'react-router-dom'],
   'vendor-motion': ['framer-motion'],
   'vendor-ui': ['lucide-react', 'clsx', 'tailwind-merge'],
-  'vendor-three': ['three'],
+  'vendor-maplibre': ['maplibre-gl'],
   'vendor-gsap': ['gsap'],
 }
 
@@ -27,7 +27,7 @@ export default defineConfig({
     cssCodeSplit: true,
     sourcemap: false,
     // Reduce chunk size warnings
-    chunkSizeWarningLimit: 600,
+    chunkSizeWarningLimit: 1100,
     // Minification target — modern browsers only (smaller output)
     target: 'es2020',
     // Enable CSS minification

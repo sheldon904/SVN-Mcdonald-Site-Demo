@@ -1,6 +1,8 @@
-export interface CameraWaypoint {
-  position: [number, number, number]; // x, y, z in meters relative to center
-  lookAt: [number, number, number];
+export interface MapCameraWaypoint {
+  center: [number, number]; // [lng, lat]
+  zoom: number;
+  pitch: number;   // 0–85 degrees
+  bearing: number;  // 0–360 degrees
   progress: number; // 0–1
 }
 
@@ -27,13 +29,10 @@ export interface ShowcaseProperty {
   type: string;
   status: string;
 
-  // Point cloud config
-  terrainProfile: 'airpark' | 'industrial' | 'horse-country';
-  terrainExtent: { x: number; z: number }; // meters
-  pointCount: number;
-
-  // Camera journey
-  waypoints: CameraWaypoint[];
+  // Map flyover config
+  mapCenter: [number, number]; // [lng, lat]
+  mapStartZoom: number;
+  waypoints: MapCameraWaypoint[];
   scrollCaptions: ScrollCaption[];
 
   // Page content
@@ -76,22 +75,26 @@ export const showcaseProperties: Record<ShowcaseSlug, ShowcaseProperty> = {
     type: 'Residential Airpark',
     status: 'SOLD',
 
-    terrainProfile: 'airpark',
-    terrainExtent: { x: 3000, z: 3000 },
-    pointCount: 2_000_000,
-
+    mapCenter: [-82.1175, 29.2847],
+    mapStartZoom: 13,
     waypoints: [
-      { position: [0, 2000, 0], lookAt: [0, 0, 0], progress: 0.0 },
-      { position: [500, 1200, 500], lookAt: [0, 0, 0], progress: 0.15 },
-      { position: [-800, 500, 200], lookAt: [800, 0, 200], progress: 0.35 },
-      { position: [-500, 200, -100], lookAt: [500, 0, -100], progress: 0.55 },
-      { position: [300, 100, 400], lookAt: [-300, 0, -200], progress: 0.75 },
-      { position: [0, 150, -500], lookAt: [0, 0, 0], progress: 1.0 },
+      // Bird's-eye overview of full 550 acres
+      { center: [-82.1175, 29.2847], zoom: 13.5, pitch: 0, bearing: 0, progress: 0.0 },
+      // Tilt to reveal runway scale
+      { center: [-82.1175, 29.2847], zoom: 14, pitch: 40, bearing: 30, progress: 0.15 },
+      // Flying along the runway NW→SE
+      { center: [-82.1150, 29.2830], zoom: 15, pitch: 55, bearing: 135, progress: 0.35 },
+      // Dramatic low approach angle
+      { center: [-82.1130, 29.2815], zoom: 15.8, pitch: 65, bearing: 150, progress: 0.55 },
+      // Panning across residential hangars
+      { center: [-82.1160, 29.2835], zoom: 16, pitch: 60, bearing: 220, progress: 0.75 },
+      // Final establishing pull-back
+      { center: [-82.1175, 29.2847], zoom: 14.5, pitch: 45, bearing: 320, progress: 1.0 },
     ],
     scrollCaptions: [
       { text: '550 acres of world-class aviation community', startProgress: 0.0, endProgress: 0.12 },
       { text: '7,550-foot runway — one of the longest private runways in America', startProgress: 0.18, endProgress: 0.32 },
-      { text: 'Flying the length of the runway at 500 meters', startProgress: 0.38, endProgress: 0.52 },
+      { text: 'Flying the length of the runway', startProgress: 0.38, endProgress: 0.52 },
       { text: 'Approaching the residential hangars', startProgress: 0.58, endProgress: 0.72 },
       { text: 'Luxury homes with direct taxiway access', startProgress: 0.78, endProgress: 0.92 },
     ],
@@ -140,17 +143,22 @@ export const showcaseProperties: Record<ShowcaseSlug, ShowcaseProperty> = {
     type: 'Industrial',
     status: 'LEASED',
 
-    terrainProfile: 'industrial',
-    terrainExtent: { x: 2000, z: 2000 },
-    pointCount: 1_800_000,
-
+    // Approximate location along I-75 corridor near Ocala
+    mapCenter: [-82.1050, 29.1400],
+    mapStartZoom: 13,
     waypoints: [
-      { position: [0, 1500, 0], lookAt: [0, 0, 0], progress: 0.0 },
-      { position: [400, 800, 400], lookAt: [0, 0, 0], progress: 0.20 },
-      { position: [200, 400, -300], lookAt: [-200, 0, 300], progress: 0.40 },
-      { position: [-400, 150, 200], lookAt: [400, 0, -200], progress: 0.60 },
-      { position: [-200, 100, -400], lookAt: [200, 0, 400], progress: 0.80 },
-      { position: [0, 300, 500], lookAt: [0, 0, 0], progress: 1.0 },
+      // Wide I-75 corridor context
+      { center: [-82.1050, 29.1400], zoom: 13, pitch: 0, bearing: 0, progress: 0.0 },
+      // Tilting toward facility
+      { center: [-82.1050, 29.1400], zoom: 14, pitch: 35, bearing: 45, progress: 0.20 },
+      // Revealing the footprint
+      { center: [-82.1030, 29.1390], zoom: 15, pitch: 50, bearing: 90, progress: 0.40 },
+      // Orbiting the building
+      { center: [-82.1040, 29.1395], zoom: 15.5, pitch: 60, bearing: 180, progress: 0.60 },
+      // Near ground — scale emphasis
+      { center: [-82.1060, 29.1405], zoom: 16, pitch: 70, bearing: 250, progress: 0.80 },
+      // Contextual pull-back
+      { center: [-82.1050, 29.1400], zoom: 14, pitch: 40, bearing: 315, progress: 1.0 },
     ],
     scrollCaptions: [
       { text: 'The I-75 corridor: Central Florida\'s logistics backbone', startProgress: 0.0, endProgress: 0.15 },
@@ -204,17 +212,22 @@ export const showcaseProperties: Record<ShowcaseSlug, ShowcaseProperty> = {
     type: 'Land',
     status: 'SOLD',
 
-    terrainProfile: 'horse-country',
-    terrainExtent: { x: 1600, z: 1600 },
-    pointCount: 1_500_000,
-
+    // NW Marion County horse country area
+    mapCenter: [-82.1900, 29.3200],
+    mapStartZoom: 14,
     waypoints: [
-      { position: [0, 800, 0], lookAt: [0, 0, 0], progress: 0.0 },
-      { position: [200, 500, 200], lookAt: [0, 0, 0], progress: 0.20 },
-      { position: [-300, 250, -100], lookAt: [300, 0, 100], progress: 0.40 },
-      { position: [-100, 100, 300], lookAt: [100, 0, -300], progress: 0.60 },
-      { position: [200, 50, -200], lookAt: [-200, 0, 200], progress: 0.80 },
-      { position: [0, 400, 300], lookAt: [0, 0, 0], progress: 1.0 },
+      // Full property overview
+      { center: [-82.1900, 29.3200], zoom: 14, pitch: 0, bearing: 0, progress: 0.0 },
+      // Gentle tilt — terrain undulation
+      { center: [-82.1900, 29.3200], zoom: 14.5, pitch: 35, bearing: 20, progress: 0.20 },
+      // Flying NE→SW along pastures
+      { center: [-82.1920, 29.3185], zoom: 15, pitch: 50, bearing: 210, progress: 0.40 },
+      // Near canopy — oak clusters
+      { center: [-82.1910, 29.3195], zoom: 16, pitch: 60, bearing: 280, progress: 0.60 },
+      // Dramatic low angle — rolling landscape
+      { center: [-82.1895, 29.3210], zoom: 16.5, pitch: 70, bearing: 350, progress: 0.80 },
+      // Wider view of surrounding horse country
+      { center: [-82.1900, 29.3200], zoom: 14, pitch: 40, bearing: 60, progress: 1.0 },
     ],
     scrollCaptions: [
       { text: '78 pristine acres in NW Marion County', startProgress: 0.0, endProgress: 0.15 },
