@@ -7,6 +7,7 @@ import SEOHead from '../components/SEOHead';
 import { motion } from 'framer-motion';
 import { MapPin, DollarSign, Calendar } from 'lucide-react';
 import { closedDeals, FALLBACK_IMAGE } from '../data/closedDeals';
+import FeaturedDeals from '../components/FeaturedDeals';
 
 const categories = ["All", "Land", "Industrial", "Office", "Retail", "Residential", "Self Storage"] as const;
 
@@ -32,6 +33,8 @@ const ClosedDealsPage = () => {
         subtitle="A track record of success in Central Florida commercial real estate."
         backgroundImage="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=2273&q=80"
       />
+
+      <FeaturedDeals showHeading={false} />
 
       <section className="py-24 px-6">
         <div className="max-w-[1280px] mx-auto">

@@ -6,6 +6,7 @@ import StructuredData from '../components/StructuredData'
 import Hero from '../components/Hero'
 import Stats from '../components/Stats'
 import Services from '../components/Services'
+import FeaturedDeals from '../components/FeaturedDeals'
 import Testimonials from '../components/Testimonials'
 import Partners from '../components/Partners'
 import Blog from '../components/Blog'
@@ -55,6 +56,7 @@ const HomePage = () => {
             </div>
           </div>
         </section>
+        <FeaturedDeals />
         <Services />
         <Testimonials />
         <ContactForm />
