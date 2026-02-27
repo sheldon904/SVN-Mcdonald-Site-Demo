@@ -1,6 +1,7 @@
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import BuildoutListing from '../components/BuildoutListing';
+import { BUILDOUT_LAND_TOKEN, BUILDOUT_COMMERCIAL_TOKEN } from '../components/BuildoutListing';
 import TeamBanner from '../components/TeamBanner';
 import SEOHead from '../components/SEOHead';
 import { motion } from 'framer-motion';
@@ -329,13 +330,13 @@ const ListingsPage = () => {
         {/* Editorial Intro (land vs. commercial) */}
         {isLand ? <LandIntro /> : <CommercialIntro />}
 
-        {/* Buildout Embed */}
+        {/* Buildout Featured Slider */}
         <section className="py-16 px-6 bg-[#F6F6F6]">
           <div className="max-w-[1280px] mx-auto">
             <BuildoutListing
-              pluginType="inventory"
+              pluginType="featured"
               containerId={isLand ? 'land-buildout-container' : 'commercial-buildout-container'}
-              propertyUses={isLand ? 'Land' : 'Commercial'}
+              token={isLand ? BUILDOUT_LAND_TOKEN : BUILDOUT_COMMERCIAL_TOKEN}
             />
           </div>
         </section>
