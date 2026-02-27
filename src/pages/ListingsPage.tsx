@@ -1,4 +1,3 @@
-import { useState, useRef } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import BuildoutListing from '../components/BuildoutListing';
@@ -7,7 +6,7 @@ import TeamBanner from '../components/TeamBanner';
 import SEOHead from '../components/SEOHead';
 import { motion } from 'framer-motion';
 import { useLocation, Link } from 'react-router-dom';
-import { ArrowRight, TrendingUp, BarChart3, MapPin, X, Search } from 'lucide-react';
+import { ArrowRight, TrendingUp, BarChart3, MapPin } from 'lucide-react';
 
 /* ------------------------------------------------------------------ */
 /*  Static Data                                                        */
@@ -203,14 +202,8 @@ const ReportCTA = ({ isLand }: { isLand: boolean }) => {
   );
 };
 
-/** Grid of regional county / city labels — clickable to filter listings */
-const RegionalLinks = ({
-  selectedArea,
-  onSelectArea,
-}: {
-  selectedArea: string | null;
-  onSelectArea: (area: string) => void;
-}) => (
+/** Grid of regional county / city labels */
+const RegionalLinks = () => (
   <section className="py-24 px-6 bg-white">
     <div className="max-w-[1280px] mx-auto">
       <motion.div
@@ -223,7 +216,8 @@ const RegionalLinks = ({
           Areas We <span className="text-svn-orange">Serve</span>
         </h2>
         <p className="text-gray-500 text-lg font-medium leading-relaxed mb-12 max-w-2xl">
-          Select a county or city below to browse available listings in that area.
+          Our brokerage covers a broad region of Central Florida, providing expert
+          market knowledge in every county and city we operate.
         </p>
       </motion.div>
 
@@ -232,30 +226,21 @@ const RegionalLinks = ({
         Counties
       </h3>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 mb-10">
-        {counties.map((county, i) => {
-          const label = `${county} County`;
-          const isActive = selectedArea === label;
-          return (
-            <motion.button
-              key={county}
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.05 }}
-              onClick={() => onSelectArea(label)}
-              className={`rounded-xl shadow-sm border p-6 text-center transition-all duration-300 cursor-pointer ${
-                isActive
-                  ? 'bg-svn-orange border-svn-orange shadow-lg scale-[1.03]'
-                  : 'bg-white border-gray-100 hover:shadow-md hover:border-svn-orange/30'
-              }`}
-            >
-              <Search size={20} className={`mx-auto mb-3 ${isActive ? 'text-white' : 'text-svn-orange'}`} />
-              <p className={`text-sm font-black uppercase tracking-widest ${isActive ? 'text-white' : 'text-svn-dark'}`}>
-                {county}
-              </p>
-            </motion.button>
-          );
-        })}
+        {counties.map((county, i) => (
+          <motion.div
+            key={county}
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: i * 0.05 }}
+            className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 text-center hover:shadow-md hover:border-svn-orange/30 transition-all duration-300"
+          >
+            <MapPin size={20} className="text-svn-orange mx-auto mb-3" />
+            <p className="text-sm font-black text-svn-dark uppercase tracking-widest">
+              {county}
+            </p>
+          </motion.div>
+        ))}
       </div>
 
       {/* Cities */}
@@ -263,29 +248,21 @@ const RegionalLinks = ({
         Cities
       </h3>
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-        {cities.map((city, i) => {
-          const isActive = selectedArea === city;
-          return (
-            <motion.button
-              key={city}
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.05 }}
-              onClick={() => onSelectArea(city)}
-              className={`rounded-xl shadow-sm border p-6 text-center transition-all duration-300 cursor-pointer ${
-                isActive
-                  ? 'bg-svn-orange border-svn-orange shadow-lg scale-[1.03]'
-                  : 'bg-white border-gray-100 hover:shadow-md hover:border-svn-orange/30'
-              }`}
-            >
-              <Search size={20} className={`mx-auto mb-3 ${isActive ? 'text-white' : 'text-svn-orange'}`} />
-              <p className={`text-sm font-black uppercase tracking-widest ${isActive ? 'text-white' : 'text-svn-dark'}`}>
-                {city}
-              </p>
-            </motion.button>
-          );
-        })}
+        {cities.map((city, i) => (
+          <motion.div
+            key={city}
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: i * 0.05 }}
+            className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 text-center hover:shadow-md hover:border-svn-orange/30 transition-all duration-300"
+          >
+            <MapPin size={20} className="text-svn-orange mx-auto mb-3" />
+            <p className="text-sm font-black text-svn-dark uppercase tracking-widest">
+              {city}
+            </p>
+          </motion.div>
+        ))}
       </div>
     </div>
   </section>
@@ -298,26 +275,11 @@ const RegionalLinks = ({
 const ListingsPage = () => {
   const location = useLocation();
   const isLand = location.pathname.includes('land');
-  const [selectedArea, setSelectedArea] = useState<string | null>(null);
-  const filteredRef = useRef<HTMLDivElement>(null);
 
   const title = isLand ? 'Land' : 'Commercial';
   const subtitle = isLand
     ? 'Explore our premier land opportunities in Central Florida, from agricultural acreage to development sites.'
     : 'Discover full-service commercial real estate solutions for retail, office, industrial, and investment properties.';
-
-  const handleAreaSelect = (area: string) => {
-    // Toggle off if same area clicked again
-    if (selectedArea === area) {
-      setSelectedArea(null);
-      return;
-    }
-    setSelectedArea(area);
-    // Scroll to filtered results after a brief delay for render
-    setTimeout(() => {
-      filteredRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }, 100);
-  };
 
   return (
     <div className="min-h-screen bg-[#F6F6F6]">
@@ -383,47 +345,7 @@ const ListingsPage = () => {
         <ReportCTA isLand={isLand} />
 
         {/* Regional Sub-Links */}
-        <RegionalLinks selectedArea={selectedArea} onSelectArea={handleAreaSelect} />
-
-        {/* Filtered Area Results */}
-        {selectedArea && (
-          <section ref={filteredRef} className="py-16 px-6 bg-[#F6F6F6] scroll-mt-32">
-            <div className="max-w-[1280px] mx-auto">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="mb-10"
-              >
-                <div className="flex items-center justify-between flex-wrap gap-4">
-                  <div>
-                    <div className="w-20 h-1.5 bg-svn-orange mb-6" />
-                    <h2 className="text-3xl md:text-4xl font-black text-svn-dark uppercase tracking-tight">
-                      {title} Listings in{' '}
-                      <span className="text-svn-orange">{selectedArea}</span>
-                    </h2>
-                    <p className="text-gray-500 text-lg font-medium mt-3">
-                      Showing {isLand ? 'land' : 'commercial'} properties available in {selectedArea}, FL.
-                    </p>
-                  </div>
-                  <button
-                    onClick={() => setSelectedArea(null)}
-                    className="flex items-center gap-2 bg-white border border-gray-200 text-svn-dark px-5 py-3 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-gray-50 hover:border-svn-orange/30 transition-all duration-300 shadow-sm"
-                  >
-                    <X size={14} />
-                    Clear Filter
-                  </button>
-                </div>
-              </motion.div>
-
-              <BuildoutListing
-                pluginType="inventory"
-                containerId={`area-${selectedArea.replace(/\s+/g, '-').toLowerCase()}-${isLand ? 'land' : 'commercial'}`}
-                token={isLand ? BUILDOUT_LAND_TOKEN : BUILDOUT_COMMERCIAL_TOKEN}
-                searchText={selectedArea}
-              />
-            </div>
-          </section>
-        )}
+        <RegionalLinks />
 
         {/* Team Banner */}
         <TeamBanner />

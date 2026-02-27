@@ -22,7 +22,8 @@
       "WebFetch(domain:api.openstreetmap.org)",
       "WebFetch(domain:overpass-api.de)",
       "WebFetch(domain:bundlephobia.com)",
-      "WebFetch(domain:docs.protomaps.com)"
+      "WebFetch(domain:docs.protomaps.com)",
+      "mcp__filesystem__write_file"
     ]
   }
 }
