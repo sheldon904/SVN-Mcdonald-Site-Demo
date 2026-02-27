@@ -24,7 +24,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="relative z-10 text-center pt-20"
+            className="relative z-10 text-center pt-32"
           >
             <h1 className="text-4xl font-[800] text-white tracking-[-0.02em] leading-[1.1] uppercase drop-shadow-lg">
               National Reach.<br />
