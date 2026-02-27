@@ -85,28 +85,6 @@ const PointCloudViewer = ({ property, progressRef, onStatusChange }: PointCloudV
             maxzoom: 19,
             attribution: '&copy; Esri',
           },
-          'terrain-dem': {
-            type: 'raster-dem',
-            tiles: [
-              'https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png',
-            ],
-            tileSize: 256,
-            maxzoom: 15,
-            encoding: 'terrarium',
-          },
-          'hillshade-source': {
-            type: 'raster-dem',
-            tiles: [
-              'https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png',
-            ],
-            tileSize: 256,
-            maxzoom: 15,
-            encoding: 'terrarium',
-          },
-        },
-        terrain: {
-          source: 'terrain-dem',
-          exaggeration: 3,
         },
         layers: [
           {
@@ -119,24 +97,12 @@ const PointCloudViewer = ({ property, progressRef, onStatusChange }: PointCloudV
               'raster-brightness-min': 0.05,
             },
           },
-          {
-            id: 'hillshade-layer',
-            type: 'hillshade',
-            source: 'hillshade-source',
-            paint: {
-              'hillshade-shadow-color': '#000000',
-              'hillshade-highlight-color': '#ffffff',
-              'hillshade-accent-color': '#4a4a4a',
-              'hillshade-exaggeration': 0.5,
-              'hillshade-illumination-direction': 315,
-            },
-          },
         ],
       },
       center: [wp0.center.lng, wp0.center.lat],
       zoom: rangeToZoom(wp0.range),
-      maxPitch: 85,
-      pitch: Math.min(85, wp0.tilt),
+      maxPitch: 0,
+      pitch: 0,
       bearing: wp0.heading,
       interactive: false,
       fadeDuration: 0,
@@ -168,7 +134,6 @@ const PointCloudViewer = ({ property, progressRef, onStatusChange }: PointCloudV
     map.jumpTo({
       center: cam.center,
       zoom: cam.zoom,
-      pitch: cam.pitch,
       bearing: cam.bearing,
     });
 
