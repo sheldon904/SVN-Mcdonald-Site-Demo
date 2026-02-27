@@ -84,7 +84,6 @@ const PointCloudViewer = ({ property, progressRef, onStatusChange }: PointCloudV
           heading: wp0.heading,
           tilt: wp0.tilt,
           range: wp0.range,
-          defaultLabelsDisabled: true,
         });
 
         map3d.style.width = '100%';
