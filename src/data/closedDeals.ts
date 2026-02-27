@@ -28,7 +28,7 @@ export const closedDeals: ClosedDeal[] = [
     location: "NW Marion County, FL",
     price: "Sold",
     date: "Feb 2026",
-    image: "https://svnmcdonald.com/wp-content/uploads/2025/09/78.webp",
+    image: "/78-acres-horse-country-hero.jpg",
     type: "Land",
     description: "78+/- pristine acres located in the heart of NW Marion County's renowned horse country. This beautiful property features rolling pastures and mature oaks, ideal for equestrian use or conservation."
   },
@@ -38,7 +38,7 @@ export const closedDeals: ClosedDeal[] = [
     location: "Ocala, FL",
     price: "943,000 SF Leased",
     date: "Feb 2026",
-    image: "https://svnmcdonald.com/wp-content/uploads/2026/02/Finished-Graphic-2-1-1920x1371.webp",
+    image: "/trailhead-logistics-hero.jpg",
     type: "Industrial",
     description: "SVN McDonald & Company played a key role in the single-tenant lease of the 943,000 square foot Trailhead Logistics Center in Ocala, FL. This state-of-the-art distribution facility represents one of the largest industrial transactions in Marion County history."
   },

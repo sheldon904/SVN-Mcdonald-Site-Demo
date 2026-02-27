@@ -136,8 +136,8 @@ export const showcaseProperties: Record<ShowcaseSlug, ShowcaseProperty> = {
     location: 'Ocala, FL',
     price: '943,000 SF',
     priceLabel: 'Leased',
-    heroImage: 'https://svnmcdonald.com/wp-content/uploads/2026/02/Finished-Graphic-2-1-1920x1371.webp',
-    aerialFallbackImage: 'https://svnmcdonald.com/wp-content/uploads/2026/02/Finished-Graphic-2-1-1920x1371.webp',
+    heroImage: '/trailhead-logistics-hero.jpg',
+    aerialFallbackImage: '/trailhead-logistics-hero.jpg',
     type: 'Industrial',
     status: 'LEASED',
 
@@ -189,7 +189,7 @@ export const showcaseProperties: Record<ShowcaseSlug, ShowcaseProperty> = {
         'Jacksonville — 120 miles',
         'Ocala International Airport — 8 miles',
       ],
-      satelliteImage: 'https://svnmcdonald.com/wp-content/uploads/2026/02/Finished-Graphic-2-1-1920x1371.webp',
+      satelliteImage: '/trailhead-logistics-hero.jpg',
     },
 
     seoTitle: 'Trailhead Logistics Center — 943K SF Lease | SVN McDonald',
@@ -203,8 +203,8 @@ export const showcaseProperties: Record<ShowcaseSlug, ShowcaseProperty> = {
     location: 'NW Marion County, FL',
     price: '78+/- Acres',
     priceLabel: 'Sold',
-    heroImage: 'https://svnmcdonald.com/wp-content/uploads/2025/09/78.webp',
-    aerialFallbackImage: 'https://svnmcdonald.com/wp-content/uploads/2025/09/78.webp',
+    heroImage: '/78-acres-horse-country-hero.jpg',
+    aerialFallbackImage: '/78-acres-horse-country-hero.jpg',
     type: 'Land',
     status: 'SOLD',
 
@@ -256,7 +256,7 @@ export const showcaseProperties: Record<ShowcaseSlug, ShowcaseProperty> = {
         'Downtown Ocala — 12 miles',
         'Ocala National Forest — 15 miles',
       ],
-      satelliteImage: 'https://svnmcdonald.com/wp-content/uploads/2025/09/78.webp',
+      satelliteImage: '/78-acres-horse-country-hero.jpg',
     },
 
     seoTitle: '78+/- Acres Horse Country — NW Marion County | SVN McDonald',
