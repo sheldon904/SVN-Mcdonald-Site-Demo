@@ -69,6 +69,7 @@ const WecEffectMapViewer = ({ progressRef, onStatusChange }: WecEffectMapViewerP
   const mapRef = useRef<maplibregl.Map | null>(null);
   const rafRef = useRef<number>(0);
   const markersRef = useRef<maplibregl.Marker[]>([]);
+  const layersReadyRef = useRef(false);
   const prevRingVisibility = useRef({ inner: false, middle: false, outer: false });
 
   useEffect(() => {
@@ -185,10 +186,11 @@ const WecEffectMapViewer = ({ progressRef, onStatusChange }: WecEffectMapViewerP
     map.addControl(new maplibregl.AttributionControl({ compact: true }), 'bottom-right');
 
     map.on('load', () => {
-      onStatusChange('loaded');
       addRingLayers(map);
       addPulseCenterMarker(map);
       addPriceMarkers(map);
+      layersReadyRef.current = true;
+      onStatusChange('loaded');
     });
 
     // Only treat style-level errors as fatal (not tile 404s)
@@ -325,18 +327,22 @@ const WecEffectMapViewer = ({ progressRef, onStatusChange }: WecEffectMapViewerP
       bearing: cam.bearing,
     });
 
-    // Ring visibility (only update paint when threshold crossed)
-    const thresholds = { inner: RING_THRESHOLDS.inner, middle: RING_THRESHOLDS.middle, outer: RING_THRESHOLDS.outer };
-    for (const [bandId, threshold] of Object.entries(thresholds)) {
-      const visible = progress > threshold;
-      if (visible !== prevRingVisibility.current[bandId as keyof typeof prevRingVisibility.current]) {
-        prevRingVisibility.current[bandId as keyof typeof prevRingVisibility.current] = visible;
-        const band = DISTANCE_BANDS.find(b => b.id === bandId)!;
-        try {
-          map.setPaintProperty(`ring-fill-${bandId}`, 'fill-opacity', visible ? band.fillOpacity : 0);
-          map.setPaintProperty(`ring-stroke-${bandId}`, 'line-opacity', visible ? band.strokeOpacity : 0);
-        } catch {
-          // layers may not be ready yet
+    // Ring visibility (only update paint when threshold crossed AND layers are ready)
+    if (layersReadyRef.current) {
+      const thresholds = { inner: RING_THRESHOLDS.inner, middle: RING_THRESHOLDS.middle, outer: RING_THRESHOLDS.outer };
+      for (const [bandId, threshold] of Object.entries(thresholds)) {
+        const visible = progress > threshold;
+        const key = bandId as keyof typeof prevRingVisibility.current;
+        if (visible !== prevRingVisibility.current[key]) {
+          const band = DISTANCE_BANDS.find(b => b.id === bandId)!;
+          try {
+            map.setPaintProperty(`ring-fill-${bandId}`, 'fill-opacity', visible ? band.fillOpacity : 0);
+            map.setPaintProperty(`ring-stroke-${bandId}`, 'line-opacity', visible ? band.strokeOpacity : 0);
+            // Only mark as toggled after successful paint update
+            prevRingVisibility.current[key] = visible;
+          } catch {
+            // Will retry next frame
+          }
         }
       }
     }

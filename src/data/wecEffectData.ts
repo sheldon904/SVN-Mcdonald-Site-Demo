@@ -132,12 +132,12 @@ export interface WecMapWaypoint {
 }
 
 export const MAP_WAYPOINTS: WecMapWaypoint[] = [
-  { center: { ...WEC_CENTER, altitude: 0 }, heading: 0,   tilt: 30, range: 35000, progress: 0.0  },
-  { center: { ...WEC_CENTER, altitude: 0 }, heading: 45,  tilt: 40, range: 25000, progress: 0.15 },
-  { center: { ...WEC_CENTER, altitude: 0 }, heading: 120, tilt: 45, range: 20000, progress: 0.30 },
-  { center: { ...WEC_CENTER, altitude: 0 }, heading: 180, tilt: 50, range: 18000, progress: 0.45 },
-  { center: { ...WEC_CENTER, altitude: 0 }, heading: 240, tilt: 55, range: 15000, progress: 0.70 },
-  { center: { ...WEC_CENTER, altitude: 0 }, heading: 300, tilt: 45, range: 25000, progress: 1.0  },
+  { center: { ...WEC_CENTER, altitude: 0 }, heading: 0,   tilt: 35, range: 22000, progress: 0.0  },
+  { center: { ...WEC_CENTER, altitude: 0 }, heading: 45,  tilt: 42, range: 16000, progress: 0.15 },
+  { center: { ...WEC_CENTER, altitude: 0 }, heading: 120, tilt: 48, range: 14000, progress: 0.30 },
+  { center: { ...WEC_CENTER, altitude: 0 }, heading: 180, tilt: 52, range: 12000, progress: 0.45 },
+  { center: { ...WEC_CENTER, altitude: 0 }, heading: 240, tilt: 55, range: 10000, progress: 0.70 },
+  { center: { ...WEC_CENTER, altitude: 0 }, heading: 300, tilt: 45, range: 18000, progress: 1.0  },
 ];
 
 // ── Ring Progress Thresholds ────────────────────────────────────
@@ -206,7 +206,7 @@ export const PRICE_LABELS: PriceLabel[] = [
 
 // ── GeoJSON Ring Generator ──────────────────────────────────────
 
-/** Generate circle coordinates for GeoJSON polygon rings */
+/** Generate circle coordinates for GeoJSON polygon rings (CCW for outer, CW when reversed for holes) */
 export function generateCircleCoords(
   centerLat: number,
   centerLng: number,
@@ -214,8 +214,9 @@ export function generateCircleCoords(
   numPoints = 64,
 ): [number, number][] {
   const coords: [number, number][] = [];
+  // Go counter-clockwise (360→0) so outer rings follow GeoJSON right-hand rule
   for (let i = 0; i <= numPoints; i++) {
-    const bearing = (360 / numPoints) * i;
+    const bearing = 360 - (360 / numPoints) * i;
     const pt = destinationPoint(centerLat, centerLng, bearing, radiusMiles);
     coords.push([pt.lng, pt.lat]);
   }
