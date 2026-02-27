@@ -89,7 +89,7 @@ const Footer = () => {
                 </div>
                 <div>
                   <p className="text-[10px] uppercase font-black tracking-widest text-gray-400 mb-1">Headquarters</p>
-                  <p className="text-xl font-bold leading-tight">1825 SE 16th Ave.<br />Ocala, FL 34471</p>
+                  <p className="text-xl font-bold leading-tight">217 SE First AVE Unit 200<br />Ocala, FL 34471</p>
                 </div>
               </div>
             </div>

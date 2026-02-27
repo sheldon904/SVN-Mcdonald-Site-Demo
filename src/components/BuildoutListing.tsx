@@ -3,14 +3,19 @@ import React, { useEffect, useRef, useState } from 'react';
 interface BuildoutListingProps {
   pluginType?: 'featured' | 'inventory';
   containerId?: string;
+  token?: string;
 }
 
-const BUILDOUT_TOKEN = "780b230639b42edeea9d75652be95e361a796839";
+const BUILDOUT_LAND_TOKEN = "780b230639b42edeea9d75652be95e361a796839";
+const BUILDOUT_COMMERCIAL_TOKEN = "80cac2f8491bd40156869256e3d371488bcfc4fe";
 const BUILDOUT_SCRIPT_ID = 'buildout-api-script';
+
+export { BUILDOUT_LAND_TOKEN, BUILDOUT_COMMERCIAL_TOKEN };
 
 const BuildoutListing: React.FC<BuildoutListingProps> = ({
   pluginType = 'featured',
-  containerId = 'buildout-container'
+  containerId = 'buildout-container',
+  token = BUILDOUT_LAND_TOKEN,
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
@@ -38,10 +43,10 @@ const BuildoutListing: React.FC<BuildoutListingProps> = ({
   useEffect(() => {
     if (!isVisible) return;
 
-    const config = {
-      token: BUILDOUT_TOKEN,
+    const config: Record<string, string> = {
+      token,
       plugin: pluginType,
-      target: containerId
+      target: containerId,
     };
 
     const initBuildout = () => {
@@ -72,7 +77,7 @@ const BuildoutListing: React.FC<BuildoutListingProps> = ({
         container.innerHTML = '';
       }
     };
-  }, [isVisible, pluginType, containerId]);
+  }, [isVisible, pluginType, containerId, token]);
 
   return (
     <div className="w-full min-h-[400px]" ref={containerRef}>

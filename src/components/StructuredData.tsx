@@ -25,7 +25,7 @@ const localBusinessSchema = {
   email: 'info@svnmcdonald.com',
   address: {
     '@type': 'PostalAddress',
-    streetAddress: '1825 SE 16th Ave.',
+    streetAddress: '217 SE First AVE Unit 200',
     addressLocality: 'Ocala',
     addressRegion: 'FL',
     postalCode: '34471',

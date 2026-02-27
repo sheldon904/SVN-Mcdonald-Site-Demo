@@ -12,7 +12,7 @@ const ContactPage = () => {
     <div className="min-h-screen bg-white">
       <SEOHead
         title="Contact Us"
-        description="Contact SVN McDonald & Company in Ocala, FL. Call 352.274.3800 or visit our office at 1825 SE 16th Ave. Commercial and land real estate experts."
+        description="Contact SVN McDonald & Company in Ocala, FL. Call 352.274.3800 or visit our office at 217 SE First AVE Unit 200. Commercial and land real estate experts."
         canonical="https://svnmcdonald.com/contact"
       />
       <Navbar />
@@ -76,7 +76,7 @@ const ContactPage = () => {
               <h3 className="text-lg font-bold text-svn-dark uppercase tracking-wider mb-2">Office</h3>
               <p className="text-gray-500 mb-4">Come say hello at our office headquarters.</p>
               <p className="text-lg font-bold text-svn-dark">
-                1825 SE 16th Ave.<br />Ocala, FL 34471
+                217 SE First AVE Unit 200<br />Ocala, FL 34471
               </p>
             </div>
 
@@ -137,7 +137,7 @@ const ContactPage = () => {
 
       <div className="h-[400px] w-full bg-gray-200 grayscale">
          <iframe 
-           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3463.858872990664!2d-82.11584892434563!3d29.18659427537336!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88e7d2d3a6c0c2ab%3A0x6b0a6e8b4b4b4b4b!2s1825%20SE%2016th%20Ave%2C%20Ocala%2C%20FL%2034471!5e0!3m2!1sen!2sus!4v1707590000000!5m2!1sen!2sus" 
+           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3463.8!2d-82.1402!3d29.1875!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2s217%20SE%20First%20Ave%20Unit%20200%2C%20Ocala%2C%20FL%2034471!5e0!3m2!1sen!2sus!4v1707590000000!5m2!1sen!2sus" 
            width="100%" 
            height="100%" 
            style={{ border: 0 }} 

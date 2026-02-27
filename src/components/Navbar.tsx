@@ -66,7 +66,7 @@ const Navbar = () => {
             </a>
             <div className="flex items-center gap-2">
               <MapPin size={12} className="text-svn-orange" />
-              <span className="hidden sm:inline">1825 SE 16th Ave., Ocala, FL 34471</span>
+              <span className="hidden sm:inline">217 SE First AVE Unit 200, Ocala, FL 34471</span>
               <span className="sm:hidden">Ocala, FL 34471</span>
             </div>
           </div>
@@ -209,7 +209,7 @@ const Navbar = () => {
             </a>
             <div className="flex items-center gap-3 text-svn-dark text-sm">
               <MapPin size={20} className="text-svn-orange" />
-              1825 SE 16th Ave., Ocala, FL 34471
+              217 SE First AVE Unit 200, Ocala, FL 34471
             </div>
           </div>
         </div>

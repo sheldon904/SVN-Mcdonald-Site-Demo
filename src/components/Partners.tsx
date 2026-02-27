@@ -1,5 +1,5 @@
-const partners = [
-  { name: 'HFF', logo: 'https://svnmcdonald.com/wp-content/uploads/2025/07/HFF-Logo-All-White_withregistration-300x97.png' },
+const partners: { name: string; logo: string; invert?: boolean }[] = [
+  { name: 'HFF', logo: 'https://svnmcdonald.com/wp-content/uploads/2025/07/HFF-Logo-All-White_withregistration-300x97.png', invert: true },
   { name: 'Ocala Metro', logo: 'https://svnmcdonald.com/wp-content/uploads/2023/06/ocala_metro.png' },
   { name: 'Stellar MLS', logo: 'https://svnmcdonald.com/wp-content/uploads/2023/05/stellar-mls.png' },
   { name: 'Realtor', logo: 'https://svnmcdonald.com/wp-content/uploads/2023/05/Realtor-logo.png' },
@@ -15,7 +15,7 @@ const Partners = () => {
               <img
                 src={partner.logo}
                 alt={partner.name}
-                className="h-10 md:h-14 w-auto object-contain"
+                className={`h-10 md:h-14 w-auto object-contain${partner.invert ? ' invert' : ''}`}
                 loading="lazy"
                 decoding="async"
                 width={200}
