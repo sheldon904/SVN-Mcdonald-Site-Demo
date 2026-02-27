@@ -74,20 +74,20 @@ export const showcaseProperties: Record<ShowcaseSlug, ShowcaseProperty> = {
     type: 'Residential Airpark',
     status: 'SOLD',
 
-    mapCenter: { lat: 29.2847, lng: -82.1175 },
+    mapCenter: { lat: 29.2802872, lng: -82.1204175 },
     waypoints: [
       // High overview — full 550 acres visible
-      { center: { lat: 29.2847, lng: -82.1175, altitude: 0 }, heading: 0, tilt: 45, range: 2500, progress: 0.0 },
+      { center: { lat: 29.2802872, lng: -82.1204175, altitude: 0 }, heading: 0, tilt: 45, range: 2500, progress: 0.0 },
       // Push in, tilt to reveal runway in 3D
-      { center: { lat: 29.2847, lng: -82.1175, altitude: 0 }, heading: 30, tilt: 55, range: 1200, progress: 0.15 },
+      { center: { lat: 29.2802872, lng: -82.1204175, altitude: 0 }, heading: 30, tilt: 55, range: 1200, progress: 0.15 },
       // Flying along the runway — see buildings in 3D
-      { center: { lat: 29.2830, lng: -82.1150, altitude: 0 }, heading: 135, tilt: 65, range: 500, progress: 0.35 },
+      { center: { lat: 29.2786, lng: -82.1179, altitude: 0 }, heading: 135, tilt: 65, range: 500, progress: 0.35 },
       // Low approach — near rooftop level
-      { center: { lat: 29.2820, lng: -82.1135, altitude: 0 }, heading: 150, tilt: 75, range: 250, progress: 0.55 },
+      { center: { lat: 29.2776, lng: -82.1164, altitude: 0 }, heading: 150, tilt: 75, range: 250, progress: 0.55 },
       // Close flyby of hangars and homes
-      { center: { lat: 29.2840, lng: -82.1165, altitude: 0 }, heading: 220, tilt: 72, range: 200, progress: 0.75 },
+      { center: { lat: 29.2796, lng: -82.1194, altitude: 0 }, heading: 220, tilt: 72, range: 200, progress: 0.75 },
       // Cinematic pull-back — property in full 3D context
-      { center: { lat: 29.2847, lng: -82.1175, altitude: 0 }, heading: 320, tilt: 55, range: 1500, progress: 1.0 },
+      { center: { lat: 29.2802872, lng: -82.1204175, altitude: 0 }, heading: 320, tilt: 55, range: 1500, progress: 1.0 },
     ],
     scrollCaptions: [
       { text: '550 acres of world-class aviation community', startProgress: 0.0, endProgress: 0.12 },
@@ -141,20 +141,20 @@ export const showcaseProperties: Record<ShowcaseSlug, ShowcaseProperty> = {
     type: 'Industrial',
     status: 'LEASED',
 
-    mapCenter: { lat: 29.1400, lng: -82.1050 },
+    mapCenter: { lat: 29.0177050, lng: -82.2083490 },
     waypoints: [
       // I-75 corridor context — high overview
-      { center: { lat: 29.1400, lng: -82.1050, altitude: 0 }, heading: 0, tilt: 40, range: 3000, progress: 0.0 },
+      { center: { lat: 29.0177050, lng: -82.2083490, altitude: 0 }, heading: 0, tilt: 40, range: 3000, progress: 0.0 },
       // Tilt in toward the industrial area
-      { center: { lat: 29.1400, lng: -82.1050, altitude: 0 }, heading: 45, tilt: 55, range: 1500, progress: 0.20 },
+      { center: { lat: 29.0177050, lng: -82.2083490, altitude: 0 }, heading: 45, tilt: 55, range: 1500, progress: 0.20 },
       // See the massive footprint in 3D
-      { center: { lat: 29.1390, lng: -82.1030, altitude: 0 }, heading: 90, tilt: 65, range: 600, progress: 0.40 },
+      { center: { lat: 29.0167, lng: -82.2063, altitude: 0 }, heading: 90, tilt: 65, range: 600, progress: 0.40 },
       // Orbit the building — see roof, dock doors, parking
-      { center: { lat: 29.1395, lng: -82.1040, altitude: 15 }, heading: 180, tilt: 70, range: 350, progress: 0.60 },
+      { center: { lat: 29.0172, lng: -82.2073, altitude: 15 }, heading: 180, tilt: 70, range: 350, progress: 0.60 },
       // Near ground — feel the scale of 943K SF
-      { center: { lat: 29.1405, lng: -82.1060, altitude: 10 }, heading: 250, tilt: 78, range: 200, progress: 0.80 },
+      { center: { lat: 29.0182, lng: -82.2093, altitude: 10 }, heading: 250, tilt: 78, range: 200, progress: 0.80 },
       // Pull-back with full 3D
-      { center: { lat: 29.1400, lng: -82.1050, altitude: 0 }, heading: 315, tilt: 55, range: 1800, progress: 1.0 },
+      { center: { lat: 29.0177050, lng: -82.2083490, altitude: 0 }, heading: 315, tilt: 55, range: 1800, progress: 1.0 },
     ],
     scrollCaptions: [
       { text: 'The I-75 corridor: Central Florida\'s logistics backbone', startProgress: 0.0, endProgress: 0.15 },
@@ -208,20 +208,20 @@ export const showcaseProperties: Record<ShowcaseSlug, ShowcaseProperty> = {
     type: 'Land',
     status: 'SOLD',
 
-    mapCenter: { lat: 29.3200, lng: -82.1900 },
+    mapCenter: { lat: 29.24578, lng: -82.37252 },
     waypoints: [
       // Overview — see the full 78 acres and surrounding farms
-      { center: { lat: 29.3200, lng: -82.1900, altitude: 0 }, heading: 0, tilt: 40, range: 1800, progress: 0.0 },
+      { center: { lat: 29.24578, lng: -82.37252, altitude: 0 }, heading: 0, tilt: 40, range: 1800, progress: 0.0 },
       // Tilt to show rolling terrain in 3D
-      { center: { lat: 29.3200, lng: -82.1900, altitude: 0 }, heading: 20, tilt: 55, range: 900, progress: 0.20 },
+      { center: { lat: 29.24578, lng: -82.37252, altitude: 0 }, heading: 20, tilt: 55, range: 900, progress: 0.20 },
       // Fly across the pastures — see fence lines and trees
-      { center: { lat: 29.3185, lng: -82.1920, altitude: 0 }, heading: 210, tilt: 65, range: 400, progress: 0.40 },
+      { center: { lat: 29.24428, lng: -82.37452, altitude: 0 }, heading: 210, tilt: 65, range: 400, progress: 0.40 },
       // Near tree-top level — see individual oaks in 3D
-      { center: { lat: 29.3195, lng: -82.1910, altitude: 10 }, heading: 280, tilt: 72, range: 200, progress: 0.60 },
+      { center: { lat: 29.24528, lng: -82.37352, altitude: 10 }, heading: 280, tilt: 72, range: 200, progress: 0.60 },
       // Dramatic low angle across the landscape
-      { center: { lat: 29.3210, lng: -82.1895, altitude: 5 }, heading: 350, tilt: 80, range: 150, progress: 0.80 },
+      { center: { lat: 29.24678, lng: -82.37152, altitude: 5 }, heading: 350, tilt: 80, range: 150, progress: 0.80 },
       // Pull-back — property in horse country context
-      { center: { lat: 29.3200, lng: -82.1900, altitude: 0 }, heading: 60, tilt: 50, range: 1200, progress: 1.0 },
+      { center: { lat: 29.24578, lng: -82.37252, altitude: 0 }, heading: 60, tilt: 50, range: 1200, progress: 1.0 },
     ],
     scrollCaptions: [
       { text: '78 pristine acres in NW Marion County', startProgress: 0.0, endProgress: 0.15 },
