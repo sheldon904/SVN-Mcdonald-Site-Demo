@@ -1,16 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import PageHeader from '../components/PageHeader';
 import SEOHead from '../components/SEOHead';
-import { motion } from 'framer-motion';
+import FAQStructuredData from '../components/FAQStructuredData';
+import { servicesFAQ } from '../data/faqData';
+import { motion, AnimatePresence } from 'framer-motion';
 import {
   CheckCircle, ArrowRight, BarChart, LandPlot, Gavel, FileText,
   Megaphone, Calculator, Building2, ShoppingBag, Factory, Home, Hotel,
   Landmark, Phone, TrendingUp, Search, Shield, Users, Handshake,
   Target, Globe, DollarSign, Clock, FileSearch, BarChart3, Layers,
-  BookOpen, Award, MapPin, Mail
+  BookOpen, Award, MapPin, Mail, ChevronDown
 } from 'lucide-react';
 
 /* ─── Reusable Section Components ─── */
@@ -144,6 +146,72 @@ const ServicesNavStrip = () => {
   );
 };
 
+/* ─── FAQ Accordion ─── */
+
+const FAQAccordion = () => {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
+    >
+      <FAQStructuredData faqs={servicesFAQ} />
+      <h2 className="text-4xl font-black text-svn-dark uppercase tracking-tighter mb-4">
+        Frequently Asked <span className="text-svn-orange">Questions</span>
+      </h2>
+      <p className="text-gray-500 font-medium mb-10 max-w-2xl">
+        Common questions about commercial real estate services in Ocala and Marion County, Florida.
+      </p>
+      <div className="space-y-4">
+        {servicesFAQ.map((faq, index) => {
+          const isOpen = openIndex === index;
+          return (
+            <div
+              key={index}
+              className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden"
+            >
+              <button
+                onClick={() => setOpenIndex(isOpen ? null : index)}
+                className="w-full flex items-center justify-between gap-4 p-6 md:p-8 text-left"
+              >
+                <span className="font-black text-svn-dark text-sm md:text-base uppercase tracking-wide flex-1">
+                  {faq.question}
+                </span>
+                <motion.div
+                  animate={{ rotate: isOpen ? 180 : 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="flex-shrink-0 text-svn-orange"
+                >
+                  <ChevronDown size={20} />
+                </motion.div>
+              </button>
+              <AnimatePresence initial={false}>
+                {isOpen && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: 'auto', opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <div className="px-6 md:px-8 pb-6 md:pb-8">
+                      <p className="text-gray-500 font-medium leading-relaxed">
+                        {faq.answer}
+                      </p>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+          );
+        })}
+      </div>
+    </motion.div>
+  );
+};
+
 /* ─── Main Page Component ─── */
 
 const ServicesPage = () => {
@@ -220,6 +288,9 @@ const ServicesPage = () => {
 
           {/* Experience */}
           <ExperienceSection />
+
+          {/* FAQ Section */}
+          <FAQAccordion />
 
           {/* CTA */}
           <CTABanner

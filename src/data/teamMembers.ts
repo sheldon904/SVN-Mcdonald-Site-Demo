@@ -9,6 +9,7 @@ export interface TeamMember {
   bio: string;
   specialties: string[];
   education: string | null;
+  sameAs: string[];
 }
 
 export const teamMembers: TeamMember[] = [
@@ -29,6 +30,18 @@ export const teamMembers: TeamMember[] = [
       "Development Land",
     ],
     education: "MBA & BS, University of Florida",
+    sameAs: [
+      "https://www.linkedin.com/in/bartowmcdonald/",
+      "https://www.loopnet.com/profile/bartow-mcdonald/14091872/",
+      "https://www.realtor.com/realestateagents/bartow-mcdonald_ocala_fl",
+      "https://ocalacre.com/",
+      "https://www.ratemyagent.com/real-estate-agent/bartow-mcdonald-iv-az73v",
+      "https://www.homes.com/real-estate-agents/bartow-mcdonald/",
+      "https://www.elementix.com/profile/bartow-mcdonald",
+      "https://www.ocalafl.org/cep",
+      "https://rocketreach.co/bartow-mcdonald-email_26956795",
+      "https://www.totalcommercial.com/commercial-real-estate-agent/bartow-mcdonald-iv-ocala-fl",
+    ],
   },
   {
     slug: "matthew-garff",
@@ -46,6 +59,13 @@ export const teamMembers: TeamMember[] = [
       "Equestrian Properties",
     ],
     education: "BS Economics, Brigham Young University",
+    sameAs: [
+      "https://www.linkedin.com/in/matthew-garff/",
+      "https://www.loopnet.com/profile/matthew-garff/",
+      "https://www.traded.co/people/matthew-garff",
+      "https://www.crexi.com/profile/matthew-garff-matthewgarff",
+      "https://www.zoominfo.com/p/Matthew-Garff/",
+    ],
   },
   {
     slug: "stiles-mcdonald",
@@ -63,5 +83,12 @@ export const teamMembers: TeamMember[] = [
       "Rural Properties",
     ],
     education: null,
+    sameAs: [
+      "https://www.linkedin.com/in/stiles-mcdonald/",
+      "https://www.totalcommercial.com/commercial-real-estate-agent/stiles-mcdonald-ocala-fl",
+      "https://www.realtor.com/realestateagents/stiles-mcdonald_ocala_fl",
+      "https://www.homes.com/real-estate-agents/stiles-mcdonald/",
+      "https://www.crexi.com/profile/stiles-mcdonald",
+    ],
   },
 ];

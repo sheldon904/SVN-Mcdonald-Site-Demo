@@ -2,6 +2,7 @@ import { useParams, Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import SEOHead from '../components/SEOHead';
+import AgentStructuredData from '../components/AgentStructuredData';
 import { teamMembers } from '../data/teamMembers';
 import { motion } from 'framer-motion';
 import { Mail, Phone, ArrowLeft, ArrowRight, GraduationCap } from 'lucide-react';
@@ -48,6 +49,7 @@ const TeamMemberPage = () => {
         ogImage={member.image}
         canonical={`https://svnmcdonald.com/team/${member.slug}`}
       />
+      <AgentStructuredData member={member} />
       <Navbar />
 
       {/* Hero Section */}
