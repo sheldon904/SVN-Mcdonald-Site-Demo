@@ -1,14 +1,29 @@
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { MapPin, DollarSign, Calendar, Phone, ArrowLeft, Tag } from 'lucide-react';
+import { lazy, Suspense } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import SEOHead from '../components/SEOHead';
+import ShowcaseLoadingSkeleton from '../components/showcase/ShowcaseLoadingSkeleton';
 import { closedDeals, FALLBACK_IMAGE } from '../data/closedDeals';
+import { isShowcaseSlug, showcaseProperties } from '../data/showcaseProperties';
+
+const ShowcasePage = lazy(() => import('../components/showcase/ShowcasePage'));
 
 const ClosedDealDetailPage = () => {
   const { slug } = useParams<{ slug: string }>();
   const deal = closedDeals.find((d) => d.slug === slug);
+
+  // Showcase pages get the cinematic 3D experience
+  if (slug && isShowcaseSlug(slug)) {
+    const showcaseProperty = showcaseProperties[slug];
+    return (
+      <Suspense fallback={<ShowcaseLoadingSkeleton />}>
+        <ShowcasePage property={showcaseProperty} />
+      </Suspense>
+    );
+  }
 
   if (!deal) {
     return (
