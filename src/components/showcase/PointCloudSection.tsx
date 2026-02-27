@@ -13,7 +13,7 @@ const PointCloudSection = ({ property }: PointCloudSectionProps) => {
   const outerRef = useRef<HTMLDivElement>(null);
   const [viewerStatus, setViewerStatus] = useState<'loading' | 'loaded' | 'error'>('loading');
 
-  const progressRef = useScrollProgress({
+  const { progressRef, displayProgress } = useScrollProgress({
     triggerRef: outerRef,
     enabled: true,
   });
@@ -58,14 +58,14 @@ const PointCloudSection = ({ property }: PointCloudSectionProps) => {
         {/* Scroll-linked captions overlay */}
         <ScrollCaptions
           captions={property.scrollCaptions}
-          progress={progressRef.current ?? 0}
+          progress={displayProgress}
         />
 
         {/* Progress bar at bottom */}
         <div className="absolute bottom-0 left-0 right-0 h-1 bg-white/10 z-20">
           <div
-            className="h-full bg-svn-orange transition-none"
-            style={{ width: `${(progressRef.current ?? 0) * 100}%` }}
+            className="h-full bg-svn-orange"
+            style={{ width: `${displayProgress * 100}%` }}
           />
         </div>
       </div>

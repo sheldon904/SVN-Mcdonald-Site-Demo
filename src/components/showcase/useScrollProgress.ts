@@ -1,4 +1,4 @@
-import { useRef, useEffect, useCallback } from 'react';
+import { useRef, useEffect, useCallback, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -12,6 +12,9 @@ interface UseScrollProgressOptions {
 export function useScrollProgress({ triggerRef, enabled }: UseScrollProgressOptions) {
   const progressRef = useRef(0);
   const scrollTriggerRef = useRef<ScrollTrigger | null>(null);
+  // State for UI updates (throttled to ~15fps for captions/progress bar)
+  const [displayProgress, setDisplayProgress] = useState(0);
+  const lastUpdateRef = useRef(0);
 
   const setup = useCallback(() => {
     if (!enabled || !triggerRef.current) return;
@@ -23,6 +26,12 @@ export function useScrollProgress({ triggerRef, enabled }: UseScrollProgressOpti
       scrub: 0.5,
       onUpdate: (self) => {
         progressRef.current = self.progress;
+        // Throttle state updates to ~15fps
+        const now = Date.now();
+        if (now - lastUpdateRef.current > 66) {
+          lastUpdateRef.current = now;
+          setDisplayProgress(self.progress);
+        }
       },
     });
   }, [enabled, triggerRef]);
@@ -37,5 +46,5 @@ export function useScrollProgress({ triggerRef, enabled }: UseScrollProgressOpti
     };
   }, [setup]);
 
-  return progressRef;
+  return { progressRef, displayProgress };
 }

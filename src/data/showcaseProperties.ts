@@ -28,12 +28,9 @@ export interface ShowcaseProperty {
   status: string;
 
   // Point cloud config
-  eptEndpoint: string;
-  boundingBox: {
-    minX: number; minY: number;
-    maxX: number; maxY: number;
-  }; // EPSG:3857
-  centerLatLon: [number, number];
+  terrainProfile: 'airpark' | 'industrial' | 'horse-country';
+  terrainExtent: { x: number; z: number }; // meters
+  pointCount: number;
 
   // Camera journey
   waypoints: CameraWaypoint[];
@@ -79,12 +76,9 @@ export const showcaseProperties: Record<ShowcaseSlug, ShowcaseProperty> = {
     type: 'Residential Airpark',
     status: 'SOLD',
 
-    eptEndpoint: 'https://s3-us-west-2.amazonaws.com/usgs-lidar-public/FL_Peninsular_FDEM_2018_D19_LID2021/ept.json',
-    boundingBox: {
-      minX: -9155000, minY: 3395000,
-      maxX: -9150000, maxY: 3400000,
-    },
-    centerLatLon: [29.2847, -82.1175],
+    terrainProfile: 'airpark',
+    terrainExtent: { x: 3000, z: 3000 },
+    pointCount: 2_000_000,
 
     waypoints: [
       { position: [0, 2000, 0], lookAt: [0, 0, 0], progress: 0.0 },
@@ -146,12 +140,9 @@ export const showcaseProperties: Record<ShowcaseSlug, ShowcaseProperty> = {
     type: 'Industrial',
     status: 'LEASED',
 
-    eptEndpoint: 'https://s3-us-west-2.amazonaws.com/usgs-lidar-public/FL_Peninsular_FDEM_2018_D19_LID2021/ept.json',
-    boundingBox: {
-      minX: -9145000, minY: 3390000,
-      maxX: -9140000, maxY: 3395000,
-    },
-    centerLatLon: [29.1700, -82.0800],
+    terrainProfile: 'industrial',
+    terrainExtent: { x: 2000, z: 2000 },
+    pointCount: 1_800_000,
 
     waypoints: [
       { position: [0, 1500, 0], lookAt: [0, 0, 0], progress: 0.0 },
@@ -213,12 +204,9 @@ export const showcaseProperties: Record<ShowcaseSlug, ShowcaseProperty> = {
     type: 'Land',
     status: 'SOLD',
 
-    eptEndpoint: 'https://s3-us-west-2.amazonaws.com/usgs-lidar-public/FL_Peninsular_FDEM_2018_D19_LID2021/ept.json',
-    boundingBox: {
-      minX: -9160000, minY: 3400000,
-      maxX: -9156000, maxY: 3404000,
-    },
-    centerLatLon: [29.3200, -82.1600],
+    terrainProfile: 'horse-country',
+    terrainExtent: { x: 1600, z: 1600 },
+    pointCount: 1_500_000,
 
     waypoints: [
       { position: [0, 800, 0], lookAt: [0, 0, 0], progress: 0.0 },
