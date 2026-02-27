@@ -6,8 +6,8 @@ const WecEffectHero = () => {
     <section className="relative w-full h-screen min-h-[600px] overflow-hidden">
       {/* Background - WEC aerial image */}
       <img
-        src="https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?ixlib=rb-4.0.3&auto=format&fit=crop&w=2670&q=80"
-        alt="World Equestrian Center aerial view"
+        src="/images/wec-center-hero.jpg"
+        alt="World Equestrian Center grand arena at dusk"
         className="absolute inset-0 w-full h-full object-cover"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20" />
