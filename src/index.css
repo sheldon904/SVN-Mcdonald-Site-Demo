@@ -15,17 +15,21 @@
     color: var(--color-svn-dark);
   }
 
+  html {
+    overflow-x: clip;
+  }
+
   body {
     @apply antialiased;
     margin: 0;
     padding: 0;
-    overflow-x: hidden;
+    overflow-x: clip;
   }
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-bold text-svn-dark;
   }
 
-  h1 { font-size: 60px; font-weight: 800; }
-  h2 { font-size: 36px; font-weight: 700; }
+  h1 { font-size: clamp(36px, 8vw, 60px); font-weight: 800; }
+  h2 { font-size: clamp(28px, 5vw, 36px); font-weight: 700; }
 }
