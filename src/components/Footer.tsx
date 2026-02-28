@@ -101,7 +101,7 @@ const Footer = () => {
           <p className="text-[10px] text-gray-400 font-black uppercase tracking-widest text-center md:text-left leading-loose">
             All SVN® Offices Independently Owned and Operated | © 2026 SVN McDonald & Company
           </p>
-          <div className="flex gap-8">
+          <div className="flex flex-wrap justify-center md:justify-end gap-x-8 gap-y-3">
             <Link to="/team" className="text-[10px] font-black uppercase tracking-widest text-gray-400 hover:text-white transition-colors">Meet The Team</Link>
             <Link to="/contact" className="text-[10px] font-black uppercase tracking-widest text-gray-400 hover:text-white transition-colors">Contact</Link>
             <Link to="/privacy-policy" className="text-[10px] font-black uppercase tracking-widest text-gray-400 hover:text-white transition-colors">Privacy Policy</Link>
