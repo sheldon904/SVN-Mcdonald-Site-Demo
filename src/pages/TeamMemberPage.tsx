@@ -7,6 +7,12 @@ import { teamMembers } from '../data/teamMembers';
 import { motion } from 'framer-motion';
 import { Mail, Phone, ArrowLeft, ArrowRight, GraduationCap } from 'lucide-react';
 
+const heroImages: Record<string, string> = {
+  'bartow-mcdonald': '/team/bart-and-wife.webp',
+  'matthew-garff': '/team/matthew_0001_A83B8096_Original.webp',
+  'stiles-mcdonald': '/team/stiles_0002_IMG_7996.jpg',
+};
+
 const TeamMemberPage = () => {
   const { slug } = useParams<{ slug: string }>();
   const member = teamMembers.find((m) => m.slug === slug);
@@ -54,7 +60,18 @@ const TeamMemberPage = () => {
 
       {/* Hero Section */}
       <div className="relative bg-svn-dark pt-32 pb-20 md:pt-48 md:pb-32 px-6 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-svn-dark via-svn-dark to-svn-orange/10" />
+        {slug && heroImages[slug] && (
+          <div className="absolute inset-0 z-0">
+            <img
+              src={heroImages[slug]}
+              alt=""
+              className="w-full h-full object-cover opacity-20"
+              loading="eager"
+              aria-hidden="true"
+            />
+          </div>
+        )}
+        <div className="absolute inset-0 bg-gradient-to-t from-svn-dark via-svn-dark/60 to-svn-dark/40" />
         <div className="relative z-10 max-w-[1280px] mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
