@@ -18,7 +18,7 @@ export default function AgentStructuredData({ member }: AgentStructuredDataProps
     name: member.name,
     jobTitle: member.role,
     email: member.email,
-    telephone: `+1-${member.phone.replace(/\./g, '-')}`,
+    ...(member.phone ? { telephone: `+1-${member.phone.replace(/[^0-9]/g, '').replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3')}` } : {}),
     image: `${BASE_URL}${member.image}`,
     description,
     url: `${BASE_URL}/team/${member.slug}`,

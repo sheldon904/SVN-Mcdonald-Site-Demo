@@ -107,15 +107,17 @@ const TeamMemberPage = () => {
                   Contact Info
                 </h3>
                 <div className="space-y-5">
-                  <a
-                    href={`tel:${member.phone.replace(/\./g, '')}`}
-                    className="flex items-center gap-4 text-white hover:text-svn-orange transition-colors font-bold text-sm"
-                  >
-                    <div className="bg-svn-orange p-2.5 rounded-full">
-                      <Phone size={16} />
-                    </div>
-                    {member.phone}
-                  </a>
+                  {member.phone && (
+                    <a
+                      href={`tel:${member.phone.replace(/[^0-9]/g, '')}`}
+                      className="flex items-center gap-4 text-white hover:text-svn-orange transition-colors font-bold text-sm"
+                    >
+                      <div className="bg-svn-orange p-2.5 rounded-full">
+                        <Phone size={16} />
+                      </div>
+                      {member.phone}
+                    </a>
+                  )}
                   <a
                     href={`mailto:${member.email}`}
                     className="flex items-center gap-4 text-white hover:text-svn-orange transition-colors font-bold text-sm"

@@ -1,6 +1,5 @@
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import PageHeader from '../components/PageHeader';
 import SEOHead from '../components/SEOHead';
 import { teamMembers } from '../data/teamMembers';
 import { motion } from 'framer-motion';
@@ -26,12 +25,69 @@ const TeamPage = () => {
       />
       <Navbar />
 
-      <PageHeader
-        title="Meet The"
-        highlightedText="Team"
-        subtitle="Our team of commercial real estate experts is dedicated to delivering the highest level of service and results for our clients."
-        backgroundImage="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"
-      />
+      {/* Custom Team Header with personal photos */}
+      <div className="relative bg-svn-dark pt-32 pb-20 md:pt-48 md:pb-32 px-6 overflow-hidden">
+        {/* Three-panel photo collage background — single image on mobile */}
+        <div className="absolute inset-0 z-0">
+          {/* Mobile: show single centered image */}
+          <div className="md:hidden absolute inset-0">
+            <img
+              src="/team/stiles_0002_IMG_7996.jpg"
+              alt=""
+              className="w-full h-full object-cover opacity-20"
+              loading="eager"
+              aria-hidden="true"
+            />
+          </div>
+          {/* Desktop: 3-panel collage */}
+          <div className="hidden md:flex absolute inset-0">
+            <div className="flex-1 relative overflow-hidden">
+              <img
+                src="/team/bart-and-wife.webp"
+                alt=""
+                className="w-full h-full object-cover opacity-25"
+                loading="eager"
+                aria-hidden="true"
+              />
+            </div>
+            <div className="flex-1 relative overflow-hidden">
+              <img
+                src="/team/matthew_0001_A83B8096_Original.webp"
+                alt=""
+                className="w-full h-full object-cover opacity-25"
+                loading="eager"
+                aria-hidden="true"
+              />
+            </div>
+            <div className="flex-1 relative overflow-hidden">
+              <img
+                src="/team/stiles_0002_IMG_7996.jpg"
+                alt=""
+                className="w-full h-full object-cover opacity-25"
+                loading="eager"
+                aria-hidden="true"
+              />
+            </div>
+          </div>
+          <div className="absolute inset-0 bg-gradient-to-t from-svn-dark via-svn-dark/50 to-transparent" />
+        </div>
+
+        <div className="relative z-10 max-w-[1280px] mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="max-w-4xl"
+          >
+            <div className="w-20 h-1.5 bg-svn-orange mb-8" />
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-white uppercase tracking-tight mb-8 leading-tight">
+              Meet The <span className="text-svn-orange">Team</span>
+            </h1>
+            <p className="text-gray-400 text-lg md:text-xl font-medium leading-relaxed max-w-2xl">
+              Our team of commercial real estate experts is dedicated to delivering the highest level of service and results for our clients.
+            </p>
+          </motion.div>
+        </div>
+      </div>
 
       <section className="py-24 px-6">
         <div className="max-w-[1280px] mx-auto">
@@ -60,10 +116,12 @@ const TeamPage = () => {
                     </div>
                   </Link>
                   <div className="mt-8 space-y-4">
-                    <a href={`tel:${member.phone}`} className="flex items-center gap-4 text-svn-dark hover:text-svn-orange transition-colors font-bold uppercase tracking-widest text-sm">
-                      <div className="bg-svn-orange p-2 rounded-full text-white"><Phone size={16} /></div>
-                      {member.phone}
-                    </a>
+                    {member.phone && (
+                      <a href={`tel:${member.phone.replace(/[^0-9]/g, '')}`} className="flex items-center gap-4 text-svn-dark hover:text-svn-orange transition-colors font-bold uppercase tracking-widest text-sm">
+                        <div className="bg-svn-orange p-2 rounded-full text-white"><Phone size={16} /></div>
+                        {member.phone}
+                      </a>
+                    )}
                     <a href={`mailto:${member.email}`} className="flex items-center gap-4 text-svn-dark hover:text-svn-orange transition-colors font-bold uppercase tracking-widest text-sm">
                       <div className="bg-svn-orange p-2 rounded-full text-white"><Mail size={16} /></div>
                       {member.email}
@@ -127,9 +185,9 @@ const TeamPage = () => {
             </p>
           </div>
           <div className="relative z-10 flex flex-col gap-4">
-            <a href="tel:3522743800" className="bg-white text-svn-orange px-10 py-5 rounded-full font-black uppercase tracking-widest hover:bg-svn-dark hover:text-white transition-all duration-300 shadow-xl flex items-center justify-center gap-3">
+            <a href="tel:3522884491" className="bg-white text-svn-orange px-10 py-5 rounded-full font-black uppercase tracking-widest hover:bg-svn-dark hover:text-white transition-all duration-300 shadow-xl flex items-center justify-center gap-3">
               <Phone size={20} />
-              352.274.3800
+              352.288.4491
             </a>
             <Link to="/contact" className="bg-svn-dark text-white px-10 py-5 rounded-full font-black uppercase tracking-widest hover:bg-white hover:text-svn-dark transition-all duration-300 shadow-xl text-center">
               Send us a message

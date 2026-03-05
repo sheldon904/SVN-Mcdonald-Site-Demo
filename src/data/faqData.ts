@@ -14,7 +14,7 @@ export const servicesFAQ: FAQItem[] = [
     question:
       'How much does it cost to hire a commercial real estate broker in Marion County?',
     answer:
-      'Commercial real estate broker fees in Marion County are typically based on a commission structure tied to the transaction value. Commission rates vary depending on the property type, deal complexity, and services required. At SVN McDonald & Company, we provide transparent fee structures and are happy to discuss our commission rates during an initial consultation. Contact us at (352) 274-3800 for details specific to your situation.',
+      'Commercial real estate broker fees in Marion County are typically based on a commission structure tied to the transaction value. Commission rates vary depending on the property type, deal complexity, and services required. At SVN McDonald & Company, we provide transparent fee structures and are happy to discuss our commission rates during an initial consultation. Contact us at (352) 288-4491 for details specific to your situation.',
   },
   {
     question:
@@ -37,6 +37,6 @@ export const servicesFAQ: FAQItem[] = [
     question:
       'How do I get a commercial property valuation in Ocala?',
     answer:
-      'To get a commercial property valuation in Ocala, contact SVN McDonald & Company at (352) 274-3800 or email info@svnmcdonald.com to schedule a consultation. Our team provides Broker Price Opinions (BPOs) and detailed market analyses using real-time market data, comparable sales, and income capitalization approaches. We leverage our deep local market knowledge to deliver accurate, reliable valuations tailored to your property and goals.',
+      'To get a commercial property valuation in Ocala, contact SVN McDonald & Company at (352) 288-4491 or email info@svnmcdonald.com to schedule a consultation. Our team provides Broker Price Opinions (BPOs) and detailed market analyses using real-time market data, comparable sales, and income capitalization approaches. We leverage our deep local market knowledge to deliver accurate, reliable valuations tailored to your property and goals.',
   },
 ];

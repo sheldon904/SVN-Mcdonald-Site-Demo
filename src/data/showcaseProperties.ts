@@ -74,20 +74,20 @@ export const showcaseProperties: Record<ShowcaseSlug, ShowcaseProperty> = {
     type: 'Residential Airpark',
     status: 'SOLD',
 
-    mapCenter: { lat: 29.2802872, lng: -82.1204175 },
+    mapCenter: { lat: 29.276966380116715, lng: -82.12062533071922 },
     waypoints: [
       // High overview — full 550 acres visible
-      { center: { lat: 29.2802872, lng: -82.1204175, altitude: 0 }, heading: 0, tilt: 45, range: 2500, progress: 0.0 },
+      { center: { lat: 29.276966380116715, lng: -82.12062533071922, altitude: 0 }, heading: 0, tilt: 45, range: 2500, progress: 0.0 },
       // Push in, tilt to reveal runway in 3D
-      { center: { lat: 29.2802872, lng: -82.1204175, altitude: 0 }, heading: 30, tilt: 55, range: 1200, progress: 0.15 },
+      { center: { lat: 29.276966380116715, lng: -82.12062533071922, altitude: 0 }, heading: 30, tilt: 55, range: 1200, progress: 0.15 },
       // Flying along the runway — see buildings in 3D
-      { center: { lat: 29.2786, lng: -82.1179, altitude: 0 }, heading: 135, tilt: 65, range: 500, progress: 0.35 },
+      { center: { lat: 29.2756, lng: -82.1179, altitude: 0 }, heading: 135, tilt: 65, range: 500, progress: 0.35 },
       // Low approach — near rooftop level
-      { center: { lat: 29.2776, lng: -82.1164, altitude: 0 }, heading: 150, tilt: 75, range: 250, progress: 0.55 },
+      { center: { lat: 29.2746, lng: -82.1164, altitude: 0 }, heading: 150, tilt: 75, range: 250, progress: 0.55 },
       // Close flyby of hangars and homes
-      { center: { lat: 29.2796, lng: -82.1194, altitude: 0 }, heading: 220, tilt: 72, range: 200, progress: 0.75 },
+      { center: { lat: 29.2766, lng: -82.1194, altitude: 0 }, heading: 220, tilt: 72, range: 200, progress: 0.75 },
       // Cinematic pull-back — property in full 3D context
-      { center: { lat: 29.2802872, lng: -82.1204175, altitude: 0 }, heading: 320, tilt: 55, range: 1500, progress: 1.0 },
+      { center: { lat: 29.276966380116715, lng: -82.12062533071922, altitude: 0 }, heading: 320, tilt: 55, range: 1500, progress: 1.0 },
     ],
     scrollCaptions: [
       { text: '550 acres of world-class aviation community', startProgress: 0.0, endProgress: 0.12 },
@@ -141,20 +141,20 @@ export const showcaseProperties: Record<ShowcaseSlug, ShowcaseProperty> = {
     type: 'Industrial',
     status: 'LEASED',
 
-    mapCenter: { lat: 29.0177050, lng: -82.2083490 },
+    mapCenter: { lat: 29.031344556118352, lng: -82.16443964993272 },
     waypoints: [
       // I-75 corridor context — high overview
-      { center: { lat: 29.0177050, lng: -82.2083490, altitude: 0 }, heading: 0, tilt: 40, range: 3000, progress: 0.0 },
+      { center: { lat: 29.031344556118352, lng: -82.16443964993272, altitude: 0 }, heading: 0, tilt: 40, range: 3000, progress: 0.0 },
       // Tilt in toward the industrial area
-      { center: { lat: 29.0177050, lng: -82.2083490, altitude: 0 }, heading: 45, tilt: 55, range: 1500, progress: 0.20 },
+      { center: { lat: 29.031344556118352, lng: -82.16443964993272, altitude: 0 }, heading: 45, tilt: 55, range: 1500, progress: 0.20 },
       // See the massive footprint in 3D
-      { center: { lat: 29.0167, lng: -82.2063, altitude: 0 }, heading: 90, tilt: 65, range: 600, progress: 0.40 },
+      { center: { lat: 29.0303, lng: -82.1624, altitude: 0 }, heading: 90, tilt: 65, range: 600, progress: 0.40 },
       // Orbit the building — see roof, dock doors, parking
-      { center: { lat: 29.0172, lng: -82.2073, altitude: 15 }, heading: 180, tilt: 70, range: 350, progress: 0.60 },
+      { center: { lat: 29.0308, lng: -82.1634, altitude: 15 }, heading: 180, tilt: 70, range: 350, progress: 0.60 },
       // Near ground — feel the scale of 943K SF
-      { center: { lat: 29.0182, lng: -82.2093, altitude: 10 }, heading: 250, tilt: 78, range: 200, progress: 0.80 },
+      { center: { lat: 29.0318, lng: -82.1654, altitude: 10 }, heading: 250, tilt: 78, range: 200, progress: 0.80 },
       // Pull-back with full 3D
-      { center: { lat: 29.0177050, lng: -82.2083490, altitude: 0 }, heading: 315, tilt: 55, range: 1800, progress: 1.0 },
+      { center: { lat: 29.031344556118352, lng: -82.16443964993272, altitude: 0 }, heading: 315, tilt: 55, range: 1800, progress: 1.0 },
     ],
     scrollCaptions: [
       { text: 'The I-75 corridor: Central Florida\'s logistics backbone', startProgress: 0.0, endProgress: 0.15 },
@@ -189,7 +189,7 @@ export const showcaseProperties: Record<ShowcaseSlug, ShowcaseProperty> = {
         'Jacksonville — 120 miles',
         'Ocala International Airport — 8 miles',
       ],
-      satelliteImage: '/trailhead-logistics-hero.jpg',
+      satelliteImage: '/images/properties/trailhead-location-context.jpg',
     },
 
     seoTitle: 'Trailhead Logistics Center — 943K SF Lease | SVN McDonald',

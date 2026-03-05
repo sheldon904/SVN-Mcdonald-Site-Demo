@@ -55,11 +55,11 @@ const MLSPage = () => {
             className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-20"
           >
             <a
-              href="tel:3522743800"
+              href="tel:3522884491"
               className="bg-svn-orange text-white px-10 py-5 rounded-full font-black uppercase tracking-widest hover:bg-svn-dark transition-all duration-300 shadow-xl flex items-center gap-3"
             >
               <Phone size={20} />
-              352.274.3800
+              352.288.4491
             </a>
             <Link
               to="/contact"

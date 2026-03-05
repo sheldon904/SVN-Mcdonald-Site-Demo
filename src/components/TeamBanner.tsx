@@ -2,7 +2,11 @@ import { motion } from 'framer-motion';
 import { ArrowRight, Phone } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-const TeamBanner = () => {
+interface TeamBannerProps {
+  image?: string;
+}
+
+const TeamBanner = ({ image }: TeamBannerProps) => {
   return (
     <section className="py-24 px-6 bg-[#181818]">
       <div className="max-w-[1280px] mx-auto">
@@ -16,7 +20,7 @@ const TeamBanner = () => {
           {/* Team Photo */}
           <div className="relative rounded-2xl overflow-hidden h-[400px]">
             <img
-              src="/images/hero/hwy-484-ocala-1920.jpg"
+              src={image || "/images/hero/hwy-484-ocala-1920.jpg"}
               alt="SVN McDonald & Company team"
               className="w-full h-full object-cover"
               loading="lazy"
@@ -51,11 +55,11 @@ const TeamBanner = () => {
                 Contact Us <ArrowRight size={18} />
               </Link>
               <a
-                href="tel:3522743800"
+                href="tel:3522884491"
                 className="flex items-center gap-3 text-white font-bold text-lg hover:text-svn-orange transition-colors"
               >
                 <Phone size={20} className="text-svn-orange" />
-                352.274.3800
+                352.288.4491
               </a>
             </div>
           </div>

@@ -19,11 +19,11 @@ const ShowcaseCTA = () => {
 
           <div className="relative z-10 flex flex-col sm:flex-row gap-4">
             <a
-              href="tel:3522743800"
+              href="tel:3522884491"
               className="bg-svn-dark text-white px-8 py-5 rounded-full font-black uppercase tracking-widest text-sm hover:bg-white hover:text-svn-dark transition-all duration-300 shadow-xl flex items-center justify-center gap-3"
             >
               <Phone size={18} />
-              Call Bartow
+              Call Us
             </a>
             <Link
               to="/contact"

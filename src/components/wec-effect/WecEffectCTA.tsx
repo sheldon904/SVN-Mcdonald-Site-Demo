@@ -16,7 +16,7 @@ const WecEffectCTA = () => {
           </div>
           <div className="relative z-10">
             <a
-              href="tel:3522743800"
+              href="tel:3522884491"
               className="bg-svn-dark text-white px-10 py-5 rounded-full font-black uppercase tracking-widest hover:bg-white hover:text-svn-dark transition-all duration-300 shadow-xl flex items-center justify-center gap-3"
             >
               Contact Our Experts <ArrowRight size={20} />
