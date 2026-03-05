@@ -79,11 +79,14 @@ const BuildoutListing: React.FC<BuildoutListingProps> = ({
     };
   }, [isVisible, pluginType, containerId, token]);
 
+  const minHeight = pluginType === 'inventory' ? 'min-h-[800px]' : 'min-h-[400px]';
+  const placeholderHeight = pluginType === 'inventory' ? 'h-[800px]' : 'h-[400px]';
+
   return (
-    <div className="w-full min-h-[400px]" ref={containerRef}>
+    <div className={`w-full ${minHeight}`} ref={containerRef}>
       <div id={containerId}>
         {!isVisible && (
-          <div className="flex items-center justify-center h-[400px] text-gray-400">
+          <div className={`flex items-center justify-center ${placeholderHeight} text-gray-400`}>
             <div className="w-8 h-8 border-4 border-svn-orange border-t-transparent rounded-full animate-spin" />
           </div>
         )}
