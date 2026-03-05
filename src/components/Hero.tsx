@@ -10,7 +10,7 @@ const Hero = () => {
         {/* Full-screen hero with headline */}
         <div className="relative min-h-[70vh] flex flex-col items-center justify-center px-6">
           <img
-            src="/images/hero/hwy-484-ocala-768.jpg"
+            src="/78-acres-horse-country-hero.jpg"
             alt="Central Florida Real Estate"
             className="absolute inset-0 w-full h-full object-cover opacity-40"
             fetchPriority="high"
@@ -114,12 +114,7 @@ const Hero = () => {
             className="relative flex-1 group cursor-pointer overflow-hidden"
           >
             <img
-              src="/images/hero/hwy-484-ocala-1920.jpg"
-              srcSet="
-                /images/hero/hwy-484-ocala-768.jpg 768w,
-                /images/hero/hwy-484-ocala-1920.jpg 1920w
-              "
-              sizes="50vw"
+              src="/78-acres-horse-country-hero.jpg"
               alt="Central Florida Land Properties"
               className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-70 group-hover:scale-105 transition-all duration-700"
               fetchPriority="high"
@@ -157,7 +152,7 @@ const Hero = () => {
             className="relative flex-1 group cursor-pointer overflow-hidden"
           >
             <img
-              src="/images/hero/traffic-blog.jpg"
+              src="/trailhead-logistics-hero.jpg"
               alt="Central Florida Commercial Properties"
               className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-70 group-hover:scale-105 transition-all duration-700"
               loading="eager"

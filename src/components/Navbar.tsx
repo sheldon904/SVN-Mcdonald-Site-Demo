@@ -60,9 +60,9 @@ const Navbar = () => {
       )}>
         <div className="max-w-[1400px] mx-auto flex justify-center md:justify-start items-center text-[10px] md:text-xs font-bold uppercase tracking-widest">
           <div className="flex items-center gap-4 md:gap-6">
-            <a href="tel:3522743800" className="flex items-center gap-2 hover:text-svn-orange transition-colors">
+            <a href="tel:3522884491" className="flex items-center gap-2 hover:text-svn-orange transition-colors">
               <Phone size={12} className="text-svn-orange" />
-              352.274.3800
+              352.288.4491
             </a>
             <div className="flex items-center gap-2">
               <MapPin size={12} className="text-svn-orange" />
@@ -203,9 +203,9 @@ const Navbar = () => {
           </div>
 
           <div className="mt-auto pt-6 border-t border-gray-100">
-            <a href="tel:3522743800" className="flex items-center gap-3 text-svn-dark font-bold mb-4">
+            <a href="tel:3522884491" className="flex items-center gap-3 text-svn-dark font-bold mb-4">
               <Phone size={20} className="text-svn-orange" />
-              352.274.3800
+              352.288.4491
             </a>
             <div className="flex items-center gap-3 text-svn-dark text-sm">
               <MapPin size={20} className="text-svn-orange" />

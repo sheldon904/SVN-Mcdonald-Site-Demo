@@ -75,7 +75,7 @@ const ContactForm = () => {
                 </div>
                 <div>
                   <p className="text-xs uppercase tracking-widest text-gray-400 font-bold mb-1">Call Us</p>
-                  <p className="text-xl font-bold">352.274.3800</p>
+                  <p className="text-xl font-bold">352.288.4491</p>
                 </div>
               </div>
 

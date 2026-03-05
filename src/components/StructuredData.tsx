@@ -21,7 +21,7 @@ const localBusinessSchema = {
   logo: '/images/logos/svn-logo.png',
   image:
     '/images/hero/hwy-484-ocala-1920.jpg',
-  telephone: '+1-352-274-3800',
+  telephone: '+1-352-288-4491',
   email: 'info@svnmcdonald.com',
   address: {
     '@type': 'PostalAddress',

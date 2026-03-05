@@ -228,7 +228,7 @@ export const closedDeals: ClosedDeal[] = [
     location: "Ocala, FL",
     price: "$5,500,000",
     date: "Archive",
-    image: "/images/properties/mar-2011-exterior.webp",
+    image: "/images/properties/corporate-campus.png",
     type: "Office",
     description: "74,000 square foot corporate campus sold for $5,500,000 in Ocala, FL. Bartow represented the seller in this significant office transaction. The property features a professional office environment with ample parking and modern amenities."
   },

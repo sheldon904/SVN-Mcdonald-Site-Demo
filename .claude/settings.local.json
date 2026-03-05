@@ -23,7 +23,15 @@
       "WebFetch(domain:overpass-api.de)",
       "WebFetch(domain:bundlephobia.com)",
       "WebFetch(domain:docs.protomaps.com)",
-      "mcp__filesystem__write_file"
+      "mcp__filesystem__write_file",
+      "Bash(npx tsc:*)",
+      "Bash(npx vite:*)",
+      "Bash(npm run:*)",
+      "Bash(npm install:*)"
     ]
-  }
+  },
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": [
+    "spawner"
+  ]
 }

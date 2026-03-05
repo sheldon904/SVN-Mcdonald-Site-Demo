@@ -7,6 +7,12 @@ import { teamMembers } from '../data/teamMembers';
 import { motion } from 'framer-motion';
 import { Mail, Phone, ArrowLeft, ArrowRight, GraduationCap } from 'lucide-react';
 
+const heroImages: Record<string, string> = {
+  'bartow-mcdonald': '/team/bart-and-wife.webp',
+  'matthew-garff': '/team/matthew_0001_A83B8096_Original.webp',
+  'stiles-mcdonald': '/team/stiles_0002_IMG_7996.jpg',
+};
+
 const TeamMemberPage = () => {
   const { slug } = useParams<{ slug: string }>();
   const member = teamMembers.find((m) => m.slug === slug);
@@ -54,7 +60,18 @@ const TeamMemberPage = () => {
 
       {/* Hero Section */}
       <div className="relative bg-svn-dark pt-32 pb-20 md:pt-48 md:pb-32 px-6 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-svn-dark via-svn-dark to-svn-orange/10" />
+        {slug && heroImages[slug] && (
+          <div className="absolute inset-0 z-0">
+            <img
+              src={heroImages[slug]}
+              alt=""
+              className="w-full h-full object-cover opacity-20"
+              loading="eager"
+              aria-hidden="true"
+            />
+          </div>
+        )}
+        <div className="absolute inset-0 bg-gradient-to-t from-svn-dark via-svn-dark/60 to-svn-dark/40" />
         <div className="relative z-10 max-w-[1280px] mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -107,15 +124,17 @@ const TeamMemberPage = () => {
                   Contact Info
                 </h3>
                 <div className="space-y-5">
-                  <a
-                    href={`tel:${member.phone.replace(/\./g, '')}`}
-                    className="flex items-center gap-4 text-white hover:text-svn-orange transition-colors font-bold text-sm"
-                  >
-                    <div className="bg-svn-orange p-2.5 rounded-full">
-                      <Phone size={16} />
-                    </div>
-                    {member.phone}
-                  </a>
+                  {member.phone && (
+                    <a
+                      href={`tel:${member.phone.replace(/[^0-9]/g, '')}`}
+                      className="flex items-center gap-4 text-white hover:text-svn-orange transition-colors font-bold text-sm"
+                    >
+                      <div className="bg-svn-orange p-2.5 rounded-full">
+                        <Phone size={16} />
+                      </div>
+                      {member.phone}
+                    </a>
+                  )}
                   <a
                     href={`mailto:${member.email}`}
                     className="flex items-center gap-4 text-white hover:text-svn-orange transition-colors font-bold text-sm"
