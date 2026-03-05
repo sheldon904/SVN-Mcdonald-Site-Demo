@@ -34,7 +34,7 @@ const TeamPage = () => {
             <img
               src="/team/stiles_0002_IMG_7996.jpg"
               alt=""
-              className="w-full h-full object-cover opacity-20"
+              className="w-full h-full object-cover object-top opacity-20"
               loading="eager"
               aria-hidden="true"
             />
@@ -54,7 +54,7 @@ const TeamPage = () => {
               <img
                 src="/team/matthew_0001_A83B8096_Original.webp"
                 alt=""
-                className="w-full h-full object-cover opacity-25"
+                className="w-full h-full object-cover object-top opacity-25"
                 loading="eager"
                 aria-hidden="true"
               />
@@ -63,7 +63,7 @@ const TeamPage = () => {
               <img
                 src="/team/stiles_0002_IMG_7996.jpg"
                 alt=""
-                className="w-full h-full object-cover opacity-25"
+                className="w-full h-full object-cover object-top opacity-25"
                 loading="eager"
                 aria-hidden="true"
               />

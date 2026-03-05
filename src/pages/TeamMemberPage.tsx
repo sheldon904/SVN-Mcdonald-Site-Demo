@@ -7,10 +7,10 @@ import { teamMembers } from '../data/teamMembers';
 import { motion } from 'framer-motion';
 import { Mail, Phone, ArrowLeft, ArrowRight, GraduationCap } from 'lucide-react';
 
-const heroImages: Record<string, string> = {
-  'bartow-mcdonald': '/team/bart-and-wife.webp',
-  'matthew-garff': '/team/matthew_0001_A83B8096_Original.webp',
-  'stiles-mcdonald': '/team/stiles_0002_IMG_7996.jpg',
+const heroImages: Record<string, { src: string; position?: string }> = {
+  'bartow-mcdonald': { src: '/team/bart-and-wife.webp' },
+  'matthew-garff': { src: '/team/matthew_0001_A83B8096_Original.webp', position: 'top' },
+  'stiles-mcdonald': { src: '/team/stiles_0002_IMG_7996.jpg', position: 'top' },
 };
 
 const TeamMemberPage = () => {
@@ -63,9 +63,10 @@ const TeamMemberPage = () => {
         {slug && heroImages[slug] && (
           <div className="absolute inset-0 z-0">
             <img
-              src={heroImages[slug]}
+              src={heroImages[slug].src}
               alt=""
               className="w-full h-full object-cover opacity-20"
+              style={heroImages[slug].position ? { objectPosition: heroImages[slug].position } : undefined}
               loading="eager"
               aria-hidden="true"
             />
