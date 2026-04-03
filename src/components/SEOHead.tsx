@@ -24,7 +24,8 @@ export default function SEOHead({
 }: SEOHeadProps) {
   const fullTitle = `${title} | ${SITE_NAME}`;
   const canonicalUrl = canonical ?? `${BASE_URL}${window.location.pathname}`;
-  const image = ogImage ?? DEFAULT_OG_IMAGE;
+  const rawImage = ogImage ?? DEFAULT_OG_IMAGE;
+  const image = rawImage.startsWith('http') ? rawImage : `${BASE_URL}${rawImage}`;
 
   return (
     <Helmet>
