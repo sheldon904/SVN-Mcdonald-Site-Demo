@@ -2,6 +2,7 @@ import { useParams, Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import SEOHead from '../components/SEOHead';
+import ArticleStructuredData from '../components/ArticleStructuredData';
 import { blogPosts } from '../data/blogPosts';
 import { Calendar, User, ArrowLeft } from 'lucide-react';
 
@@ -46,6 +47,7 @@ const BlogPostPage = () => {
         ogImage={post.image}
         ogType="article"
       />
+      <ArticleStructuredData post={post} />
       <Navbar />
 
       {/* Hero Image */}

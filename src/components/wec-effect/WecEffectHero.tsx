@@ -44,7 +44,7 @@ const WecEffectHero = () => {
             transition={{ delay: 0.5 }}
             className="text-lg md:text-xl text-white/80 font-medium max-w-2xl mb-6"
           >
-            How the World Equestrian Center reshaped Ocala's land market — 400+ transactions analyzed across four years.
+            Prices declined in 2025 for vacant, agriculturally zoned land 10 acres and larger. The Equestrian Land Report by SVN McDonald &amp; Co.
           </motion.p>
 
           {/* Glassmorphic stat badge */}

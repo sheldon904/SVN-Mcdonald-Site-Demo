@@ -8,6 +8,7 @@ import SEOHead from '../components/SEOHead';
 import ShowcaseLoadingSkeleton from '../components/showcase/ShowcaseLoadingSkeleton';
 import { closedDeals, FALLBACK_IMAGE } from '../data/closedDeals';
 import { isShowcaseSlug, showcaseProperties } from '../data/showcaseProperties';
+import StructuredData from '../components/StructuredData';
 
 const ShowcasePage = lazy(() => import('../components/showcase/ShowcasePage'));
 
@@ -63,6 +64,13 @@ const ClosedDealDetailPage = () => {
         description={deal.description.slice(0, 160)}
         ogImage={deal.image}
         canonical={`https://svnmcdonald.com/closed-deals/${deal.slug}`}
+      />
+      <StructuredData
+        breadcrumbs={[
+          { name: 'Home', url: 'https://svnmcdonald.com' },
+          { name: 'Closed Deals', url: 'https://svnmcdonald.com/closed-deals' },
+          { name: deal.title, url: `https://svnmcdonald.com/closed-deals/${deal.slug}` },
+        ]}
       />
       <Navbar />
 

@@ -2,6 +2,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import PageHeader from '../components/PageHeader';
 import SEOHead from '../components/SEOHead';
+import StructuredData from '../components/StructuredData';
 import { motion } from 'framer-motion';
 import { Phone, Search, Map, Bell, Video } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -21,6 +22,10 @@ const MLSPage = () => {
         description="Search the full Stellar MLS database for commercial and land properties across Central Florida. Powered by SVN McDonald & Company."
         canonical="https://svnmcdonald.com/mls"
       />
+      <StructuredData breadcrumbs={[
+        { name: 'Home', url: 'https://svnmcdonald.com' },
+        { name: 'MLS Search', url: 'https://svnmcdonald.com/mls' },
+      ]} />
       <Navbar />
 
       <PageHeader

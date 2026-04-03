@@ -5,6 +5,7 @@ import { TreePine, Building2, ArrowRight } from 'lucide-react';
 const Hero = () => {
   return (
     <div className="relative w-full overflow-hidden bg-black">
+      <h1 className="sr-only">Central Florida Commercial and Land Real Estate Brokerage</h1>
       {/* ===== MOBILE HERO (< md) ===== */}
       <div className="md:hidden">
         {/* Full-screen hero with headline */}
@@ -26,10 +27,10 @@ const Hero = () => {
             transition={{ duration: 0.6 }}
             className="relative z-10 text-center pt-32"
           >
-            <h1 className="text-4xl font-[800] text-white tracking-[-0.02em] leading-[1.1] uppercase drop-shadow-lg">
+            <p className="text-4xl font-[800] text-white tracking-[-0.02em] leading-[1.1] uppercase drop-shadow-lg">
               National Reach.<br />
               <span className="text-white">Local Expertise.</span>
-            </h1>
+            </p>
             <p className="text-sm text-white/70 font-medium mt-3 max-w-xs mx-auto leading-relaxed">
               Central Florida's premier commercial and land real estate brokerage.
             </p>
@@ -91,10 +92,10 @@ const Hero = () => {
             transition={{ duration: 0.6, ease: "easeOut" }}
             className="text-center"
           >
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-[800] text-white tracking-[-0.02em] leading-[1.1] uppercase drop-shadow-lg">
+            <p className="text-5xl md:text-6xl lg:text-7xl font-[800] text-white tracking-[-0.02em] leading-[1.1] uppercase drop-shadow-lg">
               National Reach.<br />
               <span className="text-white">Local Expertise.</span>
-            </h1>
+            </p>
             <motion.p
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}

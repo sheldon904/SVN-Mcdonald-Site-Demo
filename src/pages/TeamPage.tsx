@@ -1,6 +1,7 @@
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import SEOHead from '../components/SEOHead';
+import StructuredData from '../components/StructuredData';
 import { teamMembers } from '../data/teamMembers';
 import { motion } from 'framer-motion';
 import { Mail, Phone, ArrowRight } from 'lucide-react';
@@ -23,6 +24,10 @@ const TeamPage = () => {
         description="Meet the SVN McDonald & Company team. Experienced commercial real estate advisors serving Ocala, Marion County, and Central Florida."
         canonical="https://svnmcdonald.com/team"
       />
+      <StructuredData breadcrumbs={[
+        { name: 'Home', url: 'https://svnmcdonald.com' },
+        { name: 'Team', url: 'https://svnmcdonald.com/team' },
+      ]} />
       <Navbar />
 
       {/* Custom Team Header with personal photos */}

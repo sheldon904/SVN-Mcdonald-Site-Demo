@@ -16,6 +16,7 @@ import {
   BarChart,
 } from 'lucide-react';
 import { getPropertyTypeBySlug } from '../data/propertyTypes';
+import StructuredData from '../components/StructuredData';
 
 const featureIcons = [TrendingUp, MapPin, Shield, Landmark, Leaf, BarChart];
 
@@ -58,6 +59,13 @@ const PropertyTypePage = () => {
         title={propertyType.seoTitle}
         description={propertyType.seoDescription}
         canonical={`https://svnmcdonald.com/properties/${propertyType.slug}`}
+      />
+      <StructuredData
+        breadcrumbs={[
+          { name: 'Home', url: 'https://svnmcdonald.com' },
+          { name: propertyType.category === 'land' ? 'Land Properties' : 'Commercial Properties', url: `https://svnmcdonald.com/${propertyType.category === 'land' ? 'land' : 'commercial'}-properties` },
+          { name: propertyType.title, url: `https://svnmcdonald.com/properties/${propertyType.slug}` },
+        ]}
       />
       <Navbar />
 

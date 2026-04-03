@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { YEARLY_DATA, MAX_PRICE, DISTANCE_BANDS } from '../../data/wecEffectData';
+import { YEARLY_DATA, YOY_DATA, MAX_PRICE, DISTANCE_BANDS } from '../../data/wecEffectData';
 
 function formatPrice(value: number): string {
   return '$' + value.toLocaleString();
@@ -13,8 +13,6 @@ const BAR_COLORS: Record<string, string> = {
 
 
 const WecEffectCharts = () => {
-  const peak2024 = YEARLY_DATA.find(d => d.year === 2024)!;
-
   return (
     <section className="py-24 px-6 bg-white">
       <div className="max-w-[1280px] mx-auto">
@@ -29,7 +27,7 @@ const WecEffectCharts = () => {
           <div className="relative">
             {/* Y-axis labels */}
             <div className="absolute left-0 top-0 bottom-8 w-12 flex flex-col justify-between text-right pr-2">
-              {['$60K', '$40K', '$20K', '$0'].map(label => (
+              {['$70K', '$45K', '$25K', '$0'].map(label => (
                 <span key={label} className="text-[10px] font-bold text-gray-400 uppercase tracking-wider">
                   {label}
                 </span>
@@ -103,37 +101,94 @@ const WecEffectCharts = () => {
           </div>
         </div>
 
-        {/* Section 2: 2024 Horizontal comparison */}
+        {/* Section 2: Avg Price/Acre Table */}
+        <div className="mb-24">
+          <div className="w-12 h-1 bg-svn-orange mb-6" />
+          <h2 className="text-4xl font-black text-svn-dark uppercase tracking-tighter mb-12">
+            Avg Price/Acre <span className="text-svn-orange">by Year & Distance</span>
+          </h2>
+
+          <div className="overflow-x-auto">
+            <table className="w-full text-left">
+              <thead>
+                <tr className="border-b-2 border-svn-dark">
+                  <th className="py-4 pr-8 text-[10px] font-black uppercase tracking-[0.2em] text-gray-400">Year</th>
+                  {DISTANCE_BANDS.map(band => (
+                    <th key={band.id} className="py-4 px-4 text-[10px] font-black uppercase tracking-[0.2em] text-gray-400 text-right">
+                      {band.label}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {YEARLY_DATA.map((row, i) => (
+                  <motion.tr
+                    key={row.year}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.1 }}
+                    className="border-b border-gray-100"
+                  >
+                    <td className="py-4 pr-8 text-sm font-black text-svn-dark">{row.year}</td>
+                    <td className="py-4 px-4 text-sm font-bold text-svn-dark text-right">{formatPrice(row.inner)}</td>
+                    <td className="py-4 px-4 text-sm font-bold text-svn-dark text-right">{formatPrice(row.middle)}</td>
+                    <td className="py-4 px-4 text-sm font-bold text-svn-dark text-right">{formatPrice(row.outer)}</td>
+                  </motion.tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p className="mt-6 text-[10px] text-gray-400 font-bold uppercase tracking-widest">
+            Source: SVN McDonald & Company · WEC Effect Broker Opinion of Value · 2025
+          </p>
+        </div>
+
+        {/* Section 3: YoY % Change Table */}
         <div>
           <div className="w-12 h-1 bg-svn-orange mb-6" />
           <h2 className="text-4xl font-black text-svn-dark uppercase tracking-tighter mb-12">
-            2024 Peak Year <span className="text-svn-orange">— Price by Distance</span>
+            Year-over-Year <span className="text-svn-orange">% Change</span>
           </h2>
 
-          <div className="space-y-8">
-            {DISTANCE_BANDS.map((band, i) => {
-              const value = peak2024[band.id as keyof typeof peak2024] as number;
-              const widthPct = (value / MAX_PRICE) * 100;
-              return (
-                <div key={band.id}>
-                  <div className="flex justify-between text-sm font-bold uppercase tracking-widest mb-3">
-                    <span className="text-gray-400">{band.label}</span>
-                    <span className="text-svn-dark font-black">{formatPrice(value)}/ac</span>
-                  </div>
-                  <div className="h-5 bg-gray-100 rounded-full overflow-hidden">
-                    <motion.div
-                      initial={{ width: 0 }}
-                      whileInView={{ width: `${widthPct}%` }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 1, delay: i * 0.2 }}
-                      className={`h-full rounded-full ${BAR_COLORS[band.id]}`}
-                    />
-                  </div>
-                </div>
-              );
-            })}
+          <div className="overflow-x-auto">
+            <table className="w-full text-left">
+              <thead>
+                <tr className="border-b-2 border-svn-dark">
+                  <th className="py-4 pr-8 text-[10px] font-black uppercase tracking-[0.2em] text-gray-400">Year</th>
+                  {DISTANCE_BANDS.map(band => (
+                    <th key={band.id} className="py-4 px-4 text-[10px] font-black uppercase tracking-[0.2em] text-gray-400 text-right">
+                      {band.label}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {YOY_DATA.map((row, i) => (
+                  <motion.tr
+                    key={row.year}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.1 }}
+                    className="border-b border-gray-100"
+                  >
+                    <td className="py-4 pr-8 text-sm font-black text-svn-dark">{row.year}</td>
+                    {(['inner', 'middle', 'outer'] as const).map(band => {
+                      const val = row[band];
+                      const isNeg = val < 0;
+                      return (
+                        <td key={band} className={`py-4 px-4 text-sm font-bold text-right ${isNeg ? 'text-red-600' : 'text-green-600'}`}>
+                          {isNeg ? '' : '+'}{val.toFixed(2)}%
+                        </td>
+                      );
+                    })}
+                  </motion.tr>
+                ))}
+              </tbody>
+            </table>
           </div>
-          <p className="mt-8 text-[10px] text-gray-400 font-bold uppercase tracking-widest">
+          <p className="mt-6 text-[10px] text-gray-400 font-bold uppercase tracking-widest">
             *Average price per acre based on SVN McDonald transaction analysis
           </p>
         </div>

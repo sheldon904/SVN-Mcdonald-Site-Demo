@@ -4,6 +4,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import PageHeader from '../components/PageHeader';
 import SEOHead from '../components/SEOHead';
+import StructuredData from '../components/StructuredData';
 import FAQStructuredData from '../components/FAQStructuredData';
 import { servicesFAQ } from '../data/faqData';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -1167,6 +1168,18 @@ const ServicesPage = () => {
         description={currentService.seoDescription || currentService.subtitle}
         canonical={"https://svnmcdonald.com" + path}
       />
+      <StructuredData breadcrumbs={
+        path === '/services'
+          ? [
+              { name: 'Home', url: 'https://svnmcdonald.com' },
+              { name: 'Services', url: 'https://svnmcdonald.com/services' },
+            ]
+          : [
+              { name: 'Home', url: 'https://svnmcdonald.com' },
+              { name: 'Services', url: 'https://svnmcdonald.com/services' },
+              { name: `${currentService.title} ${currentService.highlighted}`.trim(), url: `https://svnmcdonald.com${path}` },
+            ]
+      } />
       <Navbar />
 
       <PageHeader

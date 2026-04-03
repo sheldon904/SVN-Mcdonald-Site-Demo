@@ -32,9 +32,24 @@ export interface YearlyData {
 
 export const YEARLY_DATA: YearlyData[] = [
   { year: 2022, inner: 50957, middle: 28530, outer: 16765 },
-  { year: 2023, inner: 51656, middle: 27994, outer: 20593 },
-  { year: 2024, inner: 64800, middle: 60800, outer: 31500 },
+  { year: 2023, inner: 51565, middle: 27994, outer: 20593 },
+  { year: 2024, inner: 67384, middle: 43181, outer: 24355 },
   { year: 2025, inner: 45524, middle: 40283, outer: 23905 },
+];
+
+// ── Year-over-Year % Changes ───────────────────────────────────
+
+export interface YoYData {
+  year: number;
+  inner: number;   // % change
+  middle: number;
+  outer: number;
+}
+
+export const YOY_DATA: YoYData[] = [
+  { year: 2023, inner: 1.19,   middle: -1.88, outer: 22.83 },
+  { year: 2024, inner: 30.68,  middle: 54.25, outer: 18.27 },
+  { year: 2025, inner: -32.44, middle: -6.71, outer: -1.85 },
 ];
 
 export const MAX_PRICE = Math.max(...YEARLY_DATA.flatMap(d => [d.inner, d.middle, d.outer]));
@@ -47,10 +62,10 @@ export interface HeadlineStat {
 }
 
 export const HEADLINE_STATS: HeadlineStat[] = [
-  { value: '400+',  label: 'Transactions Analyzed' },
-  { value: '159%',  label: 'Peak Growth 0–6 Mi' },
-  { value: '18 mi', label: 'Influence Radius' },
-  { value: '4 yrs', label: 'Data Span 2022–2025' },
+  { value: '400+',   label: 'Transactions Analyzed' },
+  { value: '-32.4%', label: '0–6 Mi YoY Decline' },
+  { value: '18 mi',  label: 'Influence Radius' },
+  { value: '4 yrs',  label: 'Data Span 2022–2025' },
 ];
 
 // ── Findings ────────────────────────────────────────────────────
@@ -64,23 +79,23 @@ export interface Finding {
 export const FINDINGS: Finding[] = [
   {
     icon: 'TrendingUp',
-    title: '159% Peak Growth',
-    desc: 'Within 6 miles of the WEC, average price per acre surged from $50,957 in 2022 to a peak of $64,800 in 2024 — a 27% increase in just two years.',
+    title: '2025 Prices Declined',
+    desc: 'Following a market peak in 2024, all three distance segments saw a decline in average values for 2025 — perhaps indicating a hot market catching its breath.',
   },
   {
     icon: 'MapPin',
     title: '18-Mile Influence',
-    desc: "The WEC's economic impact extends across three distinct bands, with measurable price premiums even 9–18 miles from the center.",
+    desc: "Equestrian-minded land buyers considered eastern Levy County close enough to access WEC amenities, extending the third distance segment to 18 miles from the Grand Outdoor Arena.",
   },
   {
     icon: 'Scale',
-    title: 'Distance Premium',
-    desc: 'In 2024, land within 6 miles averaged $64,800/acre — more than double the $31,500/acre seen 9–18 miles away.',
+    title: 'Inner Band Led the Decline',
+    desc: 'The 0–6 Miles segment saw the steepest drop at -32.44% YoY, from $67,384 to $45,524/acre. The 6–9 and 9–18 segments declined -6.71% and -1.85%, respectively.',
   },
   {
     icon: 'Landmark',
-    title: 'Horse Capital Catalyst',
-    desc: "The WEC has solidified Ocala's position, with 400+ tracked transactions confirming sustained demand across all distance bands.",
+    title: 'Unprecedented Demand Persists',
+    desc: "The WEC has created unprecedented demand for agriculturally zoned vacant land in both Marion and Levy Counties, with 400+ tracked transactions across four years.",
   },
 ];
 
@@ -94,27 +109,27 @@ export interface WecScrollCaption {
 
 export const SCROLL_CAPTIONS: WecScrollCaption[] = [
   {
-    text: "The World Equestrian Center opened in January 2021, instantly reshaping Ocala's land market. We tracked 400+ transactions across 4 years to measure its reach.",
+    text: "The World Equestrian Center opened in January 2021, reshaping Ocala's land market. After rapid appreciation through 2024, prices cooled in 2025.",
     startProgress: 0.02,
     endProgress: 0.15,
   },
   {
-    text: 'Within 6 miles, land averaged $64,800/acre in 2024 — a 27% jump from 2022. This inner band shows the strongest and most consistent premium.',
+    text: 'Within 6 miles, land peaked at $67,384/acre in 2024 before declining -32.44% to $45,524/acre in 2025 — the steepest correction of any band.',
     startProgress: 0.15,
     endProgress: 0.30,
   },
   {
-    text: "At 6–9 miles, prices more than doubled — from $28,530 in 2022 to $60,800 in 2024. The WEC's gravitational pull extends well beyond its gates.",
+    text: 'At 6–9 miles, prices rose from $28,530 in 2022 to $43,181 in 2024, then eased -6.71% to $40,283/acre in 2025.',
     startProgress: 0.30,
     endProgress: 0.45,
   },
   {
-    text: 'Even 9–18 miles out, the effect is real. Prices rose from $16,765 to $31,500/acre — an 88% increase driven by spillover demand.',
+    text: 'The 9–18 mile band — now extended into Levy County — saw the smallest decline at just -1.85%, from $24,355 to $23,905/acre.',
     startProgress: 0.45,
     endProgress: 0.70,
   },
   {
-    text: 'The WEC Effect is clear: a multi-layered economic force reaching 18 miles, with proximity to the center commanding dramatic premiums.',
+    text: 'The WEC Effect remains real: unprecedented demand across Marion and Levy Counties, with a hot market catching its breath in 2025.',
     startProgress: 0.70,
     endProgress: 1.0,
   },
@@ -184,21 +199,21 @@ export const PRICE_LABELS: PriceLabel[] = [
   {
     bandId: 'inner',
     bandLabel: '0–6 Miles',
-    price: '$64,800/ac',
+    price: '$45,524/ac',
     position: destinationPoint(WEC_CENTER.lat, WEC_CENTER.lng, 45, 3),
     progressThreshold: RING_THRESHOLDS.inner,
   },
   {
     bandId: 'middle',
     bandLabel: '6–9 Miles',
-    price: '$60,800/ac',
+    price: '$40,283/ac',
     position: destinationPoint(WEC_CENTER.lat, WEC_CENTER.lng, 45, 7.5),
     progressThreshold: RING_THRESHOLDS.middle,
   },
   {
     bandId: 'outer',
     bandLabel: '9–18 Miles',
-    price: '$31,500/ac',
+    price: '$23,905/ac',
     position: destinationPoint(WEC_CENTER.lat, WEC_CENTER.lng, 45, 13.5),
     progressThreshold: RING_THRESHOLDS.outer,
   },

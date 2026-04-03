@@ -10,7 +10,7 @@ interface SEOHeadProps {
 }
 
 const DEFAULT_OG_IMAGE =
-  '/images/logos/svn-logo.png';
+  '/images/hero/hwy-484-ocala-1920.jpg';
 const SITE_NAME = 'SVN McDonald & Company';
 const BASE_URL = 'https://svnmcdonald.com';
 
@@ -23,8 +23,9 @@ export default function SEOHead({
   noindex = false,
 }: SEOHeadProps) {
   const fullTitle = `${title} | ${SITE_NAME}`;
-  const canonicalUrl = canonical ?? `${BASE_URL}${window.location.pathname}`;
-  const image = ogImage ?? DEFAULT_OG_IMAGE;
+  const canonicalUrl = canonical ?? `${BASE_URL}${typeof window !== 'undefined' ? window.location.pathname : ''}`;
+  const rawImage = ogImage ?? DEFAULT_OG_IMAGE;
+  const image = rawImage.startsWith('http') ? rawImage : `${BASE_URL}${rawImage}`;
 
   return (
     <Helmet>
@@ -39,6 +40,7 @@ export default function SEOHead({
 
       {/* Open Graph / Facebook */}
       <meta property="og:type" content={ogType} />
+      <meta property="og:locale" content="en_US" />
       <meta property="og:site_name" content={SITE_NAME} />
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={description} />
@@ -50,6 +52,7 @@ export default function SEOHead({
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={image} />
+      <meta name="twitter:site" content="@svnmcdonald" />
 
       {/* Geo Meta Tags */}
       <meta name="geo.region" content="US-FL" />

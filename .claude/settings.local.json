@@ -27,7 +27,8 @@
       "Bash(npx tsc:*)",
       "Bash(npx vite:*)",
       "Bash(npm run:*)",
-      "Bash(npm install:*)"
+      "Bash(npm install:*)",
+      "mcp__claude_ai_Vercel__search_vercel_documentation"
     ]
   },
   "enableAllProjectMcpServers": true,
