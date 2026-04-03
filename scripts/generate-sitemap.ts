@@ -13,6 +13,22 @@ interface SitemapEntry {
   loc: string;
   changefreq: string;
   priority: string;
+  lastmod?: string;
+}
+
+const BUILD_DATE = new Date().toISOString().split('T')[0];
+
+function parseDate(dateStr: string): string {
+  // "Oct 24, 2024" → "2024-10-24"
+  const full = new Date(dateStr);
+  if (!isNaN(full.getTime())) return full.toISOString().split('T')[0];
+  // "Feb 2026" → "2026-02-01"
+  const monthYear = new Date(`1 ${dateStr}`);
+  if (!isNaN(monthYear.getTime())) return monthYear.toISOString().split('T')[0];
+  // "2024" → "2024-01-01"
+  if (/^\d{4}$/.test(dateStr)) return `${dateStr}-01-01`;
+  // "Archive" or unknown → build date
+  return BUILD_DATE;
 }
 
 // Static pages (from the existing sitemap)
@@ -56,10 +72,6 @@ const staticPages: SitemapEntry[] = [
   { loc: '/properties/timber', changefreq: 'monthly', priority: '0.7' },
   { loc: '/properties/triple-net-nnn', changefreq: 'monthly', priority: '0.7' },
   { loc: '/properties/warehouse', changefreq: 'monthly', priority: '0.7' },
-  // Legal
-  { loc: '/privacy-policy', changefreq: 'yearly', priority: '0.3' },
-  { loc: '/terms-of-use', changefreq: 'yearly', priority: '0.3' },
-  { loc: '/accessibility-statement', changefreq: 'yearly', priority: '0.3' },
 ];
 
 // Dynamic pages from data
@@ -67,12 +79,14 @@ const blogPages: SitemapEntry[] = blogPosts.map((post) => ({
   loc: `/blog/${post.slug}`,
   changefreq: 'monthly',
   priority: '0.6',
+  lastmod: parseDate(post.date),
 }));
 
 const dealPages: SitemapEntry[] = closedDeals.map((deal) => ({
   loc: `/closed-deals/${deal.slug}`,
   changefreq: 'yearly',
   priority: '0.5',
+  lastmod: parseDate(deal.date),
 }));
 
 const allPages = [...staticPages, ...blogPages, ...dealPages];
@@ -83,6 +97,7 @@ ${allPages
   .map(
     (page) => `  <url>
     <loc>${BASE_URL}${page.loc}</loc>
+    <lastmod>${page.lastmod ?? BUILD_DATE}</lastmod>
     <changefreq>${page.changefreq}</changefreq>
     <priority>${page.priority}</priority>
   </url>`

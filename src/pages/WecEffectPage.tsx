@@ -1,6 +1,7 @@
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import SEOHead from '../components/SEOHead';
+import StructuredData from '../components/StructuredData';
 import WecEffectHero from '../components/wec-effect/WecEffectHero';
 import WecEffectMapSection from '../components/wec-effect/WecEffectMapSection';
 import WecEffectStats from '../components/wec-effect/WecEffectStats';
@@ -17,6 +18,10 @@ const WecEffectPage = () => {
         description="Prices declined in 2025 for vacant, agriculturally zoned land near the World Equestrian Center. 400+ transactions analyzed across 2022-2025 by SVN McDonald & Co."
         canonical="https://svnmcdonald.com/wec-effect"
       />
+      <StructuredData breadcrumbs={[
+        { name: 'Home', url: 'https://svnmcdonald.com' },
+        { name: 'WEC Effect', url: 'https://svnmcdonald.com/wec-effect' },
+      ]} />
       <Navbar />
       <WecEffectHero />
       <WecEffectMapSection />

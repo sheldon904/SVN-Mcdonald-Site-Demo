@@ -2,6 +2,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import ContactForm from '../components/ContactForm';
 import SEOHead from '../components/SEOHead';
+import StructuredData from '../components/StructuredData';
 import { motion } from 'framer-motion';
 import { MapPin, Phone, Mail, Clock } from 'lucide-react';
 
@@ -15,6 +16,10 @@ const ContactPage = () => {
         description="Contact SVN McDonald & Company in Ocala, FL. Call 352.288.4491 or visit our office at 217 SE First AVE Unit 200. Commercial and land real estate experts."
         canonical="https://svnmcdonald.com/contact"
       />
+      <StructuredData breadcrumbs={[
+        { name: 'Home', url: 'https://svnmcdonald.com' },
+        { name: 'Contact', url: 'https://svnmcdonald.com/contact' },
+      ]} />
       <Navbar />
       
       {/* Header Spacer for fixed navbar */}

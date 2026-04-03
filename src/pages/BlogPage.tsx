@@ -3,6 +3,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import PageHeader from '../components/PageHeader';
 import SEOHead from '../components/SEOHead';
+import StructuredData from '../components/StructuredData';
 import { motion } from 'framer-motion';
 import { Calendar, User, ArrowRight } from 'lucide-react';
 import { blogPosts } from '../data/blogPosts';
@@ -15,6 +16,10 @@ const BlogPage = () => {
         description="Read the latest commercial real estate news, market updates, and insights from SVN McDonald & Company in Central Florida."
         canonical="https://svnmcdonald.com/blog"
       />
+      <StructuredData breadcrumbs={[
+        { name: 'Home', url: 'https://svnmcdonald.com' },
+        { name: 'Blog', url: 'https://svnmcdonald.com/blog' },
+      ]} />
       <Navbar />
 
       <PageHeader

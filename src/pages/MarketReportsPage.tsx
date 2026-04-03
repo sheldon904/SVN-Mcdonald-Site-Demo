@@ -2,6 +2,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import PageHeader from '../components/PageHeader';
 import SEOHead from '../components/SEOHead';
+import StructuredData from '../components/StructuredData';
 import { motion } from 'framer-motion';
 import { FileText, ArrowRight, Download } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -108,6 +109,10 @@ const MarketReportsPage = () => {
         description="Access monthly commercial real estate market reports and economic analyses for Ocala and Central Florida from SVN McDonald & Company."
         canonical="https://svnmcdonald.com/market-reports"
       />
+      <StructuredData breadcrumbs={[
+        { name: 'Home', url: 'https://svnmcdonald.com' },
+        { name: 'Market Reports', url: 'https://svnmcdonald.com/market-reports' },
+      ]} />
       <Navbar />
       
       <PageHeader 

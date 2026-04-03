@@ -2,456 +2,529 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://svnmcdonald.com/</loc>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://svnmcdonald.com/land-properties</loc>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://svnmcdonald.com/commercial-properties</loc>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://svnmcdonald.com/contact</loc>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://svnmcdonald.com/team</loc>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://svnmcdonald.com/blog</loc>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://svnmcdonald.com/services</loc>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://svnmcdonald.com/services/conservation-easement</loc>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://svnmcdonald.com/services/distressed-reo</loc>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://svnmcdonald.com/services/land-auctions</loc>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://svnmcdonald.com/services/land-brokerage</loc>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://svnmcdonald.com/services/strategic-marketing</loc>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://svnmcdonald.com/services/value-positioning</loc>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://svnmcdonald.com/services/valuation-appraisal</loc>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://svnmcdonald.com/services/types-of-commercial-real-estate</loc>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://svnmcdonald.com/closed-deals</loc>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://svnmcdonald.com/market-reports</loc>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://svnmcdonald.com/wec-effect</loc>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://svnmcdonald.com/mls</loc>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://svnmcdonald.com/team/bartow-mcdonald</loc>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://svnmcdonald.com/team/matthew-garff</loc>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://svnmcdonald.com/team/stiles-mcdonald</loc>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://svnmcdonald.com/properties/acreage</loc>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://svnmcdonald.com/properties/commercial</loc>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://svnmcdonald.com/properties/equestrian</loc>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://svnmcdonald.com/properties/farm-nursery</loc>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://svnmcdonald.com/properties/hunting-recreation</loc>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://svnmcdonald.com/properties/industrial</loc>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://svnmcdonald.com/properties/multi-family</loc>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://svnmcdonald.com/properties/office</loc>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://svnmcdonald.com/properties/ranch</loc>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://svnmcdonald.com/properties/retail</loc>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://svnmcdonald.com/properties/residential-development</loc>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://svnmcdonald.com/properties/self-storage</loc>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://svnmcdonald.com/properties/timber</loc>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://svnmcdonald.com/properties/triple-net-nnn</loc>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://svnmcdonald.com/properties/warehouse</loc>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://svnmcdonald.com/privacy-policy</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
-  <url>
-    <loc>https://svnmcdonald.com/terms-of-use</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
-  <url>
-    <loc>https://svnmcdonald.com/accessibility-statement</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
-  <url>
     <loc>https://svnmcdonald.com/blog/svn-mcdonald-brokers-crucial-49-acre-i-75-deal</loc>
+    <lastmod>2024-10-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://svnmcdonald.com/blog/7-steps-developers-florida-gopher-tortoise</loc>
+    <lastmod>2024-08-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://svnmcdonald.com/blog/i-75-traffic-construction-florida-updates</loc>
+    <lastmod>2024-06-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://svnmcdonald.com/blog/fantastic-opportunity-192-townhome-lots-ocala</loc>
+    <lastmod>2024-05-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://svnmcdonald.com/blog/2024-florida-commercial-lease-tax-break</loc>
+    <lastmod>2024-04-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://svnmcdonald.com/blog/navigating-storm-commercial-real-estate-2024</loc>
+    <lastmod>2024-03-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://svnmcdonald.com/blog/role-commercial-real-estate-agents-svn-mcdonald</loc>
+    <lastmod>2024-02-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://svnmcdonald.com/blog/commercial-real-estate-development-florida</loc>
+    <lastmod>2024-02-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://svnmcdonald.com/blog/commercial-real-estate-investment-strategies-florida</loc>
+    <lastmod>2024-01-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://svnmcdonald.com/blog/expert-land-broker-florida</loc>
+    <lastmod>2024-01-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://svnmcdonald.com/blog/what-are-triple-net-properties</loc>
+    <lastmod>2023-12-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://svnmcdonald.com/blog/future-traffic-i-75-central-florida</loc>
+    <lastmod>2023-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://svnmcdonald.com/blog/what-we-offer</loc>
+    <lastmod>2023-10-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://svnmcdonald.com/blog/commercial-real-estate</loc>
+    <lastmod>2023-09-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://svnmcdonald.com/blog/looking-to-sell-florida-horse-farm</loc>
+    <lastmod>2023-08-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://svnmcdonald.com/blog/what-to-look-for-commercial-real-estate-listing</loc>
+    <lastmod>2023-07-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://svnmcdonald.com/blog/good-retail-property-ocala-fl</loc>
+    <lastmod>2023-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://svnmcdonald.com/blog/different-types-commercial-properties</loc>
+    <lastmod>2023-05-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://svnmcdonald.com/blog/why-commercial-real-estate-good-investment</loc>
+    <lastmod>2023-04-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://svnmcdonald.com/closed-deals/17-59-commercial-acres-in-marion-oaks</loc>
+    <lastmod>2026-02-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://svnmcdonald.com/closed-deals/78-acres-in-horse-country</loc>
+    <lastmod>2026-02-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://svnmcdonald.com/closed-deals/single-tenant-leased-943000-sf-trailhead-logistics-center</loc>
+    <lastmod>2026-02-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://svnmcdonald.com/closed-deals/sold-550-acre-jumbolair</loc>
+    <lastmod>2025-09-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://svnmcdonald.com/closed-deals/sold-7m-41-22-residential-acres-in-ocala-fl</loc>
+    <lastmod>2025-09-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://svnmcdonald.com/closed-deals/39-acres-of-mixed-use-i-75-hwy-484</loc>
+    <lastmod>2024-01-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://svnmcdonald.com/closed-deals/sold-nnn-jiffy-lube-7-00-cap</loc>
+    <lastmod>2024-01-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://svnmcdonald.com/closed-deals/sold-nnn-industrial-8-16-cap-for-sale</loc>
+    <lastmod>2024-01-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://svnmcdonald.com/closed-deals/276-acres-in-dunnellon-fl</loc>
+    <lastmod>2024-01-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://svnmcdonald.com/closed-deals/4000-sf-warehouse-in-ocala-fl</loc>
+    <lastmod>2024-01-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://svnmcdonald.com/closed-deals/6600sf-warehouse-in-summerfield-fl</loc>
+    <lastmod>2024-01-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://svnmcdonald.com/closed-deals/35-28-residential-acres</loc>
+    <lastmod>2023-01-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://svnmcdonald.com/closed-deals/sold-55000sf-covered-storage-heavy-industrial-land-in-ocala-fl</loc>
+    <lastmod>2023-01-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://svnmcdonald.com/closed-deals/sold-downtown-ocala-office</loc>
+    <lastmod>2023-01-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://svnmcdonald.com/closed-deals/sold-90000sf-industrial</loc>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://svnmcdonald.com/closed-deals/sold-shopping-center</loc>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://svnmcdonald.com/closed-deals/sold-153-acres</loc>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://svnmcdonald.com/closed-deals/sold-182-acres</loc>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://svnmcdonald.com/closed-deals/sold-115-acres</loc>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://svnmcdonald.com/closed-deals/sold-145-acres</loc>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://svnmcdonald.com/closed-deals/sold-86500sf-warehouse</loc>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://svnmcdonald.com/closed-deals/sold-74000sf-office</loc>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://svnmcdonald.com/closed-deals/sold-34056sf-office</loc>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://svnmcdonald.com/closed-deals/sold-11364sf-office</loc>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://svnmcdonald.com/closed-deals/sold-34825sf-warehouse</loc>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://svnmcdonald.com/closed-deals/sold-outparcel-hwy-200</loc>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://svnmcdonald.com/closed-deals/sold-42000sf-retail</loc>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://svnmcdonald.com/closed-deals/sold-235-unit-self-storage</loc>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://svnmcdonald.com/closed-deals/leased-25000sf-falcon-industrial-park</loc>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://svnmcdonald.com/closed-deals/sold-140-residential-lots</loc>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://svnmcdonald.com/closed-deals/sold-8000sf-office</loc>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://svnmcdonald.com/closed-deals/sold-bank-owned-78-wooded-acres-hwy-441</loc>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>

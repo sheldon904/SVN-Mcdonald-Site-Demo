@@ -17,6 +17,7 @@ export default function ArticleStructuredData({ post }: ArticleStructuredDataPro
     headline: post.title,
     description: post.excerpt,
     datePublished,
+    dateModified: datePublished,
     image: imageUrl,
     author: {
       '@type': 'Organization',

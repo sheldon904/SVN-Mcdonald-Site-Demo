@@ -4,6 +4,7 @@ import BuildoutListing from '../components/BuildoutListing';
 import { BUILDOUT_LAND_TOKEN, BUILDOUT_COMMERCIAL_TOKEN } from '../components/BuildoutListing';
 import TeamBanner from '../components/TeamBanner';
 import SEOHead from '../components/SEOHead';
+import StructuredData from '../components/StructuredData';
 import { motion } from 'framer-motion';
 import { useLocation, Link } from 'react-router-dom';
 import { ArrowRight, TrendingUp, BarChart3, MapPin } from 'lucide-react';
@@ -250,13 +251,29 @@ const ListingsPage = () => {
             : 'https://svnmcdonald.com/commercial-properties'
         }
       />
+      <StructuredData breadcrumbs={[
+        { name: 'Home', url: 'https://svnmcdonald.com' },
+        { name: isLand ? 'Land Properties' : 'Commercial Properties', url: `https://svnmcdonald.com/${isLand ? 'land' : 'commercial'}-properties` },
+      ]} />
       <Navbar />
 
-      {/* Header Spacer */}
-      <div className="h-24 md:h-32 bg-svn-dark" />
+      {/* Header with H1 */}
+      <div className="bg-svn-dark pt-32 pb-16 md:pt-44 md:pb-20 px-6">
+        <div className="max-w-[1280px] mx-auto">
+          <div className="w-20 h-1.5 bg-svn-orange mb-8" />
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-white uppercase tracking-tight leading-tight">
+            {isLand ? 'Land' : 'Commercial'}{' '}
+            <span className="text-svn-orange">Properties</span>
+          </h1>
+          <p className="text-gray-400 text-lg md:text-xl font-medium leading-relaxed max-w-2xl mt-6">
+            {isLand
+              ? 'Browse premier land listings across Ocala and Central Florida.'
+              : 'Explore commercial real estate listings across Central Florida.'}
+          </p>
+        </div>
+      </div>
 
       <main>
-        {/* Inventory header removed per directive */}
 
         {/* Editorial Intro (land vs. commercial) */}
         {isLand ? <LandIntro /> : <CommercialIntro />}
