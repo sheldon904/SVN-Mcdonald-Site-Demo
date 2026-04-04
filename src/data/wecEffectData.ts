@@ -71,14 +71,14 @@ export const HEADLINE_STATS: HeadlineStat[] = [
 // ── Findings ────────────────────────────────────────────────────
 
 export interface Finding {
-  icon: 'TrendingUp' | 'MapPin' | 'Scale' | 'Landmark';
+  icon: 'TrendingDown' | 'MapPin' | 'Target' | 'Landmark';
   title: string;
   desc: string;
 }
 
 export const FINDINGS: Finding[] = [
   {
-    icon: 'TrendingUp',
+    icon: 'TrendingDown',
     title: '2025 Prices Declined',
     desc: 'Following a market peak in 2024, all three distance segments saw a decline in average values for 2025 — perhaps indicating a hot market catching its breath.',
   },
@@ -88,7 +88,7 @@ export const FINDINGS: Finding[] = [
     desc: "Equestrian-minded land buyers considered eastern Levy County close enough to access WEC amenities, extending the third distance segment to 18 miles from the Grand Outdoor Arena.",
   },
   {
-    icon: 'Scale',
+    icon: 'Target',
     title: 'Inner Band Led the Decline',
     desc: 'The 0–6 Miles segment saw the steepest drop at -32.44% YoY, from $67,384 to $45,524/acre. The 6–9 and 9–18 segments declined -6.71% and -1.85%, respectively.',
   },
