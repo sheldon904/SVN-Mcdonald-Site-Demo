@@ -1,11 +1,11 @@
 import { motion } from 'framer-motion';
-import { TrendingUp, MapPin, Scale, Landmark } from 'lucide-react';
+import { TrendingDown, MapPin, Target, Landmark } from 'lucide-react';
 import { FINDINGS } from '../../data/wecEffectData';
 
 const ICON_MAP = {
-  TrendingUp,
+  TrendingDown,
   MapPin,
-  Scale,
+  Target,
   Landmark,
 } as const;
 
