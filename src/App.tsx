@@ -59,6 +59,7 @@ function App() {
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/team/:slug" element={<TeamMemberPage />} />
         <Route path="/team" element={<TeamPage />} />
+        <Route path="/properties/:slug/:location" element={<PropertyTypePage />} />
         <Route path="/properties/:slug" element={<PropertyTypePage />} />
         <Route path="/mls" element={<MLSPage />} />
         <Route path="/blog/:slug" element={<BlogPostPage />} />

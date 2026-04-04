@@ -7,6 +7,8 @@ interface SEOHeadProps {
   ogImage?: string;
   ogType?: string;
   noindex?: boolean;
+  geoPlacename?: string;
+  geoPosition?: string;
 }
 
 const DEFAULT_OG_IMAGE =
@@ -21,6 +23,8 @@ export default function SEOHead({
   ogImage,
   ogType = 'website',
   noindex = false,
+  geoPlacename,
+  geoPosition,
 }: SEOHeadProps) {
   const fullTitle = `${title} | ${SITE_NAME}`;
   const canonicalUrl = canonical ?? `${BASE_URL}${typeof window !== 'undefined' ? window.location.pathname : ''}`;
@@ -56,8 +60,8 @@ export default function SEOHead({
 
       {/* Geo Meta Tags */}
       <meta name="geo.region" content="US-FL" />
-      <meta name="geo.placename" content="Ocala" />
-      <meta name="geo.position" content="29.1875;-82.1402" />
+      <meta name="geo.placename" content={geoPlacename ?? "Ocala"} />
+      <meta name="geo.position" content={geoPosition ?? "29.1875;-82.1402"} />
     </Helmet>
   );
 }

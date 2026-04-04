@@ -5,6 +5,8 @@ import { fileURLToPath } from 'node:url';
 // Import data from src
 import { blogPosts } from '../src/data/blogPosts.js';
 import { closedDeals } from '../src/data/closedDeals.js';
+import { propertyTypes } from '../src/data/propertyTypes.js';
+import { getAllLocations } from '../src/data/locations.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const BASE_URL = 'https://svnmcdonald.com';
@@ -89,7 +91,16 @@ const dealPages: SitemapEntry[] = closedDeals.map((deal) => ({
   lastmod: parseDate(deal.date),
 }));
 
-const allPages = [...staticPages, ...blogPages, ...dealPages];
+// Geo-targeted pages (property type × location)
+const geoPages: SitemapEntry[] = propertyTypes.flatMap((pt) =>
+  getAllLocations().map((loc) => ({
+    loc: `/properties/${pt.slug}/${loc.slug}`,
+    changefreq: 'monthly',
+    priority: '0.6',
+  }))
+);
+
+const allPages = [...staticPages, ...geoPages, ...blogPages, ...dealPages];
 
 const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
