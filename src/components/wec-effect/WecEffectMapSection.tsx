@@ -1,11 +1,11 @@
 import { useState, useCallback, useMemo } from 'react';
 import { motion } from 'framer-motion';
-import { TrendingUp, MapPin, Scale, Landmark } from 'lucide-react';
+import { TrendingDown, MapPin, Target, Landmark } from 'lucide-react';
 import WecEffectMapViewer from './WecEffectMapViewer';
 import { isMobileDevice, supportsWebGL2 } from '../showcase/webglSupport';
 import { FINDINGS } from '../../data/wecEffectData';
 
-const ICON_MAP = { TrendingUp, MapPin, Scale, Landmark } as const;
+const ICON_MAP = { TrendingDown, MapPin, Target, Landmark } as const;
 
 const FindingsPanel = ({ className = '' }: { className?: string }) => (
   <div className={className}>
