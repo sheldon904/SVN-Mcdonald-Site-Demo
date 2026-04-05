@@ -80,8 +80,14 @@ export default async function middleware(request: Request) {
 
     if (prerenderResponse.ok) {
       const html = await prerenderResponse.text();
+
+      // Detect soft 404s: pages that render noindex meta tags are not-found pages.
+      // Return a true 404 status so crawlers don't waste crawl budget on them.
+      const isSoft404 = html.includes('noindex, nofollow') || html.includes('<h1>404</h1>');
+      const status = isSoft404 ? 404 : 200;
+
       return new Response(html, {
-        status: 200,
+        status,
         headers: {
           'Content-Type': 'text/html; charset=utf-8',
           'X-Prerendered': '1',

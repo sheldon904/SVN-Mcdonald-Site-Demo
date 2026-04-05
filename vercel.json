@@ -7,7 +7,6 @@
       "includeFiles": "api/_lib/**"
     }
   },
-  "trailingSlash": false,
   "redirects": [
     { "source": "/homepage", "destination": "/", "permanent": true },
     { "source": "/meet-the-team", "destination": "/team", "permanent": true },
@@ -198,7 +197,21 @@
 
     { "source": "/wp-admin/:path*", "destination": "/", "permanent": true },
     { "source": "/wp-content/:path*", "destination": "/", "permanent": true },
-    { "source": "/wp-login.php", "destination": "/", "permanent": true }
+    { "source": "/wp-login.php", "destination": "/", "permanent": true },
+    { "source": "/wp-json/:path*", "destination": "/", "permanent": true },
+    { "source": "/wp-includes/:path*", "destination": "/", "permanent": true },
+    { "source": "/xmlrpc.php", "destination": "/", "permanent": true },
+
+    { "source": "/waterfront-properties", "destination": "/properties/acreage", "permanent": true },
+    { "source": "/waterfront-properties/:path*", "destination": "/properties/acreage", "permanent": true },
+
+    { "source": "/feed", "destination": "/blog", "permanent": true },
+    { "source": "/feed/:path*", "destination": "/blog", "permanent": true },
+    { "source": "/rss", "destination": "/blog", "permanent": true },
+    { "source": "/rss/:path*", "destination": "/blog", "permanent": true },
+    { "source": "/author/:path*", "destination": "/team", "permanent": true },
+    { "source": "/category/:path*", "destination": "/blog", "permanent": true },
+    { "source": "/tag/:path*", "destination": "/blog", "permanent": true }
   ],
   "headers": [
     {
