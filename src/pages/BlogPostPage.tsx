@@ -44,6 +44,7 @@ const BlogPostPage = () => {
       <SEOHead
         title={post.title}
         description={post.excerpt}
+        canonical={`https://svnmcdonald.com/blog/${post.slug}`}
         ogImage={post.image}
         ogType="article"
       />

@@ -97,6 +97,7 @@ const localBusinessSchema = {
     'https://facebook.com/svnmcdonald',
     'https://youtube.com/@bartowmcdonald1803/featured',
     'https://linkedin.com/company/svn-mcdonald-company/',
+    'https://www.instagram.com/svnmcdonald/',
   ],
 };
 
