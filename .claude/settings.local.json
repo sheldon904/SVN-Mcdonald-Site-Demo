@@ -28,7 +28,14 @@
       "Bash(npx vite:*)",
       "Bash(npm run:*)",
       "Bash(npm install:*)",
-      "mcp__claude_ai_Vercel__search_vercel_documentation"
+      "mcp__claude_ai_Vercel__search_vercel_documentation",
+      "Read(//tmp/**)",
+      "Read(//c/Users/sheld/**)",
+      "Skill(seo-geo)",
+      "Bash(cygpath -w /tmp/seo_homepage.html)",
+      "Bash(PYTHONIOENCODING=utf-8 python /tmp/extract_seo2.py)",
+      "Bash(PYTHONIOENCODING=utf-8 python3:*)",
+      "Bash(git:*)"
     ]
   },
   "enableAllProjectMcpServers": true,
