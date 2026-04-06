@@ -22,12 +22,15 @@ import {
   BarChart,
   MapPin,
   Handshake,
+  Briefcase,
+  Package,
+  Fence,
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const propertyTypes = [
   { slug: 'commercial', label: 'Commercial', icon: Building2, description: 'Retail centers, mixed-use buildings, and general commercial properties across Central Florida.' },
-  { slug: 'office', label: 'Office', icon: Building2, description: 'Class A, B, and C office space ranging from single-tenant professional suites to multi-story office buildings.' },
+  { slug: 'office', label: 'Office', icon: Briefcase, description: 'Class A, B, and C office space ranging from single-tenant professional suites to multi-story office buildings.' },
   { slug: 'retail', label: 'Retail', icon: ShoppingBag, description: 'Strip centers, standalone retail pads, restaurant spaces, and high-traffic storefront locations.' },
   { slug: 'industrial', label: 'Industrial', icon: Factory, description: 'Manufacturing facilities, flex-industrial buildings, and logistics properties along major corridors.' },
   { slug: 'warehouse', label: 'Warehouse', icon: Warehouse, description: 'Distribution centers, cold storage, and warehouse space with dock-high and grade-level loading.' },
@@ -35,8 +38,8 @@ const propertyTypes = [
   { slug: 'acreage', label: 'Acreage & Land', icon: LandPlot, description: 'Vacant land parcels, agricultural tracts, and development-ready sites across multiple counties.' },
   { slug: 'ranch', label: 'Ranch', icon: Tractor, description: 'Working cattle ranches, horse farms, and rural estates with agricultural exemptions in place.' },
   { slug: 'equestrian', label: 'Equestrian', icon: TreePine, description: 'Horse farms, training facilities, and properties within the World Equestrian Center influence zone.' },
-  { slug: 'farm-nursery', label: 'Farm & Nursery', icon: Tractor, description: 'Active nurseries, row crop operations, specialty agriculture, and value-added farming properties.' },
-  { slug: 'self-storage', label: 'Self-Storage', icon: Warehouse, description: 'Climate-controlled and drive-up self-storage facilities with strong cash-flow fundamentals.' },
+  { slug: 'farm-nursery', label: 'Farm & Nursery', icon: Fence, description: 'Active nurseries, row crop operations, specialty agriculture, and value-added farming properties.' },
+  { slug: 'self-storage', label: 'Self-Storage', icon: Package, description: 'Climate-controlled and drive-up self-storage facilities with strong cash-flow fundamentals.' },
   { slug: 'triple-net-nnn', label: 'Triple Net (NNN)', icon: BarChart, description: 'Single-tenant NNN investments with long-term leases and minimal landlord responsibility.' },
 ];
 
