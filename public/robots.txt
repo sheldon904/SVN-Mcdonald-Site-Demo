@@ -1,5 +1,35 @@
+# Default: allow all crawlers
 User-agent: *
 Allow: /
 Disallow: /api/
+
+# AI Search Crawlers (explicitly allowed for AI search visibility)
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+# AI Training Crawlers (blocked — scrape for model training)
+User-agent: CCBot
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: cohere-ai
+Disallow: /
 
 Sitemap: https://svnmcdonald.com/sitemap.xml

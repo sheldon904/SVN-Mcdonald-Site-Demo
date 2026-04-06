@@ -1,0 +1,71 @@
+# SVN McDonald & Company
+
+> Central Florida's premier commercial and land real estate brokerage, specializing in land sales, commercial properties, conservation easements, and investment real estate in Ocala, Marion County, and the surrounding region.
+
+## About
+
+- Location: 217 SE First AVE Unit 200, Ocala, FL 34471
+- Phone: (352) 288-4491
+- Email: info@svnmcdonald.com
+- Website: https://svnmcdonald.com
+- Hours: Monday-Friday, 9:00 AM - 5:00 PM
+- Affiliated with SVN International Corp., a national commercial real estate brokerage with 200+ offices
+
+## Services
+
+- [Land Brokerage](https://svnmcdonald.com/services/land-brokerage): Premier land brokerage connecting buyers and sellers across Central Florida.
+- [Land Auctions](https://svnmcdonald.com/services/land-auctions): Specialized auction services for land and commercial property sales.
+- [Conservation Easement](https://svnmcdonald.com/services/conservation-easement): Navigating conservation easement options for landowners in Florida.
+- [Strategic Marketing](https://svnmcdonald.com/services/strategic-marketing): Premium commercial real estate leasing and marketing services.
+- [Value & Marketing Positioning](https://svnmcdonald.com/services/value-positioning): Value-driven, strategically positioned brokerage services.
+- [Valuation & Appraisal](https://svnmcdonald.com/services/valuation-appraisal): Accurate property valuations with comprehensive market analysis.
+- [Distressed/REO Properties](https://svnmcdonald.com/services/distressed-reo): Identifying and capitalizing on distressed and REO property opportunities.
+- [Types of Commercial Real Estate](https://svnmcdonald.com/services/types-of-commercial-real-estate): Overview of office, retail, industrial, multi-family, and specialty property types.
+- [All Services](https://svnmcdonald.com/services): Full directory of commercial real estate services.
+
+## Property Types
+
+- [Acreage](https://svnmcdonald.com/properties/acreage): Expansive land parcels for agriculture, development, and long-term investment.
+- [Commercial](https://svnmcdonald.com/properties/commercial): Retail, office, industrial, and investment properties.
+- [Equestrian](https://svnmcdonald.com/properties/equestrian): Horse farms and equestrian estates in the Horse Capital of the World.
+- [Farm & Nursery](https://svnmcdonald.com/properties/farm-nursery): Productive agricultural operations and nursery facilities.
+- [Hunting & Recreation](https://svnmcdonald.com/properties/hunting-recreation): Hunting tracts and recreational land in scenic Central Florida landscapes.
+- [Industrial](https://svnmcdonald.com/properties/industrial): Industrial facilities and sites along premier logistics corridors.
+- [Multi-Family](https://svnmcdonald.com/properties/multi-family): Apartment complexes and multi-family investment opportunities.
+- [Office](https://svnmcdonald.com/properties/office): Professional office space for healthcare, financial services, and businesses.
+- [Ranch](https://svnmcdonald.com/properties/ranch): Working cattle ranches and lifestyle estates in premier ranching country.
+- [Retail](https://svnmcdonald.com/properties/retail): High-visibility retail locations and shopping centers.
+- [Residential Development](https://svnmcdonald.com/properties/residential-development): Entitled land and development sites for residential builders.
+- [Self Storage](https://svnmcdonald.com/properties/self-storage): Self-storage investment opportunities in a high-growth market.
+- [Timber](https://svnmcdonald.com/properties/timber): Managed timberland investments in productive pine and hardwood forests.
+- [Triple Net (NNN)](https://svnmcdonald.com/properties/triple-net-nnn): Passive income investments with creditworthy tenants and predictable returns.
+- [Warehouse](https://svnmcdonald.com/properties/warehouse): Distribution and warehouse facilities along major freight corridors.
+
+## Markets Served
+
+Each property type is available filtered by location. Example pattern: /properties/{type}/{location}
+
+- [Ocala, FL](https://svnmcdonald.com/properties/ranch/ocala-fl): Marion County seat and regional hub. Home to the World Equestrian Center. Population 70,000+, metro 390,000+.
+- [Gainesville, FL](https://svnmcdonald.com/properties/ranch/gainesville-fl): Alachua County. Anchored by the University of Florida, biotech corridor, and UF Health. Metro 290,000+.
+- [Clermont, FL](https://svnmcdonald.com/properties/ranch/clermont-fl): Lake County. Commercial gateway to South Lake County, 30 minutes from Orlando International Airport.
+- [Marion County, FL](https://svnmcdonald.com/properties/ranch/marion-county): 1,663 square miles. Equestrian industry, agriculture, logistics, and manufacturing. Projected 450,000+ by 2035.
+- [Lake County, FL](https://svnmcdonald.com/properties/ranch/lake-county): I-4 and US 27 growth corridors. 400,000+ population. Competitive pricing vs. Orange and Seminole counties.
+- [Alachua County, FL](https://svnmcdonald.com/properties/ranch/alachua-county): University-anchored economy with biotech and cybersecurity clusters. 280,000+ population.
+- [Sumter County, FL](https://svnmcdonald.com/properties/ranch/sumter-county): Dominated by The Villages (130,000+ residents). Fastest-growing county in Florida. Healthcare and retail demand.
+
+## Team
+
+- [Bartow McDonald IV](https://svnmcdonald.com/team/bartow-mcdonald): Managing Director. MBA & BS, University of Florida. 30+ years in Central Florida real estate. Specialties: Land Brokerage, Conservation Easements, Commercial Sales & Leasing, Investment Properties, Development Land.
+- [Matthew Garff](https://svnmcdonald.com/team/matthew-garff): Associate Advisor. BS Economics, Brigham Young University. Specialties: Agricultural Land, Ranch Properties, Recreational Land, Equestrian Properties.
+- [Stiles McDonald](https://svnmcdonald.com/team/stiles-mcdonald): Associate. 5th generation Floridian. Specialties: Land Sales, Timber Properties, Hunting & Recreation Land, Rural Properties.
+
+## Additional Resources
+
+- [Blog](https://svnmcdonald.com/blog): Articles on Central Florida commercial real estate, land investment, market trends, and development.
+- [Market Reports](https://svnmcdonald.com/market-reports): Downloadable economic updates and market analysis for Central Florida.
+- [Closed Deals](https://svnmcdonald.com/closed-deals): Archive of completed transactions demonstrating brokerage track record.
+- [The WEC Effect](https://svnmcdonald.com/wec-effect): Data-driven analysis of how the World Equestrian Center is transforming Ocala-area real estate values.
+- [MLS Listings](https://svnmcdonald.com/mls): Current MLS property listings in Central Florida.
+- [Contact](https://svnmcdonald.com/contact): Reach SVN McDonald & Company for property inquiries, valuations, or brokerage services.
+- [Land Properties](https://svnmcdonald.com/land-properties): All available land listings.
+- [Commercial Properties](https://svnmcdonald.com/commercial-properties): All available commercial listings.

@@ -185,6 +185,9 @@
     { "source": "/sold-8000sf-office-ocala-office-for-sale-office-for-leas", "destination": "/closed-deals/sold-8000sf-office", "permanent": true },
     { "source": "/sold-78-wooded-acres-in-ocala-horse-bank-owned", "destination": "/closed-deals/sold-bank-owned-78-wooded-acres-hwy-441", "permanent": true },
 
+    { "source": "/january-2026-market-report", "destination": "/market-reports", "permanent": true },
+    { "source": "/december-2025-market-report", "destination": "/market-reports", "permanent": true },
+    { "source": "/november-2025-market-report", "destination": "/market-reports", "permanent": true },
     { "source": "/october-2025-market-report", "destination": "/market-reports", "permanent": true },
     { "source": "/september-2025-market-report", "destination": "/market-reports", "permanent": true },
     { "source": "/august-2025-market-report", "destination": "/market-reports", "permanent": true },
@@ -201,6 +204,8 @@
     { "source": "/wp-json/:path*", "destination": "/", "permanent": true },
     { "source": "/wp-includes/:path*", "destination": "/", "permanent": true },
     { "source": "/xmlrpc.php", "destination": "/", "permanent": true },
+    { "source": "/sitemap_index.xml", "destination": "/sitemap.xml", "permanent": true },
+    { "source": "/wp-sitemap.xml", "destination": "/sitemap.xml", "permanent": true },
 
     { "source": "/waterfront-properties", "destination": "/properties/acreage", "permanent": true },
     { "source": "/waterfront-properties/:path*", "destination": "/properties/acreage", "permanent": true },

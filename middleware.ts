@@ -23,6 +23,15 @@ const BOT_AGENTS = [
   'w3c_validator',
   'vkshare',
   'redditbot',
+  // AI search & LLM crawlers
+  'gptbot',
+  'oai-searchbot',
+  'chatgpt-user',
+  'claudebot',
+  'anthropic-ai',
+  'perplexitybot',
+  'bytespider',
+  'cohere-ai',
 ];
 
 function isBot(userAgent: string): boolean {
