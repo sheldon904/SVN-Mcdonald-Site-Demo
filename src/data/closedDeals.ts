@@ -13,6 +13,16 @@ export const FALLBACK_IMAGE = "/images/hero/hwy-484-ocala-1920.jpg";
 
 export const closedDeals: ClosedDeal[] = [
   {
+    title: "Office Space — 8.14 CAP",
+    slug: "sold-office-space-ocala-8-14-cap",
+    location: "Ocala, FL",
+    price: "8.14 CAP",
+    date: "Apr 2026",
+    image: "/images/properties/office-space-ocala-sold.jpg",
+    type: "Office",
+    description: "SVN McDonald & Company closed this office space investment at asking price with an 8.14 CAP rate in Ocala, FL. Bartow McDonald, Matthew Garff, and Stiles McDonald represented this transaction, demonstrating strong investor confidence in the Ocala office market."
+  },
+  {
     title: "17.59 +/- Commercial Acres Marion Oaks",
     slug: "17-59-commercial-acres-in-marion-oaks",
     location: "Marion Oaks, FL",
