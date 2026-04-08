@@ -54,8 +54,8 @@ function App() {
       <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="w-8 h-8 border-4 border-svn-orange border-t-transparent rounded-full animate-spin" /></div>}>
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/land-properties" element={<ListingsPage />} />
-        <Route path="/commercial-properties" element={<ListingsPage />} />
+        <Route path="/land-properties/*" element={<ListingsPage />} />
+        <Route path="/commercial-properties/*" element={<ListingsPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/team/:slug" element={<TeamMemberPage />} />
         <Route path="/team" element={<TeamPage />} />
