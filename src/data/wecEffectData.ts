@@ -1,7 +1,7 @@
 // ── WEC Effect Data ─────────────────────────────────────────────
 // Source: SVN McDonald WEC Effect Excel files (2022-2025)
 
-export const WEC_CENTER = { lat: 29.1039, lng: -82.1765 } as const;
+export const WEC_CENTER = { lat: 29.2042, lng: -82.2554 } as const;
 
 // ── Distance Bands ──────────────────────────────────────────────
 

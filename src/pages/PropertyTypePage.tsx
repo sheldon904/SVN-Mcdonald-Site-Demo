@@ -218,11 +218,11 @@ const PropertyTypePage = () => {
                   </h4>
                   <div className="space-y-4">
                     <a
-                      href="tel:3522884491"
+                      href="tel:3522743800"
                       className="flex items-center gap-3 text-gray-500 hover:text-svn-orange transition-colors font-medium"
                     >
                       <span className="text-svn-orange font-black">P</span>
-                      352.288.4491
+                      352.274.3800
                     </a>
                     <a
                       href="mailto:info@svnmcdonald.com"
@@ -404,10 +404,10 @@ const PropertyTypePage = () => {
                 Contact Us <ArrowRight size={20} />
               </Link>
               <a
-                href="tel:3522884491"
+                href="tel:3522743800"
                 className="bg-white/20 text-white px-10 py-5 rounded-full font-black uppercase tracking-widest hover:bg-white hover:text-svn-orange transition-all duration-300 shadow-xl flex items-center justify-center gap-3 whitespace-nowrap backdrop-blur-sm"
               >
-                352.288.4491
+                352.274.3800
               </a>
             </div>
           </div>

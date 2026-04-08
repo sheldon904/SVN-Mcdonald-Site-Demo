@@ -186,10 +186,10 @@ const MLSPage = () => {
                 <h3 className="text-lg font-black text-white uppercase tracking-wider mb-4">Need MLS Data?</h3>
                 <p className="text-gray-400 text-sm leading-relaxed mb-6">Our advisors can pull custom MLS reports for any property type, price range, or geographic area in Central Florida.</p>
                 <a
-                  href="tel:3522884491"
+                  href="tel:3522743800"
                   className="inline-flex items-center gap-3 text-svn-orange hover:text-white transition-colors font-black uppercase tracking-widest text-sm"
                 >
-                  <Phone size={16} /> (352) 288-4491
+                  <Phone size={16} /> (352) 274-3800
                 </a>
               </div>
             </motion.div>
@@ -401,11 +401,11 @@ const MLSPage = () => {
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
               <a
-                href="tel:3522884491"
+                href="tel:3522743800"
                 className="bg-svn-orange text-white px-10 py-5 rounded-full font-black uppercase tracking-widest hover:bg-white hover:text-svn-orange transition-all duration-300 shadow-xl flex items-center gap-3"
               >
                 <Phone size={20} />
-                352.288.4491
+                352.274.3800
               </a>
               <Link
                 to="/contact"
