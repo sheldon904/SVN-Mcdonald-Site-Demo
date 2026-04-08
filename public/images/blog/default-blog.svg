@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500">
+  <rect width="800" height="500" fill="#1a1a2e"/>
+  <rect x="0" y="0" width="800" height="500" fill="url(#grad)" opacity="0.3"/>
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f97316;stop-opacity:0.4"/>
+      <stop offset="100%" style="stop-color:#1a1a2e;stop-opacity:0"/>
+    </linearGradient>
+  </defs>
+  <text x="400" y="230" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="900" font-size="48" fill="#ffffff" letter-spacing="8">SVN</text>
+  <text x="400" y="280" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="24" fill="#f97316" letter-spacing="4">McDONALD &amp; COMPANY</text>
+  <rect x="340" y="300" width="120" height="3" fill="#f97316" rx="1.5"/>
+  <text x="400" y="340" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="500" font-size="14" fill="#666" letter-spacing="3">INSIGHTS &amp; NEWS</text>
+</svg>

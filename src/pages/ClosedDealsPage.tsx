@@ -83,7 +83,7 @@ const ClosedDealsPage = () => {
                       onError={(e) => { (e.target as HTMLImageElement).src = FALLBACK_IMAGE; }}
                     />
                     <div className="absolute top-4 right-4 bg-svn-orange text-white text-xs font-bold uppercase tracking-widest py-1 px-3 rounded-md">
-                      Sold
+                      {deal.status}
                     </div>
                     <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
                        <span className="text-white text-xs font-bold uppercase tracking-widest border border-white/30 px-2 py-1 rounded backdrop-blur-sm">
