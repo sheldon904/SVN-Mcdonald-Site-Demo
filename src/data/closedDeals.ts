@@ -14,6 +14,17 @@ export const FALLBACK_IMAGE = "/images/hero/hwy-484-ocala-1920.jpg";
 
 export const closedDeals: ClosedDeal[] = [
   {
+    title: "Ocala 75",
+    slug: "ocala-75-industrial-lease",
+    location: "Ocala, FL",
+    price: "175,640 SF",
+    date: "Mar 2026",
+    image: "/images/properties/ocala-75-hero.webp",
+    type: "Industrial",
+    status: "Leased",
+    description: "Ocala 75 features flexible industrial spaces between 40,000–135,640 SF along the I-75 corridor. The brand-new facility also includes 105+ entitled acres for build-to-suit development. Co-listed with David Murphy and Monica Wonus of CBRE."
+  },
+  {
     title: "Office Space — 8.14 CAP",
     slug: "sold-office-space-ocala-8-14-cap",
     location: "Ocala, FL",
@@ -63,7 +74,7 @@ export const closedDeals: ClosedDeal[] = [
     location: "Ocala, FL",
     price: "$9,500,000",
     date: "Sep 2025",
-    image: "/images/properties/jumbolair.webp",
+    image: "/images/properties/jumbolair-runway.jpg",
     type: "Residential",
     status: "Sold",
     description: "$9,500,000. Bring your Boeing! A mile of road can take you to a few places, but a mile of runway can take you anywhere in the world. Jumbolair is a world-class residential airpark community featuring a 7,550-foot runway, one of the longest private runways in the United States. This extraordinary 550-acre property includes luxury homes, hangars, and unmatched aviation amenities."
