@@ -190,9 +190,9 @@ const TeamPage = () => {
             </p>
           </div>
           <div className="relative z-10 flex flex-col gap-4">
-            <a href="tel:3522884491" className="bg-white text-svn-orange px-10 py-5 rounded-full font-black uppercase tracking-widest hover:bg-svn-dark hover:text-white transition-all duration-300 shadow-xl flex items-center justify-center gap-3">
+            <a href="tel:3522743800" className="bg-white text-svn-orange px-10 py-5 rounded-full font-black uppercase tracking-widest hover:bg-svn-dark hover:text-white transition-all duration-300 shadow-xl flex items-center justify-center gap-3">
               <Phone size={20} />
-              352.288.4491
+              352.274.3800
             </a>
             <Link to="/contact" className="bg-svn-dark text-white px-10 py-5 rounded-full font-black uppercase tracking-widest hover:bg-white hover:text-svn-dark transition-all duration-300 shadow-xl text-center">
               Send us a message

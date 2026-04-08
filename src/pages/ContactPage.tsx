@@ -13,7 +13,7 @@ const ContactPage = () => {
     <div className="min-h-screen bg-white">
       <SEOHead
         title="Contact Us"
-        description="Contact SVN McDonald & Company in Ocala, FL. Call 352.288.4491 or visit our office at 217 SE First AVE Unit 200. Commercial and land real estate experts."
+        description="Contact SVN McDonald & Company in Ocala, FL. Call 352.274.3800 or visit our office at 217 SE First AVE Unit 200. Commercial and land real estate experts."
         canonical="https://svnmcdonald.com/contact"
       />
       <StructuredData breadcrumbs={[
@@ -58,8 +58,8 @@ const ContactPage = () => {
               </div>
               <h3 className="text-lg font-bold text-svn-dark uppercase tracking-wider mb-2">Phone</h3>
               <p className="text-gray-500 mb-4">Monday - Friday from 8am to 5pm.</p>
-              <a href="tel:3522884491" className="text-xl font-bold text-svn-dark hover:text-svn-orange transition-colors">
-                352.288.4491
+              <a href="tel:3522743800" className="text-xl font-bold text-svn-dark hover:text-svn-orange transition-colors">
+                352.274.3800
               </a>
             </div>
 

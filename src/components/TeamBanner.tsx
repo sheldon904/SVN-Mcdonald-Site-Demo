@@ -55,11 +55,11 @@ const TeamBanner = ({ image }: TeamBannerProps) => {
                 Contact Us <ArrowRight size={18} />
               </Link>
               <a
-                href="tel:3522884491"
+                href="tel:3522743800"
                 className="flex items-center gap-3 text-white font-bold text-lg hover:text-svn-orange transition-colors"
               >
                 <Phone size={20} className="text-svn-orange" />
-                352.288.4491
+                352.274.3800
               </a>
             </div>
           </div>

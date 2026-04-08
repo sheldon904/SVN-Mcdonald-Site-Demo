@@ -34,7 +34,7 @@ const AccessibilityPage = () => {
             We welcome your feedback on the accessibility of SVN McDonald & Company. Please let us know if you encounter accessibility barriers on SVN McDonald & Company:
           </p>
           <ul className="list-disc pl-6 space-y-2">
-            <li>Phone: 352.288.4491</li>
+            <li>Phone: 352.274.3800</li>
             <li>E-mail: info@svnmcdonald.com</li>
             <li>Visitor Address: 217 SE First AVE Unit 200, Ocala, FL 34471</li>
           </ul>

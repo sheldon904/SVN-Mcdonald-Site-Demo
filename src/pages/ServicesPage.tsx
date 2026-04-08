@@ -69,8 +69,8 @@ const ExperienceSection = () => (
           We specialize in understanding the nuances of each unique market. This local perspective ensures you receive accurate and timely information essential for your property decisions.
         </p>
         <div className="pt-8 flex flex-wrap gap-6">
-          <a href="tel:3522884491" className="inline-flex items-center gap-4 text-svn-orange hover:text-white transition-colors font-black uppercase tracking-[0.2em]">
-            <Phone size={18} /> (352) 288-4491
+          <a href="tel:3522743800" className="inline-flex items-center gap-4 text-svn-orange hover:text-white transition-colors font-black uppercase tracking-[0.2em]">
+            <Phone size={18} /> (352) 274-3800
           </a>
           <Link to="/contact" className="inline-flex items-center gap-4 text-white hover:text-svn-orange transition-colors font-black uppercase tracking-[0.2em]">
             Send a Message <ArrowRight size={18} />
@@ -93,10 +93,10 @@ const CTABanner = ({ heading, description }: { heading: React.ReactNode; descrip
     <p className="text-white/80 font-medium max-w-2xl mx-auto mb-10 leading-relaxed">{description}</p>
     <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
       <a
-        href="tel:3522884491"
+        href="tel:3522743800"
         className="inline-flex items-center gap-3 bg-white text-svn-dark font-black uppercase tracking-widest text-xs px-8 py-4 rounded-full hover:bg-svn-dark hover:text-white transition-all duration-300"
       >
-        <Phone size={16} /> (352) 288-4491
+        <Phone size={16} /> (352) 274-3800
       </a>
       <Link
         to="/contact"

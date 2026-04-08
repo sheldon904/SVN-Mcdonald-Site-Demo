@@ -151,7 +151,7 @@ const ClosedDealDetailPage = () => {
 
               {/* Call Us Button */}
               <a
-                href="tel:3522884491"
+                href="tel:3522743800"
                 className="inline-flex items-center gap-3 bg-svn-orange text-white font-black uppercase tracking-widest text-sm px-10 py-5 rounded-full hover:bg-orange-600 transition-colors shadow-lg hover:shadow-xl"
               >
                 <Phone size={18} />
@@ -175,13 +175,13 @@ const ClosedDealDetailPage = () => {
                   If you're on the hunt to sell or lease Ocala commercial property, you've come to the right place. If you're looking for a residential Realtor, that's not in our wheelhouse and we'll be happy to refer you to a number of residential professionals in our community.
                 </p>
                 <a
-                  href="tel:3522884491"
+                  href="tel:3522743800"
                   className="flex items-center gap-4 text-white hover:text-svn-orange transition-colors font-bold text-sm mb-6"
                 >
                   <div className="bg-svn-orange p-2.5 rounded-full">
                     <Phone size={16} />
                   </div>
-                  (352) 288-4491
+                  (352) 274-3800
                 </a>
                 <Link
                   to="/contact"
