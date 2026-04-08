@@ -50,8 +50,8 @@ export interface ShowcaseProperty {
 }
 
 export const SHOWCASE_SLUGS = [
-  'sold-550-acre-jumbolair',
   'single-tenant-leased-943000-sf-trailhead-logistics-center',
+  'ocala-75-industrial-lease',
   '78-acres-in-horse-country',
 ] as const;
 
@@ -62,73 +62,6 @@ export function isShowcaseSlug(slug: string): slug is ShowcaseSlug {
 }
 
 export const showcaseProperties: Record<ShowcaseSlug, ShowcaseProperty> = {
-  'sold-550-acre-jumbolair': {
-    slug: 'sold-550-acre-jumbolair',
-    title: '550 Acre Jumbolair',
-    subtitle: "A mile of runway can take you anywhere in the world.",
-    location: 'Ocala, FL',
-    price: '$9,500,000',
-    priceLabel: 'Sale Price',
-    heroImage: '/images/properties/jumbolair-aerial.jpg',
-    aerialFallbackImage: '/images/properties/jumbolair-aerial.jpg',
-    type: 'Residential Airpark',
-    status: 'SOLD',
-
-    mapCenter: { lat: 29.276966380116715, lng: -82.12062533071922 },
-    waypoints: [
-      // High overview — full 550 acres visible
-      { center: { lat: 29.276966380116715, lng: -82.12062533071922, altitude: 0 }, heading: 0, tilt: 45, range: 2500, progress: 0.0 },
-      // Push in, tilt to reveal runway in 3D
-      { center: { lat: 29.276966380116715, lng: -82.12062533071922, altitude: 0 }, heading: 30, tilt: 55, range: 1200, progress: 0.15 },
-      // Flying along the runway — see buildings in 3D
-      { center: { lat: 29.2756, lng: -82.1179, altitude: 0 }, heading: 135, tilt: 65, range: 500, progress: 0.35 },
-      // Low approach — near rooftop level
-      { center: { lat: 29.2746, lng: -82.1164, altitude: 0 }, heading: 150, tilt: 75, range: 250, progress: 0.55 },
-      // Close flyby of hangars and homes
-      { center: { lat: 29.2766, lng: -82.1194, altitude: 0 }, heading: 220, tilt: 72, range: 200, progress: 0.75 },
-      // Cinematic pull-back — property in full 3D context
-      { center: { lat: 29.276966380116715, lng: -82.12062533071922, altitude: 0 }, heading: 320, tilt: 55, range: 1500, progress: 1.0 },
-    ],
-    scrollCaptions: [
-      { text: '550 acres of world-class aviation community', startProgress: 0.0, endProgress: 0.12 },
-      { text: '7,550-foot runway — one of the longest private runways in America', startProgress: 0.18, endProgress: 0.32 },
-      { text: 'Flying the length of the runway', startProgress: 0.38, endProgress: 0.52 },
-      { text: 'Approaching the residential hangars', startProgress: 0.58, endProgress: 0.72 },
-      { text: 'Luxury homes with direct taxiway access', startProgress: 0.78, endProgress: 0.92 },
-    ],
-
-    stats: [
-      { value: '$9.5M', label: 'Sale Price' },
-      { value: '550', label: 'Acres' },
-      { value: '7,550', label: 'Ft Runway' },
-      { value: '1', label: 'of a Kind' },
-    ],
-    storyParagraphs: [
-      'Bring your Boeing. A mile of road can take you a few places, but a mile of runway can take you anywhere in the world. Jumbolair is a world-class residential airpark community featuring a 7,550-foot runway — one of the longest private runways in the United States.',
-      'This extraordinary 550-acre property includes luxury homes, private hangars, and unmatched aviation amenities. Residents taxi from their personal hangars directly to the runway, living the ultimate aviation lifestyle in the heart of Marion County.',
-      'SVN McDonald & Company represented this landmark transaction, navigating the complexities of one of the most unique properties in the Southeast. The $9.5 million sale underscores the growing appeal of Ocala as a destination for discerning buyers seeking extraordinary properties.',
-      'The property features mature oak-lined streets, a clubhouse, and direct access to some of the best flying weather in the country. With Ocala\'s growing prominence as a lifestyle destination, Jumbolair represents the intersection of aviation, luxury, and Florida living.',
-    ],
-    pullQuote: {
-      text: "A mile of road can take you a few places, but a mile of runway can take you anywhere in the world.",
-      attribution: 'Jumbolair Aviation Estates',
-    },
-    locationContext: {
-      description: 'Located just minutes from downtown Ocala in Marion County, Jumbolair sits at the heart of Central Florida\'s equestrian and aviation corridor. The property benefits from Class C airspace access, year-round VFR flying weather, and proximity to I-75 for ground transportation.',
-      landmarks: [
-        'Ocala International Airport — 12 miles',
-        'World Equestrian Center — 15 miles',
-        'Downtown Ocala — 8 miles',
-        'I-75 Interchange — 10 miles',
-        'Gainesville Regional Airport — 35 miles',
-      ],
-      satelliteImage: '/images/properties/jumbolair.webp',
-    },
-
-    seoTitle: '550 Acre Jumbolair — $9.5M Airpark | SVN McDonald',
-    seoDescription: 'SVN McDonald represented the $9.5M sale of 550-acre Jumbolair, a world-class residential airpark with a 7,550-foot runway in Ocala, FL.',
-  },
-
   'single-tenant-leased-943000-sf-trailhead-logistics-center': {
     slug: 'single-tenant-leased-943000-sf-trailhead-logistics-center',
     title: 'Trailhead Logistics Center',
@@ -194,6 +127,73 @@ export const showcaseProperties: Record<ShowcaseSlug, ShowcaseProperty> = {
 
     seoTitle: 'Trailhead Logistics Center — 943K SF Lease | SVN McDonald',
     seoDescription: 'SVN McDonald facilitated the lease of the 943,000 SF Trailhead Logistics Center, the largest industrial transaction in Marion County history.',
+  },
+
+  'ocala-75-industrial-lease': {
+    slug: 'ocala-75-industrial-lease',
+    title: 'Ocala 75',
+    subtitle: 'Flexible industrial spaces from 40,000–135,640 SF on 105+ entitled acres along I-75.',
+    location: 'Ocala, FL',
+    price: '175,640 SF',
+    priceLabel: 'For Lease',
+    heroImage: '/images/properties/ocala-75-hero.webp',
+    aerialFallbackImage: '/images/properties/ocala-75-aerial.webp',
+    type: 'Industrial',
+    status: 'FOR LEASE',
+
+    mapCenter: { lat: 29.2135, lng: -82.1710 },
+    waypoints: [
+      // High overview — I-75 corridor and full site visible
+      { center: { lat: 29.2135, lng: -82.1710, altitude: 0 }, heading: 0, tilt: 40, range: 3000, progress: 0.0 },
+      // Tilt in toward the industrial park
+      { center: { lat: 29.2135, lng: -82.1710, altitude: 0 }, heading: 45, tilt: 55, range: 1500, progress: 0.20 },
+      // See the building footprint in context
+      { center: { lat: 29.2125, lng: -82.1690, altitude: 0 }, heading: 90, tilt: 65, range: 700, progress: 0.40 },
+      // Orbit — see loading docks and parking
+      { center: { lat: 29.2130, lng: -82.1700, altitude: 15 }, heading: 180, tilt: 70, range: 400, progress: 0.60 },
+      // Low approach — feel the scale of 175K SF
+      { center: { lat: 29.2140, lng: -82.1720, altitude: 10 }, heading: 260, tilt: 76, range: 250, progress: 0.80 },
+      // Pull-back with I-75 corridor context
+      { center: { lat: 29.2135, lng: -82.1710, altitude: 0 }, heading: 315, tilt: 50, range: 2000, progress: 1.0 },
+    ],
+    scrollCaptions: [
+      { text: 'Ocala 75: 175,640 SF of new industrial space along I-75', startProgress: 0.0, endProgress: 0.15 },
+      { text: 'Flexible spaces from 40,000 to 135,640 SF', startProgress: 0.22, endProgress: 0.38 },
+      { text: 'Brand-new construction delivered 2026', startProgress: 0.42, endProgress: 0.58 },
+      { text: '105+ entitled acres for build-to-suit development', startProgress: 0.62, endProgress: 0.78 },
+      { text: 'Direct I-75 access to Tampa, Orlando & Jacksonville', startProgress: 0.82, endProgress: 0.95 },
+    ],
+
+    stats: [
+      { value: '175K', label: 'Square Feet' },
+      { value: '105+', label: 'Entitled Acres' },
+      { value: 'I-75', label: 'Direct Access' },
+      { value: '2026', label: 'Delivery' },
+    ],
+    storyParagraphs: [
+      'Ocala is home to some of the largest industrial investments in the state of Florida and continues growing in prominence as a central hub for industrial and logistics operations. Large corporations such as Amazon, AutoZone, Chewy, Costco, and FedEx have significant warehouse locations in Ocala, providing quick access to the Tampa, Orlando, and Jacksonville markets.',
+      'Ocala 75 features flexible spaces between 40,000–135,640 SF being delivered March 2026. The facility offers modern clear heights, extensive dock loading, and infrastructure designed for high-volume distribution and manufacturing operations.',
+      'In addition to the initial building, Ocala 75 features 105.53 acres of entitled industrial land available for build-to-suit and/or fee simple development for up to 1.2 million SF of additional industrial space — positioning it as one of the most significant industrial development opportunities in Central Florida.',
+      'SVN McDonald & Company, in partnership with David Murphy and Monica Wonus of CBRE, is marketing Ocala 75 to national and regional tenants seeking strategic logistics positions along Florida\'s I-75 corridor.',
+    ],
+    pullQuote: {
+      text: "Where Florida's I-75 corridor meets world-class industrial infrastructure.",
+      attribution: 'SVN McDonald & Company',
+    },
+    locationContext: {
+      description: 'Located along Interstate 75 in North Central Florida, Ocala is insulated from the coasts and provides quick access to the Orlando, Tampa, and Jacksonville markets. Residents and businesses alike enjoy a high quality of life and a relatively low cost of living. The scenic landscape is graced by the pastoral beauty of more than 1,500 horse farms and the World Equestrian Center.',
+      landmarks: [
+        'I-75 Interchange — Adjacent',
+        'Orlando Metro — 80 miles',
+        'Port of Tampa — 90 miles',
+        'Jacksonville — 120 miles',
+        'Ocala International Airport — 8 miles',
+      ],
+      satelliteImage: '/images/properties/ocala-75-aerial.webp',
+    },
+
+    seoTitle: 'Ocala 75 — 175K SF Industrial for Lease | SVN McDonald',
+    seoDescription: 'Ocala 75 offers 175,640 SF of new industrial space for lease along I-75 in Ocala, FL. Flexible spaces from 40,000–135,640 SF with 105+ acres for build-to-suit.',
   },
 
   '78-acres-in-horse-country': {

@@ -1,12 +1,12 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Plane, Warehouse, TreePine } from 'lucide-react';
+import { ArrowRight, Warehouse, Factory, TreePine } from 'lucide-react';
 import { showcaseProperties, SHOWCASE_SLUGS } from '../data/showcaseProperties';
 import type { LucideIcon } from 'lucide-react';
 
 const iconMap: Record<string, LucideIcon> = {
-  'sold-550-acre-jumbolair': Plane,
   'single-tenant-leased-943000-sf-trailhead-logistics-center': Warehouse,
+  'ocala-75-industrial-lease': Factory,
   '78-acres-in-horse-country': TreePine,
 };
 

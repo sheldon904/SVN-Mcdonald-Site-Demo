@@ -36,7 +36,10 @@
       "Bash(PYTHONIOENCODING=utf-8 python /tmp/extract_seo2.py)",
       "Bash(PYTHONIOENCODING=utf-8 python3:*)",
       "Bash(git:*)",
-      "Bash(unzip -l \"78+_- Acres in Horse Country photos.zip\")"
+      "Bash(unzip -l \"78+_- Acres in Horse Country photos.zip\")",
+      "Bash(cp \"C:\\\\Users\\\\sheld\\\\Desktop\\\\OCALA 75/ocala 75 main.webp\" \"C:\\\\Users\\\\sheld\\\\Documents\\\\GitHub\\\\SVN-Mcdonald-Site-Demo\\\\public\\\\images\\\\properties\\\\ocala-75-hero.webp\")",
+      "Bash(cp \"C:\\\\Users\\\\sheld\\\\Desktop\\\\OCALA 75/eyJidWNrZXQiOiJidWlsZG91dC1wcm9kdWN0aW9uIiwia2V5IjoiZGF0YXMvMzM3NTcxNzcvZTE3ZDAzMDQyODQ0Y2E0N2E1YjA2MjdjZWUwZWM4MmRlMzMzODZiMy9mdWxsLmpwZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6MjAwMCwiaGVpZ2h0IjoxNTAwLCJmaX.webp\" \"C:\\\\Users\\\\sheld\\\\Documents\\\\GitHub\\\\SVN-Mcdonald-Site-Demo\\\\public\\\\images\\\\properties\\\\ocala-75-aerial.webp\")",
+      "Bash(cp \"C:\\\\Users\\\\sheld\\\\Desktop\\\\Jumbolair-via-real-estate-listing.jpg\" \"C:\\\\Users\\\\sheld\\\\Documents\\\\GitHub\\\\SVN-Mcdonald-Site-Demo\\\\public\\\\images\\\\properties\\\\jumbolair-runway.jpg\")"
     ]
   },
   "enableAllProjectMcpServers": true,
