@@ -35,7 +35,8 @@
       "Bash(cygpath -w /tmp/seo_homepage.html)",
       "Bash(PYTHONIOENCODING=utf-8 python /tmp/extract_seo2.py)",
       "Bash(PYTHONIOENCODING=utf-8 python3:*)",
-      "Bash(git:*)"
+      "Bash(git:*)",
+      "Bash(unzip -l \"78+_- Acres in Horse Country photos.zip\")"
     ]
   },
   "enableAllProjectMcpServers": true,

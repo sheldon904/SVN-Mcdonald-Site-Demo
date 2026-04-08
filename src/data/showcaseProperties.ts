@@ -203,8 +203,8 @@ export const showcaseProperties: Record<ShowcaseSlug, ShowcaseProperty> = {
     location: 'NW Marion County, FL',
     price: '78+/- Acres',
     priceLabel: 'Sold',
-    heroImage: '/78-acres-horse-country-hero.jpg',
-    aerialFallbackImage: '/78-acres-horse-country-hero.jpg',
+    heroImage: '/images/properties/78-acres-horse-country-new.jpg',
+    aerialFallbackImage: '/images/properties/78-acres-horse-country-new.jpg',
     type: 'Land',
     status: 'SOLD',
 
@@ -256,7 +256,7 @@ export const showcaseProperties: Record<ShowcaseSlug, ShowcaseProperty> = {
         'Downtown Ocala — 12 miles',
         'Ocala National Forest — 15 miles',
       ],
-      satelliteImage: '/78-acres-horse-country-hero.jpg',
+      satelliteImage: '/images/properties/78-acres-horse-country-new.jpg',
     },
 
     seoTitle: '78+/- Acres Horse Country — NW Marion County | SVN McDonald',

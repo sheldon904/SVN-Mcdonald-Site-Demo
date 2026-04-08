@@ -126,6 +126,8 @@
     { "source": "/citrus-properties/:path*", "destination": "/properties/farm-nursery", "permanent": true },
     { "source": "/citrus-properties-clermont-florida", "destination": "/properties/farm-nursery", "permanent": true },
 
+    { "source": "/commercial-properties/:slug", "destination": "/commercial-properties?propertyId=:slug", "permanent": false },
+
     { "source": "/property-types/industrial-properties", "destination": "/properties/industrial", "permanent": true },
     { "source": "/property-types/multi-family-properties", "destination": "/properties/multi-family", "permanent": true },
     { "source": "/property-types/office-properties", "destination": "/properties/office", "permanent": true },
