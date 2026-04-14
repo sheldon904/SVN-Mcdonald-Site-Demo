@@ -116,7 +116,7 @@ const ServicesNavStrip = () => {
     { label: 'Distressed/REO', path: '/services/distressed-reo' },
     { label: 'Strategic Marketing', path: '/services/strategic-marketing' },
     { label: 'Value Positioning', path: '/services/value-positioning' },
-    { label: 'Valuation & Appraisal', path: '/services/valuation-appraisal' },
+    { label: 'Valuation & BOV', path: '/services/valuation-appraisal' },
     { label: 'Types of CRE', path: '/services/types-of-commercial-real-estate' },
   ];
   const location = useLocation();
@@ -282,7 +282,7 @@ const ServicesPage = () => {
               <ServiceCard icon={<BarChart size={40} />} title="Distressed/REO" desc="Helping investors identify and capitalize on distressed and REO properties with extensive local market knowledge." link="/services/distressed-reo" />
               <ServiceCard icon={<Megaphone size={40} />} title="Strategic Marketing" desc="Premium, strategically driven commercial real estate leasing and marketing services in Central Florida." link="/services/strategic-marketing" />
               <ServiceCard icon={<TrendingUp size={40} />} title="Value Positioning" desc="Value-driven, strategically positioned land brokerage services connecting buyers and sellers effectively." link="/services/value-positioning" />
-              <ServiceCard icon={<Calculator size={40} />} title="Valuation & Appraisal" desc="Accurate property valuations with comprehensive analysis of local real estate markets and trends." link="/services/valuation-appraisal" />
+              <ServiceCard icon={<Calculator size={40} />} title="Valuation & BOV" desc="Accurate property valuations and Broker Opinions of Value (BOV), backed by comprehensive local market analysis." link="/services/valuation-appraisal" />
               <ServiceCard icon={<Building2 size={40} />} title="Types of CRE" desc="Explore office, retail, industrial, multi-family, hospitality, and special purpose property opportunities." link="/services/types-of-commercial-real-estate" />
             </div>
           </div>
@@ -794,15 +794,15 @@ const ServicesPage = () => {
     },
 
     /* ═══════════════════════════════════════════
-       VALUATION & APPRAISAL
+       VALUATION & BOV (Broker Opinion of Value)
        ═══════════════════════════════════════════ */
     '/services/valuation-appraisal': {
       title: 'Valuation &',
-      highlighted: 'Appraisal',
-      subtitle: 'Accurate, reliable property valuation services backed by local market expertise and advanced methodology.',
+      highlighted: 'BOV',
+      subtitle: 'Accurate, reliable property valuations and Broker Opinions of Value (BOV) backed by local market expertise and advanced methodology.',
       image: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2670&q=80',
-      seoTitle: 'Valuation Appraisal | SVN McDonald & Company',
-      seoDescription: 'SVN McDonald & Company provides accurate property valuation appraisals with comprehensive local market analysis, advanced tools, and detailed reporting for informed real estate decisions.',
+      seoTitle: 'Valuation & Broker Opinion of Value (BOV) | SVN McDonald & Company',
+      seoDescription: 'SVN McDonald & Company provides accurate property valuations and Broker Opinions of Value (BOV), also known as Broker Price Opinions (BPO), with comprehensive local market analysis and detailed reporting.',
       content: (
         <div className="space-y-24">
           {/* Intro */}
@@ -814,14 +814,14 @@ const ServicesPage = () => {
               transition={{ duration: 0.6 }}
             >
               <h2 className="text-3xl md:text-4xl font-black text-svn-dark uppercase tracking-tighter mb-8">
-                What is <span className="text-svn-orange">Valuation Appraisal?</span>
+                What is a <span className="text-svn-orange">Broker Opinion of Value?</span>
               </h2>
               <div className="space-y-6 text-gray-500 font-medium leading-relaxed">
                 <p className="text-lg">
-                  At SVN McDonald & Co., we understand the importance of accurate property valuation appraisals in the real estate industry. Whether you're buying, selling, or leasing property, having a comprehensive understanding of its value is essential for making informed decisions.
+                  At SVN McDonald & Co., we understand the importance of accurate property valuations in the real estate industry. Whether you're buying, selling, or leasing property, having a comprehensive understanding of its value is essential for making informed decisions.
                 </p>
                 <p>
-                  Valuation appraisal is the process of determining the fair market value of a property based on various factors such as location, size, condition, and comparable sales. This process involves thorough research, analysis, and evaluation of the property to arrive at an accurate determination of worth.
+                  A Broker Opinion of Value (BOV) — also known as a Broker Price Opinion (BPO) — is the process of determining the fair market value of a property based on various factors such as location, size, condition, and comparable sales. This process involves thorough research, analysis, and evaluation of the property to arrive at an accurate determination of worth. Please note: we provide BOVs, not licensed appraisals.
                 </p>
               </div>
             </motion.div>
@@ -834,10 +834,10 @@ const ServicesPage = () => {
               <div className="bg-svn-dark rounded-2xl p-10 text-white">
                 <h3 className="text-xl font-black uppercase tracking-tight mb-6 text-svn-orange">How Can We Help?</h3>
                 <p className="text-gray-400 text-sm leading-relaxed mb-6">
-                  Our team of experienced real estate professionals specializes in valuation appraisal services. We have extensive knowledge of the local market and access to advanced valuation tools and resources to provide precise and reliable property valuations.
+                  Our team of experienced real estate professionals specializes in property valuation services. We have extensive knowledge of the local market and access to advanced valuation tools and resources to provide precise and reliable Broker Opinions of Value.
                 </p>
                 <p className="text-gray-400 text-sm leading-relaxed">
-                  We provide Broker Price Opinions (BPOs) and detailed market analyses to help you make informed decisions about holding, selling, or refinancing. Our valuations are backed by real-time market data, comparable sales, and income capitalization approaches where applicable.
+                  We provide Broker Opinions of Value (BOV), also known as Broker Price Opinions (BPO), and detailed market analyses to help you make informed decisions about holding, selling, or refinancing. Our valuations are backed by real-time market data, comparable sales, and income capitalization approaches where applicable.
                 </p>
               </div>
             </motion.div>
@@ -868,7 +868,7 @@ const ServicesPage = () => {
                 {
                   step: "03",
                   title: "Detailed Report",
-                  desc: "Preparation of a comprehensive appraisal report outlining our findings, methodology, and conclusions — delivered with the speed and transparency you need."
+                  desc: "Preparation of a comprehensive BOV report outlining our findings, methodology, and conclusions — delivered with the speed and transparency you need."
                 },
               ].map((item, i) => (
                 <motion.div
@@ -905,7 +905,7 @@ const ServicesPage = () => {
                 SVN McDonald is a local business, meaning we have a deep understanding of the local market dynamics and trends, allowing us to provide accurate valuations tailored to your specific needs.
               </p>
               <p>
-                We understand that time is of the essence in real estate transactions, which is why we prioritize efficiency and strive to deliver timely appraisal reports to our clients. Additionally, we prioritize open communication, transparency, and integrity in all our dealings.
+                We understand that time is of the essence in real estate transactions, which is why we prioritize efficiency and strive to deliver timely BOV reports to our clients. Additionally, we prioritize open communication, transparency, and integrity in all our dealings.
               </p>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-10">
@@ -929,7 +929,7 @@ const ServicesPage = () => {
           <ServicesNavStrip />
           <CTABanner
             heading="Contact Us To Get Started"
-            description="Trust the experts at SVN McDonald & Co. to provide you with accurate and reliable valuation appraisal services. Contact us today to schedule a consultation."
+            description="Trust the experts at SVN McDonald & Co. to provide you with accurate and reliable Broker Opinion of Value services. Contact us today to schedule a consultation."
           />
         </div>
       )
@@ -963,7 +963,7 @@ const ServicesPage = () => {
                   SVN McDonald and Company provides premier, value-driven, strategically positioned land brokerage services in Central Florida. The firm specializes in connecting buyers and sellers with dedicated professionals possessing extensive local real estate expertise.
                 </p>
                 <p>
-                  Our value positioning service goes beyond traditional appraisal. We analyze the highest and best use for your property to ensure it's positioned to attract the right buyers and command the highest price. By identifying the unique strengths of your asset and aligning them with current market demand, we create a compelling narrative that resonates with investors and developers alike.
+                  Our value positioning service goes beyond a standard valuation. We analyze the highest and best use for your property to ensure it's positioned to attract the right buyers and command the highest price. By identifying the unique strengths of your asset and aligning them with current market demand, we create a compelling narrative that resonates with investors and developers alike.
                 </p>
               </div>
             </motion.div>

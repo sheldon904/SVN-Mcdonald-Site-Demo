@@ -44,7 +44,7 @@ const Navbar = () => {
         { name: 'Land Brokerage', href: '/services/land-brokerage' },
         { name: 'Strategic Marketing', href: '/services/strategic-marketing' },
         { name: 'Value Positioning', href: '/services/value-positioning' },
-        { name: 'Valuation Appraisal', href: '/services/valuation-appraisal' },
+        { name: 'Valuation & BOV', href: '/services/valuation-appraisal' },
         { name: 'Types of CRE', href: '/services/types-of-commercial-real-estate' }
       ]
     },

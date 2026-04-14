@@ -225,11 +225,11 @@ const PropertyTypePage = () => {
                       352.274.3800
                     </a>
                     <a
-                      href="mailto:info@svnmcdonald.com"
+                      href="mailto:bartow.mcdonald@svnmcdonald.com"
                       className="flex items-center gap-3 text-gray-500 hover:text-svn-orange transition-colors font-medium"
                     >
                       <span className="text-svn-orange font-black">E</span>
-                      info@svnmcdonald.com
+                      bartow.mcdonald@svnmcdonald.com
                     </a>
                   </div>
                 </div>

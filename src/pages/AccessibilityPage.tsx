@@ -35,7 +35,7 @@ const AccessibilityPage = () => {
           </p>
           <ul className="list-disc pl-6 space-y-2">
             <li>Phone: 352.274.3800</li>
-            <li>E-mail: info@svnmcdonald.com</li>
+            <li>E-mail: bartow.mcdonald@svnmcdonald.com</li>
             <li>Visitor Address: 217 SE First AVE Unit 200, Ocala, FL 34471</li>
           </ul>
 

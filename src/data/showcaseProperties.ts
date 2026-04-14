@@ -135,11 +135,11 @@ export const showcaseProperties: Record<ShowcaseSlug, ShowcaseProperty> = {
     subtitle: 'Flexible industrial spaces from 40,000–135,640 SF on 105+ entitled acres along I-75.',
     location: 'Ocala, FL',
     price: '175,640 SF',
-    priceLabel: 'For Lease',
+    priceLabel: 'Leased',
     heroImage: '/images/properties/ocala-75-hero.webp',
     aerialFallbackImage: '/images/properties/ocala-75-aerial.webp',
     type: 'Industrial',
-    status: 'FOR LEASE',
+    status: 'LEASED',
 
     mapCenter: { lat: 29.2135, lng: -82.1710 },
     waypoints: [
