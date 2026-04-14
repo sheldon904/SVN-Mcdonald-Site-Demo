@@ -37,6 +37,6 @@ export const servicesFAQ: FAQItem[] = [
     question:
       'How do I get a commercial property valuation in Ocala?',
     answer:
-      'To get a commercial property valuation in Ocala, contact SVN McDonald & Company at (352) 274-3800 or email info@svnmcdonald.com to schedule a consultation. Our team provides Broker Price Opinions (BPOs) and detailed market analyses using real-time market data, comparable sales, and income capitalization approaches. We leverage our deep local market knowledge to deliver accurate, reliable valuations tailored to your property and goals.',
+      'To get a commercial property valuation in Ocala, contact SVN McDonald & Company at (352) 274-3800 or email bartow.mcdonald@svnmcdonald.com to schedule a consultation. Our team provides Broker Price Opinions (BPOs) and detailed market analyses using real-time market data, comparable sales, and income capitalization approaches. We leverage our deep local market knowledge to deliver accurate, reliable valuations tailored to your property and goals.',
   },
 ];

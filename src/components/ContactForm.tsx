@@ -85,7 +85,7 @@ const ContactForm = () => {
                 </div>
                 <div>
                   <p className="text-xs uppercase tracking-widest text-gray-400 font-bold mb-1">Email Us</p>
-                  <p className="text-xl font-bold">info@svnmcdonald.com</p>
+                  <p className="text-xl font-bold">bartow.mcdonald@svnmcdonald.com</p>
                 </div>
               </div>
 
@@ -173,7 +173,7 @@ const ContactForm = () => {
                   <option value="Commercial Properties">Commercial Properties</option>
                   <option value="Conservation Easement">Conservation Easement</option>
                   <option value="Land Auctions">Land Auctions</option>
-                  <option value="Valuation & Appraisal">Valuation & Appraisal</option>
+                  <option value="Valuation & BOV">Valuation & BOV</option>
                   <option value="Strategic Marketing">Strategic Marketing</option>
                   <option value="Other">Other</option>
                 </select>
