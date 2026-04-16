@@ -94,7 +94,7 @@ RULES:
 
 When editing a bio string in teamMembers.ts, preserve existing escaping and paragraph breaks ("\\n\\n"). Match tone and length of existing bios.
 
-Use Read, Glob, Grep, and Edit. Use Bash ONLY to run \`npm run lint\` or \`npm run build\` to verify your change. Respond at the end with a one-line summary of what you did.`;
+Use Read, Glob, Grep, and Edit. Use Bash ONLY to run \`npm run build\` to verify your change. Do NOT run \`npm run lint\` — the baseline has pre-existing lint errors unrelated to your edit. Respond at the end with a one-line summary of what you did.`;
 
 const userPrompt = `Implement the ticket. Keep changes minimal. When done, respond with a one-line summary.`;
 
