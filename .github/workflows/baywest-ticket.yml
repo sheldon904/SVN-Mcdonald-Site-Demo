@@ -1,0 +1,84 @@
+name: Baywest autonomous ticket
+on:
+  repository_dispatch:
+    types: [baywest-ticket]
+
+concurrency:
+  # Serialize runs per ticket so rapid resubmits don't race.
+  group: baywest-ticket-${{ github.event.client_payload.humanId }}
+  cancel-in-progress: false
+
+jobs:
+  implement:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+      pull-requests: write
+    env:
+      TICKET_HUMAN_ID:  ${{ github.event.client_payload.humanId }}
+      TICKET_SUBJECT:   ${{ github.event.client_payload.subject }}
+      AGENT_RUN_ID:     ${{ github.event.client_payload.agentRunId }}
+      CALLBACK_URL:     ${{ github.event.client_payload.callbackUrl }}
+      CALLBACK_SECRET:  ${{ github.event.client_payload.callbackSecret }}
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install site deps
+        run: npm ci
+
+      - name: Install Claude Agent SDK (not saved to package.json)
+        run: npm install --no-save @anthropic-ai/claude-agent-sdk
+
+      - name: Run Claude Agent SDK
+        env:
+          TICKET_PAYLOAD: ${{ toJson(github.event.client_payload) }}
+        run: node scripts/baywest-agent.mjs
+
+      - name: Lint + build
+        run: |
+          npm run lint
+          npm run build
+
+      - name: Create Pull Request
+        id: cpr
+        uses: peter-evans/create-pull-request@v6
+        with:
+          branch: baywest/${{ github.event.client_payload.humanId }}
+          commit-message: "[${{ github.event.client_payload.humanId }}] ${{ github.event.client_payload.subject }}"
+          title: "[${{ github.event.client_payload.humanId }}] ${{ github.event.client_payload.subject }}"
+          body: |
+            Closes Baywest ticket **${{ github.event.client_payload.humanId }}**.
+
+            Plan from triage:
+            > ${{ github.event.client_payload.verdict.plan }}
+
+            This PR was opened by the Baywest autonomous agent and will auto-merge on green CI.
+          labels: baywest-auto
+          delete-branch: true
+
+      - name: Enable auto-merge
+        if: steps.cpr.outputs.pull-request-number
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ steps.cpr.outputs.pull-request-number }}
+        run: gh pr merge --auto --squash "$PR_NUMBER"
+
+      - name: Notify ticketing (PR opened)
+        if: steps.cpr.outputs.pull-request-number
+        env:
+          PR_URL: ${{ steps.cpr.outputs.pull-request-url }}
+          PR_NUMBER: ${{ steps.cpr.outputs.pull-request-number }}
+        run: node scripts/baywest-callback.mjs PR_OPENED
+
+      - name: Notify ticketing (FAILED)
+        if: failure()
+        run: node scripts/baywest-callback.mjs FAILED "GitHub Actions run failed — see workflow logs."
