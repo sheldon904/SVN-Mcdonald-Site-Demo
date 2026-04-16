@@ -2,10 +2,14 @@
 /**
  * Baywest autonomous agent runner — svn-mcdonald-site-demo edition.
  *
- * Consumes the repository_dispatch payload from env (TICKET_PAYLOAD) and
- * drives the Claude Agent SDK to implement the change in the checked-out
- * repo. The Actions workflow then runs lint + build, opens a PR, and
- * enables auto-merge.
+ * Reads the repository_dispatch `client_payload` from the GitHub event
+ * file (GITHUB_EVENT_PATH) and drives the Claude Agent SDK to implement
+ * the change in the checked-out repo. The Actions workflow then runs
+ * lint + build, opens a PR, and enables auto-merge.
+ *
+ * We read the event file directly rather than via an env var because
+ * multi-line JSON injected into a workflow env is fragile and truncates
+ * on some runners.
  *
  * Guardrails:
  *   - Edits only files matching safePaths globs from the payload
@@ -15,9 +19,36 @@
 import { query } from "@anthropic-ai/claude-agent-sdk";
 import fs from "node:fs";
 
-const payload = JSON.parse(process.env.TICKET_PAYLOAD || "{}");
-if (!payload.ticketId) {
-  console.error("TICKET_PAYLOAD missing");
+function loadPayload() {
+  // Preferred: raw GitHub event file. Always set on Actions runners.
+  const evtPath = process.env.GITHUB_EVENT_PATH;
+  if (evtPath && fs.existsSync(evtPath)) {
+    try {
+      const event = JSON.parse(fs.readFileSync(evtPath, "utf8"));
+      if (event && event.client_payload && typeof event.client_payload === "object") {
+        return event.client_payload;
+      }
+    } catch (err) {
+      console.error("[baywest-agent] failed to parse GITHUB_EVENT_PATH:", err);
+    }
+  }
+  // Fallback: env var (local testing).
+  if (process.env.TICKET_PAYLOAD) {
+    try {
+      return JSON.parse(process.env.TICKET_PAYLOAD);
+    } catch (err) {
+      console.error("[baywest-agent] TICKET_PAYLOAD set but not valid JSON:", err);
+    }
+  }
+  return null;
+}
+
+const payload = loadPayload();
+if (!payload || !payload.humanId) {
+  console.error(
+    "[baywest-agent] could not read dispatch payload. " +
+      "Expected GITHUB_EVENT_PATH with client_payload.humanId set.",
+  );
   process.exit(1);
 }
 
