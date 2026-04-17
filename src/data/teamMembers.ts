@@ -72,7 +72,7 @@ export const teamMembers: TeamMember[] = [
     phone: "(352) 288-4491",
     email: "stiles.mcdonald@svn.com",
     image: "/team/stiles-mcdonald.webp",
-    bio: "Stiles McDonald is an Associate Advisor at SVN | McDonald & Company, specializing in commercial land and property representation across Central Florida.\n\nA fifth-generation Floridian, he grew up on the shores of Lake Weir and spent many years on a generational family ranch, where he developed a lasting appreciation for land stewardship and its role in shaping communities. Stiles is a graduate of the University of Florida, and he draws on his local knowledge, market insight, and commitment to client service to help provide value for property owners and investors.",
+    bio: "Stiles McDonald is an Associate Advisor at SVN | McDonald & Company, specializing in commercial land and property representation across Central Florida.\n\nA fifth-generation Floridian, he grew up on the shores of Lake Weir and spent many years on a generational family ranch, where he developed a lasting appreciation for land stewardship and its role in shaping communities. Stiles is a graduate of the University of Florida, and he draws on his local knowledge, market insight, and commitment to client service to help provide value for property owners and investors.\n\nWhen he is not working, Stiles can most often be found outdoors — whether hiking through Florida's forests, hunting, fishing the rivers and lakes of North Central Florida, or simply enjoying everything the natural world has to offer. His love of the outdoors runs deep and fuels his passion for land conservation and stewardship.",
     specialties: [
       "Land",
       "Industrial",
