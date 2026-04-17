@@ -55,11 +55,12 @@ if (!payload || !payload.humanId) {
 const {
   humanId,
   subject,
-  description,
+  ticket = {},
   verdict,
   safePaths = [],
   blockedPaths = [],
 } = payload;
+const description = ticket.description ?? payload.description ?? "";
 
 console.log(`[baywest-agent] ${humanId} — ${subject}`);
 console.log(`[baywest-agent] plan: ${verdict?.plan ?? "(none)"}`);

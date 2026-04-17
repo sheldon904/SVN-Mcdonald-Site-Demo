@@ -18,9 +18,9 @@ jobs:
     env:
       TICKET_HUMAN_ID:  ${{ github.event.client_payload.humanId }}
       TICKET_SUBJECT:   ${{ github.event.client_payload.subject }}
-      AGENT_RUN_ID:     ${{ github.event.client_payload.agentRunId }}
-      CALLBACK_URL:     ${{ github.event.client_payload.callbackUrl }}
-      CALLBACK_SECRET:  ${{ github.event.client_payload.callbackSecret }}
+      AGENT_RUN_ID:     ${{ github.event.client_payload.callback.agentRunId }}
+      CALLBACK_URL:     ${{ github.event.client_payload.callback.url }}
+      CALLBACK_SECRET:  ${{ github.event.client_payload.callback.secret }}
       ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
     steps:
       - uses: actions/checkout@v4
