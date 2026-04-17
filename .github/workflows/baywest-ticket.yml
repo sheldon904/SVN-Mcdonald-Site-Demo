@@ -49,6 +49,13 @@ jobs:
         # baseline is green.
         run: npm run build
 
+      - name: Discard build-regenerated artifacts
+        # `npm run build` regenerates public/sitemap.xml and emits dist/.
+        # Keep the PR scoped to the agent's actual source edits.
+        run: |
+          git checkout -- public/sitemap.xml 2>/dev/null || true
+          rm -rf dist
+
       - name: Create Pull Request
         id: cpr
         uses: peter-evans/create-pull-request@v6
