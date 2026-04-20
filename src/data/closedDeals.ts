@@ -198,7 +198,7 @@ export const closedDeals: ClosedDeal[] = [
     image: "/images/properties/2014-ranch.webp",
     type: "Industrial",
     status: "Sold",
-    description: "90,000 square foot industrial facility sold for $3,100,000 in Ocala, FL. This major industrial property represents one of the significant warehouse transactions in the local market."
+    description: "SVN McDonald & Company represented the sale of this 90,000 square foot industrial facility in Ocala, FL, closing at $3,100,000. The property features large-bay warehouse space well-suited for distribution, light manufacturing, or bulk storage operations. Strategically located within Ocala's established industrial corridor, it offers convenient access to I-75 and the regional highway network — a key advantage for logistics and supply-chain tenants. At the time of sale, this transaction ranked among the more significant warehouse deals in the Marion County market, reflecting growing investor confidence in Central Florida's industrial sector and the continued strength of Ocala as a distribution hub."
   },
   {
     title: "Shopping Center",
