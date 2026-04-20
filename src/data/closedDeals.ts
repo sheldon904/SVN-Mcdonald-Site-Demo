@@ -73,7 +73,7 @@ export const closedDeals: ClosedDeal[] = [
     slug: "sold-550-acre-jumbolair",
     location: "Ocala, FL",
     price: "$9,500,000",
-    date: "Sep 2025",
+    date: "Oct 2023",
     image: "/images/properties/jumbolair-runway.jpg",
     type: "Residential",
     status: "Sold",
