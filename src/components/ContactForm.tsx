@@ -59,15 +59,6 @@ const ContactForm = () => {
       <div className="max-w-[1200px] mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
           <div>
-            <div className="w-20 h-1.5 bg-svn-orange mb-10" />
-            <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tight mb-8 leading-tight">
-              Ready to <br />
-              <span className="text-svn-orange">Collaborate?</span>
-            </h2>
-            <p className="text-gray-400 text-lg mb-12 max-w-md leading-relaxed">
-              Experience the SVN difference. Our advisors are ready to help you navigate the complexities of Central Florida real estate.
-            </p>
-
             <div className="space-y-8">
               <div className="flex items-center gap-6 group cursor-pointer">
                 <div className="w-14 h-14 bg-white/5 rounded-full flex items-center justify-center group-hover:bg-svn-orange transition-colors duration-300">
@@ -85,7 +76,7 @@ const ContactForm = () => {
                 </div>
                 <div>
                   <p className="text-xs uppercase tracking-widest text-gray-400 font-bold mb-1">Email Us</p>
-                  <p className="text-xl font-bold">bartow.mcdonald@svnmcdonald.com</p>
+                  <p className="text-xl font-bold">bartow.mcdonald@svn.com</p>
                 </div>
               </div>
 

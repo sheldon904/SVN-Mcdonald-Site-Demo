@@ -22,7 +22,7 @@ const localBusinessSchema = {
   image:
     'https://svnmcdonald.com/images/hero/hwy-484-ocala-1920.jpg',
   telephone: '+1-352-274-3800',
-  email: 'bartow.mcdonald@svnmcdonald.com',
+  email: 'bartow.mcdonald@svn.com',
   address: {
     '@type': 'PostalAddress',
     streetAddress: '217 SE First AVE Unit 200',

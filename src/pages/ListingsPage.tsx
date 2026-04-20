@@ -7,7 +7,7 @@ import SEOHead from '../components/SEOHead';
 import StructuredData from '../components/StructuredData';
 import { motion } from 'framer-motion';
 import { useLocation, Link } from 'react-router-dom';
-import { ArrowRight, TrendingUp, BarChart3, MapPin } from 'lucide-react';
+import { ArrowRight, TrendingUp, MapPin } from 'lucide-react';
 
 /* ------------------------------------------------------------------ */
 /*  Static Data                                                        */
@@ -89,8 +89,7 @@ const CommercialIntro = () => (
           </h3>
           <div className="space-y-6">
             {[
-              { icon: <TrendingUp size={24} className="text-svn-orange" />, stat: 'Top 10', label: 'Fastest-growing FL metro' },
-              { icon: <BarChart3 size={24} className="text-svn-orange" />, stat: '200+', label: 'SVN offices worldwide' },
+              { icon: <TrendingUp size={24} className="text-svn-orange" />, stat: '#1', label: 'Fastest Growing Metro in the Nation' },
               { icon: <MapPin size={24} className="text-svn-orange" />, stat: 'I-75', label: 'Strategic corridor access' },
             ].map((item, i) => (
               <div key={i} className="flex items-start gap-4">

@@ -69,8 +69,8 @@ const ContactPage = () => {
               </div>
               <h3 className="text-lg font-bold text-svn-dark uppercase tracking-wider mb-2">Email</h3>
               <p className="text-gray-500 mb-4">Our team is here to help.</p>
-              <a href="mailto:bartow.mcdonald@svnmcdonald.com" className="text-xl font-bold text-svn-dark hover:text-svn-orange transition-colors">
-                bartow.mcdonald@svnmcdonald.com
+              <a href="mailto:bartow.mcdonald@svn.com" className="text-xl font-bold text-svn-dark hover:text-svn-orange transition-colors">
+                bartow.mcdonald@svn.com
               </a>
             </div>
 
