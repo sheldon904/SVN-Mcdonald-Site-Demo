@@ -119,7 +119,7 @@ const MarketReportsPage = () => {
         title="Market" 
         highlightedText="Reports" 
         subtitle="Stay informed with the latest data and insights from our research team."
-        backgroundImage="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=2670&q=80"
+        backgroundImage="/images/reports/market-trend.svg"
       />
 
       <section className="py-24 px-6">

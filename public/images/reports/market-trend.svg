@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <rect width="1920" height="1080" fill="#0a1628"/>
+  <!-- Grid lines -->
+  <g stroke="#22c55e" stroke-width="1" opacity="0.2">
+    <line x1="200" y1="200" x2="200" y2="880"/>
+    <line x1="200" y1="880" x2="1720" y2="880"/>
+    <line x1="200" y1="680" x2="1720" y2="680"/>
+    <line x1="200" y1="480" x2="1720" y2="480"/>
+    <line x1="200" y1="280" x2="1720" y2="280"/>
+    <line x1="580" y1="200" x2="580" y2="880"/>
+    <line x1="960" y1="200" x2="960" y2="880"/>
+    <line x1="1340" y1="200" x2="1340" y2="880"/>
+    <line x1="1720" y1="200" x2="1720" y2="880"/>
+  </g>
+  <!-- Axes -->
+  <g stroke="#22c55e" stroke-width="4" opacity="0.6">
+    <line x1="200" y1="200" x2="200" y2="880"/>
+    <line x1="200" y1="880" x2="1720" y2="880"/>
+  </g>
+  <!-- Upward trending line (stepped organic growth curve) -->
+  <polyline
+    points="200,840 380,800 560,760 700,720 840,660 980,580 1120,480 1260,360 1400,260 1520,190"
+    fill="none"
+    stroke="#22c55e"
+    stroke-width="10"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    opacity="0.9"
+  />
+  <!-- Arrow head at end of trend line -->
+  <polygon
+    points="1520,190 1470,230 1490,215 1460,180 1510,200"
+    fill="#22c55e"
+    opacity="0.9"
+  />
+  <polygon
+    points="1555,155 1470,205 1500,195 1510,165 1545,185"
+    fill="#22c55e"
+    opacity="0.9"
+  />
+  <!-- Arrowhead (triangle) -->
+  <polygon
+    points="1580,130 1500,175 1540,175 1540,215 1580,170 1580,130"
+    fill="#22c55e"
+    opacity="0"
+  />
+  <!-- Clean arrow cap -->
+  <polyline
+    points="1470,220 1570,130 1620,130"
+    fill="none"
+    stroke="#22c55e"
+    stroke-width="10"
+    stroke-linecap="round"
+    opacity="0.9"
+  />
+  <polygon
+    points="1620,130 1575,108 1575,152"
+    fill="#22c55e"
+    opacity="0.9"
+  />
+  <!-- Data point dots -->
+  <g fill="#22c55e" opacity="0.85">
+    <circle cx="380"  cy="800" r="10"/>
+    <circle cx="560"  cy="760" r="10"/>
+    <circle cx="700"  cy="720" r="10"/>
+    <circle cx="840"  cy="660" r="10"/>
+    <circle cx="980"  cy="580" r="10"/>
+    <circle cx="1120" cy="480" r="10"/>
+    <circle cx="1260" cy="360" r="10"/>
+    <circle cx="1400" cy="260" r="10"/>
+  </g>
+  <!-- Shaded area under the curve -->
+  <polygon
+    points="200,840 380,800 560,760 700,720 840,660 980,580 1120,480 1260,360 1400,260 1520,190 1520,880 200,880"
+    fill="#22c55e"
+    opacity="0.07"
+  />
+</svg>
