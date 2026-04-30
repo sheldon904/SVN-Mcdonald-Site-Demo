@@ -14,70 +14,29 @@ const BUILDOUT_CONTEXT_KEY = 'buildout-context';
 
 export { BUILDOUT_LAND_TOKEN, BUILDOUT_COMMERCIAL_TOKEN };
 
-// Buildout drives its property-detail view by writing ?propertyId=… to the URL and
-// triggering a full page reload. We must NOT strip that param on a same-context reload
-// (otherwise clicks into properties fail to open the detail). We DO want to strip it
-// when the user crosses widget contexts — e.g. commercial → land — so a stale property
-// detail from the prior context can't bleed through.
-//
-// Returns true if the context changed since the last mount (i.e. caller should also
-// tear down any cached Buildout script + globals before re-embedding).
-const resetBuildoutStateForContext = (token: string, pluginType: string): boolean => {
-  const currentContext = `${token}:${pluginType}`;
-  let lastContext: string | null = null;
-  try {
-    lastContext = sessionStorage.getItem(BUILDOUT_CONTEXT_KEY);
-  } catch {
-    // sessionStorage may be unavailable (privacy mode, SSR); skip the reset entirely.
-    return false;
-  }
-
-  const contextChanged = lastContext !== null && lastContext !== currentContext;
-
-  if (lastContext !== currentContext) {
-    const url = new URL(window.location.href);
-    let dirty = false;
-    BUILDOUT_STATE_QUERY_PARAMS.forEach((key) => {
-      if (url.searchParams.has(key)) {
-        url.searchParams.delete(key);
-        dirty = true;
-      }
-    });
-    if (url.hash) {
-      url.hash = '';
+const stripBuildoutUrlState = () => {
+  const url = new URL(window.location.href);
+  let dirty = false;
+  BUILDOUT_STATE_QUERY_PARAMS.forEach((key) => {
+    if (url.searchParams.has(key)) {
+      url.searchParams.delete(key);
       dirty = true;
     }
-    if (dirty) {
-      const qs = url.searchParams.toString();
-      window.history.replaceState(null, '', url.pathname + (qs ? `?${qs}` : ''));
-    }
-
-    try {
-      Object.keys(sessionStorage)
-        .filter((k) => k.toLowerCase().includes('buildout') && k !== BUILDOUT_CONTEXT_KEY)
-        .forEach((k) => sessionStorage.removeItem(k));
-    } catch {
-      // ignore
-    }
+  });
+  if (url.hash) {
+    url.hash = '';
+    dirty = true;
   }
-
-  try {
-    sessionStorage.setItem(BUILDOUT_CONTEXT_KEY, currentContext);
-  } catch {
-    // ignore
-  }
-
-  return contextChanged;
+  return { url, dirty };
 };
 
-const tearDownBuildoutScript = () => {
+const clearBuildoutSessionStorage = () => {
   try {
-    const script = document.getElementById(BUILDOUT_SCRIPT_ID);
-    if (script) script.remove();
-    delete (window as any).BuildOut;
-    delete (window as any).buildoutConfig;
+    Object.keys(sessionStorage)
+      .filter((k) => k.toLowerCase().includes('buildout') && k !== BUILDOUT_CONTEXT_KEY)
+      .forEach((k) => sessionStorage.removeItem(k));
   } catch {
-    // ignore — best-effort teardown
+    // ignore
   }
 };
 
@@ -118,15 +77,57 @@ const BuildoutListing: React.FC<BuildoutListingProps> = ({
       target: containerId,
     };
 
-    // If the Buildout context (token + plugin) has changed since the last mount, tear
-    // down the cached script + globals BEFORE setting up the new widget. Doing this at
-    // mount-time rather than in the previous unmount cleanup avoids racing with the
-    // outgoing widget's pending iframe / postMessage / observer callbacks — which can
-    // throw "BuildOut is undefined" synchronously during React's render cycle and
-    // surface as an ErrorBoundary "something went wrong" screen.
-    const contextChanged = resetBuildoutStateForContext(token, pluginType);
-    if (contextChanged) {
-      tearDownBuildoutScript();
+    const currentContext = `${token}:${pluginType}`;
+    let lastContext: string | null = null;
+    try {
+      lastContext = sessionStorage.getItem(BUILDOUT_CONTEXT_KEY);
+    } catch {
+      // sessionStorage unavailable; fall through to a normal embed.
+    }
+
+    // If we're switching widget contexts (e.g. commercial → land) and the previous
+    // Buildout script is still alive in this tab, force a full page reload. Re-injecting
+    // the script in place leaves ghost handlers and cached state that cause the widget
+    // to render the wrong property — or nothing at all (gray screen). A real reload
+    // discards every artifact of the previous context, after which the fresh page mount
+    // can embed cleanly. The flash is restricted to the specific cross-context SPA nav.
+    if (
+      lastContext &&
+      lastContext !== currentContext &&
+      typeof window !== 'undefined' &&
+      (window as any).BuildOut
+    ) {
+      try {
+        sessionStorage.setItem(BUILDOUT_CONTEXT_KEY, currentContext);
+      } catch {
+        // ignore
+      }
+      clearBuildoutSessionStorage();
+      const { url, dirty } = stripBuildoutUrlState();
+      const qs = url.searchParams.toString();
+      const target = url.pathname + (qs ? `?${qs}` : '');
+      if (dirty) {
+        window.location.replace(target);
+      } else {
+        window.location.reload();
+      }
+      return;
+    }
+
+    // Same context (or first mount in this tab) — strip stale URL state if it doesn't
+    // match the current context, write the new context marker, and embed normally.
+    if (lastContext !== currentContext) {
+      const { url, dirty } = stripBuildoutUrlState();
+      if (dirty) {
+        const qs = url.searchParams.toString();
+        window.history.replaceState(null, '', url.pathname + (qs ? `?${qs}` : ''));
+      }
+      clearBuildoutSessionStorage();
+      try {
+        sessionStorage.setItem(BUILDOUT_CONTEXT_KEY, currentContext);
+      } catch {
+        // ignore
+      }
     }
 
     const existingScript = document.getElementById(BUILDOUT_SCRIPT_ID) as HTMLScriptElement;
@@ -148,10 +149,6 @@ const BuildoutListing: React.FC<BuildoutListingProps> = ({
     }
 
     return () => {
-      // Minimal unmount cleanup: only clear the container we own. Leave window.BuildOut
-      // and the script tag intact so Buildout's still-pending async callbacks (iframe
-      // load handlers, postMessage listeners) don't blow up mid-flight. The next mount
-      // will tear them down at a safer time if the context has actually changed.
       const container = document.getElementById(containerId);
       if (container) {
         container.innerHTML = '';
