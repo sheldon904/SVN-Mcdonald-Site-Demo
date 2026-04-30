@@ -198,6 +198,15 @@
     { "source": "/april-2023-market-report", "destination": "/market-reports", "permanent": true },
     { "source": "/december-2022-market-report", "destination": "/market-reports", "permanent": true },
 
+    { "source": "/blog/550-acre-jumbolair", "destination": "/closed-deals/sold-550-acre-jumbolair", "permanent": true },
+    { "source": "/blog/trailhead-logistics-park", "destination": "/closed-deals/single-tenant-leased-943000-sf-trailhead-logistics-center", "permanent": true },
+    { "source": "/blog/sold-78-wooded-acres-in-ocala-horse-bank-owned", "destination": "/closed-deals/sold-bank-owned-78-wooded-acres-hwy-441", "permanent": true },
+    { "source": "/mls/searches", "destination": "/mls", "permanent": true },
+    { "source": "/mls/dashboard", "destination": "/mls", "permanent": true },
+    { "source": "/services/industrial", "destination": "/services", "permanent": true },
+    { "source": "/retail-properties-for-sale-or-lease", "destination": "/properties/retail", "permanent": true },
+    { "source": "/closed_deals/:path*", "destination": "/closed-deals/:path*", "permanent": true },
+
     { "source": "/wp-admin/:path*", "destination": "/", "permanent": true },
     { "source": "/wp-content/:path*", "destination": "/", "permanent": true },
     { "source": "/wp-login.php", "destination": "/", "permanent": true },
