@@ -10,37 +10,56 @@ const BUILDOUT_LAND_TOKEN = "780b230639b42edeea9d75652be95e361a796839";
 const BUILDOUT_COMMERCIAL_TOKEN = "80cac2f8491bd40156869256e3d371488bcfc4fe";
 const BUILDOUT_SCRIPT_ID = 'buildout-api-script';
 const BUILDOUT_STATE_QUERY_PARAMS = ['propertyId', 'plugin', 'unit', 'tab'];
+const BUILDOUT_CONTEXT_KEY = 'buildout-context';
 
 export { BUILDOUT_LAND_TOKEN, BUILDOUT_COMMERCIAL_TOKEN };
 
-// Buildout persists its property-detail view in the URL query string (e.g. ?propertyId=123)
-// and in sessionStorage. When navigating between land and commercial inventory pages, that
-// stale state would cause the widget to render the previously-viewed detail instead of the
-// new listings index. Reset both before re-embedding.
-const resetBuildoutState = () => {
-  const url = new URL(window.location.href);
-  let dirty = false;
-  BUILDOUT_STATE_QUERY_PARAMS.forEach((key) => {
-    if (url.searchParams.has(key)) {
-      url.searchParams.delete(key);
+// Buildout drives its property-detail view by writing ?propertyId=… to the URL and
+// triggering a full page reload. We must NOT strip that param on a same-context reload
+// (otherwise clicks into properties fail to open the detail). We DO want to strip it
+// when the user crosses widget contexts — e.g. commercial → land — so a stale property
+// detail from the prior context can't bleed through.
+const resetBuildoutStateForContext = (token: string, pluginType: string) => {
+  const currentContext = `${token}:${pluginType}`;
+  let lastContext: string | null = null;
+  try {
+    lastContext = sessionStorage.getItem(BUILDOUT_CONTEXT_KEY);
+  } catch {
+    // sessionStorage may be unavailable (privacy mode, SSR); skip the reset entirely.
+    return;
+  }
+
+  if (lastContext !== currentContext) {
+    const url = new URL(window.location.href);
+    let dirty = false;
+    BUILDOUT_STATE_QUERY_PARAMS.forEach((key) => {
+      if (url.searchParams.has(key)) {
+        url.searchParams.delete(key);
+        dirty = true;
+      }
+    });
+    if (url.hash) {
+      url.hash = '';
       dirty = true;
     }
-  });
-  if (url.hash) {
-    url.hash = '';
-    dirty = true;
-  }
-  if (dirty) {
-    const qs = url.searchParams.toString();
-    window.history.replaceState(null, '', url.pathname + (qs ? `?${qs}` : ''));
+    if (dirty) {
+      const qs = url.searchParams.toString();
+      window.history.replaceState(null, '', url.pathname + (qs ? `?${qs}` : ''));
+    }
+
+    try {
+      Object.keys(sessionStorage)
+        .filter((k) => k.toLowerCase().includes('buildout') && k !== BUILDOUT_CONTEXT_KEY)
+        .forEach((k) => sessionStorage.removeItem(k));
+    } catch {
+      // ignore
+    }
   }
 
   try {
-    Object.keys(sessionStorage)
-      .filter((k) => k.toLowerCase().includes('buildout'))
-      .forEach((k) => sessionStorage.removeItem(k));
+    sessionStorage.setItem(BUILDOUT_CONTEXT_KEY, currentContext);
   } catch {
-    // sessionStorage may be unavailable (privacy mode, SSR); ignore.
+    // ignore
   }
 };
 
@@ -82,7 +101,7 @@ const BuildoutListing: React.FC<BuildoutListingProps> = ({
     };
 
     const initBuildout = () => {
-      resetBuildoutState();
+      resetBuildoutStateForContext(token, pluginType);
       if ((window as any).BuildOut?.embed) {
         (window as any).BuildOut.embed(config);
         return;
@@ -95,7 +114,7 @@ const BuildoutListing: React.FC<BuildoutListingProps> = ({
     if (existingScript) {
       initBuildout();
     } else {
-      resetBuildoutState();
+      resetBuildoutStateForContext(token, pluginType);
       (window as any).buildoutConfig = config;
 
       const script = document.createElement('script');
