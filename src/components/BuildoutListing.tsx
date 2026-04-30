@@ -110,11 +110,6 @@ const BuildoutListing: React.FC<BuildoutListingProps> = ({
       if (container) {
         container.innerHTML = '';
       }
-      // Tear down the global widget so the next mount cannot inherit cached property state.
-      const script = document.getElementById(BUILDOUT_SCRIPT_ID);
-      if (script) script.remove();
-      delete (window as any).BuildOut;
-      delete (window as any).buildoutConfig;
     };
   }, [isVisible, pluginType, containerId, token]);
 
