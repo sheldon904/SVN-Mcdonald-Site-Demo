@@ -129,6 +129,16 @@ const BuildoutListing: React.FC<BuildoutListingProps> = ({
       if (container) {
         container.innerHTML = '';
       }
+      // Tear down the Buildout script + globals on React unmount so the next mount
+      // (e.g. commercial → land via Navbar SPA nav) gets a fresh widget instead of
+      // inheriting the prior detail view from in-memory state. This cleanup does NOT
+      // run on same-page click→reload flows — those are full browser navigations that
+      // discard the React tree without firing useEffect cleanups — so property clicks
+      // remain unaffected.
+      const script = document.getElementById(BUILDOUT_SCRIPT_ID);
+      if (script) script.remove();
+      delete (window as any).BuildOut;
+      delete (window as any).buildoutConfig;
     };
   }, [isVisible, pluginType, containerId, token]);
 
