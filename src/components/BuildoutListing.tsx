@@ -50,6 +50,11 @@ const BuildoutListing: React.FC<BuildoutListingProps> = ({
     };
 
     const initBuildout = () => {
+      // Clear any hash that Buildout may have written for a previous property-detail
+      // view, so the widget always opens on the listings index when embed() is called.
+      if (window.location.hash) {
+        window.history.replaceState(null, '', window.location.pathname + window.location.search);
+      }
       if ((window as any).BuildOut?.embed) {
         (window as any).BuildOut.embed(config);
         return;
