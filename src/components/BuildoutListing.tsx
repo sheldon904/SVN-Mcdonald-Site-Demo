@@ -19,15 +19,20 @@ export { BUILDOUT_LAND_TOKEN, BUILDOUT_COMMERCIAL_TOKEN };
 // (otherwise clicks into properties fail to open the detail). We DO want to strip it
 // when the user crosses widget contexts — e.g. commercial → land — so a stale property
 // detail from the prior context can't bleed through.
-const resetBuildoutStateForContext = (token: string, pluginType: string) => {
+//
+// Returns true if the context changed since the last mount (i.e. caller should also
+// tear down any cached Buildout script + globals before re-embedding).
+const resetBuildoutStateForContext = (token: string, pluginType: string): boolean => {
   const currentContext = `${token}:${pluginType}`;
   let lastContext: string | null = null;
   try {
     lastContext = sessionStorage.getItem(BUILDOUT_CONTEXT_KEY);
   } catch {
     // sessionStorage may be unavailable (privacy mode, SSR); skip the reset entirely.
-    return;
+    return false;
   }
+
+  const contextChanged = lastContext !== null && lastContext !== currentContext;
 
   if (lastContext !== currentContext) {
     const url = new URL(window.location.href);
@@ -60,6 +65,19 @@ const resetBuildoutStateForContext = (token: string, pluginType: string) => {
     sessionStorage.setItem(BUILDOUT_CONTEXT_KEY, currentContext);
   } catch {
     // ignore
+  }
+
+  return contextChanged;
+};
+
+const tearDownBuildoutScript = () => {
+  try {
+    const script = document.getElementById(BUILDOUT_SCRIPT_ID);
+    if (script) script.remove();
+    delete (window as any).BuildOut;
+    delete (window as any).buildoutConfig;
+  } catch {
+    // ignore — best-effort teardown
   }
 };
 
@@ -100,21 +118,26 @@ const BuildoutListing: React.FC<BuildoutListingProps> = ({
       target: containerId,
     };
 
-    const initBuildout = () => {
-      resetBuildoutStateForContext(token, pluginType);
-      if ((window as any).BuildOut?.embed) {
-        (window as any).BuildOut.embed(config);
-        return;
-      }
-      (window as any).buildoutConfig = config;
-    };
+    // If the Buildout context (token + plugin) has changed since the last mount, tear
+    // down the cached script + globals BEFORE setting up the new widget. Doing this at
+    // mount-time rather than in the previous unmount cleanup avoids racing with the
+    // outgoing widget's pending iframe / postMessage / observer callbacks — which can
+    // throw "BuildOut is undefined" synchronously during React's render cycle and
+    // surface as an ErrorBoundary "something went wrong" screen.
+    const contextChanged = resetBuildoutStateForContext(token, pluginType);
+    if (contextChanged) {
+      tearDownBuildoutScript();
+    }
 
     const existingScript = document.getElementById(BUILDOUT_SCRIPT_ID) as HTMLScriptElement;
 
     if (existingScript) {
-      initBuildout();
+      if ((window as any).BuildOut?.embed) {
+        (window as any).BuildOut.embed(config);
+      } else {
+        (window as any).buildoutConfig = config;
+      }
     } else {
-      resetBuildoutStateForContext(token, pluginType);
       (window as any).buildoutConfig = config;
 
       const script = document.createElement('script');
@@ -125,20 +148,14 @@ const BuildoutListing: React.FC<BuildoutListingProps> = ({
     }
 
     return () => {
+      // Minimal unmount cleanup: only clear the container we own. Leave window.BuildOut
+      // and the script tag intact so Buildout's still-pending async callbacks (iframe
+      // load handlers, postMessage listeners) don't blow up mid-flight. The next mount
+      // will tear them down at a safer time if the context has actually changed.
       const container = document.getElementById(containerId);
       if (container) {
         container.innerHTML = '';
       }
-      // Tear down the Buildout script + globals on React unmount so the next mount
-      // (e.g. commercial → land via Navbar SPA nav) gets a fresh widget instead of
-      // inheriting the prior detail view from in-memory state. This cleanup does NOT
-      // run on same-page click→reload flows — those are full browser navigations that
-      // discard the React tree without firing useEffect cleanups — so property clicks
-      // remain unaffected.
-      const script = document.getElementById(BUILDOUT_SCRIPT_ID);
-      if (script) script.remove();
-      delete (window as any).BuildOut;
-      delete (window as any).buildoutConfig;
     };
   }, [isVisible, pluginType, containerId, token]);
 
