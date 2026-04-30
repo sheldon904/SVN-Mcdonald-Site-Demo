@@ -281,6 +281,7 @@ const ListingsPage = () => {
         <section className="py-16 px-6 bg-[#F6F6F6]">
           <div className="max-w-[1280px] mx-auto">
             <BuildoutListing
+              key={isLand ? 'land' : 'commercial'}
               pluginType="inventory"
               containerId={isLand ? 'land-buildout-container' : 'commercial-buildout-container'}
               token={isLand ? BUILDOUT_LAND_TOKEN : BUILDOUT_COMMERCIAL_TOKEN}

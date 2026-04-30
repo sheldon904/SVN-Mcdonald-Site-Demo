@@ -9,8 +9,40 @@ interface BuildoutListingProps {
 const BUILDOUT_LAND_TOKEN = "780b230639b42edeea9d75652be95e361a796839";
 const BUILDOUT_COMMERCIAL_TOKEN = "80cac2f8491bd40156869256e3d371488bcfc4fe";
 const BUILDOUT_SCRIPT_ID = 'buildout-api-script';
+const BUILDOUT_STATE_QUERY_PARAMS = ['propertyId', 'plugin', 'unit', 'tab'];
 
 export { BUILDOUT_LAND_TOKEN, BUILDOUT_COMMERCIAL_TOKEN };
+
+// Buildout persists its property-detail view in the URL query string (e.g. ?propertyId=123)
+// and in sessionStorage. When navigating between land and commercial inventory pages, that
+// stale state would cause the widget to render the previously-viewed detail instead of the
+// new listings index. Reset both before re-embedding.
+const resetBuildoutState = () => {
+  const url = new URL(window.location.href);
+  let dirty = false;
+  BUILDOUT_STATE_QUERY_PARAMS.forEach((key) => {
+    if (url.searchParams.has(key)) {
+      url.searchParams.delete(key);
+      dirty = true;
+    }
+  });
+  if (url.hash) {
+    url.hash = '';
+    dirty = true;
+  }
+  if (dirty) {
+    const qs = url.searchParams.toString();
+    window.history.replaceState(null, '', url.pathname + (qs ? `?${qs}` : ''));
+  }
+
+  try {
+    Object.keys(sessionStorage)
+      .filter((k) => k.toLowerCase().includes('buildout'))
+      .forEach((k) => sessionStorage.removeItem(k));
+  } catch {
+    // sessionStorage may be unavailable (privacy mode, SSR); ignore.
+  }
+};
 
 const BuildoutListing: React.FC<BuildoutListingProps> = ({
   pluginType = 'featured',
@@ -50,11 +82,7 @@ const BuildoutListing: React.FC<BuildoutListingProps> = ({
     };
 
     const initBuildout = () => {
-      // Clear any hash that Buildout may have written for a previous property-detail
-      // view, so the widget always opens on the listings index when embed() is called.
-      if (window.location.hash) {
-        window.history.replaceState(null, '', window.location.pathname + window.location.search);
-      }
+      resetBuildoutState();
       if ((window as any).BuildOut?.embed) {
         (window as any).BuildOut.embed(config);
         return;
@@ -67,6 +95,7 @@ const BuildoutListing: React.FC<BuildoutListingProps> = ({
     if (existingScript) {
       initBuildout();
     } else {
+      resetBuildoutState();
       (window as any).buildoutConfig = config;
 
       const script = document.createElement('script');
@@ -81,6 +110,11 @@ const BuildoutListing: React.FC<BuildoutListingProps> = ({
       if (container) {
         container.innerHTML = '';
       }
+      // Tear down the global widget so the next mount cannot inherit cached property state.
+      const script = document.getElementById(BUILDOUT_SCRIPT_ID);
+      if (script) script.remove();
+      delete (window as any).BuildOut;
+      delete (window as any).buildoutConfig;
     };
   }, [isVisible, pluginType, containerId, token]);
 
