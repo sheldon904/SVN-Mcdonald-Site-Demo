@@ -64,7 +64,7 @@ const WecEffectHero = () => {
               download
               className="inline-flex items-center gap-3 bg-svn-orange text-white px-8 py-4 rounded-full font-black uppercase tracking-widest text-xs md:text-sm hover:bg-white hover:text-svn-orange transition-all duration-300 shadow-xl"
             >
-              <Download size={18} /> Download WEC Effect Documentation
+              <Download size={18} /> Download the WEC Effect
             </a>
           </div>
         </div>
