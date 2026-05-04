@@ -1,4 +1,5 @@
-import puppeteer, { type Browser, type Page } from 'puppeteer';
+import puppeteer, { type Browser, type Page } from 'puppeteer-core';
+import chromium from '@sparticuz/chromium';
 import { spawn, type ChildProcess } from 'child_process';
 import path from 'node:path';
 import fs from 'node:fs/promises';
@@ -7,6 +8,27 @@ import { getAllRoutes } from './routes.js';
 const DIST    = path.resolve('dist');
 const PORT    = 4173;
 const BATCH   = 6; // concurrent Puppeteer tabs
+
+// On Vercel/Linux CI, use the @sparticuz/chromium bundle (it ships the
+// system shared libs Vercel's build sandbox is missing). Locally, fall
+// back to the user's installed Chrome via PUPPETEER_EXECUTABLE_PATH or
+// the standard macOS path.
+async function launchOptions() {
+  if (process.env.VERCEL || process.platform === 'linux') {
+    return {
+      args: chromium.args,
+      defaultViewport: chromium.defaultViewport,
+      executablePath: await chromium.executablePath(),
+      headless: true,
+    };
+  }
+  const macChrome = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
+  return {
+    args: ['--no-sandbox', '--disable-setuid-sandbox'],
+    executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || macChrome,
+    headless: true,
+  };
+}
 
 async function startServer(): Promise<() => void> {
   const proc: ChildProcess = spawn(
@@ -77,9 +99,7 @@ async function main(): Promise<void> {
   const ordered      = [...nonRootRoutes, ...rootRoute];
 
   const stopServer = await startServer();
-  const browser = await puppeteer.launch({
-    args: ['--no-sandbox', '--disable-setuid-sandbox'],
-  });
+  const browser = await puppeteer.launch(await launchOptions());
 
   const failed: string[] = [];
   try {
