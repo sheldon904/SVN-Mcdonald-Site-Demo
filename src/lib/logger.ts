@@ -28,9 +28,17 @@ class ClientLogger {
   private isFlushing = false;
 
   constructor() {
-    // Auto-flush on interval
+    // Auto-flush on interval (deferred until the browser is idle so logging never competes with FCP/LCP)
     if (typeof window !== 'undefined') {
-      this.flushTimer = setInterval(() => this.flush(), FLUSH_INTERVAL);
+      const startTimer = () => {
+        this.flushTimer = setInterval(() => this.flush(), FLUSH_INTERVAL);
+      };
+      const ric = (window as Window & { requestIdleCallback?: (cb: () => void, opts?: { timeout: number }) => number }).requestIdleCallback;
+      if (typeof ric === 'function') {
+        ric(startTimer, { timeout: 4000 });
+      } else {
+        setTimeout(startTimer, 2000);
+      }
 
       // Flush before page unload
       window.addEventListener('beforeunload', () => this.flush());

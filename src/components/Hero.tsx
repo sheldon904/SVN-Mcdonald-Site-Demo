@@ -10,15 +10,24 @@ const Hero = () => {
       <div className="md:hidden">
         {/* Full-screen hero with headline */}
         <div className="relative min-h-[70vh] flex flex-col items-center justify-center px-6">
-          <img
-            src="/78-acres-horse-country-hero.jpg"
-            alt="Central Florida Real Estate"
-            className="absolute inset-0 w-full h-full object-cover opacity-40"
-            fetchPriority="high"
-            decoding="sync"
-            width={768}
-            height={429}
-          />
+          <picture>
+            <source
+              type="image/webp"
+              srcSet="/78-acres-horse-country-hero-768.webp 768w, /78-acres-horse-country-hero-1280.webp 1280w"
+              sizes="100vw"
+            />
+            <img
+              src="/78-acres-horse-country-hero-768.jpg"
+              srcSet="/78-acres-horse-country-hero-768.jpg 768w, /78-acres-horse-country-hero-1280.jpg 1280w"
+              sizes="100vw"
+              alt="Central Florida Real Estate"
+              className="absolute inset-0 w-full h-full object-cover opacity-40"
+              fetchPriority="high"
+              decoding="async"
+              width={768}
+              height={429}
+            />
+          </picture>
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/80" />
 
           <motion.div
@@ -114,15 +123,24 @@ const Hero = () => {
             to="/land-properties"
             className="relative flex-1 group cursor-pointer overflow-hidden"
           >
-            <img
-              src="/78-acres-horse-country-hero.jpg"
-              alt="Central Florida Land Properties"
-              className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-70 group-hover:scale-105 transition-all duration-700"
-              fetchPriority="high"
-              decoding="sync"
-              width={1920}
-              height={1073}
-            />
+            <picture>
+              <source
+                type="image/webp"
+                srcSet="/78-acres-horse-country-hero-1280.webp 1280w, /78-acres-horse-country-hero-1920.webp 1920w"
+                sizes="50vw"
+              />
+              <img
+                src="/78-acres-horse-country-hero-1920.jpg"
+                srcSet="/78-acres-horse-country-hero-1280.jpg 1280w, /78-acres-horse-country-hero-1920.jpg 1920w"
+                sizes="50vw"
+                alt="Central Florida Land Properties"
+                className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-70 group-hover:scale-105 transition-all duration-700"
+                fetchPriority="high"
+                decoding="async"
+                width={1920}
+                height={1073}
+              />
+            </picture>
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/50" />
             <div className="absolute right-0 top-0 bottom-0 w-[1px] bg-white/10 z-10" />
 
@@ -152,15 +170,24 @@ const Hero = () => {
             to="/commercial-properties"
             className="relative flex-1 group cursor-pointer overflow-hidden"
           >
-            <img
-              src="/trailhead-logistics-hero.jpg"
-              alt="Central Florida Commercial Properties"
-              className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-70 group-hover:scale-105 transition-all duration-700"
-              loading="eager"
-              decoding="async"
-              width={1920}
-              height={1073}
-            />
+            <picture>
+              <source
+                type="image/webp"
+                srcSet="/trailhead-logistics-hero-1280.webp 1280w, /trailhead-logistics-hero-1920.webp 1920w"
+                sizes="50vw"
+              />
+              <img
+                src="/trailhead-logistics-hero-1920.jpg"
+                srcSet="/trailhead-logistics-hero-1280.jpg 1280w, /trailhead-logistics-hero-1920.jpg 1920w"
+                sizes="50vw"
+                alt="Central Florida Commercial Properties"
+                className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-70 group-hover:scale-105 transition-all duration-700"
+                loading="eager"
+                decoding="async"
+                width={1920}
+                height={1073}
+              />
+            </picture>
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/50" />
 
             <motion.div
