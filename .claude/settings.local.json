@@ -46,7 +46,8 @@
       "mcp__playwright__browser_evaluate",
       "WebFetch(domain:enhanced-buildout-integration.pages.dev)",
       "mcp__playwright__browser_resize",
-      "mcp__playwright__browser_close"
+      "mcp__playwright__browser_close",
+      "Bash(grep -E '\\\\.\\(json|js|ts|tsx|jsx|html\\)$')"
     ]
   },
   "enableAllProjectMcpServers": true,
