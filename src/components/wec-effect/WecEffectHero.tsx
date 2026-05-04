@@ -46,7 +46,7 @@ const WecEffectHero = () => {
           </p>
 
           {/* Glassmorphic stat badge */}
-          <div className="flex flex-wrap items-center gap-6">
+          <div className="flex flex-wrap items-center justify-center md:justify-start gap-6">
             <div className="bg-white/10 backdrop-blur-md rounded-xl px-6 py-3 border border-white/20">
               <span className="text-xs font-bold uppercase tracking-widest text-white/60 block">Comprehensive Study</span>
               <span className="text-2xl md:text-3xl font-black text-white">2022–2025</span>
@@ -58,7 +58,7 @@ const WecEffectHero = () => {
           </div>
 
           {/* Download CTA */}
-          <div className="mt-8">
+          <div className="mt-8 flex justify-center md:justify-start">
             <a
               href="/SVN2025WECEffect.pdf"
               download
@@ -71,7 +71,7 @@ const WecEffectHero = () => {
       </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/50">
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2 text-white/50">
         <span className="text-[10px] font-bold uppercase tracking-[0.3em]">Scroll to explore</span>
         <motion.div
           animate={{ y: [0, 8, 0] }}
