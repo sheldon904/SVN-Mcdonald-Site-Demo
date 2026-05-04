@@ -5,11 +5,24 @@ const WecEffectHero = () => {
   return (
     <section className="relative w-full h-screen min-h-[600px] overflow-hidden">
       {/* Background - WEC aerial image */}
-      <img
-        src="/images/wec-center-hero.jpg"
-        alt="World Equestrian Center grand arena at dusk"
-        className="absolute inset-0 w-full h-full object-cover"
-      />
+      <picture>
+        <source
+          type="image/webp"
+          srcSet="/images/wec-center-hero-768.webp 768w, /images/wec-center-hero-1280.webp 1280w, /images/wec-center-hero-1920.webp 1920w"
+          sizes="100vw"
+        />
+        <img
+          src="/images/wec-center-hero-1920.jpg"
+          srcSet="/images/wec-center-hero-768.jpg 768w, /images/wec-center-hero-1280.jpg 1280w, /images/wec-center-hero-1920.jpg 1920w"
+          sizes="100vw"
+          alt="World Equestrian Center grand arena at dusk"
+          className="absolute inset-0 w-full h-full object-cover"
+          fetchPriority="high"
+          decoding="async"
+          width={1920}
+          height={781}
+        />
+      </picture>
       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20" />
 
       {/* Content */}

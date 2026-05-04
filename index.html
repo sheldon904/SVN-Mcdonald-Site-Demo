@@ -5,21 +5,60 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/png" sizes="32x32" href="/images/logos/svn-logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0e0e0e" />
 
-    <!-- Preconnect hints (max 3 critical origins) -->
+    <!-- Primary SEO meta (homepage default; per-route values are injected client-side via react-helmet-async) -->
+    <title>SVN McDonald & Company | Land & Commercial Real Estate</title>
+    <meta name="description" content="SVN McDonald & Company is Central Florida's premier commercial and land real estate brokerage in Ocala, FL. National reach, local expertise. Land sales, commercial properties, and investment real estate." />
+    <link rel="canonical" href="https://svnmcdonald.com/" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+
+    <!-- Open Graph defaults (overridden per-page on the client) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="SVN McDonald & Company" />
+    <meta property="og:title" content="SVN McDonald & Company | Land & Commercial Real Estate" />
+    <meta property="og:description" content="Central Florida's premier commercial and land real estate brokerage in Ocala, FL. National reach, local expertise." />
+    <meta property="og:url" content="https://svnmcdonald.com/" />
+    <meta property="og:image" content="https://svnmcdonald.com/images/hero/hwy-484-ocala-1920.jpg" />
+
+    <!-- Twitter Card defaults -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@svnmcdonald" />
+    <meta name="twitter:title" content="SVN McDonald & Company | Land & Commercial Real Estate" />
+    <meta name="twitter:description" content="Central Florida's premier commercial and land real estate brokerage in Ocala, FL. National reach, local expertise." />
+    <meta name="twitter:image" content="https://svnmcdonald.com/images/hero/hwy-484-ocala-1920.jpg" />
+
+    <!-- Geo -->
+    <meta name="geo.region" content="US-FL" />
+    <meta name="geo.placename" content="Ocala" />
+    <meta name="geo.position" content="29.1875;-82.1402" />
+
+    <!-- Static LocalBusiness JSON-LD (visible to non-JS crawlers; per-page schemas still inject client-side) -->
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":["LocalBusiness","RealEstateAgent"],"@id":"https://svnmcdonald.com/#organization","name":"SVN McDonald & Company","alternateName":"SVN McDonald","description":"Central Florida's premier commercial and land real estate brokerage. Specializing in land sales, commercial properties, conservation easements, and investment real estate in Ocala and Marion County.","url":"https://svnmcdonald.com","logo":"https://svnmcdonald.com/images/logos/svn-logo.png","image":"https://svnmcdonald.com/images/hero/hwy-484-ocala-1920.jpg","telephone":"+1-352-274-3800","email":"bartow.mcdonald@svn.com","address":{"@type":"PostalAddress","streetAddress":"217 SE First AVE Unit 200","addressLocality":"Ocala","addressRegion":"FL","postalCode":"34471","addressCountry":"US"},"geo":{"@type":"GeoCoordinates","latitude":29.1875,"longitude":-82.1402},"priceRange":"$$$$","sameAs":["https://facebook.com/svnmcdonald","https://youtube.com/@bartowmcdonald1803/featured","https://linkedin.com/company/svn-mcdonald-company/","https://www.instagram.com/svnmcdonald/"]}
+    </script>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"WebSite","name":"SVN McDonald & Company","url":"https://svnmcdonald.com","publisher":{"@id":"https://svnmcdonald.com/#organization"}}
+    </script>
+
+    <!-- Preconnect hints (critical origins) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://svnmcdonald.com">
+    <link rel="preconnect" href="https://www.googletagmanager.com">
 
     <!-- DNS Prefetch for secondary origins -->
-    <link rel="dns-prefetch" href="https://svnmcdonald.com">
     <link rel="dns-prefetch" href="https://buildout.com">
     <link rel="dns-prefetch" href="https://assets.buildout.com">
     <link rel="dns-prefetch" href="https://site-editor.buildout.com">
     <link rel="dns-prefetch" href="https://maps.googleapis.com">
 
-    <!-- Preload hero image -->
-    <link rel="preload" href="/78-acres-horse-country-hero.jpg" as="image" fetchpriority="high">
+    <!-- Preload optimized hero image (responsive: WebP, branched by viewport) -->
+    <link rel="preload" as="image" type="image/webp"
+      href="/78-acres-horse-country-hero-1280.webp"
+      imagesrcset="/78-acres-horse-country-hero-768.webp 768w, /78-acres-horse-country-hero-1280.webp 1280w, /78-acres-horse-country-hero-1920.webp 1920w"
+      imagesizes="(max-width: 768px) 100vw, 50vw"
+      fetchpriority="high">
 
     <!-- Preload critical font file to skip CSS chain -->
     <link rel="preload" href="https://fonts.gstatic.com/s/montserrat/v31/JTUSjIg1_i6t8kCHKm459WRhyzbi.woff2" as="font" type="font/woff2" crossorigin>
@@ -35,8 +74,6 @@
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-M8F3FVMN');</script>
     <!-- End Google Tag Manager -->
-
-    <title>SVN McDonald & Company | Land & Commercial Real Estate</title>
 
     <!-- Inline critical CSS for instant first paint -->
     <style>
