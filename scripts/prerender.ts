@@ -7,7 +7,7 @@ import { getAllRoutes } from './routes.js';
 
 const DIST    = path.resolve('dist');
 const PORT    = 4173;
-const BATCH   = 6; // concurrent Puppeteer tabs
+const BATCH   = 10; // concurrent Puppeteer tabs
 
 // On Vercel/Linux CI, use the @sparticuz/chromium bundle (it ships the
 // system shared libs Vercel's build sandbox is missing). Locally, fall
@@ -54,8 +54,12 @@ async function renderRoute(browser: Browser, route: string): Promise<void> {
   const page: Page = await browser.newPage();
   try {
     await page.goto(`http://localhost:${PORT}${route}`, {
-      // networkidle2 allows ≤2 open connections — handles Buildout iframe polling
-      waitUntil: 'networkidle2',
+      // domcontentloaded fires once the HTML+initial scripts are parsed.
+      // We don't use networkidle2 because the Buildout iframe polls
+      // continuously and would never satisfy it. The waits below
+      // (nav selector + react-helmet-async [data-rh]) are the real
+      // signals that React has rendered.
+      waitUntil: 'domcontentloaded',
       timeout: 30_000,
     });
 
@@ -108,16 +112,30 @@ async function main(): Promise<void> {
         ordered.slice(i, i + BATCH).map(async route => {
           try {
             await renderRoute(browser, route);
-          } catch (err) {
+          } catch {
             failed.push(route);
-            console.error(`  ✗ ${route}: ${(err as Error).message}`);
           }
         })
       );
     }
+
+    // Retry failures sequentially — most are transient (cold-start
+    // contention when 10 tabs hit slow pages at once).
     if (failed.length > 0) {
-      console.error(`\n${failed.length} routes failed: ${failed.join(', ')}`);
-      process.exit(1);
+      console.log(`\nRetrying ${failed.length} failed routes…\n`);
+      const stillFailed: string[] = [];
+      for (const route of failed) {
+        try {
+          await renderRoute(browser, route);
+        } catch (err) {
+          stillFailed.push(route);
+          console.error(`  ✗ ${route}: ${(err as Error).message}`);
+        }
+      }
+      if (stillFailed.length > 0) {
+        console.error(`\n${stillFailed.length} routes failed after retry: ${stillFailed.join(', ')}`);
+        process.exit(1);
+      }
     }
     console.log(`\nDone — ${ordered.length} routes prerendered into dist/\n`);
   } finally {
