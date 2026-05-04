@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, Download } from 'lucide-react';
 
 const WecEffectHero = () => {
   return (
@@ -62,6 +62,22 @@ const WecEffectHero = () => {
               <span className="text-xs font-bold uppercase tracking-widest text-white/60 block">Transactions Tracked</span>
               <span className="text-2xl md:text-3xl font-black text-white">400+</span>
             </div>
+          </motion.div>
+
+          {/* Download CTA */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.8 }}
+            className="mt-8"
+          >
+            <a
+              href="/SVN2025WECEffect.pdf"
+              download
+              className="inline-flex items-center gap-3 bg-svn-orange text-white px-8 py-4 rounded-full font-black uppercase tracking-widest text-xs md:text-sm hover:bg-white hover:text-svn-orange transition-all duration-300 shadow-xl"
+            >
+              <Download size={18} /> Download WEC Effect Documentation
+            </a>
           </motion.div>
         </div>
       </div>
