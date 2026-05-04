@@ -67,12 +67,30 @@
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
 
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-M8F3FVMN');</script>
+    <!-- Google Tag Manager (deferred to first user interaction or window load to keep it off the critical path) -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      (function(w, d, id) {
+        var loaded = false;
+        function loadGTM() {
+          if (loaded) return;
+          loaded = true;
+          w.dataLayer.push({ 'gtm.start': Date.now(), event: 'gtm.js' });
+          var s = d.getElementsByTagName('script')[0];
+          var g = d.createElement('script');
+          g.async = true;
+          g.src = 'https://www.googletagmanager.com/gtm.js?id=' + id;
+          s.parentNode.insertBefore(g, s);
+        }
+        var events = ['scroll', 'mousemove', 'keydown', 'touchstart', 'pointerdown'];
+        events.forEach(function(e) { w.addEventListener(e, loadGTM, { once: true, passive: true }); });
+        if (d.readyState === 'complete') {
+          setTimeout(loadGTM, 1500);
+        } else {
+          w.addEventListener('load', function() { setTimeout(loadGTM, 1500); });
+        }
+      })(window, document, 'GTM-M8F3FVMN');
+    </script>
     <!-- End Google Tag Manager -->
 
     <!-- Inline critical CSS for instant first paint -->
