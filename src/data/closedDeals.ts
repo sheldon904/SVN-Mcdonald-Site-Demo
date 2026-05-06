@@ -14,6 +14,17 @@ export const FALLBACK_IMAGE = "/images/hero/hwy-484-ocala-1920.jpg";
 
 export const closedDeals: ClosedDeal[] = [
   {
+    title: "20 +/- Acres Equestrian Lot",
+    slug: "20-acres-equestrian-lot-blitchton",
+    location: "Blitchton, FL",
+    price: "$557,795",
+    date: "May 2026",
+    image: "/images/properties/20-acres-equestrian-blitchton.webp",
+    type: "Land",
+    status: "Sold",
+    description: "SVN McDonald & Company represented the sale of 20 +/- acres of prime equestrian land in Blitchton, FL for $557,795 ($27,861/acre). Carved out of a 39.41 +/- acre parent tract along US Highway 27, the property sits in the heart of Marion County's world-renowned horse country, just minutes from HITS (Horse Shows in the Sun) Ocala. Bartow McDonald, Matthew Garff, and Stiles McDonald represented this transaction."
+  },
+  {
     title: "Ocala 75",
     slug: "ocala-75-industrial-lease",
     location: "Ocala, FL",
