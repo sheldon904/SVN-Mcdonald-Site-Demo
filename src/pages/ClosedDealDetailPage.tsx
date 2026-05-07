@@ -149,6 +149,17 @@ const ClosedDealDetailPage = () => {
                 </p>
               </div>
 
+              {/* Deal Images — full, uncropped so overlaid deal-point graphics remain legible */}
+              <div className="space-y-4 mb-10">
+                <img
+                  src={deal.image}
+                  alt={deal.title}
+                  className="w-full h-auto block rounded-xl border border-gray-100 shadow-sm"
+                  onError={(e) => { (e.target as HTMLImageElement).src = FALLBACK_IMAGE; }}
+                />
+                {/* Additional images for this deal go here as more <img> tags */}
+              </div>
+
               {/* Call Us Button */}
               <a
                 href="tel:3522743800"
