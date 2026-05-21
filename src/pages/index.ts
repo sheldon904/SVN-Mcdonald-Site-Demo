@@ -10,6 +10,7 @@ export const ClosedDealsPage = lazy(() => import('./ClosedDealsPage'));
 export const ClosedDealDetailPage = lazy(() => import('./ClosedDealDetailPage'));
 export const MarketReportsPage = lazy(() => import('./MarketReportsPage'));
 export const WecEffectPage = lazy(() => import('./WecEffectPage'));
+export const WhyOcalaPage = lazy(() => import('./WhyOcalaPage'));
 export const LegalPage = lazy(() => import('./LegalPage'));
 export const AccessibilityPage = lazy(() => import('./AccessibilityPage'));
 export const BlogPostPage = lazy(() => import('./BlogPostPage'));

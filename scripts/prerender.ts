@@ -22,10 +22,19 @@ async function launchOptions() {
       headless: true,
     };
   }
-  const macChrome = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
+  // Local dev: honor an explicit override, else fall back to the OS default
+  // Chrome install path (Windows / macOS / Linux).
+  const localChrome: Record<string, string> = {
+    win32: 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe',
+    darwin: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
+    linux: '/usr/bin/google-chrome',
+  };
   return {
     args: ['--no-sandbox', '--disable-setuid-sandbox'],
-    executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || macChrome,
+    executablePath:
+      process.env.PUPPETEER_EXECUTABLE_PATH ||
+      localChrome[process.platform] ||
+      localChrome.linux,
     headless: true,
   };
 }

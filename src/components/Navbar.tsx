@@ -26,6 +26,7 @@ const Navbar = () => {
       name: 'Reports',
       href: '/market-reports',
       dropdown: [
+        { name: 'Why Ocala?', href: '/why-ocala' },
         { name: 'WEC Effect', href: '/wec-effect' },
         { name: 'Market Reports', href: '/market-reports' }
       ]

@@ -53,6 +53,7 @@ const staticPages: SitemapEntry[] = [
   { loc: '/closed-deals', changefreq: 'monthly', priority: '0.8' },
   { loc: '/market-reports', changefreq: 'monthly', priority: '0.8' },
   { loc: '/wec-effect', changefreq: 'monthly', priority: '0.8' },
+  { loc: '/why-ocala', changefreq: 'monthly', priority: '0.9' },
   { loc: '/mls', changefreq: 'monthly', priority: '0.7' },
   // Team members
   { loc: '/team/bartow-mcdonald', changefreq: 'monthly', priority: '0.6' },
