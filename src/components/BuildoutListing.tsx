@@ -46,7 +46,14 @@ const BuildoutListing: React.FC<BuildoutListingProps> = ({
   token = BUILDOUT_LAND_TOKEN,
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
+  // Eager-load when the URL carries a Buildout deep link (?propertyId=…). Otherwise a
+  // shared property link would only resolve once the visitor happened to scroll the
+  // widget into view — and until then the lazy IntersectionObserver gate makes the
+  // detail look broken.
+  const [isVisible, setIsVisible] = useState(() => {
+    if (typeof window === 'undefined') return false;
+    return new URLSearchParams(window.location.search).has('propertyId');
+  });
 
   // Defer loading until component is near viewport
   useEffect(() => {
@@ -114,15 +121,26 @@ const BuildoutListing: React.FC<BuildoutListingProps> = ({
       return;
     }
 
-    // Same context (or first mount in this tab) — strip stale URL state if it doesn't
-    // match the current context, write the new context marker, and embed normally.
-    if (lastContext !== currentContext) {
+    // Genuine cross-context change where the old script is already gone (e.g. the cross-
+    // context reload above didn't fire because window.BuildOut hadn't loaded yet): strip
+    // the stale property-detail state so it can't bleed into the new context.
+    //
+    // Crucially, we do NOT strip on the FIRST mount in a tab (lastContext === null). Doing
+    // so would wipe a legitimate shared deep link such as
+    // /land-properties?propertyId=1572614-sale before Buildout could open the detail,
+    // bouncing the visitor back to the listings index.
+    if (lastContext && lastContext !== currentContext) {
       const { url, dirty } = stripBuildoutUrlState();
       if (dirty) {
         const qs = url.searchParams.toString();
         window.history.replaceState(null, '', url.pathname + (qs ? `?${qs}` : ''));
       }
       clearBuildoutSessionStorage();
+    }
+
+    // Record the active context (on first mount or any change) so a later same-context
+    // reload — Buildout's click → ?propertyId= detail flow — is recognised and left intact.
+    if (lastContext !== currentContext) {
       try {
         sessionStorage.setItem(BUILDOUT_CONTEXT_KEY, currentContext);
       } catch {
