@@ -13,6 +13,7 @@ import {
   ClosedDealDetailPage,
   MarketReportsPage,
   WecEffectPage,
+  WhyOcalaPage,
   LegalPage,
   AccessibilityPage,
   PropertyTypePage,
@@ -70,6 +71,7 @@ function App() {
         <Route path="/closed-deals" element={<ClosedDealsPage />} />
         <Route path="/market-reports" element={<MarketReportsPage />} />
         <Route path="/wec-effect" element={<WecEffectPage />} />
+        <Route path="/why-ocala" element={<WhyOcalaPage />} />
         <Route path="/privacy-policy" element={<LegalPage />} />
         <Route path="/terms-of-use" element={<LegalPage />} />
         <Route path="/accessibility-statement" element={<AccessibilityPage />} />

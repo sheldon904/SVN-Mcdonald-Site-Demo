@@ -25,6 +25,7 @@ export function getAllRoutes(): string[] {
     '/closed-deals',
     '/market-reports',
     '/wec-effect',
+    '/why-ocala',
     '/privacy-policy',
     '/terms-of-use',
     '/accessibility-statement',

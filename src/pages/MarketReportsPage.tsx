@@ -10,6 +10,13 @@ import { Link } from 'react-router-dom';
 const MarketReportsPage = () => {
   const reports = [
     {
+      title: "Why Ocala? Market Data Guide",
+      description: "Why the Ocala metro was ranked America's #1 fastest-growing metro — population, migration, industrial growth, and the investment thesis. Updated with primary-source data.",
+      date: "Guide",
+      image: "/images/reports/economic-updates.webp",
+      link: "/why-ocala"
+    },
+    {
       title: "January 2026 Market Report",
       description: "Latest economic updates and commercial real estate market performance for January 2026.",
       date: "Jan 2026",
