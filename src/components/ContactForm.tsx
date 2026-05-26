@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Mail, Phone, MapPin, Send, CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
 import { logger } from '../lib/logger';
 
@@ -15,6 +16,7 @@ const ContactForm = () => {
   });
   const [status, setStatus] = useState<SubmitStatus>('idle');
   const [errorMessage, setErrorMessage] = useState('');
+  const [consentGiven, setConsentGiven] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -34,7 +36,7 @@ const ContactForm = () => {
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, consent: consentGiven }),
       });
 
       const data = await res.json();
@@ -46,6 +48,7 @@ const ContactForm = () => {
       logger.info('Contact form submitted successfully', { requestId: data.requestId });
       setStatus('success');
       setFormData({ firstName: '', lastName: '', email: '', phone: '', subject: '', message: '' });
+      setConsentGiven(false);
     } catch (err) {
       const msg = err instanceof Error ? err.message : 'Something went wrong';
       logger.error('Contact form submission failed', { error: msg });
@@ -184,6 +187,25 @@ const ContactForm = () => {
                 />
               </div>
 
+              <div className="flex items-start gap-3 pt-2">
+                <input
+                  id="contact-consent"
+                  name="consent"
+                  type="checkbox"
+                  required
+                  checked={consentGiven}
+                  onChange={(e) => setConsentGiven(e.target.checked)}
+                  className="mt-1 h-4 w-4 rounded border-gray-400 bg-[#222] text-svn-orange focus:ring-2 focus:ring-svn-orange focus:ring-offset-0 cursor-pointer flex-shrink-0"
+                />
+                <label htmlFor="contact-consent" className="text-xs text-gray-400 leading-relaxed cursor-pointer">
+                  I have read and agree to the{' '}
+                  <Link to="/privacy-policy" className="text-svn-orange hover:text-white underline">
+                    Privacy Policy
+                  </Link>{' '}
+                  and consent to SVN McDonald &amp; Company processing my information to respond to this inquiry.
+                </label>
+              </div>
+
               {status === 'success' && (
                 <div className="flex items-center gap-3 bg-green-900/30 border border-green-500/30 text-green-400 px-6 py-4 rounded-[10px]">
                   <CheckCircle size={20} />
@@ -200,7 +222,7 @@ const ContactForm = () => {
 
               <button
                 type="submit"
-                disabled={status === 'submitting'}
+                disabled={status === 'submitting' || !consentGiven}
                 className="w-full bg-svn-orange hover:bg-white hover:text-svn-orange text-white py-5 rounded-[10px] font-black uppercase tracking-[0.2em] transition-all duration-300 flex items-center justify-center gap-3 disabled:opacity-60 disabled:cursor-not-allowed"
               >
                 {status === 'submitting' ? (

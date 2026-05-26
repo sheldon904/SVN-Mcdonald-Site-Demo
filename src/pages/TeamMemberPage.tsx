@@ -26,7 +26,7 @@ const TeamMemberPage = () => {
           noindex={true}
         />
         <Navbar />
-        <div className="min-h-[60vh] flex flex-col items-center justify-center px-6 text-center">
+        <main id="main-content" className="min-h-[60vh] flex flex-col items-center justify-center px-6 text-center">
           <h1 className="text-4xl font-extrabold text-svn-dark mb-4">Team Member Not Found</h1>
           <p className="text-gray-500 text-lg mb-8">
             Sorry, the team member you are looking for does not exist or has been removed.
@@ -38,7 +38,7 @@ const TeamMemberPage = () => {
             <ArrowLeft size={16} />
             Back to Team
           </Link>
-        </div>
+        </main>
         <Footer />
       </div>
     );
@@ -58,6 +58,7 @@ const TeamMemberPage = () => {
       <AgentStructuredData member={member} />
       <Navbar />
 
+      <main id="main-content">
       {/* Hero Section */}
       <div className="relative bg-svn-dark pt-32 pb-20 md:pt-48 md:pb-32 px-6 overflow-hidden">
         {slug && heroImages[slug] && (
@@ -270,6 +271,7 @@ const TeamMemberPage = () => {
           </div>
         </div>
       </section>
+      </main>
 
       <Footer />
     </div>

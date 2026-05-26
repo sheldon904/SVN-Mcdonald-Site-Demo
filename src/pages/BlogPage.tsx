@@ -22,6 +22,7 @@ const BlogPage = () => {
       ]} />
       <Navbar />
 
+      <main id="main-content">
       <PageHeader
         title="Latest"
         highlightedText="News"
@@ -45,7 +46,7 @@ const BlogPage = () => {
                   <div className="relative aspect-[16/10] overflow-hidden">
                     <img
                       src={post.image}
-                      alt={post.title}
+                      alt={post.title || 'Blog post image'}
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                       loading="lazy"
                       decoding="async"
@@ -97,6 +98,7 @@ const BlogPage = () => {
           </div>
         </div>
       </section>
+      </main>
 
       <Footer />
     </div>

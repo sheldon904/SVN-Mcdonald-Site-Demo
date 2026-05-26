@@ -118,6 +118,7 @@ const WhyOcalaPage = () => {
 
       <Navbar />
 
+      <main id="main-content">
       {/* Hero */}
       <header className="relative bg-svn-dark pt-32 pb-20 md:pt-48 md:pb-28 px-6 overflow-hidden">
         <div className="absolute inset-0 z-0">
@@ -463,6 +464,7 @@ const WhyOcalaPage = () => {
           </div>
         </div>
       </section>
+      </main>
 
       <Footer />
     </div>

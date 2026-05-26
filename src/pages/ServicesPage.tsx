@@ -1182,6 +1182,7 @@ const ServicesPage = () => {
       } />
       <Navbar />
 
+      <main id="main-content">
       <PageHeader
         title={currentService.title}
         highlightedText={currentService.highlighted}
@@ -1194,6 +1195,7 @@ const ServicesPage = () => {
           {currentService.content}
         </div>
       </section>
+      </main>
 
       <Footer />
     </div>

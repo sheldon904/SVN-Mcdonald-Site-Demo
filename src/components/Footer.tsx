@@ -1,5 +1,6 @@
 import { Facebook, Youtube, Linkedin, Instagram, Phone, Mail, MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useConsent } from '../lib/consent';
 
 const propertyTypeLinks: Record<string, string> = {
   'Acreage Properties': '/properties/acreage',
@@ -22,6 +23,7 @@ const propertyTypeLinks: Record<string, string> = {
 const propertyTypes = Object.keys(propertyTypeLinks);
 
 const Footer = () => {
+  const { openPreferences } = useConsent();
   return (
     <footer className="bg-svn-dark pt-24 pb-12 text-white px-6">
       <div className="max-w-[1280px] mx-auto">
@@ -108,6 +110,14 @@ const Footer = () => {
             <Link to="/land-properties" className="text-[10px] font-black uppercase tracking-widest text-gray-400 hover:text-white transition-colors">MLS Listings</Link>
             <Link to="/terms-of-use" className="text-[10px] font-black uppercase tracking-widest text-gray-400 hover:text-white transition-colors">Terms of Use</Link>
             <Link to="/accessibility-statement" className="text-[10px] font-black uppercase tracking-widest text-gray-400 hover:text-white transition-colors">Accessibility</Link>
+            <button
+              type="button"
+              onClick={openPreferences}
+              className="text-[10px] font-black uppercase tracking-widest text-gray-400 hover:text-white transition-colors focus:outline-none focus:text-white"
+            >
+              Cookie Preferences
+            </button>
+            <Link to="/do-not-sell" className="text-[10px] font-black uppercase tracking-widest text-gray-400 hover:text-white transition-colors">Do Not Sell or Share</Link>
           </div>
         </div>
       </div>
