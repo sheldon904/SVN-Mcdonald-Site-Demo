@@ -16,6 +16,7 @@ import {
   WhyOcalaPage,
   LegalPage,
   AccessibilityPage,
+  DoNotSellPage,
   PropertyTypePage,
   MLSPage,
 } from './pages';
@@ -23,10 +24,14 @@ import ScrollToTop from './components/ScrollToTop';
 import SEOHead from './components/SEOHead';
 import ErrorBoundary from './components/ErrorBoundary';
 import RouteLogger from './components/RouteLogger';
+import SkipLink from './components/SkipLink';
+import ConsentBanner from './components/ConsentBanner';
+import ConsentPreferencesModal from './components/ConsentPreferencesModal';
+import ConsentEffects from './components/ConsentEffects';
 
 function NotFoundPage() {
   return (
-    <div style={{ minHeight: '60vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '2rem', textAlign: 'center' }}>
+    <main id="main-content" style={{ minHeight: '60vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '2rem', textAlign: 'center' }}>
       <SEOHead
         title="Page Not Found"
         description="The page you are looking for does not exist."
@@ -42,7 +47,7 @@ function NotFoundPage() {
       >
         Return to Home
       </Link>
-    </div>
+    </main>
   );
 }
 
@@ -50,8 +55,10 @@ function App() {
   return (
     <ErrorBoundary>
     <Router>
+      <SkipLink />
       <ScrollToTop />
       <RouteLogger />
+      <ConsentEffects />
       <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="w-8 h-8 border-4 border-svn-orange border-t-transparent rounded-full animate-spin" /></div>}>
       <Routes>
         <Route path="/" element={<HomePage />} />
@@ -75,9 +82,12 @@ function App() {
         <Route path="/privacy-policy" element={<LegalPage />} />
         <Route path="/terms-of-use" element={<LegalPage />} />
         <Route path="/accessibility-statement" element={<AccessibilityPage />} />
+        <Route path="/do-not-sell" element={<DoNotSellPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
       </Suspense>
+      <ConsentBanner />
+      <ConsentPreferencesModal />
     </Router>
     </ErrorBoundary>
   )

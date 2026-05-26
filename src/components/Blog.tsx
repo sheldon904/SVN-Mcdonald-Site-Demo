@@ -26,7 +26,7 @@ const Blog = () => {
                 <div className="relative aspect-[16/10] overflow-hidden mb-6">
                   <img
                     src={post.image}
-                    alt={post.title}
+                    alt={post.title || 'Blog post image'}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                     loading="lazy"
                     decoding="async"

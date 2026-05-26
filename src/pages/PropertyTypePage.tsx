@@ -38,7 +38,7 @@ const PropertyTypePage = () => {
           noindex={true}
         />
         <Navbar />
-        <div className="min-h-[60vh] flex flex-col items-center justify-center px-6 text-center">
+        <main id="main-content" className="min-h-[60vh] flex flex-col items-center justify-center px-6 text-center">
           <h1 className="text-4xl font-black text-svn-dark uppercase tracking-tight mb-4">
             Location Not Found
           </h1>
@@ -51,7 +51,7 @@ const PropertyTypePage = () => {
           >
             View All {propertyType.title} Properties
           </Link>
-        </div>
+        </main>
         <Footer />
       </div>
     );
@@ -66,7 +66,7 @@ const PropertyTypePage = () => {
           noindex={true}
         />
         <Navbar />
-        <div className="min-h-[60vh] flex flex-col items-center justify-center px-6 text-center">
+        <main id="main-content" className="min-h-[60vh] flex flex-col items-center justify-center px-6 text-center">
           <h1 className="text-4xl font-black text-svn-dark uppercase tracking-tight mb-4">
             Property Type Not Found
           </h1>
@@ -80,7 +80,7 @@ const PropertyTypePage = () => {
           >
             Return Home
           </Link>
-        </div>
+        </main>
         <Footer />
       </div>
     );
@@ -107,6 +107,7 @@ const PropertyTypePage = () => {
       />
       <Navbar />
 
+      <main id="main-content">
       {/* Back to parent link (geo pages only) */}
       {geoContent && (
         <div className="bg-svn-dark px-6 pt-28 md:pt-36 pb-0">
@@ -413,6 +414,7 @@ const PropertyTypePage = () => {
           </div>
         </div>
       </section>
+      </main>
 
       <Footer />
     </div>

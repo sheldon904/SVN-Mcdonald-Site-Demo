@@ -21,7 +21,8 @@ const ContactPage = () => {
         { name: 'Contact', url: 'https://svnmcdonald.com/contact' },
       ]} />
       <Navbar />
-      
+
+      <main id="main-content">
       {/* Header Spacer for fixed navbar */}
       <div className="h-20 bg-svn-dark" />
 
@@ -141,16 +142,18 @@ const ContactPage = () => {
       </section>
 
       <div className="h-[400px] w-full bg-gray-200 grayscale">
-         <iframe 
-           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3463.8!2d-82.1402!3d29.1875!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2s217%20SE%20First%20Ave%20Unit%20200%2C%20Ocala%2C%20FL%2034471!5e0!3m2!1sen!2sus!4v1707590000000!5m2!1sen!2sus" 
-           width="100%" 
-           height="100%" 
-           style={{ border: 0 }} 
-           allowFullScreen 
-           loading="lazy" 
+         <iframe
+           title="SVN McDonald & Company office location on Google Maps"
+           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3463.8!2d-82.1402!3d29.1875!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2s217%20SE%20First%20Ave%20Unit%20200%2C%20Ocala%2C%20FL%2034471!5e0!3m2!1sen!2sus!4v1707590000000!5m2!1sen!2sus"
+           width="100%"
+           height="100%"
+           style={{ border: 0 }}
+           allowFullScreen
+           loading="lazy"
            referrerPolicy="no-referrer-when-downgrade"
          />
       </div>
+      </main>
 
       <Footer />
     </div>

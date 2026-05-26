@@ -83,7 +83,7 @@ const Navbar = () => {
       )}>
         <div className="max-w-[1400px] mx-auto flex justify-between items-center">
           <div className="flex-shrink-0">
-            <Link to="/">
+            <Link to="/" aria-label="SVN McDonald & Company home">
               <img
                 src="/images/logos/svn-logo.png"
                 alt="SVN McDonald &amp; Company - Commercial Real Estate Brokerage"
@@ -140,7 +140,9 @@ const Navbar = () => {
           <div className="lg:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              aria-label="Open navigation menu"
+              aria-label={isOpen ? 'Close navigation menu' : 'Open navigation menu'}
+              aria-expanded={isOpen}
+              aria-controls="mobile-nav-menu"
               className={cn(
                 "p-2 transition-colors",
                 isScrolled ? "text-svn-dark" : "text-white"
@@ -153,13 +155,16 @@ const Navbar = () => {
       </nav>
 
       {/* Mobile Menu Overlay */}
-      <div className={cn(
-        "lg:hidden fixed inset-0 bg-white z-[60] transition-transform duration-500",
-        isOpen ? "translate-x-0" : "translate-x-full"
-      )}>
+      <div
+        id="mobile-nav-menu"
+        className={cn(
+          "lg:hidden fixed inset-0 bg-white z-[60] transition-transform duration-500",
+          isOpen ? "translate-x-0" : "translate-x-full"
+        )}
+      >
         <div className="p-6 h-full flex flex-col">
           <div className="flex justify-between items-center mb-10">
-            <Link to="/" onClick={() => setIsOpen(false)}>
+            <Link to="/" onClick={() => setIsOpen(false)} aria-label="SVN McDonald & Company home">
               <img
                 src="/images/logos/svn-logo.png"
                 alt="SVN McDonald &amp; Company - Commercial Real Estate Brokerage"

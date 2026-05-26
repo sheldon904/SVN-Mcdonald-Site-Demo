@@ -2,6 +2,18 @@
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
+## Environment Variables
+
+Set these in Vercel project settings (or in a local `.env.local` for development).
+
+| Variable | Required | Purpose |
+| --- | --- | --- |
+| `RESEND_API_KEY` | Yes (production) | API key for [Resend](https://resend.com). The contact form delivers email through Resend. If unset, contact form submissions are accepted but no email is sent (graceful degradation). |
+| `CONTACT_TO_EMAIL` | No | Recipient for contact form submissions. Defaults to `bartow.mcdonald@svn.com`. |
+| `CONTACT_FROM_EMAIL` | No | "From" address used by Resend. Defaults to `noreply@svnmcdonald.com`. The sending domain must be verified in your Resend account. |
+
+The contact form sets `reply-to` to the visitor's email, so replying in your inbox routes directly back to the inquirer.
+
 Currently, two official plugins are available:
 
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh

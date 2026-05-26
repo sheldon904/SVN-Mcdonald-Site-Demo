@@ -23,7 +23,7 @@ const HomePage = () => {
       />
       <Navbar />
       <StructuredData />
-      <main>
+      <main id="main-content">
         <Hero />
         <Stats />
         {/* WEC Effect CTA Section */}

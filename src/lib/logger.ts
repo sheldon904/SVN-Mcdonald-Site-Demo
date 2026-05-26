@@ -26,6 +26,20 @@ class ClientLogger {
   private queue: LogEntry[] = [];
   private flushTimer: ReturnType<typeof setInterval> | null = null;
   private isFlushing = false;
+  /**
+   * Analytics-style entries (info/debug/perf/pageView/event) only flush when enabled.
+   * Errors always flush — they're operational debugging, not analytics tracking,
+   * and this is disclosed in the privacy policy.
+   */
+  private enabled = false;
+
+  setEnabled(enabled: boolean) {
+    this.enabled = enabled;
+    if (!enabled) {
+      // Drop any queued analytics entries; keep errors that haven't sent yet.
+      this.queue = this.queue.filter((entry) => entry.level === 'error');
+    }
+  }
 
   constructor() {
     // Auto-flush on interval (deferred until the browser is idle so logging never competes with FCP/LCP)
@@ -77,9 +91,7 @@ class ClientLogger {
   }
 
   private enqueue(entry: LogEntry) {
-    this.queue.push(entry);
-
-    // Console output in development
+    // Console output in development always happens (helpful for debugging)
     if (import.meta.env.DEV) {
       const consoleFn = entry.level === 'error' ? console.error
         : entry.level === 'warn' ? console.warn
@@ -87,6 +99,13 @@ class ClientLogger {
         : console.log;
       consoleFn(`[${entry.level.toUpperCase()}] ${entry.message}`, entry);
     }
+
+    // Only queue analytics entries when the user has consented.
+    // Errors and warns are always queued for operational visibility.
+    const isAnalytics = entry.level === 'debug' || entry.level === 'info';
+    if (isAnalytics && !this.enabled) return;
+
+    this.queue.push(entry);
 
     // Flush immediately if batch is full
     if (this.queue.length >= MAX_BATCH_SIZE) {

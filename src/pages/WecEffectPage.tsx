@@ -23,13 +23,15 @@ const WecEffectPage = () => {
         { name: 'WEC Effect', url: 'https://svnmcdonald.com/wec-effect' },
       ]} />
       <Navbar />
-      <WecEffectHero />
-      <WecEffectMapSection />
-      <WecEffectStats />
-      <WecEffectEditorial />
-      <WecEffectCharts />
-      <WecEffectFindings />
-      <WecEffectCTA />
+      <main id="main-content">
+        <WecEffectHero />
+        <WecEffectMapSection />
+        <WecEffectStats />
+        <WecEffectEditorial />
+        <WecEffectCharts />
+        <WecEffectFindings />
+        <WecEffectCTA />
+      </main>
       <Footer />
     </div>
   );

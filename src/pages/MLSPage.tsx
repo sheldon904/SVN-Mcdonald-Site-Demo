@@ -76,6 +76,7 @@ const MLSPage = () => {
       ]} />
       <Navbar />
 
+      <main id="main-content">
       <PageHeader
         title="MLS"
         highlightedText="Search"
@@ -417,6 +418,7 @@ const MLSPage = () => {
           </motion.div>
         </div>
       </section>
+      </main>
 
       <Footer />
     </div>

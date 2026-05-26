@@ -35,7 +35,7 @@ const ClosedDealDetailPage = () => {
           noindex={true}
         />
         <Navbar />
-        <div className="min-h-[60vh] flex flex-col items-center justify-center px-6 text-center">
+        <main id="main-content" className="min-h-[60vh] flex flex-col items-center justify-center px-6 text-center">
           <h1 className="text-4xl font-extrabold text-svn-dark mb-4">Deal Not Found</h1>
           <p className="text-gray-500 text-lg mb-8">
             Sorry, the deal you are looking for does not exist or has been removed.
@@ -47,7 +47,7 @@ const ClosedDealDetailPage = () => {
             <ArrowLeft size={16} />
             Back to Closed Deals
           </Link>
-        </div>
+        </main>
         <Footer />
       </div>
     );
@@ -74,6 +74,7 @@ const ClosedDealDetailPage = () => {
       />
       <Navbar />
 
+      <main id="main-content">
       {/* Hero Image */}
       <div className="relative w-full h-[340px] md:h-[500px] overflow-hidden">
         <img
@@ -245,6 +246,7 @@ const ClosedDealDetailPage = () => {
           </div>
         </div>
       </section>
+      </main>
 
       <Footer />
     </div>

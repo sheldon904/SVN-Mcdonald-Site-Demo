@@ -272,7 +272,7 @@ const ListingsPage = () => {
         </div>
       </div>
 
-      <main>
+      <main id="main-content">
 
         {/* Editorial Intro (land vs. commercial) */}
         {isLand ? <LandIntro /> : <CommercialIntro />}

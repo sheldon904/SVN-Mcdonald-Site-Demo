@@ -13,6 +13,7 @@ export const WecEffectPage = lazy(() => import('./WecEffectPage'));
 export const WhyOcalaPage = lazy(() => import('./WhyOcalaPage'));
 export const LegalPage = lazy(() => import('./LegalPage'));
 export const AccessibilityPage = lazy(() => import('./AccessibilityPage'));
+export const DoNotSellPage = lazy(() => import('./DoNotSellPage'));
 export const BlogPostPage = lazy(() => import('./BlogPostPage'));
 export const PropertyTypePage = lazy(() => import('./PropertyTypePage'));
 export const MLSPage = lazy(() => import('./MLSPage'));

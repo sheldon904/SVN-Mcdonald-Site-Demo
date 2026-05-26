@@ -19,7 +19,7 @@ const BlogPostPage = () => {
           noindex={true}
         />
         <Navbar />
-        <div className="min-h-[60vh] flex flex-col items-center justify-center px-6 text-center">
+        <main id="main-content" className="min-h-[60vh] flex flex-col items-center justify-center px-6 text-center">
           <h1 className="text-4xl font-extrabold text-svn-dark mb-4">Post Not Found</h1>
           <p className="text-gray-500 text-lg mb-8">
             Sorry, the blog post you are looking for does not exist or has been removed.
@@ -31,7 +31,7 @@ const BlogPostPage = () => {
             <ArrowLeft size={16} />
             Back to Blog
           </Link>
-        </div>
+        </main>
         <Footer />
       </div>
     );
@@ -51,11 +51,12 @@ const BlogPostPage = () => {
       <ArticleStructuredData post={post} />
       <Navbar />
 
+      <main id="main-content">
       {/* Hero Image */}
       <div className="relative w-full h-[340px] md:h-[440px] overflow-hidden">
         <img
           src={post.image}
-          alt={post.title}
+          alt={post.title || 'Blog post hero image'}
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
@@ -103,6 +104,7 @@ const BlogPostPage = () => {
           </Link>
         </div>
       </article>
+      </main>
 
       <Footer />
     </div>

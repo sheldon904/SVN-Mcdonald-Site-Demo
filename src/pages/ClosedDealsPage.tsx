@@ -32,6 +32,7 @@ const ClosedDealsPage = () => {
       ]} />
       <Navbar />
 
+      <main id="main-content">
       <PageHeader
         title="Closed"
         highlightedText="Deals"
@@ -122,6 +123,7 @@ const ClosedDealsPage = () => {
           </div>
         </div>
       </section>
+      </main>
 
       <Footer />
     </div>

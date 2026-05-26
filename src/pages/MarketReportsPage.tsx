@@ -121,10 +121,11 @@ const MarketReportsPage = () => {
         { name: 'Market Reports', url: 'https://svnmcdonald.com/market-reports' },
       ]} />
       <Navbar />
-      
-      <PageHeader 
-        title="Market" 
-        highlightedText="Reports" 
+
+      <main id="main-content">
+      <PageHeader
+        title="Market"
+        highlightedText="Reports"
         subtitle="Stay informed with the latest data and insights from our research team."
         backgroundImage="/images/reports/market-trend.svg"
       />
@@ -204,6 +205,7 @@ const MarketReportsPage = () => {
           </div>
         </div>
       </section>
+      </main>
 
       <Footer />
     </div>
