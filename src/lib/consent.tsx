@@ -26,11 +26,15 @@ const defaultState: ConsentState = {
 
 const ConsentContext = createContext<ConsentContextValue | null>(null);
 
-function readFromStorage(): ConsentState {
-  if (typeof window === 'undefined') return defaultState;
+// Cached snapshot — useSyncExternalStore requires getSnapshot() to return a
+// stable reference between calls when nothing has changed, otherwise React
+// detects an infinite render loop and bails out.
+let cachedRaw: string | null | undefined = undefined;
+let cachedSnapshot: ConsentState = defaultState;
+
+function parseRaw(raw: string | null): ConsentState {
+  if (!raw) return defaultState;
   try {
-    const raw = window.localStorage.getItem(STORAGE_KEY);
-    if (!raw) return defaultState;
     const parsed = JSON.parse(raw) as Partial<ConsentState>;
     return {
       necessary: true,
@@ -42,21 +46,28 @@ function readFromStorage(): ConsentState {
   }
 }
 
-function writeToStorage(state: ConsentState) {
-  if (typeof window === 'undefined') return;
+function getSnapshot(): ConsentState {
+  if (typeof window === 'undefined') return defaultState;
+  let raw: string | null;
   try {
-    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-    // Notify other tabs and our own subscribers.
-    window.dispatchEvent(new StorageEvent('storage', { key: STORAGE_KEY }));
+    raw = window.localStorage.getItem(STORAGE_KEY);
   } catch {
-    // ignore quota / privacy-mode errors
+    return defaultState;
   }
+  if (raw === cachedRaw) return cachedSnapshot;
+  cachedRaw = raw;
+  cachedSnapshot = parseRaw(raw);
+  return cachedSnapshot;
 }
 
-const storeListeners = new Set<() => void>();
+function getServerSnapshot(): ConsentState {
+  return defaultState;
+}
+
+const listeners = new Set<() => void>();
 
 function subscribe(listener: () => void): () => void {
-  storeListeners.add(listener);
+  listeners.add(listener);
   const onStorage = (e: StorageEvent) => {
     if (e.key === STORAGE_KEY || e.key === null) listener();
   };
@@ -64,50 +75,45 @@ function subscribe(listener: () => void): () => void {
     window.addEventListener('storage', onStorage);
   }
   return () => {
-    storeListeners.delete(listener);
+    listeners.delete(listener);
     if (typeof window !== 'undefined') {
       window.removeEventListener('storage', onStorage);
     }
   };
 }
 
-function notifyAll() {
-  storeListeners.forEach((l) => l());
-}
-
-function getSnapshot(): ConsentState {
-  return readFromStorage();
-}
-
-function getServerSnapshot(): ConsentState {
-  return defaultState;
+function writeAndNotify(next: ConsentState) {
+  if (typeof window === 'undefined') return;
+  try {
+    const nextRaw = JSON.stringify(next);
+    window.localStorage.setItem(STORAGE_KEY, nextRaw);
+    // Invalidate the cache so the next getSnapshot returns a fresh, stable
+    // reference for this new value.
+    cachedRaw = nextRaw;
+    cachedSnapshot = next;
+  } catch {
+    // ignore quota / privacy-mode errors
+  }
+  listeners.forEach((l) => l());
 }
 
 export const ConsentProvider = ({ children }: { children: ReactNode }) => {
   const consent = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
   const [preferencesOpen, setPreferencesOpen] = useState(false);
 
-  const persist = useCallback((next: ConsentState) => {
-    writeToStorage(next);
-    notifyAll();
+  const acceptAll = useCallback(() => {
+    writeAndNotify({ necessary: true, analytics: true, decided: true });
+    setPreferencesOpen(false);
   }, []);
 
-  const acceptAll = useCallback(() => {
-    persist({ necessary: true, analytics: true, decided: true });
-    setPreferencesOpen(false);
-  }, [persist]);
-
   const rejectNonEssential = useCallback(() => {
-    persist({ necessary: true, analytics: false, decided: true });
+    writeAndNotify({ necessary: true, analytics: false, decided: true });
     setPreferencesOpen(false);
-  }, [persist]);
+  }, []);
 
-  const setAnalytics = useCallback(
-    (enabled: boolean) => {
-      persist({ necessary: true, analytics: enabled, decided: true });
-    },
-    [persist],
-  );
+  const setAnalytics = useCallback((enabled: boolean) => {
+    writeAndNotify({ necessary: true, analytics: enabled, decided: true });
+  }, []);
 
   const openPreferences = useCallback(() => setPreferencesOpen(true), []);
   const closePreferences = useCallback(() => setPreferencesOpen(false), []);
