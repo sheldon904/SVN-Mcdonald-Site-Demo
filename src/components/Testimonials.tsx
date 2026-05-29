@@ -29,7 +29,7 @@ const Testimonials = () => {
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col lg:flex-row gap-16 items-center">
           <div className="lg:w-1/3">
-            <h2 className="text-3xl md:text-4xl font-extrabold uppercase tracking-tight mb-6">
+            <h2 className="text-3xl md:text-4xl font-extrabold uppercase tracking-tight mb-6 text-white">
               See What Our Clients<br />Have to Say
             </h2>
             <div className="w-20 h-1 bg-svn-orange mb-8" />
