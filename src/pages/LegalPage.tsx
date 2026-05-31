@@ -27,7 +27,7 @@ const LegalPage = () => {
       />
       <Navbar />
       <main id="main-content">
-      <div className="h-20 bg-svn-dark" />
+      <div className="h-32 md:h-40 bg-svn-dark" />
 
       <div className="max-w-4xl mx-auto py-24 px-6">
         <h1 className="text-4xl font-black text-svn-dark uppercase tracking-tight mb-8">{title}</h1>
