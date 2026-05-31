@@ -32,12 +32,6 @@ const LegalPage = () => {
       <div className="max-w-4xl mx-auto py-24 px-6">
         <h1 className="text-4xl font-black text-svn-dark uppercase tracking-tight mb-8">{title}</h1>
 
-        <div className="bg-yellow-50 border-l-4 border-yellow-400 px-5 py-4 mb-8 rounded">
-          <p className="text-sm text-yellow-900 leading-relaxed">
-            <strong>Note:</strong> This policy was drafted as a baseline and should be reviewed by legal counsel before being treated as authoritative.
-          </p>
-        </div>
-
         <div className="prose prose-lg max-w-none text-gray-700">
           <p className="text-gray-600"><strong>Last updated:</strong> May 26, 2026</p>
 
